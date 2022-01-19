@@ -8,7 +8,7 @@ public class WaterAbsorbManager : MonoBehaviour
     PlayerControlls controls;
 
     public SpringJoint[] springs;
-    public ParameterControllerSB parameters;
+    //public ParameterControllerSB parameters;
     int i = 0;
 
     private void Awake()
@@ -28,27 +28,27 @@ public class WaterAbsorbManager : MonoBehaviour
         {
             collision.gameObject.SetActive(false);
             //gameObject.GetComponentInParent<Transform>().localScale += collision.transform.localScale/2; 
-            
-            //gameObject.GetComponent<Rigidbody>().mass += collision.rigidbody.mass;
-            parameters.NewMass += collision.rigidbody.mass;
 
-            //gameObject.GetComponentInParent<Transform>().localScale += ( collision.rigidbody.mass * new Vector3(1, 1, 1) );
-            parameters.NewScale += (collision.rigidbody.mass * new Vector3(1, 1, 1));
+            gameObject.GetComponent<Rigidbody>().mass += collision.rigidbody.mass;
+            //parameters.NewMass += collision.rigidbody.mass;
 
-            gameObject.GetComponentInParent<Movement_2>().moveForce*= 1.5f;
+            gameObject.GetComponentInParent<Transform>().localScale += (collision.rigidbody.mass * new Vector3(1, 1, 1));
+            //parameters.NewScale += (collision.rigidbody.mass * new Vector3(1, 1, 1));
+
+            gameObject.GetComponentInParent<Movement_2>().moveForce *= 1.5f;
         }
     }
     void Decrease()
     {
-        //gameObject.GetComponentInParent<Transform>().localScale = new Vector3(0.4f,0.4f,0.4f);
-        parameters.NewScale = new Vector3(0.4f, 0.4f, 0.4f);
+        gameObject.GetComponentInParent<Transform>().localScale = new Vector3(0.4f, 0.4f, 0.4f);
+        //parameters.NewScale = new Vector3(0.4f, 0.4f, 0.4f);
 
-        //gameObject.GetComponent<Rigidbody>().mass = 2;
-        parameters.NewMass = 2;
+        gameObject.GetComponent<Rigidbody>().mass = 2;
+        //parameters.NewMass = 2;
     }
 
-    
-    void CheckSize() 
+
+    void CheckSize()
     {
         if (gameObject.GetComponent<Rigidbody>().mass >= 59)
         {
@@ -63,7 +63,7 @@ public class WaterAbsorbManager : MonoBehaviour
     }
     void Update()
     {
-        //CheckSize();
+        CheckSize();
         //if (Input.GetKeyDown("e"))
         //{
         //    gameObject.GetComponentInParent<Transform>().localScale -= gameObject.GetComponentInParent<Transform>().localScale / 4;
@@ -72,13 +72,11 @@ public class WaterAbsorbManager : MonoBehaviour
         //}
     }
 
-    
+
     //REGLES DE 3
     //scale2 = (mass2 * scale1) / mass1;
-    
-    //spring2 = (s2 * spring1) / scale1;
-    
-    //damper2 = (spring2 * damper1) / spring1;
-    
 
+    //spring2 = (s2 * spring1) / scale1;
+
+    //damper2 = (spring2 * damper1) / spring1;
 }
