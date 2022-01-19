@@ -5,7 +5,7 @@ using UnityEngine;
 public class PressurePlate : MonoBehaviour
 {
     [SerializeField]
-    GameObject doorOpen, doorClosed;
+    GameObject doorOpen, doorClosed, doorClosed1,doorClosed2;
    
 
     void OnTriggerEnter(Collider other)
@@ -14,6 +14,8 @@ public class PressurePlate : MonoBehaviour
         if (other.tag == "Player" )
         {
             doorClosed.SetActive(false);
+            doorClosed1.SetActive(false);
+            doorClosed2.SetActive(false);
             doorOpen.SetActive(true);
 
         }
