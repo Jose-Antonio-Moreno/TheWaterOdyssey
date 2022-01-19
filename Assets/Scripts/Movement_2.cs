@@ -10,7 +10,7 @@ public class Movement_2 : MonoBehaviour
     float gravity = 14.0f;
     public float jumpForce = 30;
     float verticalVelocity;
-    float maxVelocity = 8;
+    float maxVelocity = 1;
     bool canJump = true;
     bool airControll = false;
 

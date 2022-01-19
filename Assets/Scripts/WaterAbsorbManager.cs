@@ -40,10 +40,10 @@ public class WaterAbsorbManager : MonoBehaviour
     }
     void Decrease()
     {
-        gameObject.GetComponentInParent<Transform>().localScale = new Vector3(0.4f, 0.4f, 0.4f);
+        gameObject.GetComponentInParent<Transform>().localScale = new Vector3(20.0f, 20.0f, 20.0f);
         //parameters.NewScale = new Vector3(0.4f, 0.4f, 0.4f);
 
-        gameObject.GetComponent<Rigidbody>().mass = 2;
+        gameObject.GetComponent<Rigidbody>().mass = 15;
         //parameters.NewMass = 2;
     }
 
