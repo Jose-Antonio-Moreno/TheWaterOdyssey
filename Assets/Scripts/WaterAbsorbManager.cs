@@ -10,6 +10,7 @@ public class WaterAbsorbManager : MonoBehaviour
     public SpringJoint[] springs;
     //public ParameterControllerSB parameters;
     int i = 0;
+    int j = 0;
 
     private void Awake()
     {
@@ -43,27 +44,37 @@ public class WaterAbsorbManager : MonoBehaviour
         gameObject.GetComponentInParent<Transform>().localScale = new Vector3(20.0f, 20.0f, 20.0f);
         //parameters.NewScale = new Vector3(0.4f, 0.4f, 0.4f);
 
-        gameObject.GetComponent<Rigidbody>().mass = 15;
+        gameObject.GetComponent<Rigidbody>().mass = 10;
         //parameters.NewMass = 2;
     }
 
 
     void CheckSize()
     {
-        if (gameObject.GetComponent<Rigidbody>().mass >= 59)
+        if (gameObject.GetComponent<Rigidbody>().mass >= 16)
         {
             while (i <= springs.Length)
             {
-                springs[i].spring = 1000;
-                springs[i].damper = 10;
+                springs[i].spring = 9000;
+                springs[i].damper = 1;
                 i++;
             }
             i = 0;
         }
+        //else if(gameObject.GetComponent<Rigidbody>().mass <= 11)
+        //{
+        //    while (j <= springs.Length)
+        //    {
+        //        springs[j].spring = 9000;
+        //        springs[j].damper = 1;
+        //        j++;
+        //    }
+        //    j = 0;
+        //}
     }
     void Update()
     {
-        CheckSize();
+        //CheckSize();
         //if (Input.GetKeyDown("e"))
         //{
         //    gameObject.GetComponentInParent<Transform>().localScale -= gameObject.GetComponentInParent<Transform>().localScale / 4;
