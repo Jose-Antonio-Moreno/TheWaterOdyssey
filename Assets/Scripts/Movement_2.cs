@@ -12,7 +12,6 @@ public class Movement_2 : MonoBehaviour
     public Transform pointer;
 
     float gravity = 14.0f;
-    public float jumpForce = 30;
     float verticalVelocity;
     float maxVelocity = 1;
     bool canJump = true;
@@ -28,9 +27,16 @@ public class Movement_2 : MonoBehaviour
     bool canDash = true;
     float dashTime = 2;
 
+    public float jumpMultiplier;
+    private float jumpPressure;
+    private float minJump;
+    private float maxJumpPreassure;
+    private bool jumpPressed;
+
     PlayerControlls controls;
 
     public Transform camera;
+
 
     private void OnEnable()
     {
@@ -53,7 +59,6 @@ public class Movement_2 : MonoBehaviour
         controls.Gameplay.Aim.canceled += ctx => rightStickDirection = Vector2.zero;
 
     }
-
     void Update()
     {
         if (dashTime <= 0)
@@ -66,27 +71,73 @@ public class Movement_2 : MonoBehaviour
             dashTime -= Time.deltaTime;
             canDash = false;
         }
+
+
+        if (canJump)
+        {
+            if (jumpPressed)
+            {
+                Debug.Log("Im jumping");
+                if (jumpPressure < maxJumpPreassure)
+                {
+                    jumpPressure += Time.deltaTime * jumpMultiplier;
+                }
+                else
+                {
+                    jumpPressure = maxJumpPreassure;
+                }
+            }
+            jumpPressed = false;
+            if (jumpPressure > 0f)
+            {
+                jumpPressure = jumpPressure + minJump;
+                gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0f, jumpPressure, 0f)/* = new Vector3(jumpPressure / 10f, jumpPressure, 0f)*/;
+                jumpPressure = 0f;
+                canJump = false;
+            }
+        }
+
+        //if (canJump) 
+        //{
+        //    if (Input.GetButton("Jump"))
+        //    {
+        //        if (jumpPressure < maxJumpPreassure)
+        //        {
+        //            jumpPressure += maxJumpPreassure;
+        //        }
+        //        else 
+        //        {
+        //            jumpPressure = maxJumpPreassure;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        jumpPressure = jumpPressure + minJump;
+        //        gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0f, jumpPressure, 0f);
+        //        jumpPressure = 0f;
+        //        canJump = false;
+        //    }
+        //}
+        
+        
     }
+
+
     void StopAirControll()
     {
         airControll = false;
     }
-    void Jump()
-    {
-        if (canJump)
-        {
-            gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 300, 0));
-            airControll = true;
-            Invoke("StopAirControll", 0.3f);
-            canJump = false;
-        }
-    }
+    
 
  
 
     private void Start()
     {
         controller = GetComponent<CharacterController>();
+        jumpPressure = 0f;
+        minJump = 2f;
+        maxJumpPreassure = 10f;
+        jumpPressed = false;
     }
     Vector3 aimDirection;
     Vector3 shootVector;
@@ -94,7 +145,7 @@ public class Movement_2 : MonoBehaviour
     {
         var sequence = DOTween.Sequence();
         sequence.Insert(0, camera.DOShakePosition(2f, 100f, 1000));
-        GameObject aux =  Instantiate(shootPrefab, gameObject.transform.position, Quaternion.identity);
+        GameObject aux =  Instantiate(shootPrefab, gameObject.transform.position + aimDirection*0.5f, Quaternion.identity);
         Vector3 shootForce = aimDirection * 100;
         aux.GetComponent<Rigidbody>().AddForce(shootForce);
     }
@@ -157,16 +208,16 @@ public class Movement_2 : MonoBehaviour
 
     //}
 
-    private void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")
         {
-
             canJump = true;
         }
-        else {
-            canJump = false;
-        }
+    }
+    void Jump()
+    {
+        jumpPressed = true;
     }
 
     void Dashing()
