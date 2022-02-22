@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class Movement_2 : MonoBehaviour
 {
 
     private CharacterController controller;
+    public GameObject shootPrefab;
+    public Transform pointer;
 
     float gravity = 14.0f;
     public float jumpForce = 30;
@@ -13,10 +17,11 @@ public class Movement_2 : MonoBehaviour
     float maxVelocity = 1;
     bool canJump = true;
     bool airControll = false;
-
-    public float moveForce = 20;
+    public float moveForce = 30;
     Vector2 stickDirection;
     Vector3 moveDirection;
+
+    Vector2 rightStickDirection;
 
     bool isDashing = false;
     public float dashSpeed;
@@ -31,14 +36,21 @@ public class Movement_2 : MonoBehaviour
     {
         controls.Gameplay.Enable();
     }
+    GameObject aux;
     private void Awake()
     {
+
         controls = new PlayerControlls();
 
         controls.Gameplay.Jump.performed += ctx => Jump();
+        //controls.Gameplay.Shoot.performed += ctx => Shoot();
+        controls.Gameplay.Shoot.started += ctx => Shoot();
         controls.Gameplay.Dash.performed += ctx => Dashing();
         controls.Gameplay.Move.performed += ctx => stickDirection = ctx.ReadValue<Vector2>();
         controls.Gameplay.Move.canceled += ctx => stickDirection = Vector2.zero;
+
+        controls.Gameplay.Aim.performed += ctx => rightStickDirection = ctx.ReadValue<Vector2>();
+        controls.Gameplay.Aim.canceled += ctx => rightStickDirection = Vector2.zero;
 
     }
 
@@ -70,9 +82,21 @@ public class Movement_2 : MonoBehaviour
         }
     }
 
+ 
+
     private void Start()
     {
         controller = GetComponent<CharacterController>();
+    }
+    Vector3 aimDirection;
+    Vector3 shootVector;
+    void Shoot()
+    {
+        var sequence = DOTween.Sequence();
+        sequence.Insert(0, camera.DOShakePosition(2f, 100f, 1000));
+        GameObject aux =  Instantiate(shootPrefab, gameObject.transform.position, Quaternion.identity);
+        Vector3 shootForce = aimDirection * 100;
+        aux.GetComponent<Rigidbody>().AddForce(shootForce);
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -85,13 +109,18 @@ public class Movement_2 : MonoBehaviour
             moveDirection = moveDirection.normalized;
             gameObject.GetComponent<Rigidbody>().AddForce(moveDirection * moveForce);
         }
-             
 
-        //if (airControll)
-        //{
-        //    gameObject.GetComponent<Rigidbody>().AddForce(0.3f * moveDirection.x, 0, 0.3f * moveDirection.y);
+        if (rightStickDirection.magnitude >= 0.1)
+        {
+            //camera positioning
+            float angle = Mathf.Atan2(rightStickDirection.x, rightStickDirection.y) * Mathf.Rad2Deg + camera.eulerAngles.y;
+            aimDirection = Quaternion.Euler(0.0f, angle, 0.0f) * Vector3.forward;
+            //aimDirection = aimDirection.normalized;
+        }
+        Vector3 v = gameObject.transform.position + aimDirection * 5;
+        pointer.transform.position = v;
+        Debug.Log(aimDirection);
 
-        //}
 
 
         if (gameObject.GetComponent<Rigidbody>().velocity.x >= maxVelocity)
