@@ -9,6 +9,7 @@ public class EnemyAI : MonoBehaviour
 
     public LayerMask Ground;
 
+    private float hp;
     //Patroling
     public Vector3 walkPoint;
     bool walkPointSet;
@@ -17,12 +18,20 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+
+        hp = 4;
     }
 
     // Update is called once per frame
     void Update()
     {
         Patroling();
+
+        if(hp<= 0)
+        {
+            Death();
+        }
+
     }
 
     void Patroling()
@@ -49,5 +58,21 @@ public class EnemyAI : MonoBehaviour
         {
             walkPointSet = true;
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    { 
+        if (other.CompareTag("Bullet"))
+        {
+
+            hp--;
+
+        }
+    }
+
+    private void Death()
+    {
+
+        Destroy(this.gameObject);
     }
 }

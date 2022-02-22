@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Agua
   - Ground
+  - Bullet
   layers:
   - Default
   - TransparentFX

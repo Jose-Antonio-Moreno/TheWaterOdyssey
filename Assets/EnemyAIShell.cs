@@ -25,11 +25,15 @@ public class EnemyAIShell : MonoBehaviour
     public bool playerInSightRange;
     public bool playerInAttackRange = false;
 
+    private float hp;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("WEno").transform;
         agent = GetComponent<NavMeshAgent>();
+
+        hp = 3;
     }
 
     // Update is called once per frame
@@ -42,6 +46,11 @@ public class EnemyAIShell : MonoBehaviour
         if(!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         //if (playerInSightRange && playerInAttackRange) AttackPlayer();
+
+        if (hp <= 0)
+        {
+            Death();
+        }
     }
 
     void Patroling()
@@ -73,5 +82,21 @@ public class EnemyAIShell : MonoBehaviour
     void ChasePlayer()
     {
         agent.SetDestination(player.position);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Bullet"))
+        {
+
+            hp--;
+
+        }
+    }
+
+    private void Death()
+    {
+
+        Destroy(this.gameObject);
     }
 }
