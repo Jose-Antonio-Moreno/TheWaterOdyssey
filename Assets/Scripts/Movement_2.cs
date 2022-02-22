@@ -97,27 +97,6 @@ public class Movement_2 : MonoBehaviour
             }
         }
 
-        //if (canJump) 
-        //{
-        //    if (Input.GetButton("Jump"))
-        //    {
-        //        if (jumpPressure < maxJumpPreassure)
-        //        {
-        //            jumpPressure += maxJumpPreassure;
-        //        }
-        //        else 
-        //        {
-        //            jumpPressure = maxJumpPreassure;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        jumpPressure = jumpPressure + minJump;
-        //        gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0f, jumpPressure, 0f);
-        //        jumpPressure = 0f;
-        //        canJump = false;
-        //    }
-        //}
         
         
     }
@@ -196,17 +175,6 @@ public class Movement_2 : MonoBehaviour
         }
     }
 
-    //private void OnCollisionStay(Collision collision)
-    //{
-    //    canJump = true;
-
-    //}
-
-    //private void OnCollisionExit(Collision collision)
-    //{
-    //    canJump = false;
-
-    //}
 
     void OnCollisionEnter(Collision collision)
     {
