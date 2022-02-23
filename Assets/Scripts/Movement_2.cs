@@ -18,7 +18,7 @@ public class Movement_2 : MonoBehaviour
     bool airControll = false;
     public float moveForce = 30;
     Vector2 stickDirection;
-    Vector3 moveDirection;
+    public Vector3 moveDirection;
 
     Vector2 rightStickDirection;
 
@@ -64,7 +64,6 @@ public class Movement_2 : MonoBehaviour
         if (dashTime <= 0)
         {
             canDash = true;
-            
         }
         else 
         { 
@@ -96,9 +95,7 @@ public class Movement_2 : MonoBehaviour
                 canJump = false;
             }
         }
-
-        
-        
+                
     }
 
 
@@ -190,7 +187,7 @@ public class Movement_2 : MonoBehaviour
 
     void Dashing()
     {
-        if (canDash) 
+        if (canDash)
         {
             gameObject.GetComponent<Rigidbody>().AddForce(moveDirection * dashSpeed, ForceMode.Impulse);
             dashTime = 2;

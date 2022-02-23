@@ -9,17 +9,22 @@ public class EnemyAI : MonoBehaviour
 
     public LayerMask Ground;
 
-    private float hp;
+    public float hp;
     //Patroling
     public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
+
+    //Checker
+    public bool isHit;
+
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
 
         hp = 4;
+        isHit = false;
     }
 
     // Update is called once per frame
@@ -64,15 +69,13 @@ public class EnemyAI : MonoBehaviour
     { 
         if (other.CompareTag("Bullet"))
         {
-
             hp--;
-
+            isHit = true;
         }
     }
 
     private void Death()
     {
-
         Destroy(this.gameObject);
     }
 }

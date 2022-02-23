@@ -7,9 +7,14 @@ public class Skills : MonoBehaviour
     //General Variables
     public Movement_2 player;
     public SkillManager skill;
+    public LifeSystem life;
+    public EnemyAI enemyN;
+    public EnemyAIShell enemyS;
+
 
     //Poison
-
+    float poisonTimer;
+    float posionPerSecond;
     //Ice
 
     //Bouncy
@@ -30,102 +35,140 @@ public class Skills : MonoBehaviour
 
     void Start()
     {
-
+        //Poison
+        poisonTimer = 10;
+        posionPerSecond = 1;
     }
     void Update()
-    {
-
-        if (skill.isLightStepActivate) 
+    {        
+        if (skill.isLightStepActivate)
         {
-            ActivateLightStep();
             Debug.Log(player.moveForce);
+            ActivateLightStep();
             skill.isLightStepActivate = false;
         }
-        if (skill.isPoisonActivate) 
+        if (skill.isPoisonActivate)
         {
             Debug.Log("Poison");
-            ActivatePoison();
+            //ActivatePoison();
         }
-        if (skill.isIceActivate) 
+        if (skill.isIceActivate)
         {
             Debug.Log("Ice");
-            ActivateIce();
+            //ActivateIce();
         }
-        if (skill.isBouncyActivate) 
+        if (skill.isBouncyActivate)
         {
             Debug.Log("Bouncy");
-            ActivateBouncy();
+            //ActivateBouncy();
         }
-        if (skill.isDashActivate) 
+        if (skill.isDashActivate)
         {
             Debug.Log("Dash");
-            ActivateDash();
+            //ActivateDash();
         }
-        if (skill.isDiscountActivate) 
+        if (skill.isDiscountActivate)
         {
             Debug.Log("Discount");
-            ActivateDiscount();
+            //ActivateDiscount();
         }
-        if (skill.isDoubleEdgeActivate) 
+        if (skill.isDoubleEdgeActivate)
         {
             Debug.Log("Double Edge");
             ActivateDoubleEdge();
         }
-        if (skill.isSlowTrailActivate) 
+        if (skill.isSlowTrailActivate)
         {
             Debug.Log("Slow Trail");
-            ActivateSlowTrail();
+            //ActivateSlowTrail();
         }
-        if (skill.isDamagingTrailActivate) 
+        if (skill.isDamagingTrailActivate)
         {
             Debug.Log("Damaging Trail");
-            ActivateDamagingTrail();
+            //ActivateDamagingTrail();
         }
-        if (skill.isFireRateActivate) 
+        if (skill.isFireRateActivate)
         {
             Debug.Log("Fire Rate");
-            ActivateFireRate();
+            //ActivateFireRate();
         }
     }
-    void ActivateLightStep() 
+    void ActivateLightStep()
     {
         player.moveForce = player.moveForce * 2;
     }
     void ActivatePoison()
     {
-
+        if (enemyS.isHit) 
+        {
+            poisonTimer = 10;
+            while (poisonTimer >= 0) 
+            {
+                if (posionPerSecond <= 0)
+                {
+                    enemyS.hp -= 0.2f;
+                }
+                else 
+                {
+                    posionPerSecond -= Time.deltaTime;
+                }
+                posionPerSecond = 1;
+                poisonTimer--;
+            }
+        }
+        if (enemyN.isHit)
+        {
+            poisonTimer = 10;
+            while (poisonTimer >= 0)
+            {
+                if (posionPerSecond <= 0)
+                {
+                    enemyN.hp -= 0.2f;
+                }
+                else
+                {
+                    posionPerSecond -= Time.deltaTime;
+                }
+                posionPerSecond = 1;
+                poisonTimer--;
+            }
+        }
     }
-    void ActivateIce()
-    {
+    //void ActivateIce()
+    //{
 
-    }
-    void ActivateBouncy()
-    {
+    //}
+    //void ActivateBouncy()
+    //{
 
-    }
-    void ActivateDash()
-    {
+    //}
+    //void ActivateDash()
+    //{
 
-    }
-    void ActivateDiscount()
-    {
+    //}
+    //void ActivateDiscount()
+    //{
 
-    }
+    //}
     void ActivateDoubleEdge() 
     {
-
+        if(life.isDamaging)
+        {
+            enemyN.hp -= 1;
+            enemyS.hp -= 1;
+        }
     }
-    void ActivateSlowTrail()
-    {
+    //void ActivateSlowTrail()
+    //{
 
-    }
-    void ActivateDamagingTrail()
-    {
+    //}
+    //void ActivateDamagingTrail()
+    //{
 
-    }
-    void ActivateFireRate()
-    {
+    //}
+    //void ActivateFireRate()
+    //{
 
-    }
+    //}
 
 }

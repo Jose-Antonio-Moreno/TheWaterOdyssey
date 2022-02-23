@@ -25,7 +25,10 @@ public class EnemyAIShell : MonoBehaviour
     public bool playerInSightRange;
     public bool playerInAttackRange = false;
 
-    private float hp;
+    public float hp;
+
+    //Checker
+    public bool isHit;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +37,7 @@ public class EnemyAIShell : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
 
         hp = 3;
+        isHit = false;
     }
 
     // Update is called once per frame
@@ -88,9 +92,8 @@ public class EnemyAIShell : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
-
             hp--;
-
+            isHit = true;
         }
     }
 

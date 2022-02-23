@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
+
+    Skill_Interface mySkillInterface;
+
     //Poison
     public bool isPoisonActivate;
     //Ice
@@ -37,5 +40,13 @@ public class SkillManager : MonoBehaviour
         isSlowTrailActivate = false;
         isDamagingTrailActivate = false;
         isFireRateActivate = false;
+    }
+    void Update()
+    {
+        if (isLightStepActivate) 
+        {
+
+            isLightStepActivate = false;
+        }
     }
 }
