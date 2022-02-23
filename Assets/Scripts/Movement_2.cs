@@ -2,25 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+
 using DG.Tweening;
 
 public class Movement_2 : MonoBehaviour
 {
+    public GameObject inputManager;
 
-    private CharacterController controller;
     public GameObject shootPrefab;
     public Transform pointer;
-
     float gravity = 14.0f;
     float verticalVelocity;
     float maxVelocity = 1;
     bool canJump = true;
     bool airControll = false;
     public float moveForce = 30;
-    Vector2 stickDirection;
     public Vector3 moveDirection;
 
-    Vector2 rightStickDirection;
+    Vector2 moveJoystick;
+    Vector2 aimJoystick;
 
     bool isDashing = false;
     public float dashSpeed;
@@ -33,34 +34,31 @@ public class Movement_2 : MonoBehaviour
     private float maxJumpPreassure;
     private bool jumpPressed;
 
-    PlayerControlls controls;
+    //PlayerControlls controls;
 
     public Transform camera;
 
-
-    private void OnEnable()
-    {
-        controls.Gameplay.Enable();
-    }
     GameObject aux;
+    
     private void Awake()
     {
+        PlayerControlls controller;
 
-        controls = new PlayerControlls();
+        controller = inputManager.GetComponent<InputsController>().globalControls;
 
-        controls.Gameplay.Jump.performed += ctx => Jump();
-        //controls.Gameplay.Shoot.performed += ctx => Shoot();
-        controls.Gameplay.Shoot.started += ctx => Shoot();
-        controls.Gameplay.Dash.performed += ctx => Dashing();
-        controls.Gameplay.Move.performed += ctx => stickDirection = ctx.ReadValue<Vector2>();
-        controls.Gameplay.Move.canceled += ctx => stickDirection = Vector2.zero;
+        //controller.Gameplay.Jump.performed += ctx => Jump();
+        //controller.Gameplay.Shoot.started += ctx => Shoot();
+        //controller.Gameplay.Dash.performed += ctx => Dashing();
 
-        controls.Gameplay.Aim.performed += ctx => rightStickDirection = ctx.ReadValue<Vector2>();
-        controls.Gameplay.Aim.canceled += ctx => rightStickDirection = Vector2.zero;
+        aimJoystick = inputManager.GetComponent<InputsController>().rightStickDirection;
+        moveJoystick = inputManager.GetComponent<InputsController>().leftStickDirection;
+
 
     }
+
     void Update()
     {
+
         if (dashTime <= 0)
         {
             canDash = true;
@@ -109,7 +107,7 @@ public class Movement_2 : MonoBehaviour
 
     private void Start()
     {
-        controller = GetComponent<CharacterController>();
+
         jumpPressure = 0f;
         minJump = 2f;
         maxJumpPreassure = 10f;
@@ -119,28 +117,29 @@ public class Movement_2 : MonoBehaviour
     Vector3 shootVector;
     void Shoot()
     {
-        var sequence = DOTween.Sequence();
-        sequence.Insert(0, camera.DOShakePosition(2f, 100f, 1000));
-        GameObject aux =  Instantiate(shootPrefab, gameObject.transform.position + aimDirection*0.5f, Quaternion.identity);
-        Vector3 shootForce = aimDirection * 100;
-        aux.GetComponent<Rigidbody>().AddForce(shootForce);
+        Debug.Log("2");
+        //var sequence = DOTween.Sequence();
+        //sequence.Insert(0, camera.DOShakePosition(2f, 100f, 1000));
+        //GameObject aux =  Instantiate(shootPrefab, gameObject.transform.position + aimDirection*0.5f, Quaternion.identity);
+        //Vector3 shootForce = aimDirection * 100;
+        //aux.GetComponent<Rigidbody>().AddForce(shootForce);
     }
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (stickDirection.magnitude >= 0.1)
+        if (moveJoystick.magnitude >= 0.1)
         {
             //camera positioning
-            float targerAngle = Mathf.Atan2(stickDirection.x, stickDirection.y) * Mathf.Rad2Deg + camera.eulerAngles.y;
+            float targerAngle = Mathf.Atan2(moveJoystick.x, moveJoystick.y) * Mathf.Rad2Deg + camera.eulerAngles.y;
             moveDirection = Quaternion.Euler(0.0f, targerAngle, 0.0f) * Vector3.forward;
             moveDirection = moveDirection.normalized;
             gameObject.GetComponent<Rigidbody>().AddForce(moveDirection * moveForce);
         }
 
-        if (rightStickDirection.magnitude >= 0.1)
+        if (aimJoystick.magnitude >= 0.1)
         {
             //camera positioning
-            float angle = Mathf.Atan2(rightStickDirection.x, rightStickDirection.y) * Mathf.Rad2Deg + camera.eulerAngles.y;
+            float angle = Mathf.Atan2(aimJoystick.x, aimJoystick.y) * Mathf.Rad2Deg + camera.eulerAngles.y;
             aimDirection = Quaternion.Euler(0.0f, angle, 0.0f) * Vector3.forward;
             //aimDirection = aimDirection.normalized;
         }
