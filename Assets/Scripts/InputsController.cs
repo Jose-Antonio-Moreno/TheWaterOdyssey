@@ -19,13 +19,10 @@ public class InputsController : MonoBehaviour
     private void OnEnable()
     {
         globalControls.Gameplay.Enable();
-        Debug.Log("enable");
     }
     private void OnDisable()
     {
         globalControls.Gameplay.Disable();
-        Debug.Log("disable");
-
 
     }
     private void Awake()
@@ -33,19 +30,17 @@ public class InputsController : MonoBehaviour
         globalControls = new PlayerControlls();
         globalControls.Gameplay.Move.performed += ctx => leftStickDirection = ctx.ReadValue<Vector2>();
         globalControls.Gameplay.Move.canceled += ctx => leftStickDirection = Vector2.zero;
-        globalControls.Gameplay.Shoot.performed += ctx => Hello();
 
         globalControls.Gameplay.Aim.performed += ctx => rightStickDirection = ctx.ReadValue<Vector2>();
         globalControls.Gameplay.Aim.canceled += ctx => rightStickDirection = Vector2.zero;
 
+
+
     }
-    void Hello()
-    {
-        Debug.Log("as");
-    }
+
     private void Start()
     {
-        controller = GetComponent<CharacterController>();
+        //controller = GetComponent<CharacterController>();
 
     }
 

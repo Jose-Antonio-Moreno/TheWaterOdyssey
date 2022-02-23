@@ -4,14 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
-using DG.Tweening;
 
 public class Movement_2 : MonoBehaviour
 {
     public GameObject inputManager;
 
-    public GameObject shootPrefab;
-    public Transform pointer;
+
+
+
     float gravity = 14.0f;
     float verticalVelocity;
     float maxVelocity = 1;
@@ -21,7 +21,7 @@ public class Movement_2 : MonoBehaviour
     public Vector3 moveDirection;
 
     Vector2 moveJoystick;
-    Vector2 aimJoystick;
+
 
     bool isDashing = false;
     public float dashSpeed;
@@ -47,17 +47,12 @@ public class Movement_2 : MonoBehaviour
         controller = inputManager.GetComponent<InputsController>().globalControls;
 
         //controller.Gameplay.Jump.performed += ctx => Jump();
-        //controller.Gameplay.Shoot.started += ctx => Shoot();
-        //controller.Gameplay.Dash.performed += ctx => Dashing();
-
-        aimJoystick = inputManager.GetComponent<InputsController>().rightStickDirection;
-        moveJoystick = inputManager.GetComponent<InputsController>().leftStickDirection;
-
-
+        controller.Gameplay.Dash.performed += ctx => Dashing();
     }
 
     void Update()
     {
+        moveJoystick = inputManager.GetComponent<InputsController>().leftStickDirection;
 
         if (dashTime <= 0)
         {
@@ -107,23 +102,13 @@ public class Movement_2 : MonoBehaviour
 
     private void Start()
     {
-
         jumpPressure = 0f;
         minJump = 2f;
         maxJumpPreassure = 10f;
         jumpPressed = false;
     }
-    Vector3 aimDirection;
-    Vector3 shootVector;
-    void Shoot()
-    {
-        Debug.Log("2");
-        //var sequence = DOTween.Sequence();
-        //sequence.Insert(0, camera.DOShakePosition(2f, 100f, 1000));
-        //GameObject aux =  Instantiate(shootPrefab, gameObject.transform.position + aimDirection*0.5f, Quaternion.identity);
-        //Vector3 shootForce = aimDirection * 100;
-        //aux.GetComponent<Rigidbody>().AddForce(shootForce);
-    }
+
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -136,16 +121,6 @@ public class Movement_2 : MonoBehaviour
             gameObject.GetComponent<Rigidbody>().AddForce(moveDirection * moveForce);
         }
 
-        if (aimJoystick.magnitude >= 0.1)
-        {
-            //camera positioning
-            float angle = Mathf.Atan2(aimJoystick.x, aimJoystick.y) * Mathf.Rad2Deg + camera.eulerAngles.y;
-            aimDirection = Quaternion.Euler(0.0f, angle, 0.0f) * Vector3.forward;
-            //aimDirection = aimDirection.normalized;
-        }
-        Vector3 v = gameObject.transform.position + aimDirection * 5;
-        pointer.transform.position = v;
-        Debug.Log(aimDirection);
 
 
 

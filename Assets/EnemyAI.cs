@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -69,8 +70,15 @@ public class EnemyAI : MonoBehaviour
     { 
         if (other.CompareTag("Bullet"))
         {
+            float colorTime = 0.1f;
+            var sequence = DOTween.Sequence();
+            sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.red, colorTime));
+            sequence.Insert(colorTime, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.white, colorTime));
             hp--;
             isHit = true;
+
+            //Vector3 v = other.GetComponent<Transform>().position - gameObject.transform.position;
+            //gameObject.GetComponent<Rigidbody>().AddForce(v*1000);
         }
     }
 
