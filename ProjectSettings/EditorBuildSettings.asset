@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/EmaceArt/Free Meadows/Scene/Main Menu.unity
+    path: Assets/Scenes/Main Menu.unity
     guid: 94d21b9b5c718f84d84c54f24acf5beb
   - enabled: 0
-    path: Assets/EmaceArt/Free Meadows/Scene/MeadowDemo.unity
+    path: Assets/Scenes/MeadowDemo.unity
     guid: f23e08cdebda68449bc157014463d4ee
   - enabled: 1
     path: Assets/Scenes/DemoShooting.unity

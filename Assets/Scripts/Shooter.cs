@@ -27,6 +27,7 @@ public class Shooter : MonoBehaviour
         controller = _inputManager.GetComponent<InputsController>().globalControls;
         controller.Gameplay.Shoot.started += ctx => Shoot();
         impulse = transform.GetComponent<CinemachineImpulseSource>();
+        
 
     }
 
