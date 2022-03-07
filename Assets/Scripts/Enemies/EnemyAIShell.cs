@@ -42,6 +42,7 @@ public class EnemyAIShell : MonoBehaviour
 
         hp = 3;
         isHit = false;
+
     }
 
     // Update is called once per frame
