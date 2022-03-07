@@ -36,6 +36,9 @@ public class Movement_2 : MonoBehaviour
 
     //PlayerControlls controls;
 
+    bool hasAbility;
+    bool isAlreadyActive;
+
     public Transform camera;
 
     GameObject aux;
@@ -88,24 +91,32 @@ public class Movement_2 : MonoBehaviour
                 canJump = false;
             }
         }
-                
-    }
 
+
+        //LIGHT STEP PowerUP
+        Debug.Log(moveForce);
+        GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.LIGHTSTEP, out hasAbility);
+        if (isAlreadyActive) 
+        {
+            if (hasAbility)
+            {
+                moveForce = moveForce * 2;
+            }
+            isAlreadyActive = false;
+        }
+    }
 
     void StopAirControll()
     {
         airControll = false;
     }
-    
-
- 
-
     private void Start()
     {
         jumpPressure = 0f;
         minJump = 2f;
         maxJumpPreassure = 10f;
         jumpPressed = false;
+        isAlreadyActive = true;
     }
 
 
@@ -120,8 +131,6 @@ public class Movement_2 : MonoBehaviour
             moveDirection = moveDirection.normalized;
             gameObject.GetComponent<Rigidbody>().AddForce(moveDirection * moveForce);
         }
-
-
 
 
         if (gameObject.GetComponent<Rigidbody>().velocity.x >= maxVelocity)
@@ -144,6 +153,7 @@ public class Movement_2 : MonoBehaviour
             gameObject.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.GetComponent<Rigidbody>().velocity.x, gameObject.GetComponent<Rigidbody>().velocity.y, maxVelocity);
 
         }
+
     }
 
 

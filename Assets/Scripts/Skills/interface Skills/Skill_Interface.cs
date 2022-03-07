@@ -4,5 +4,8 @@ using UnityEngine;
 
 public interface Skill_Interface
 {
-    void ActivateSkill();
+    void ActivatePoison();
+    void ActivateDEdge();
+    void ActivateLightStep();
+    void ActivateBouncy();
 }
