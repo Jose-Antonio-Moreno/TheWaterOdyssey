@@ -56,13 +56,16 @@ public class SkillBehaviours : MonoBehaviour, Skill_Interface
                 var sequence = DOTween.Sequence();
                 sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.green, colorTime));
                 sequence.Insert(colorTime, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.white, colorTime));
-                //gameObject.GetComponent<EnemyAIShell>().transform.localScale;
-                //GameObject.FindObjectsOfType
                 Instantiate(gameObject.GetComponent<EnemyAIShell>().poisonParticles, gameObject.GetComponent<EnemyAIShell>().transform.position, transform.rotation);
             }
             else if (gameObject.GetComponent<EnemyAI>())
             {
                 gameObject.GetComponent<EnemyAI>().hp -= 0.2f;
+                float colorTime = 0.1f;
+                var sequence = DOTween.Sequence();
+                sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.green, colorTime));
+                sequence.Insert(colorTime, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.white, colorTime));
+                Instantiate(gameObject.GetComponent<EnemyAI>().posionParticles, gameObject.GetComponent<EnemyAI>().transform.position, transform.rotation);
             }
         }
         poisonCounter = 0;
