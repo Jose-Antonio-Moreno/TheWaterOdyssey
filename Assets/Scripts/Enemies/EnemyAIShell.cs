@@ -8,7 +8,7 @@ public class EnemyAIShell : MonoBehaviour
 {
     public NavMeshAgent agent;
 
-    public Transform player;
+    private Transform player;
 
     public LayerMask Ground, Player;
 
@@ -37,7 +37,7 @@ public class EnemyAIShell : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("WEno").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
 
         hp = 3;

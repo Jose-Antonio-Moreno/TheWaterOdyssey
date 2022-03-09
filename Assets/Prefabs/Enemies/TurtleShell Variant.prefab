@@ -42,7 +42,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 1316034961}
-  player: {fileID: 0}
   Ground:
     serializedVersion: 2
     m_Bits: 128
@@ -58,7 +57,7 @@ MonoBehaviour:
   playerInAttackRange: 0
   hp: 0
   isHit: 0
-  poisonParticles: {fileID: 0}
+  poisonParticles: {fileID: 8964983563926828290}
 --- !u!195 &1316034961
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -102,7 +101,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1837317425425208, guid: 3aec22b5d3f3c2947bb81040b56e5f96, type: 3}
       propertyPath: m_Name
-      value: TurtleShell
+      value: TurtleShell Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1837317425425208, guid: 3aec22b5d3f3c2947bb81040b56e5f96, type: 3}
       propertyPath: m_TagString
@@ -157,5 +156,10 @@ PrefabInstance:
 --- !u!1 &7483362747890452915 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1837317425425208, guid: 3aec22b5d3f3c2947bb81040b56e5f96, type: 3}
+  m_PrefabInstance: {fileID: 7484060925891027595}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8964983563926828290 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1996991082231977865, guid: 3aec22b5d3f3c2947bb81040b56e5f96, type: 3}
   m_PrefabInstance: {fileID: 7484060925891027595}
   m_PrefabAsset: {fileID: 0}

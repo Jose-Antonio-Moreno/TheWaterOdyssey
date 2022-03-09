@@ -11,7 +11,7 @@ enum Weapons
 }
 public class Shooter : MonoBehaviour
 {
-    Weapons weapon = Weapons.Basic;
+    Weapons weapon = Weapons.Auto;
     CinemachineImpulseSource impulse;
     GameObject _inputManager;
     Vector2 aimJoystick;
@@ -44,7 +44,7 @@ public class Shooter : MonoBehaviour
                 fireRate = 4;
                 break;
             case Weapons.Auto:
-                fireRate = 15;
+                fireRate = 6;
                 break;
             default:
                 break;
@@ -107,8 +107,5 @@ public class Shooter : MonoBehaviour
             default:
                 break;
         }
-
-       
-
     }
 }

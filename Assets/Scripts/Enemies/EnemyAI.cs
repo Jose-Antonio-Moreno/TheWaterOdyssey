@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
 public class EnemyAI : MonoBehaviour
 {
     public NavMeshAgent agent;
@@ -16,6 +15,14 @@ public class EnemyAI : MonoBehaviour
     bool walkPointSet;
     public float walkPointRange;
 
+    //Bullet
+    public GameObject shootPrefab;
+    private float nextShoot;
+    private float fireRate;
+
+    //Player
+    private Transform player;
+
     //Checker
     public bool isHit;
 
@@ -26,9 +33,11 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         hp = 4;
         isHit = false;
+        nextShoot = 0;
+        fireRate = 1f;
     }
 
     // Update is called once per frame
@@ -36,7 +45,13 @@ public class EnemyAI : MonoBehaviour
     {
         Patroling();
 
-        if(hp<= 0)
+        if (Time.time >= nextShoot)
+        {
+            nextShoot = Time.time + 1f / fireRate;
+            Shoot();
+        }
+
+        if (hp <= 0)
         {
             Death();
         }
@@ -63,14 +78,14 @@ public class EnemyAI : MonoBehaviour
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
         //check if this point is on the ground (or outside the map)
-        if (Physics.Raycast(walkPoint, -transform.up,2f, Ground))
+        if (Physics.Raycast(walkPoint, -transform.up, 2f, Ground))
         {
             walkPointSet = true;
         }
     }
 
     private void OnTriggerEnter(Collider other)
-    { 
+    {
         if (other.CompareTag("Bullet"))
         {
             float colorTime = 0.1f;
@@ -85,5 +100,12 @@ public class EnemyAI : MonoBehaviour
     private void Death()
     {
         Destroy(this.gameObject);
+    }
+    void Shoot()
+    {
+        Vector3 direction = (player.position - this.transform.position).normalized;
+        GameObject aux = Instantiate(shootPrefab, gameObject.transform.position + direction * 1f, Quaternion.identity);
+        Vector3 shootForce = direction * 50;
+        aux.GetComponent<Rigidbody>().AddForce(shootForce);
     }
 }
