@@ -19,6 +19,9 @@ public class EnemyAI : MonoBehaviour
     //Checker
     public bool isHit;
 
+    //Particles
+    public ParticleSystem posionParticles;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -76,9 +79,6 @@ public class EnemyAI : MonoBehaviour
             sequence.Insert(colorTime, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.white, colorTime));
             hp--;
             isHit = true;
-
-            //Vector3 v = other.GetComponent<Transform>().position - gameObject.transform.position;
-            //gameObject.GetComponent<Rigidbody>().AddForce(v*1000);
         }
     }
 

@@ -31,6 +31,9 @@ public class EnemyAIShell : MonoBehaviour
     //Checker
     public bool isHit;
 
+    //particle System
+    public ParticleSystem poisonParticles;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +42,7 @@ public class EnemyAIShell : MonoBehaviour
 
         hp = 3;
         isHit = false;
+
     }
 
     // Update is called once per frame
