@@ -21,6 +21,9 @@ public class Shooter : MonoBehaviour
 
     bool shooting = false;
 
+    bool hasAbility = false;
+    bool alreadyApplied = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +56,16 @@ public class Shooter : MonoBehaviour
 
         if (shooting && Time.time >= nextShoot)
         {
+            GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.FIRERATE, out hasAbility);
+            if (alreadyApplied) 
+            {
+                if (hasAbility)
+                {
+                    fireRate /= 2;
+                    alreadyApplied = false;
+                }
+            }
+            Debug.Log(fireRate);
             nextShoot = Time.time + 1f / fireRate;
             Shoot();
             if (weapon == Weapons.Basic)

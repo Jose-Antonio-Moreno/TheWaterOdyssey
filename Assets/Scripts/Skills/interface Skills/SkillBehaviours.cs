@@ -32,6 +32,11 @@ public class SkillBehaviours : MonoBehaviour, Skill_Interface
 
     }
 
+    public void ActivateFireRate() 
+    {
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
