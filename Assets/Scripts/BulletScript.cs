@@ -14,9 +14,7 @@ public class BulletScript : MonoBehaviour
     {
         
         impulse = transform.GetComponent<CinemachineImpulseSource>();
-        destroyTime = 1;
-        
-        
+        destroyTime = 1;        
     }
     void Update()
     {
@@ -24,6 +22,7 @@ public class BulletScript : MonoBehaviour
         if (hasAbility)
         {
             //gameObject.GetComponent<SphereCollider>().material = bouncines;
+            Debug.Log("Activate");
             GameObject.Find("Collider").GetComponent<SphereCollider>().material = bouncines;
             destroyTime = 5;
         }
