@@ -48,7 +48,7 @@ MonoBehaviour:
   hp: 0
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 20
-  shootPrefab: {fileID: 2421088425041002439, guid: 456a81b8d4dabd54c9dea5915a6bfc97, type: 3}
+  shootPrefab: {fileID: 901182402720252531, guid: 8370c3e46d65264449e0899a2b4fc6e0, type: 3}
   isHit: 0
   posionParticles: {fileID: 9050658520201416140, guid: 807a515548344524897e85287286fb30, type: 3}
 --- !u!195 &2124036091

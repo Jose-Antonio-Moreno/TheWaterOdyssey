@@ -37,7 +37,7 @@ public class EnemyAI : MonoBehaviour
         hp = 4;
         isHit = false;
         nextShoot = 0;
-        fireRate = 1f;
+        fireRate = 0.5f;
     }
 
     // Update is called once per frame
