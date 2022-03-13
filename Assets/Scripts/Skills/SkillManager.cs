@@ -54,6 +54,7 @@ public class SkillManager : MonoBehaviour
         DSkills[EAbilities.POISON] = true;
         DSkills[EAbilities.BOUNCY] = true;
         DSkills[EAbilities.LIGHTSTEP] = true;
+        DSkills[EAbilities.FIRERATE] = true;
     }
     void Update()
     {

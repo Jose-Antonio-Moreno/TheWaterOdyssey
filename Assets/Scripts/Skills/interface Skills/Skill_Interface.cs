@@ -8,4 +8,5 @@ public interface Skill_Interface
     void ActivateDEdge();
     void ActivateLightStep();
     void ActivateBouncy();
+    void ActivateFireRate();
 }

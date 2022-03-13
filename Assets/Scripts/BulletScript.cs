@@ -16,6 +16,10 @@ public class BulletScript : MonoBehaviour
         impulse = transform.GetComponent<CinemachineImpulseSource>();
         destroyTime = 1;
         
+        
+    }
+    void Update()
+    {
         GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.BOUNCY, out hasAbility);
         if (hasAbility)
         {
