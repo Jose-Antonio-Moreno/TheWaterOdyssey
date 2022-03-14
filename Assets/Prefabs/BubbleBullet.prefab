@@ -129,6 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bouncines: {fileID: 13400000, guid: 867f2af0df632fc43a434098afe3e60c, type: 2}
   poisonColor: {fileID: 2100000, guid: 8033e9e186b0ab9469009ae6379921e2, type: 2}
+  hitParticle: {fileID: 5747453162757666172, guid: c7b1dc6243611814fb0d51c4d1e8fc2b, type: 3}
 --- !u!114 &8305620142070773951
 MonoBehaviour:
   m_ObjectHideFlags: 0

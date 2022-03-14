@@ -10,10 +10,21 @@ public class BulletScript : MonoBehaviour
     bool hasAbility;
     public PhysicMaterial bouncines;
     public Material poisonColor;
+
+    public ParticleSystem hitParticle;
     private void Start()
     {
         impulse = transform.GetComponent<CinemachineImpulseSource>();
         destroyTime = 1;        
+    }
+    private void Awake()
+    {
+        GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.POISON, out hasAbility);
+        if (hasAbility) 
+        {
+            gameObject.GetComponent<SkinnedMeshRenderer>().material.color = Color.green;
+        }
+
     }
     void Update()
     {
@@ -31,6 +42,7 @@ public class BulletScript : MonoBehaviour
         //gameObject.SetActive(false);
         if (other.CompareTag("Enemy"))
         {
+            Instantiate(hitParticle, transform.position, transform.rotation);
             impulse.GenerateImpulse(1f);
             GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.POISON, out hasAbility);
             if (hasAbility) 
