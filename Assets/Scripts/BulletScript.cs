@@ -12,7 +12,6 @@ public class BulletScript : MonoBehaviour
     public Material poisonColor;
     private void Start()
     {
-        
         impulse = transform.GetComponent<CinemachineImpulseSource>();
         destroyTime = 1;        
     }
