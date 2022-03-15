@@ -19,15 +19,11 @@ public class BulletScript : MonoBehaviour
     }
     private void Awake()
     {
-        GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.POISON, out hasAbility);
-        if (hasAbility) 
-        {
-            gameObject.GetComponent<SkinnedMeshRenderer>().material.color = Color.green;
-        }
-
-    }
-    void Update()
-    {
+        //GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.POISON, out hasAbility);
+        //if (hasAbility) 
+        //{
+        //    gameObject.GetComponent<SkinnedMeshRenderer>().material.color = Color.green;
+        //}
         GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.BOUNCY, out hasAbility);
         if (hasAbility)
         {
@@ -36,6 +32,10 @@ public class BulletScript : MonoBehaviour
             GameObject.Find("Collider").GetComponent<SphereCollider>().material = bouncines;
             destroyTime = 5;
         }
+    }
+    void Update()
+    {
+        
     }
     private void OnTriggerEnter(Collider other)
     {
