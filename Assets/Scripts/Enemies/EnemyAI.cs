@@ -28,6 +28,7 @@ public class EnemyAI : MonoBehaviour
 
     //Particles
     public ParticleSystem posionParticles;
+    public ParticleSystem deathParticles;
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +54,9 @@ public class EnemyAI : MonoBehaviour
 
         if (hp <= 0)
         {
-            Death();
+            Instantiate(deathParticles, transform.position, Quaternion.identity);
+            Invoke("Death", 0.1f);
+            //Death();
         }
 
     }

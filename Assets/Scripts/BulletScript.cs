@@ -15,16 +15,20 @@ public class BulletScript : MonoBehaviour
     private void Start()
     {
         impulse = transform.GetComponent<CinemachineImpulseSource>();
-        //destroyTime = 1;        
     }
     private void Awake()
     {
         GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.BOUNCY, out hasAbility);
         if (hasAbility)
         {
-            //gameObject.GetComponent<SphereCollider>().material = bouncines;
             transform.GetChild(0).GetComponent<SphereCollider>().material = bouncines;
-            destroyTime = 5;
+            destroyTime = 2;
+        }
+        else { destroyTime = 1; }
+        GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.BIGBUBBLE, out hasAbility);
+        if (hasAbility) 
+        {
+            transform.localScale *= 1.5f;
         }
     }
 

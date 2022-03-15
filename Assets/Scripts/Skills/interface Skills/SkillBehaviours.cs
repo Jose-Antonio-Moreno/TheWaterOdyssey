@@ -41,6 +41,11 @@ public class SkillBehaviours : MonoBehaviour, Skill_Interface
 
     }
 
+    public void ActivateBigBubble() 
+    {
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {

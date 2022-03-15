@@ -10,4 +10,5 @@ public interface Skill_Interface
     void ActivateBouncy();
     void ActivateFireRate();
     void ActivateShieldBubble();
+    void ActivateBigBubble();
 }

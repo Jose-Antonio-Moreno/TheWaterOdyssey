@@ -6,6 +6,7 @@ public class BulletSlime : MonoBehaviour
 {
     float destroyTime;
     bool hasAbility;
+    public ParticleSystem hitBulletSlime;
     void Start()
     {
         destroyTime = 2f;
@@ -21,6 +22,7 @@ public class BulletSlime : MonoBehaviour
         //gameObject.SetActive(false);
         if (other.CompareTag("Player"))
         {
+            Instantiate(hitBulletSlime, transform.position, Quaternion.identity);
             Invoke("des", 0.1f);
         }
         if (other.CompareTag("Walls")) 
@@ -32,6 +34,7 @@ public class BulletSlime : MonoBehaviour
         {
             if (other.CompareTag("Bullet"))
             {
+                Instantiate(hitBulletSlime, transform.position, Quaternion.identity);
                 Invoke("des", 0.1f);
             }
         }

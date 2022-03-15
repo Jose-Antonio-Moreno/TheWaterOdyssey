@@ -33,6 +33,7 @@ public class EnemyAIShell : MonoBehaviour
 
     //particle System
     public ParticleSystem poisonParticles;
+    public ParticleSystem deathParticles;
 
     // Start is called before the first frame update
     void Start()
@@ -58,7 +59,8 @@ public class EnemyAIShell : MonoBehaviour
 
         if (hp <= 0)
         {
-            Death();
+            Instantiate(deathParticles, transform.position, Quaternion.identity);
+            Invoke("Death", 0.1f);
         }
     }
 
