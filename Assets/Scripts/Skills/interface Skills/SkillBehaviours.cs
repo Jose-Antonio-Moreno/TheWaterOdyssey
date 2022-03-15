@@ -36,6 +36,10 @@ public class SkillBehaviours : MonoBehaviour, Skill_Interface
     {
 
     }
+    public void ActivateShieldBubble() 
+    {
+
+    }
 
     // Start is called before the first frame update
     void Start()
