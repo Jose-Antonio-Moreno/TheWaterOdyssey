@@ -30,6 +30,11 @@ public class EnemyAI : MonoBehaviour
     public ParticleSystem posionParticles;
     public ParticleSystem deathParticles;
 
+    //Drops
+    public GameObject healBubble;
+    public GameObject coin;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +60,19 @@ public class EnemyAI : MonoBehaviour
         if (hp <= 0)
         {
             Instantiate(deathParticles, transform.position, Quaternion.identity);
+            int number = Random.Range(0, 2);
+            switch (number) 
+            {
+                case 0:
+                    Instantiate(healBubble, transform.position, Quaternion.identity);
+                    break;
+                case 1:
+                    Instantiate(coin, transform.position, Quaternion.identity);
+                    break;
+                case 2:
+                    break;
+            }
+            
             Invoke("Death", 0.1f);
             //Death();
         }
