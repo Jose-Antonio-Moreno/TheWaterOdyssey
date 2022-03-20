@@ -34,7 +34,8 @@ public class EnemyAI : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        hp = 4;
+        //Slime Health (damage Basic Shoot = 10)
+        hp = 50;
         isHit = false;
         nextShoot = 0;
         fireRate = 0.5f;
@@ -92,7 +93,7 @@ public class EnemyAI : MonoBehaviour
             var sequence = DOTween.Sequence();
             sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.red, colorTime));
             sequence.Insert(colorTime, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.white, colorTime));
-            hp--;
+            hp -= other.GetComponent<BulletScript>().damage;
             isHit = true;
         }
     }

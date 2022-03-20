@@ -10,6 +10,9 @@ public class BulletScript : MonoBehaviour
     bool hasAbility;
     public PhysicMaterial bouncines;
     public Material poisonColor;
+    public float damage;
+
+
     private void Start()
     {
         
