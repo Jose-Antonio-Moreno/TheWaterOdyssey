@@ -40,7 +40,7 @@ public class EnemyAIShell : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
 
-        hp = 3;
+        hp = 50;
         isHit = false;
 
     }
@@ -101,11 +101,8 @@ public class EnemyAIShell : MonoBehaviour
             var sequence = DOTween.Sequence();
             sequence.Insert(0,gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.red, colorTime));
             sequence.Insert(colorTime, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.white, colorTime));
+            hp -= other.GetComponent<BulletScript>().damage;
 
-            //Vector3 v = other.GetComponent<Transform>().position - gameObject.transform.position;
-            //gameObject.GetComponent<Rigidbody>().AddForce(v * 1000);
-
-            hp--;
             isHit = true;
         }
     }
