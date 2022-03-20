@@ -25,6 +25,7 @@ public class EnemyAI : MonoBehaviour
 
     //Checker
     public bool isHit;
+    bool droped;
 
     //Particles
     public ParticleSystem posionParticles;
@@ -59,18 +60,13 @@ public class EnemyAI : MonoBehaviour
 
         if (hp <= 0)
         {
+            droped = true;
             Instantiate(deathParticles, transform.position, Quaternion.identity);
-            int number = Random.Range(0, 2);
-            switch (number) 
+
+            if (droped) 
             {
-                case 0:
-                    Instantiate(healBubble, transform.position, Quaternion.identity);
-                    break;
-                case 1:
-                    Instantiate(coin, transform.position, Quaternion.identity);
-                    break;
-                case 2:
-                    break;
+                Invoke("Drop", 0.1f);
+                droped = false;
             }
             
             Invoke("Death", 0.1f);
@@ -122,6 +118,24 @@ public class EnemyAI : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
+
+    private void Drop() 
+    {
+        //Falta rotar la moneda
+        int number = Random.RandomRange(0, 2);
+        switch (number)
+        {
+            case 0:
+                Instantiate(healBubble, transform.position, Quaternion.identity);
+                break;
+            case 1:
+                Instantiate(coin, transform.position, Quaternion.identity);
+                break;
+            case 2:
+                break;
+        }
+    }
+
     void Shoot()
     {
         Vector3 direction = (player.position - this.transform.position).normalized;
