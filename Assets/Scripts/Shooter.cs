@@ -11,7 +11,7 @@ enum Weapons
 }
 public class Shooter : MonoBehaviour
 {
-    Weapons weapon = Weapons.Auto;
+    Weapons weapon = Weapons.Basic;
     CinemachineImpulseSource impulse;
     GameObject _inputManager;
     Vector2 aimJoystick;
@@ -21,8 +21,7 @@ public class Shooter : MonoBehaviour
 
     bool shooting = false;
 
-    bool hasAbility = false;
-    bool alreadyApplied = true;
+    bool hasAbility;
 
     // Start is called before the first frame update
     void Start()
@@ -57,14 +56,12 @@ public class Shooter : MonoBehaviour
         if (shooting && Time.time >= nextShoot)
         {
             GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.FIRERATE, out hasAbility);
-            if (alreadyApplied) 
+            
+            if (hasAbility)
             {
-                if (hasAbility)
-                {
-                    fireRate /= 2;
-                    alreadyApplied = false;
-                }
+                fireRate *= 1.5f;
             }
+            
             Debug.Log(fireRate);
             nextShoot = Time.time + 1f / fireRate;
             Shoot();

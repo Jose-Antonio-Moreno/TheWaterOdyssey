@@ -59,7 +59,14 @@ public class BulletScript : MonoBehaviour
                 Instantiate(hitParticle, transform.position, Quaternion.identity);
             }
         }
-        
+
+        if (other.CompareTag("Dummy")) 
+        {
+            Instantiate(hitParticle, transform.position, Quaternion.identity);
+            impulse.GenerateImpulse(1f);
+            Invoke("des", 0.1f);
+        }
+
         Invoke("des", destroyTime);
     }
 
