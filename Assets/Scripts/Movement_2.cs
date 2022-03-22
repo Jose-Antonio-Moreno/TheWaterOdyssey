@@ -114,7 +114,7 @@ public class Movement_2 : MonoBehaviour
         {
             if (hasAbility)
             {
-                moveForce = moveForce * 3;
+                moveForce = moveForce * 2;
             }
             isAlreadyActive = false;
         }

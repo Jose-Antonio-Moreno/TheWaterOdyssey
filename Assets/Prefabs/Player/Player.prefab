@@ -1695,7 +1695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputManager: {fileID: 6160925760489658292}
-  moveForce: 1500
+  moveForce: 3000
   moveDirection: {x: 0, y: 0, z: 0}
   dashSpeed: 1000
   jumpMultiplier: 4000

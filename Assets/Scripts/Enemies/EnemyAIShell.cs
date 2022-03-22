@@ -13,7 +13,6 @@ public class EnemyAIShell : MonoBehaviour
    
     private Transform player;
     private sizePlayer lifePlayer;
-    private bool hitted;
 
     public LayerMask Ground, Player;
 
@@ -53,7 +52,6 @@ public class EnemyAIShell : MonoBehaviour
 
         hp = 50;
         isHit = false;
-        hitted = false;
         managerEnemies.counter+=1;
         doneCounter = false;
     }
@@ -132,20 +130,8 @@ public class EnemyAIShell : MonoBehaviour
 
             isHit = true;
         }
-        if (other.CompareTag("Player") && !hitted)
-        {
-            lifePlayer.life--;
-            lifePlayer.changed = false;
-            hitted = true;
-        }
     }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            hitted = false;
-        }
-    }
+    
     private void Death()
     {
         if (!doneCounter)

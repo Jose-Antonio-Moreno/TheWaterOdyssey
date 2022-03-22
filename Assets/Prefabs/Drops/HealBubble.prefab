@@ -4877,7 +4877,7 @@ GameObject:
   - component: {fileID: 422057845049574828}
   m_Layer: 0
   m_Name: HealBubble
-  m_TagString: Untagged
+  m_TagString: Heal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

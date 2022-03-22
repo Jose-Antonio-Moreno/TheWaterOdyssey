@@ -10,11 +10,9 @@ public class BulletSlime : MonoBehaviour
 
     private GameObject player;
     private sizePlayer lifePlayer;
-    private bool hitted;
     void Start()
     {
         destroyTime = 2f;
-        hitted = false;
     }
 
     private void Update()
@@ -29,12 +27,6 @@ public class BulletSlime : MonoBehaviour
         //gameObject.SetActive(false);
         if (other.CompareTag("Player"))
         {
-            if (!hitted)
-            {
-                lifePlayer.life--;
-                lifePlayer.changed = false;
-                hitted = true;
-            }
             Instantiate(hitBulletSlime, transform.position, Quaternion.identity);
             Invoke("des", 0.1f);
         }
@@ -55,7 +47,7 @@ public class BulletSlime : MonoBehaviour
 
     public void des()
     {
-        hitted = false;
+        lifePlayer.hitted = false;
         Destroy(this.gameObject);
     }
 }

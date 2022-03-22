@@ -111,14 +111,14 @@ public class Shooter : MonoBehaviour
         {
             case Weapons.Basic:
                 Shake();
-                aux = Instantiate(shootPrefab, gameObject.transform.position + aimDirection * 1f, Quaternion.identity);
+                aux = Instantiate(shootPrefab, gameObject.transform.position + aimDirection * 2f * (gameObject.transform.localScale.x/100), Quaternion.identity);
                 aux.GetComponent<BulletScript>().damage = 10;
                 shootForce = aimDirection * 100;
                 aux.GetComponent<Rigidbody>().AddForce(shootForce);
                 break;
             case Weapons.Auto:
                 Shake();
-                aux = Instantiate(shootPrefab, gameObject.transform.position + aimDirection * 1f, Quaternion.identity);
+                aux = Instantiate(shootPrefab, gameObject.transform.position + aimDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
                 aux.GetComponent<BulletScript>().damage = 5;
                 shootForce = aimDirection * 100;
                 aux.GetComponent<Rigidbody>().AddForce(shootForce);

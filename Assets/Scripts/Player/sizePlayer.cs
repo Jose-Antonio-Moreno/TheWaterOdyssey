@@ -9,11 +9,25 @@ public class sizePlayer : MonoBehaviour
     public int life;
 
     public bool changed;
+
+    public bool hitted;
+
+    bool meleHitted;
+
+    float invulnerabilityTime;
+    bool isInvulnerable;
+
+    public ParticleSystem hitParticles;
+
     // Start is called before the first frame update
     void Start()
-    {        
+    {
         life = 3;
         changed = false;
+        hitted = false;
+        meleHitted = false;
+        invulnerabilityTime = 0;
+        isInvulnerable = false;
     }
 
     // Update is called once per frame
@@ -44,15 +58,65 @@ public class sizePlayer : MonoBehaviour
             player.transform.localScale = new Vector3(60f, 60f, 60f);
             changed = true;
         }
-        if (life <=0)
+        if (life <= 0)
         {
             Death();
         }
-
+        Debug.Log(life);
+        
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            if (!isInvulnerable) 
+            {
+                Instantiate(hitParticles, transform.position, Quaternion.identity);
+                life--;
+                changed = false;
+                isInvulnerable = true;
+                Invoke("Invulnerability", 1);
+            }
+        }
+        if (other.CompareTag("BulletEnemy"))
+        {
+            if (!isInvulnerable)
+            {
+                Instantiate(hitParticles, transform.position, Quaternion.identity);
+                life--;
+                changed = false;
+                isInvulnerable = true;
+                Invoke("Invulnerability", 1);
+            }
+        }
+        if (other.CompareTag("Heal")) 
+        {
+            if (life <= 4) 
+            {
+                life++;
+                changed = false;
+            }
+            
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            meleHitted = false;
+        }
+    }
+
     private void Death()
     {
-
         Destroy(this.gameObject);
     }
+
+    void Invulnerability() 
+    {
+        isInvulnerable = false;
+    }
+    
 }
