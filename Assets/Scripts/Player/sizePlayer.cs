@@ -21,27 +21,27 @@ public class sizePlayer : MonoBehaviour
     {
         if (life == 5 && !changed)
         {
-            player.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+            player.transform.localScale = new Vector3(140f, 140f, 140f);
             changed = true;
         }
         if (life == 4 && !changed)
         {
-            player.transform.localScale = new Vector3(1.25f, 1.25f, 1.25f);
+            player.transform.localScale = new Vector3(120f, 120f, 120f);
             changed = true;
         }
         if (life == 3 && !changed)
         {
-            player.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            player.transform.localScale = new Vector3(100.0f, 100.0f, 100.0f);
             changed = true;
         }
         if (life == 2 && !changed)
         {
-            player.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+            player.transform.localScale = new Vector3(80f, 80f, 80f);
             changed = true;
         }
         if (life == 1 && !changed)
         {
-            player.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            player.transform.localScale = new Vector3(60f, 60f, 60f);
             changed = true;
         }
         if (life <=0)
