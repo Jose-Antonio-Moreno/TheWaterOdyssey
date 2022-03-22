@@ -76,6 +76,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "SetSkillSelectorPanel",
+                    "type": "Button",
+                    "id": "e8135016-5c88-4c0a-8468-67b3fec376d2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -186,6 +194,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "aefe9dbb-7408-4f9b-906e-adc20b56bba9",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SetSkillSelectorPanel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

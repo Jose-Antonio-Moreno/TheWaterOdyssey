@@ -19,11 +19,16 @@ public class SkillManager : MonoBehaviour
             ability = (EAbilities)i;
             DSkills.Add(ability, false);
         }
-        DSkills[EAbilities.POISON] = true;
-        DSkills[EAbilities.BOUNCY] = true;
+        DSkills[EAbilities.POISON] = false;
+        DSkills[EAbilities.BOUNCY] = false;
         DSkills[EAbilities.LIGHTSTEP] = false;
-        DSkills[EAbilities.FIRERATE] = true;
-        DSkills[EAbilities.SHIELDBUBBLE] = true;
-        DSkills[EAbilities.BIGBUBBLE] = true;
+        DSkills[EAbilities.FIRERATE] = false;
+        DSkills[EAbilities.SHIELDBUBBLE] = false;
+        DSkills[EAbilities.BIGBUBBLE] = false;
+    }
+    private void Update()
+    {
+        Debug.Log(DSkills[EAbilities.LIGHTSTEP]);
+
     }
 }

@@ -89,6 +89,14 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""SetSkillSelectorPanel"",
+                    ""type"": ""Button"",
+                    ""id"": ""e8135016-5c88-4c0a-8468-67b3fec376d2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -190,6 +198,28 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8f539e51-d395-4c15-8507-95d4aa2f1bf8"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aefe9dbb-7408-4f9b-906e-adc20b56bba9"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SetSkillSelectorPanel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -207,6 +237,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         m_Gameplay_Dash = m_Gameplay.FindAction("Dash", throwIfNotFound: true);
         m_Gameplay_Aim = m_Gameplay.FindAction("Aim", throwIfNotFound: true);
         m_Gameplay_Shoot = m_Gameplay.FindAction("Shoot", throwIfNotFound: true);
+        m_Gameplay_SetSkillSelectorPanel = m_Gameplay.FindAction("SetSkillSelectorPanel", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -265,6 +296,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_Dash;
     private readonly InputAction m_Gameplay_Aim;
     private readonly InputAction m_Gameplay_Shoot;
+    private readonly InputAction m_Gameplay_SetSkillSelectorPanel;
     public struct GameplayActions
     {
         private @PlayerControlls m_Wrapper;
@@ -278,6 +310,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         public InputAction @Dash => m_Wrapper.m_Gameplay_Dash;
         public InputAction @Aim => m_Wrapper.m_Gameplay_Aim;
         public InputAction @Shoot => m_Wrapper.m_Gameplay_Shoot;
+        public InputAction @SetSkillSelectorPanel => m_Wrapper.m_Gameplay_SetSkillSelectorPanel;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -314,6 +347,9 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @Shoot.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShoot;
                 @Shoot.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShoot;
                 @Shoot.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShoot;
+                @SetSkillSelectorPanel.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSetSkillSelectorPanel;
+                @SetSkillSelectorPanel.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSetSkillSelectorPanel;
+                @SetSkillSelectorPanel.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSetSkillSelectorPanel;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -345,6 +381,9 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
+                @SetSkillSelectorPanel.started += instance.OnSetSkillSelectorPanel;
+                @SetSkillSelectorPanel.performed += instance.OnSetSkillSelectorPanel;
+                @SetSkillSelectorPanel.canceled += instance.OnSetSkillSelectorPanel;
             }
         }
     }
@@ -360,5 +399,6 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnSetSkillSelectorPanel(InputAction.CallbackContext context);
     }
 }
