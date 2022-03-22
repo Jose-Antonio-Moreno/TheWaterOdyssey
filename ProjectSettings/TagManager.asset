@@ -11,6 +11,7 @@ TagManager:
   - Walls
   - BulletEnemy
   - Heal
+  - Dummy
   layers:
   - Default
   - TransparentFX

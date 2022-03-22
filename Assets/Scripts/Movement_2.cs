@@ -45,12 +45,26 @@ public class Movement_2 : MonoBehaviour
     
     private void Awake()
     {
+        //PlayerControlls controller;
+
+        //controller = inputManager.GetComponent<InputsController>().globalControls;
+
+        //controller.Gameplay.Jump.performed += ctx => Jump();
+        //controller.Gameplay.Dash.performed += ctx => Dashing();
+    }
+
+    private void Start()
+    {
         PlayerControlls controller;
 
         controller = inputManager.GetComponent<InputsController>().globalControls;
 
-        //controller.Gameplay.Jump.performed += ctx => Jump();
-        controller.Gameplay.Dash.performed += ctx => Dashing();
+
+        jumpPressure = 0f;
+        minJump = 2f;
+        maxJumpPreassure = 10f;
+        jumpPressed = false;
+        isAlreadyActive = true;
     }
 
     void Update()
@@ -100,7 +114,7 @@ public class Movement_2 : MonoBehaviour
         {
             if (hasAbility)
             {
-                moveForce = moveForce * 2;
+                moveForce = moveForce * 3;
             }
             isAlreadyActive = false;
         }
@@ -110,15 +124,7 @@ public class Movement_2 : MonoBehaviour
     {
         airControll = false;
     }
-    private void Start()
-    {
-        jumpPressure = 0f;
-        minJump = 2f;
-        maxJumpPreassure = 10f;
-        jumpPressed = false;
-        isAlreadyActive = true;
-    }
-
+   
 
     // Update is called once per frame
     void FixedUpdate()
