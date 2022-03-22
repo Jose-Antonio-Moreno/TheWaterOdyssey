@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
-    public enum EAbilities {POISON, DOUBLEEDGE, ICE, LIGHTSTEP, DISCOUNT, DAMAGET, SLOWT, FIRERATE, BOUNCY, DUMMY};
+    public enum EAbilities {POISON, DOUBLEEDGE, ICE, LIGHTSTEP, DISCOUNT, DAMAGET, SLOWT, FIRERATE, BOUNCY, SHIELDBUBBLE, BIGBUBBLE, DUMMY};
     public Dictionary<EAbilities, bool> DSkills;
     
     ////Poison
@@ -55,12 +55,11 @@ public class SkillManager : MonoBehaviour
         DSkills[EAbilities.BOUNCY] = true;
         DSkills[EAbilities.LIGHTSTEP] = true;
         DSkills[EAbilities.FIRERATE] = true;
+        DSkills[EAbilities.SHIELDBUBBLE] = true;
+        DSkills[EAbilities.BIGBUBBLE] = true;
     }
     void Update()
     {
-        //if (isLightStepActivate) 
-        //{
-        //    isLightStepActivate = false;
-        //}
+        
     }
 }

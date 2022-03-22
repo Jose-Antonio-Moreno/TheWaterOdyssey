@@ -9,4 +9,6 @@ public interface Skill_Interface
     void ActivateLightStep();
     void ActivateBouncy();
     void ActivateFireRate();
+    void ActivateShieldBubble();
+    void ActivateBigBubble();
 }
