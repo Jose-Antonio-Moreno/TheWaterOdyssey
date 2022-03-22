@@ -8,6 +8,9 @@ TagManager:
   - Ground
   - Bullet
   - Enemy
+  - Walls
+  - BulletEnemy
+  - Heal
   layers:
   - Default
   - TransparentFX

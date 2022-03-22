@@ -11,7 +11,7 @@ enum Weapons
 }
 public class Shooter : MonoBehaviour
 {
-    Weapons weapon = Weapons.Basic;
+    Weapons weapon = Weapons.Auto;
     CinemachineImpulseSource impulse;
     GameObject _inputManager;
     Vector2 aimJoystick;

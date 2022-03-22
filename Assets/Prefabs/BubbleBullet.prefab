@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 2421088425041002439}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 65.67496, y: 0.71445173, z: 197.91637}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 3571643225850815535}
   m_Father: {fileID: 0}
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 20ca768233e0b814d8922b3ea163288c, type: 2}
+  - {fileID: 2100000, guid: b0d24701177b0534993763bdf5c43224, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -113,7 +113,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!114 &-3928698372603247353
 MonoBehaviour:
@@ -129,6 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bouncines: {fileID: 13400000, guid: 867f2af0df632fc43a434098afe3e60c, type: 2}
   poisonColor: {fileID: 2100000, guid: 8033e9e186b0ab9469009ae6379921e2, type: 2}
+  hitParticle: {fileID: 5747453162757666172, guid: c7b1dc6243611814fb0d51c4d1e8fc2b, type: 3}
 --- !u!114 &8305620142070773951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,7 +210,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6550787176482113894}
-  m_Material: {fileID: 13400000, guid: 867f2af0df632fc43a434098afe3e60c, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2

@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
+    public triggerEnemies managerEnemies;
+    private bool doneCounter;
+
     public NavMeshAgent agent;
 
     public LayerMask Ground;
@@ -22,22 +25,34 @@ public class EnemyAI : MonoBehaviour
 
     //Player
     private Transform player;
+    private sizePlayer lifePlayer;
+    private bool hitted;
 
     //Checker
     public bool isHit;
 
     //Particles
     public ParticleSystem posionParticles;
+    public ParticleSystem deathParticles;
+
+    //Drops
+    public GameObject healBubble;
+    public GameObject coin;
+
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        lifePlayer = player.GetComponent<sizePlayer>();
         hp = 4;
         isHit = false;
         nextShoot = 0;
         fireRate = 0.5f;
+        hitted = false;
+        managerEnemies.counter += 1;
+        doneCounter = false;
     }
 
     // Update is called once per frame
@@ -53,7 +68,22 @@ public class EnemyAI : MonoBehaviour
 
         if (hp <= 0)
         {
-            Death();
+            Instantiate(deathParticles, transform.position, Quaternion.identity);
+            int number = Random.Range(0, 2);
+            switch (number) 
+            {
+                case 0:
+                    Instantiate(healBubble, transform.position, Quaternion.identity);
+                    break;
+                case 1:
+                    Instantiate(coin, transform.position, Quaternion.identity);
+                    break;
+                case 2:
+                    break;
+            }
+            
+            Invoke("Death", 0.1f);
+            //Death();
         }
 
     }
@@ -95,10 +125,28 @@ public class EnemyAI : MonoBehaviour
             hp--;
             isHit = true;
         }
+        if (other.CompareTag("Player") && !hitted)
+        {
+            lifePlayer.life--;
+            lifePlayer.changed = false;
+            hitted = true;
+        }
     }
-
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            hitted = false;
+        }
+    }
     private void Death()
     {
+        if (!doneCounter)
+        {
+            managerEnemies.counter -= 1;
+            doneCounter = true;
+        }
+        
         Destroy(this.gameObject);
     }
     void Shoot()

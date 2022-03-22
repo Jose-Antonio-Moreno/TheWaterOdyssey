@@ -29,6 +29,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &1256811204697688245
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7723778116468855873}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.48886663, z: 1}
+  m_Center: {x: 0, y: 0.2555667, z: 0}
 --- !u!114 &2124036090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51,6 +64,9 @@ MonoBehaviour:
   shootPrefab: {fileID: 901182402720252531, guid: 8370c3e46d65264449e0899a2b4fc6e0, type: 3}
   isHit: 0
   posionParticles: {fileID: 9050658520201416140, guid: 807a515548344524897e85287286fb30, type: 3}
+  deathParticles: {fileID: 2947199187110361257, guid: 06b34edfb46d09c45aecab44e5073dd4, type: 3}
+  healBubble: {fileID: 1960532133341974894, guid: d4b562fe8dc91d44ba3d7ca942772434, type: 3}
+  coin: {fileID: 9064536156332027177, guid: 36e89c85bb0c50b45bb92a51e49b304b, type: 3}
 --- !u!195 &2124036091
 NavMeshAgent:
   m_ObjectHideFlags: 0
