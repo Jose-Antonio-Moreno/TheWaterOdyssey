@@ -43,6 +43,9 @@ public class EnemyAIShell : MonoBehaviour
     public GameObject healBubble;
     public GameObject coin;
 
+    //Sounds
+    public AudioSource splash;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -122,6 +125,7 @@ public class EnemyAIShell : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
+            splash.Play();
             float colorTime = 0.1f;
             var sequence = DOTween.Sequence();
             sequence.Insert(0,gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.red, colorTime));
