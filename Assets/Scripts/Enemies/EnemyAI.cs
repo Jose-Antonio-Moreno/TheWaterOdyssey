@@ -44,6 +44,8 @@ public class EnemyAI : MonoBehaviour
     public AudioSource splash;
     public AudioSource shoot;
 
+    private float number;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +60,7 @@ public class EnemyAI : MonoBehaviour
         hitted = false;
         managerEnemies.counter += 1;
         doneCounter = false;
+        number = 0;
     }
 
     // Update is called once per frame
@@ -67,7 +70,8 @@ public class EnemyAI : MonoBehaviour
 
         if (Time.time >= nextShoot)
         {
-            nextShoot = Time.time + 1f / fireRate;
+            number = Random.Range(0.5f, 1.5f);
+            nextShoot = Time.time + number / fireRate;
             Shoot();
         }
 

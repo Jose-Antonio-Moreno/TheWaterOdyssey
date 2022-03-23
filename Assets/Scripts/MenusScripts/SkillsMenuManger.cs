@@ -40,6 +40,7 @@ public class SkillsMenuManger : MonoBehaviour
     }
     public void goMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }
     public void goContinue()
