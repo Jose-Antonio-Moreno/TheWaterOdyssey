@@ -6,14 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Main Menu.unity
-    guid: 94d21b9b5c718f84d84c54f24acf5beb
-  - enabled: 0
-    path: Assets/Scenes/MeadowDemo.unity
-    guid: f23e08cdebda68449bc157014463d4ee
-  - enabled: 0
-    path: Assets/Scenes/DemoShooting.unity
-    guid: 0b148d374ab450943bf8bb75b380555f
+    path: Assets/Scenes/Menus/MainMenu.unity
+    guid: 6fc2738c7dc4c43fbbd5792c4f1d5c6e
+  - enabled: 1
+    path: Assets/Scenes/TutorialScene/SceneTutorial.unity
+    guid: 487dbb4c07241bc4eae07ec202ded8bd
   - enabled: 1
     path: Assets/Scenes/MapaRespaldo.unity
     guid: 162e72b7f4c6ff94aa3602cb8d528718
