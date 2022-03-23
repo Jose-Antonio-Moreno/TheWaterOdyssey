@@ -105,6 +105,14 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""SwitchWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""6bf02fa4-1210-44ad-8d78-72be20e1114a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -221,7 +229,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""aefe9dbb-7408-4f9b-906e-adc20b56bba9"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -237,6 +245,17 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Ultimate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0b9f6df3-1cd4-4516-87a4-61ceb36bbe56"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -258,6 +277,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         m_Gameplay_Shoot = m_Gameplay.FindAction("Shoot", throwIfNotFound: true);
         m_Gameplay_SetSkillSelectorPanel = m_Gameplay.FindAction("SetSkillSelectorPanel", throwIfNotFound: true);
         m_Gameplay_Ultimate = m_Gameplay.FindAction("Ultimate", throwIfNotFound: true);
+        m_Gameplay_SwitchWeapon = m_Gameplay.FindAction("SwitchWeapon", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -318,6 +338,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_Shoot;
     private readonly InputAction m_Gameplay_SetSkillSelectorPanel;
     private readonly InputAction m_Gameplay_Ultimate;
+    private readonly InputAction m_Gameplay_SwitchWeapon;
     public struct GameplayActions
     {
         private @PlayerControlls m_Wrapper;
@@ -333,6 +354,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         public InputAction @Shoot => m_Wrapper.m_Gameplay_Shoot;
         public InputAction @SetSkillSelectorPanel => m_Wrapper.m_Gameplay_SetSkillSelectorPanel;
         public InputAction @Ultimate => m_Wrapper.m_Gameplay_Ultimate;
+        public InputAction @SwitchWeapon => m_Wrapper.m_Gameplay_SwitchWeapon;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -375,6 +397,9 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @Ultimate.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUltimate;
                 @Ultimate.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUltimate;
                 @Ultimate.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUltimate;
+                @SwitchWeapon.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSwitchWeapon;
+                @SwitchWeapon.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSwitchWeapon;
+                @SwitchWeapon.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSwitchWeapon;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -412,6 +437,9 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @Ultimate.started += instance.OnUltimate;
                 @Ultimate.performed += instance.OnUltimate;
                 @Ultimate.canceled += instance.OnUltimate;
+                @SwitchWeapon.started += instance.OnSwitchWeapon;
+                @SwitchWeapon.performed += instance.OnSwitchWeapon;
+                @SwitchWeapon.canceled += instance.OnSwitchWeapon;
             }
         }
     }
@@ -429,5 +457,6 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         void OnShoot(InputAction.CallbackContext context);
         void OnSetSkillSelectorPanel(InputAction.CallbackContext context);
         void OnUltimate(InputAction.CallbackContext context);
+        void OnSwitchWeapon(InputAction.CallbackContext context);
     }
 }

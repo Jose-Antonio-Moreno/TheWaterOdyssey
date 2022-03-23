@@ -28,7 +28,7 @@ public class SkillManager : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(DSkills[EAbilities.LIGHTSTEP]);
+        //Debug.Log(DSkills[EAbilities.LIGHTSTEP]);
 
     }
 }

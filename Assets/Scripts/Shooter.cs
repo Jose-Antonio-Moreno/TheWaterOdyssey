@@ -11,7 +11,7 @@ enum Weapons
 }
 public class Shooter : MonoBehaviour
 {
-    Weapons weapon = Weapons.Auto;
+    Weapons weapon = Weapons.Basic;
     CinemachineImpulseSource impulse;
     GameObject _inputManager;
     Vector2 aimJoystick;
@@ -42,9 +42,16 @@ public class Shooter : MonoBehaviour
         controller.Gameplay.Shoot.started += ctx => ShootAutoTrue();
         controller.Gameplay.Ultimate.started += ctx => ShootBigDrop();
         controller.Gameplay.Shoot.canceled += ctx => ShootAutoFalse();
+        controller.Gameplay.SwitchWeapon.started += ctx => SwitchWeapon();
         impulse = transform.GetComponent<CinemachineImpulseSource>();
     }
-
+    void SwitchWeapon()
+    {
+        if (weapon == Weapons.Basic)
+            weapon = Weapons.Auto;
+        else
+            weapon = Weapons.Basic;
+    }
     float nextShoot = 0;
     public float fireRate;
     private void Update()
