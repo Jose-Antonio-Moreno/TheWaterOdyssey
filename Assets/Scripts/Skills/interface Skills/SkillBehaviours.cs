@@ -65,7 +65,7 @@ public class SkillBehaviours : MonoBehaviour, Skill_Interface
             yield return new WaitForSeconds(1);
             if (gameObject.GetComponent<EnemyAIShell>())
             {
-                gameObject.GetComponent<EnemyAIShell>().hp -= 0.2f;
+                gameObject.GetComponent<EnemyAIShell>().hp -= 2.5f;
                 float colorTime = 0.1f;
                 var sequence = DOTween.Sequence();
                 sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.green, colorTime));
@@ -74,7 +74,7 @@ public class SkillBehaviours : MonoBehaviour, Skill_Interface
             }
             else if (gameObject.GetComponent<EnemyAI>())
             {
-                gameObject.GetComponent<EnemyAI>().hp -= 0.2f;
+                gameObject.GetComponent<EnemyAI>().hp -= 2.5f;
                 float colorTime = 0.1f;
                 var sequence = DOTween.Sequence();
                 sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.green, colorTime));
@@ -83,7 +83,7 @@ public class SkillBehaviours : MonoBehaviour, Skill_Interface
             }
             else if (gameObject.GetComponent<EnemyAIQuadShoot>()) 
             {
-                gameObject.GetComponent<EnemyAIQuadShoot>().hp -= 0.2f;
+                gameObject.GetComponent<EnemyAIQuadShoot>().hp -= 2.5f;
                 float colorTime = 0.1f;
                 var sequence = DOTween.Sequence();
                 sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.green, colorTime));
