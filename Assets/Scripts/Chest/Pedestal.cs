@@ -15,6 +15,9 @@ public class Pedestal : MonoBehaviour
     bool getItem;
     int random;
 
+    //Sounds
+    public AudioSource grabItem;
+
     void Start()
     {
         getItem = false;
@@ -34,7 +37,8 @@ public class Pedestal : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if(getItem)Instantiate(particles, transform.position, Quaternion.identity);
+            grabItem.Play();
+            if (getItem)Instantiate(particles, transform.position, Quaternion.identity);
             getItem = false;
 
             Debug.Log(weaponSpawn.tag);
