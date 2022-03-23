@@ -19,6 +19,9 @@ public class sizePlayer : MonoBehaviour
 
     public ParticleSystem hitParticles;
 
+    //Sounds
+    public AudioSource evaporation;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,7 +65,7 @@ public class sizePlayer : MonoBehaviour
         {
             Death();
         }
-        Debug.Log(life);
+        //Debug.Log(life);
         
     }
 
@@ -72,6 +75,7 @@ public class sizePlayer : MonoBehaviour
         {
             if (!isInvulnerable) 
             {
+                evaporation.Play();
                 Instantiate(hitParticles, transform.position, Quaternion.identity);
                 life--;
                 changed = false;
@@ -83,6 +87,7 @@ public class sizePlayer : MonoBehaviour
         {
             if (!isInvulnerable)
             {
+                evaporation.Play();
                 Instantiate(hitParticles, transform.position, Quaternion.identity);
                 life--;
                 changed = false;

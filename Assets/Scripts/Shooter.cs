@@ -29,6 +29,9 @@ public class Shooter : MonoBehaviour
 
     bool hasAbility;
 
+    //Sounds
+    public AudioSource shoot;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +40,7 @@ public class Shooter : MonoBehaviour
         controller = _inputManager.GetComponent<InputsController>().globalControls;
 
         controller.Gameplay.Shoot.started += ctx => ShootAutoTrue();
+        controller.Gameplay.Ultimate.started += ctx => ShootBigDrop();
         controller.Gameplay.Shoot.canceled += ctx => ShootAutoFalse();
         impulse = transform.GetComponent<CinemachineImpulseSource>();
     }
@@ -45,11 +49,9 @@ public class Shooter : MonoBehaviour
     public float fireRate;
     private void Update()
     {
-        if (Input.GetKeyDown("space")) {
-            ShootBigDrop();
+       
 
 
-        }
         //SetFireRate
         switch (weapon)
         {
@@ -126,6 +128,7 @@ public class Shooter : MonoBehaviour
         switch (weapon)
         {
             case Weapons.Basic:
+                shoot.Play();
                 Shake();
                 aux = Instantiate(shootPrefab, gameObject.transform.position + aimDirection * 2f * (gameObject.transform.localScale.x/100), Quaternion.identity);
                 aux.GetComponent<BulletScript>().damage = 10;
@@ -133,6 +136,7 @@ public class Shooter : MonoBehaviour
                 aux.GetComponent<Rigidbody>().AddForce(shootForce);
                 break;
             case Weapons.Auto:
+                shoot.Play();
                 Shake();
                 aux = Instantiate(shootPrefab, gameObject.transform.position + aimDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
                 aux.GetComponent<BulletScript>().damage = 5;

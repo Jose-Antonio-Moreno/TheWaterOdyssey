@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HealBubble_Script : MonoBehaviour
 {
+    
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

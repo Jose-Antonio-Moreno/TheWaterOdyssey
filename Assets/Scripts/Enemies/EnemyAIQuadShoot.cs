@@ -38,13 +38,16 @@ public class EnemyAIQuadShoot : MonoBehaviour
     public GameObject healBubble;
     public GameObject coin;
 
+    //Sounds
+    public AudioSource shoot;
+    public AudioSource impact;
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        hp = 4;
+        hp = 70;
         isHit = false;
         nextShoot = 0;
         fireRate = 0.8f;
@@ -109,11 +112,12 @@ public class EnemyAIQuadShoot : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
+            impact.Play();
             float colorTime = 0.1f;
             var sequence = DOTween.Sequence();
             sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.red, colorTime));
             sequence.Insert(colorTime, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.white, colorTime));
-            hp--;
+            hp -= other.GetComponent<BulletScript>().damage;
             isHit = true;
         }
         if (other.CompareTag("BigDrop"))
@@ -151,7 +155,7 @@ public class EnemyAIQuadShoot : MonoBehaviour
 
     void Shoot()
     {
-       
+        shoot.Play();
         Vector3 direction1 = (firePoint1.position - this.transform.position).normalized;
         Vector3 direction2 = (firePoint2.position - this.transform.position).normalized;
         Vector3 direction3 = (firePoint3.position - this.transform.position).normalized;
