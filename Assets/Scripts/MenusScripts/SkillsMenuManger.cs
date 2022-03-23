@@ -44,7 +44,6 @@ public class SkillsMenuManger : MonoBehaviour
     }
     public void goContinue()
     {
-        botones.SetActive(false);
         Time.timeScale = 1f;
     }
     public void SelectPoison()
