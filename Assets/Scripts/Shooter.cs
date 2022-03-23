@@ -29,6 +29,9 @@ public class Shooter : MonoBehaviour
 
     bool hasAbility;
 
+    //Sounds
+    public AudioSource shoot;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -116,6 +119,7 @@ public class Shooter : MonoBehaviour
         switch (weapon)
         {
             case Weapons.Basic:
+                shoot.Play();
                 Shake();
                 aux = Instantiate(shootPrefab, gameObject.transform.position + aimDirection * 2f * (gameObject.transform.localScale.x/100), Quaternion.identity);
                 aux.GetComponent<BulletScript>().damage = 10;
@@ -123,6 +127,7 @@ public class Shooter : MonoBehaviour
                 aux.GetComponent<Rigidbody>().AddForce(shootForce);
                 break;
             case Weapons.Auto:
+                shoot.Play();
                 Shake();
                 aux = Instantiate(shootPrefab, gameObject.transform.position + aimDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
                 aux.GetComponent<BulletScript>().damage = 5;

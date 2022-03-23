@@ -12,14 +12,14 @@ public class BulletSlime : MonoBehaviour
     private sizePlayer lifePlayer;
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        lifePlayer = player.GetComponent<sizePlayer>();
         destroyTime = 2f;
     }
 
-    private void Update()
+    void Update()
     {
         Invoke("des", destroyTime);
-        player = GameObject.FindGameObjectWithTag("Player");
-        lifePlayer = player.GetComponent<sizePlayer>();
     }
 
     void OnTriggerEnter(Collider other)
