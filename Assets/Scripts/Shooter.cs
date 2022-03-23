@@ -37,6 +37,7 @@ public class Shooter : MonoBehaviour
         controller = _inputManager.GetComponent<InputsController>().globalControls;
 
         controller.Gameplay.Shoot.started += ctx => ShootAutoTrue();
+        controller.Gameplay.Ultimate.started += ctx => ShootBigDrop();
         controller.Gameplay.Shoot.canceled += ctx => ShootAutoFalse();
         impulse = transform.GetComponent<CinemachineImpulseSource>();
     }
@@ -45,11 +46,9 @@ public class Shooter : MonoBehaviour
     public float fireRate;
     private void Update()
     {
-        if (Input.GetKeyDown("space")) {
-            ShootBigDrop();
+       
 
 
-        }
         //SetFireRate
         switch (weapon)
         {
