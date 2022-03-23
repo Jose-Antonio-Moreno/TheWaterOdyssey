@@ -79,8 +79,8 @@ public class EnemyAIQuadShoot : MonoBehaviour
                 droped = false;
             }
 
-            Invoke("Death", 0.1f);
-            //Death();
+            //Invoke("Death", 0.1f);
+            Death();
         }
 
     }
