@@ -120,6 +120,15 @@ public class EnemyAIQuadShoot : MonoBehaviour
             hp -= other.GetComponent<BulletScript>().damage;
             isHit = true;
         }
+        if (other.CompareTag("BigDrop"))
+        {
+            float colorTime = 0.1f;
+            var sequence = DOTween.Sequence();
+            sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.red, colorTime));
+            sequence.Insert(colorTime, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.white, colorTime));
+            hp -= other.GetComponent<BulletScript>().damage;
+            isHit = true;
+        }
     }
 
     private void Death()
