@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class sizePlayer : MonoBehaviour
 {
@@ -116,7 +117,8 @@ public class sizePlayer : MonoBehaviour
 
     private void Death()
     {
-        Destroy(this.gameObject);
+        SceneManager.LoadScene("Main Menu");
+        //Destroy(this.gameObject);
     }
 
     void Invulnerability() 

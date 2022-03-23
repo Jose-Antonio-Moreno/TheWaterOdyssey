@@ -645,6 +645,7 @@ MonoBehaviour:
   coin: {fileID: 9064536156332027177, guid: 36e89c85bb0c50b45bb92a51e49b304b, type: 3}
   shoot: {fileID: 9055551274781463047}
   impact: {fileID: 166705428460525089}
+  managerEnemies: {fileID: 0}
 --- !u!82 &9055551274781463047
 AudioSource:
   m_ObjectHideFlags: 0
@@ -657,7 +658,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 50a8dbb14c102b64d9755e17dd8791a0, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: 94d21b9b5c718f84d84c54f24acf5beb
   - enabled: 0
@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MapaRespaldo.unity
     guid: 162e72b7f4c6ff94aa3602cb8d528718
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: 8dfae36767eb04c44b920cb81ca7d510
   m_configObjects: {}
