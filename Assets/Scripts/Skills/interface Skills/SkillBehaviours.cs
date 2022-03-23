@@ -81,15 +81,23 @@ public class SkillBehaviours : MonoBehaviour, Skill_Interface
                 sequence.Insert(colorTime, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.white, colorTime));
                 Instantiate(gameObject.GetComponent<EnemyAI>().posionParticles, gameObject.GetComponent<EnemyAI>().transform.position, Quaternion.identity);
             }
-            //else if (gameObject.GetComponent<EnemyAIQuadShoot>()) 
-            //{
-            //    gameObject.GetComponent<EnemyAIQuadShoot>().hp -= 0.2f;
-            //    float colorTime = 0.1f;
-            //    var sequence = DOTween.Sequence();
-            //    sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.green, colorTime));
-            //    sequence.Insert(colorTime, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.white, colorTime));
-            //    Instantiate(gameObject.GetComponent<EnemyAI>().posionParticles, gameObject.GetComponent<EnemyAIQuadShoot>().transform.position, Quaternion.identity);
-            //}
+            else if (gameObject.GetComponent<EnemyAIQuadShoot>()) 
+            {
+                gameObject.GetComponent<EnemyAIQuadShoot>().hp -= 0.2f;
+                float colorTime = 0.1f;
+                var sequence = DOTween.Sequence();
+                sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.green, colorTime));
+                sequence.Insert(colorTime, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.white, colorTime));
+                Instantiate(gameObject.GetComponent<EnemyAIQuadShoot>().posionParticles, gameObject.GetComponent<EnemyAIQuadShoot>().transform.position, Quaternion.identity);
+            }
+            else if (gameObject.GetComponent<Dummy>())
+            {
+                float colorTime = 0.1f;
+                var sequence = DOTween.Sequence();
+                sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.green, colorTime));
+                sequence.Insert(colorTime, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.white, colorTime));
+                Instantiate(gameObject.GetComponent<Dummy>().posionParticles, gameObject.GetComponent<Dummy>().transform.position, Quaternion.identity);
+            }
         }
         poisonCounter = 0;
     }

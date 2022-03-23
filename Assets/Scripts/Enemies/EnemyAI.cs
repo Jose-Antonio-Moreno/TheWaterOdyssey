@@ -165,6 +165,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Drop() 
     {
+        /*
         //Falta rotar la moneda
         int number = Random.RandomRange(0, 2);
         switch (number)
@@ -178,6 +179,7 @@ public class EnemyAI : MonoBehaviour
             case 2:
                 break;
         }
+        */
     }
 
     void Shoot()

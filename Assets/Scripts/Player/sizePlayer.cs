@@ -48,7 +48,7 @@ public class sizePlayer : MonoBehaviour
         }
         if (life == 3 && !changed)
         {
-            player.transform.localScale = new Vector3(100.0f, 100.0f, 100.0f);
+            player.transform.localScale = new Vector3(100f, 100f, 100f);
             changed = true;
         }
         if (life == 2 && !changed)
@@ -76,7 +76,7 @@ public class sizePlayer : MonoBehaviour
             if (!isInvulnerable) 
             {
                 evaporation.Play();
-                Instantiate(hitParticles, transform.position, Quaternion.identity);
+                Instantiate(hitParticles, transform.position, transform.rotation);
                 life--;
                 changed = false;
                 isInvulnerable = true;
@@ -88,7 +88,7 @@ public class sizePlayer : MonoBehaviour
             if (!isInvulnerable)
             {
                 evaporation.Play();
-                Instantiate(hitParticles, transform.position, Quaternion.identity);
+                Instantiate(hitParticles, transform.position, transform.rotation);
                 life--;
                 changed = false;
                 isInvulnerable = true;

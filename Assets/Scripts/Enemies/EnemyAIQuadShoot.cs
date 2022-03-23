@@ -138,6 +138,7 @@ public class EnemyAIQuadShoot : MonoBehaviour
 
     private void Drop()
     {
+        /*
         //Falta rotar la moneda
         int number = Random.RandomRange(0, 2);
         switch (number)
@@ -151,6 +152,7 @@ public class EnemyAIQuadShoot : MonoBehaviour
             case 2:
                 break;
         }
+        */
     }
 
     void Shoot()

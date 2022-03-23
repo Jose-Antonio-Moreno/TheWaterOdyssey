@@ -1604,6 +1604,7 @@ GameObject:
   - component: {fileID: 2895855888988304138}
   - component: {fileID: 987727352130889689}
   - component: {fileID: 7879575115560534699}
+  - component: {fileID: 1258101314343989815}
   m_Layer: 6
   m_Name: Armature
   m_TagString: Player
@@ -1772,7 +1773,7 @@ MonoBehaviour:
   bigDropPrefab: {fileID: 0}
   life: {fileID: 0}
   pointer: {fileID: 7192975911528432336}
-  shoot: {fileID: 0}
+  shoot: {fileID: 987727352130889689}
   fireRate: 0
 --- !u!82 &987727352130889689
 AudioSource:
@@ -1966,6 +1967,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1258101314343989815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5944128494586752037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 679a5dfe1649d7446bfc7ceee7a83557, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 5944128494586752037}
+  life: 3
+  changed: 0
+  hitted: 0
+  hitParticles: {fileID: 6465089969189171295, guid: e74ffe42e0803a64684da95c449bb37c, type: 3}
+  evaporation: {fileID: 7879575115560534699}
 --- !u!1 &6006621480990478613
 GameObject:
   m_ObjectHideFlags: 0
