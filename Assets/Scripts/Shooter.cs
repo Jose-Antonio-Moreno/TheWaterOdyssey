@@ -66,7 +66,7 @@ public class Shooter : MonoBehaviour
                 fireRate = 4;
                 break;
             case Weapons.Auto:
-                fireRate = 6;
+                fireRate = 5;
                 break;
             default:
                 break;

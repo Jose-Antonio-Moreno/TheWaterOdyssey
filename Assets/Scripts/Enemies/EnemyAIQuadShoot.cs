@@ -42,6 +42,8 @@ public class EnemyAIQuadShoot : MonoBehaviour
     public AudioSource shoot;
     public AudioSource impact;
 
+    public triggerEnemies managerEnemies;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +53,7 @@ public class EnemyAIQuadShoot : MonoBehaviour
         isHit = false;
         nextShoot = 0;
         fireRate = 0.8f;
+        managerEnemies.counter += 1;
     }
 
     // Update is called once per frame
@@ -133,6 +136,7 @@ public class EnemyAIQuadShoot : MonoBehaviour
 
     private void Death()
     {
+        managerEnemies.counter -= 1;
         Destroy(this.gameObject);
     }
 
