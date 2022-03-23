@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class SkillsMenuManger : MonoBehaviour
 {
@@ -13,14 +15,15 @@ public class SkillsMenuManger : MonoBehaviour
     {
         PlayerControlls controller;
         controller = _inputManager.GetComponent<InputsController>().globalControls;
-        controller.Gameplay.SetSkillSelectorPanel.started += ctx => setSkillMenuPanel();
+        controller.Gameplay.Pause.started += ctx => setSkillMenuPanel();
+
         botones = gameObject.transform.GetChild(0).gameObject;
 
-        player.GetComponent<SkillManager>();
 
     }
 
 
+        
     void setSkillMenuPanel()
     {
         if (botones.active == true)
@@ -35,7 +38,15 @@ public class SkillsMenuManger : MonoBehaviour
             Time.timeScale = 0f;
         }
     }
-
+    public void goMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+    public void goContinue()
+    {
+        botones.SetActive(false);
+        Time.timeScale = 1f;
+    }
     public void SelectPoison()
     {
         player = GameObject.FindGameObjectWithTag("Player");
