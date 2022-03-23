@@ -12,6 +12,7 @@ TagManager:
   - BulletEnemy
   - Heal
   - Dummy
+  - BigDrop
   layers:
   - Default
   - TransparentFX

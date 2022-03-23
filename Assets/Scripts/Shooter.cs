@@ -45,6 +45,11 @@ public class Shooter : MonoBehaviour
     public float fireRate;
     private void Update()
     {
+        if (Input.GetKeyDown("space")) {
+            ShootBigDrop();
+
+
+        }
         //SetFireRate
         switch (weapon)
         {
@@ -98,6 +103,11 @@ public class Shooter : MonoBehaviour
         impulse.GenerateImpulse(0.25f);
     }
 
+    public void ShakeUltimate() {
+
+        impulse.GenerateImpulse(0.55f);
+    }
+
     void ShootAutoFalse()
     {
         shooting = false;
@@ -140,9 +150,11 @@ public class Shooter : MonoBehaviour
         GameObject aux;
         Vector3 shootForce;
 
-        if (life.life > 0)
+        if (life.life > 1)
         {
+            ShakeUltimate();
             life.life -= 1;
+            life.changed = false;
             aux = Instantiate(bigDropPrefab, gameObject.transform.position + aimDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
             aux.GetComponent<BulletScript>().damage = 100;
             shootForce = aimDirection * 100;

@@ -6,6 +6,7 @@ using Cinemachine;
 public class BulletScript : MonoBehaviour
 {
     CinemachineImpulseSource impulse;
+    
     float destroyTime;
     bool hasAbility;
     public PhysicMaterial bouncines;
