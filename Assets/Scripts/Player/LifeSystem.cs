@@ -5,7 +5,7 @@ using UnityEngine;
 public class LifeSystem : MonoBehaviour
 {
     int defaultLife;
-    int life;
+    public int life;
     int maxLife;
     public bool isDamaging;
     void Start()

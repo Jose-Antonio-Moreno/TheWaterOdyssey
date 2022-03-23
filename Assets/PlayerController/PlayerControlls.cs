@@ -97,6 +97,14 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Ultimate"",
+                    ""type"": ""Button"",
+                    ""id"": ""d7269b02-dfc7-47c1-bad8-40e8b836e8b2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -220,6 +228,17 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""action"": ""SetSkillSelectorPanel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4986ffd1-0509-4db4-acbd-69e5bea609e2"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ultimate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -238,6 +257,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         m_Gameplay_Aim = m_Gameplay.FindAction("Aim", throwIfNotFound: true);
         m_Gameplay_Shoot = m_Gameplay.FindAction("Shoot", throwIfNotFound: true);
         m_Gameplay_SetSkillSelectorPanel = m_Gameplay.FindAction("SetSkillSelectorPanel", throwIfNotFound: true);
+        m_Gameplay_Ultimate = m_Gameplay.FindAction("Ultimate", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -297,6 +317,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_Aim;
     private readonly InputAction m_Gameplay_Shoot;
     private readonly InputAction m_Gameplay_SetSkillSelectorPanel;
+    private readonly InputAction m_Gameplay_Ultimate;
     public struct GameplayActions
     {
         private @PlayerControlls m_Wrapper;
@@ -311,6 +332,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         public InputAction @Aim => m_Wrapper.m_Gameplay_Aim;
         public InputAction @Shoot => m_Wrapper.m_Gameplay_Shoot;
         public InputAction @SetSkillSelectorPanel => m_Wrapper.m_Gameplay_SetSkillSelectorPanel;
+        public InputAction @Ultimate => m_Wrapper.m_Gameplay_Ultimate;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -350,6 +372,9 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @SetSkillSelectorPanel.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSetSkillSelectorPanel;
                 @SetSkillSelectorPanel.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSetSkillSelectorPanel;
                 @SetSkillSelectorPanel.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSetSkillSelectorPanel;
+                @Ultimate.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUltimate;
+                @Ultimate.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUltimate;
+                @Ultimate.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUltimate;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -384,6 +409,9 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @SetSkillSelectorPanel.started += instance.OnSetSkillSelectorPanel;
                 @SetSkillSelectorPanel.performed += instance.OnSetSkillSelectorPanel;
                 @SetSkillSelectorPanel.canceled += instance.OnSetSkillSelectorPanel;
+                @Ultimate.started += instance.OnUltimate;
+                @Ultimate.performed += instance.OnUltimate;
+                @Ultimate.canceled += instance.OnUltimate;
             }
         }
     }
@@ -400,5 +428,6 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         void OnAim(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnSetSkillSelectorPanel(InputAction.CallbackContext context);
+        void OnUltimate(InputAction.CallbackContext context);
     }
 }

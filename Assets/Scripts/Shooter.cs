@@ -16,6 +16,12 @@ public class Shooter : MonoBehaviour
     GameObject _inputManager;
     Vector2 aimJoystick;
     public GameObject shootPrefab;
+    
+    [SerializeField]
+    GameObject bigDropPrefab;
+
+    [SerializeField]
+    sizePlayer life;
 
     public Transform pointer;
 
@@ -127,4 +133,23 @@ public class Shooter : MonoBehaviour
                 break;
         }
     }
+
+
+    void ShootBigDrop() {
+
+        GameObject aux;
+        Vector3 shootForce;
+
+        if (life.life > 0)
+        {
+            life.life -= 1;
+            aux = Instantiate(bigDropPrefab, gameObject.transform.position + aimDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
+            aux.GetComponent<BulletScript>().damage = 100;
+            shootForce = aimDirection * 100;
+            aux.GetComponent<Rigidbody>().AddForce(shootForce);
+        
+        }
+
+    }
+
 }
