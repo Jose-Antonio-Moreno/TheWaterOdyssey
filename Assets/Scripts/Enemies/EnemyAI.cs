@@ -42,6 +42,7 @@ public class EnemyAI : MonoBehaviour
 
     //Sounds
     public AudioSource splash;
+    public AudioSource shoot;
 
     // Start is called before the first frame update
     void Start()
@@ -169,6 +170,7 @@ public class EnemyAI : MonoBehaviour
 
     void Shoot()
     {
+        shoot.Play();
         Vector3 direction = (player.position - this.transform.position).normalized;
         Vector3 bulletPosition = new Vector3(gameObject.transform.position.x, player.transform.position.y, gameObject.transform.position.z);
         GameObject aux = Instantiate(shootPrefab, bulletPosition + direction * 1f, Quaternion.identity);
