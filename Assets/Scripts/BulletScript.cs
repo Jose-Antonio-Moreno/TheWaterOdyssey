@@ -18,6 +18,7 @@ public class BulletScript : MonoBehaviour
 
     private void Start()
     {
+        destroyTime = 0.75f;
         impulse = transform.GetComponent<CinemachineImpulseSource>();
     }
     private void Awake()
@@ -28,7 +29,7 @@ public class BulletScript : MonoBehaviour
             transform.GetChild(0).GetComponent<SphereCollider>().material = bouncines;
             destroyTime = 2;
         }
-        else { destroyTime = 1; }
+        else { destroyTime = 0.75f; }
         GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.BIGBUBBLE, out hasAbility);
         if (hasAbility) 
         {
@@ -63,7 +64,21 @@ public class BulletScript : MonoBehaviour
                 Instantiate(hitParticle, transform.position, Quaternion.identity);
             }
         }
-        
+
+        if (other.CompareTag("Dummy"))
+        {
+            Instantiate(hitParticle, transform.position, Quaternion.identity);
+            impulse.GenerateImpulse(1f);
+            GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.POISON, out hasAbility);
+            if (hasAbility)
+            {
+                //gameObject.GetComponent<Renderer>().material.color = Color.green;
+                Skill_Interface skill = other.gameObject.GetComponent<SkillBehaviours>();
+                skill.ActivatePoison();
+            }
+            Invoke("des", 0.1f);
+        }
+
         Invoke("des", destroyTime);
     }
 

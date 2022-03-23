@@ -74,6 +74,7 @@ public class EnemyAIShell : MonoBehaviour
         {
             Instantiate(deathParticles, transform.position, Quaternion.identity);
             Invoke("Death", 0.1f);
+            /*
             int number = Random.Range(0, 2);
             switch (number)
             {
@@ -86,6 +87,7 @@ public class EnemyAIShell : MonoBehaviour
                 case 2:
                     break;
             }
+            */
         }
     }
 

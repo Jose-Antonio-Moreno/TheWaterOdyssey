@@ -1030,6 +1030,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   counter: 0
   entradas: {fileID: 6902161759818507231}
+  healBubble: {fileID: 1960532133341974894, guid: d4b562fe8dc91d44ba3d7ca942772434, type: 3}
+  coin: {fileID: 9064536156332027177, guid: 36e89c85bb0c50b45bb92a51e49b304b, type: 3}
 --- !u!1 &8894858172389759286
 GameObject:
   m_ObjectHideFlags: 0
