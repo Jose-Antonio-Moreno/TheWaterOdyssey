@@ -117,7 +117,7 @@ public class sizePlayer : MonoBehaviour
 
     private void Death()
     {
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene("MainMenu");
         //Destroy(this.gameObject);
     }
 
