@@ -14,6 +14,10 @@ public class YellowSlimeScript : MonoBehaviour
     public LayerMask Ground;
 
     public float hp;
+
+    [SerializeField]
+    Transform firePoint1, firePoint2, firePoint3;
+
     //Patroling
     public Vector3 walkPoint;
     bool walkPointSet;
@@ -172,13 +176,22 @@ public class YellowSlimeScript : MonoBehaviour
     void Shoot()
     {
         //shoot.Play();
-        Vector3 direction = Quaternion.Euler(0,0,0) * (player.position - this.transform.position);
-        Vector3 bulletPosition = new Vector3(gameObject.transform.position.x, player.transform.position.y, gameObject.transform.position.z);
-        GameObject aux = Instantiate(shootPrefab, bulletPosition + direction, Quaternion.identity);
-        GameObject aux1 = Instantiate(shootPrefab, bulletPosition + direction, Quaternion.identity);
-        GameObject aux2 = Instantiate(shootPrefab, bulletPosition + direction, Quaternion.identity);
-        Vector3 shootForce = direction * 50;
+        Vector3 direction1 = (firePoint1.position - this.transform.position).normalized;
+        Vector3 direction2 = (firePoint2.position - this.transform.position).normalized;
+        Vector3 direction3 = (firePoint3.position - this.transform.position).normalized;
+
+        GameObject aux = Instantiate(shootPrefab, gameObject.transform.position + direction1 * 1f, Quaternion.identity);
+        GameObject aux2 = Instantiate(shootPrefab, gameObject.transform.position + direction2 * 1f, Quaternion.identity);
+        GameObject aux3 = Instantiate(shootPrefab, gameObject.transform.position + direction3 * 1f, Quaternion.identity);
+
+        Vector3 shootForce = direction1 * 80;
+        Vector3 shootForce2 = direction2 * 80;
+        Vector3 shootForce3 = direction3 * 80;
+        
         aux.GetComponent<Rigidbody>().AddForce(shootForce);
+        aux2.GetComponent<Rigidbody>().AddForce(shootForce2);
+        aux3.GetComponent<Rigidbody>().AddForce(shootForce3);
+
         Debug.Log("SHOOT");
     }
 }
