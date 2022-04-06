@@ -42,7 +42,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.488866, z: 1}
   m_Center: {x: 0, y: 0.255566, z: 0}
---- !u!114 &121623347475871088
+--- !u!114 &539419896301711304
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -51,25 +51,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7567728014208411207}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82448912a0365804a96aefdb3190e1ee, type: 3}
+  m_Script: {fileID: 11500000, guid: 361577a8063d77340b281a408c7ac2f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  managerEnemies: {fileID: 0}
-  agent: {fileID: 0}
-  Ground:
-    serializedVersion: 2
-    m_Bits: 0
-  hp: 0
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 0
-  shootPrefab: {fileID: 0}
-  isHit: 0
-  posionParticles: {fileID: 0}
-  deathParticles: {fileID: 0}
-  healBubble: {fileID: 0}
-  coin: {fileID: 0}
-  splash: {fileID: 0}
-  shoot: {fileID: 0}
 --- !u!195 &7608093774996525479
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -92,7 +76,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &539419896301711304
+--- !u!114 &2432660464377892515
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,9 +85,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 7567728014208411207}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361577a8063d77340b281a408c7ac2f9, type: 3}
+  m_Script: {fileID: 11500000, guid: 272793c1139314b4aab041d267d3311b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  managerEnemies: {fileID: 0}
+  agent: {fileID: 7608093774996525479}
+  Ground:
+    serializedVersion: 2
+    m_Bits: 128
+  hp: 0
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointRange: 0
+  shootPrefab: {fileID: 901182402720252531, guid: 8370c3e46d65264449e0899a2b4fc6e0, type: 3}
+  isHit: 0
+  posionParticles: {fileID: 9050658520201416140, guid: 807a515548344524897e85287286fb30, type: 3}
+  deathParticles: {fileID: 2947199187110361257, guid: 06b34edfb46d09c45aecab44e5073dd4, type: 3}
+  healBubble: {fileID: 1960532133341974894, guid: d4b562fe8dc91d44ba3d7ca942772434, type: 3}
+  coin: {fileID: 9064536156332027177, guid: 36e89c85bb0c50b45bb92a51e49b304b, type: 3}
+  splash: {fileID: 0}
+  shoot: {fileID: 0}
 --- !u!1001 &7333145906577349398
 PrefabInstance:
   m_ObjectHideFlags: 0
