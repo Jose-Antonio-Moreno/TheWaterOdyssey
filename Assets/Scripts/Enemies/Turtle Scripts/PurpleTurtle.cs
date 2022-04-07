@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class YellowTurtleAI : MonoBehaviour
+public class PurpleTurtle : MonoBehaviour
 {
     public triggerEnemies managerEnemies;
     private bool doneCounter;
@@ -20,7 +20,7 @@ public class YellowTurtleAI : MonoBehaviour
     public int maxDistance;
 
     //Other enemies
-    Transform nearEnemy;
+    private Transform nearEnemy;
 
     //States
     public float sightRange;
@@ -29,12 +29,18 @@ public class YellowTurtleAI : MonoBehaviour
 
     public float hp;
 
+    //Firepoints
+    public Transform[] firepoints;
+
     //Checker
     public bool isHit;
 
     //particle System
     public ParticleSystem poisonParticles;
     public ParticleSystem deathParticles;
+
+    //Shoot
+    public GameObject shootPrefab;
 
     //Drops
     public GameObject healBubble;
@@ -67,6 +73,7 @@ public class YellowTurtleAI : MonoBehaviour
         if (hp <= 0)
         {
             Instantiate(deathParticles, transform.position, Quaternion.identity);
+            Explosion();
             Invoke("Death", 0.1f);
         }
     }
@@ -75,11 +82,11 @@ public class YellowTurtleAI : MonoBehaviour
         agent.SetDestination(player.position);
     }
 
-    void KeepDistance() 
+    void KeepDistance()
     {
         // Modul del vector
-        float aux  = Vector3.Distance(nearEnemy.transform.position, this.transform.position);
-        if (aux <= maxDistance) 
+        float aux = Vector3.Distance(nearEnemy.transform.position, this.transform.position);
+        if (aux <= maxDistance)
         {
             transform.position = (transform.position - nearEnemy.transform.position).normalized * aux + nearEnemy.transform.position;
         }
@@ -90,7 +97,7 @@ public class YellowTurtleAI : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
-            splash.Play();
+            //splash.Play();
             float colorTime = 0.1f;
             var sequence = DOTween.Sequence();
             sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.red, colorTime));
@@ -111,13 +118,27 @@ public class YellowTurtleAI : MonoBehaviour
         }
     }
 
+    private void Explosion()
+    {
+        //shoot.Play();
+        
+        for (int i = 0; i < firepoints.Length; i++) 
+        {
+            Vector3 direction1 = (firepoints[i].position - this.transform.position).normalized;
+            GameObject aux = Instantiate(shootPrefab, gameObject.transform.position + direction1 * 1f, Quaternion.identity);
+            Vector3 shootForce = direction1 * 80;
+            aux.GetComponent<Rigidbody>().AddForce(shootForce);
+        }
+
+        Debug.Log("SHOOT");
+    }
     private void Death()
     {
-        if (!doneCounter)
-        {
-            managerEnemies.counter -= 1;
-            doneCounter = true;
-        }
         Destroy(this.gameObject);
+        //if (!doneCounter)
+        //{
+        //    managerEnemies.counter -= 1;
+        //    doneCounter = true;
+        //}
     }
 }

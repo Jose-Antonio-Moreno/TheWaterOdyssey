@@ -75,7 +75,7 @@ public class YellowSlimeScript : MonoBehaviour
 
         if (Time.time >= nextShoot)
         {
-            number = Random.Range(0.5f, 1.5f);
+            number = Random.Range(0.4f, 0.8f);
             nextShoot = Time.time + number / fireRate;
             Shoot();
         }

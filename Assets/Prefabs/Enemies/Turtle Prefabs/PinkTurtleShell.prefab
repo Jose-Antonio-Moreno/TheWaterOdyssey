@@ -1502,7 +1502,7 @@ GameObject:
   - component: {fileID: 5852490777064765731}
   m_Layer: 0
   m_Name: PinkTurtleShell
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1800,6 +1800,7 @@ MonoBehaviour:
   Player:
     serializedVersion: 2
     m_Bits: 64
+  maxDistance: 0
   sightRange: 20
   playerInSightRange: 0
   playerInAttackRange: 0
