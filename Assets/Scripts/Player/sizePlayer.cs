@@ -18,6 +18,8 @@ public class sizePlayer : MonoBehaviour
     float invulnerabilityTime;
     bool isInvulnerable;
 
+    public GameObject deathMenu;
+
     public ParticleSystem hitParticles;
 
     //Sounds
@@ -33,6 +35,8 @@ public class sizePlayer : MonoBehaviour
         invulnerabilityTime = 0;
         isInvulnerable = false;
     }
+    float timePassed = 0;
+    float maxTime = 0.5f;
 
     // Update is called once per frame
     void Update()
@@ -64,9 +68,19 @@ public class sizePlayer : MonoBehaviour
         }
         if (life <= 0)
         {
+            if(timePassed < maxTime)
+            {
+                timePassed += Time.deltaTime;
+            }
+            Time.timeScale = Mathf.Lerp(1, 0.05f, timePassed / maxTime);
+
             Death();
         }
         //Debug.Log(life);
+        if (Input.GetKeyDown("k"))
+        {
+            Death();
+        }
         
     }
 
@@ -117,8 +131,14 @@ public class sizePlayer : MonoBehaviour
 
     private void Death()
     {
-        SceneManager.LoadScene("MainMenu");
-        //Destroy(this.gameObject);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        deathMenu.SetActive(true);
+        //Destroy(player.transform.GetChild(0).gameObject);
+        player.transform.parent.GetChild(1).gameObject.SetActive(false);
+        player.GetComponent<Shooter>().enabled = false;
+        player.GetComponent<Movement_2>().enabled = false;
+       
+
     }
 
     void Invulnerability() 
