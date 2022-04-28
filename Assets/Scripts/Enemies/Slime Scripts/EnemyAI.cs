@@ -158,11 +158,11 @@ public class EnemyAI : MonoBehaviour
     }
     private void Death()
     {
-        if (!doneCounter)
-        {
-            managerEnemies.counter -= 1;
-            doneCounter = true;
-        }
+        //if (!doneCounter)
+        //{
+        //    managerEnemies.counter -= 1;
+        //    doneCounter = true;
+        //}
         
         Destroy(this.gameObject);
     }

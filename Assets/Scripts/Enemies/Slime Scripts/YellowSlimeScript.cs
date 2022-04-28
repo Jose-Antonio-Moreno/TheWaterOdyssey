@@ -127,7 +127,7 @@ public class YellowSlimeScript : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
-            splash.Play();
+            //splash.Play();
             float colorTime = 0.1f;
             var sequence = DOTween.Sequence();
             sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.red, colorTime));
@@ -163,11 +163,11 @@ public class YellowSlimeScript : MonoBehaviour
     }
     private void Death()
     {
-        if (!doneCounter)
-        {
-            managerEnemies.counter -= 1;
-            doneCounter = true;
-        }
+        //if (!doneCounter)
+        //{
+        //    managerEnemies.counter -= 1;
+        //    doneCounter = true;
+        //}
 
         Destroy(this.gameObject);
     }

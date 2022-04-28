@@ -1806,8 +1806,8 @@ MonoBehaviour:
   playerInAttackRange: 0
   hp: 0
   isHit: 0
-  poisonParticles: {fileID: 0}
-  deathParticles: {fileID: 0}
+  poisonParticles: {fileID: 9050658520201416140, guid: 807a515548344524897e85287286fb30, type: 3}
+  deathParticles: {fileID: 2947199187110361257, guid: 06b34edfb46d09c45aecab44e5073dd4, type: 3}
   healBubble: {fileID: 1960532133341974894, guid: d4b562fe8dc91d44ba3d7ca942772434, type: 3}
   coin: {fileID: 9064536156332027177, guid: 36e89c85bb0c50b45bb92a51e49b304b, type: 3}
   splash: {fileID: 8785923396912183591}
