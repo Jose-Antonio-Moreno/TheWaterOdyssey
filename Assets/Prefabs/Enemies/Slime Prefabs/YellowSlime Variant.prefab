@@ -44,7 +44,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!65 &1300571998243832324
 BoxCollider:
@@ -101,13 +101,20 @@ MonoBehaviour:
   Ground:
     serializedVersion: 2
     m_Bits: 128
-  hp: 0
+  Player:
+    serializedVersion: 2
+    m_Bits: 64
+  hp: 50
   firePoint1: {fileID: 7910212634390113904}
   firePoint2: {fileID: 1951134586528012395}
   firePoint3: {fileID: 6551037135032267382}
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 0
+  walkPointRange: 20
   shootPrefab: {fileID: 901182402720252531, guid: 8370c3e46d65264449e0899a2b4fc6e0, type: 3}
+  sightRange: 50
+  attackRange: 20
+  playerInSightRange: 0
+  playerInAttackRange: 0
   isHit: 0
   posionParticles: {fileID: 9050658520201416140, guid: 807a515548344524897e85287286fb30, type: 3}
   deathParticles: {fileID: 2947199187110361257, guid: 06b34edfb46d09c45aecab44e5073dd4, type: 3}

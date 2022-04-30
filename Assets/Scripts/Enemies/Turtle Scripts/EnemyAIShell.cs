@@ -70,6 +70,8 @@ public class EnemyAIShell : MonoBehaviour
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         //if (playerInSightRange && playerInAttackRange) AttackPlayer();
 
+        this.transform.LookAt(player.position);
+
         if (hp <= 0)
         {
             Instantiate(deathParticles, transform.position, Quaternion.identity);

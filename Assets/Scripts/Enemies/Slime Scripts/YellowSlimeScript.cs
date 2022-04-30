@@ -10,10 +10,11 @@ public class YellowSlimeScript : MonoBehaviour
     private bool doneCounter;
 
     public NavMeshAgent agent;
-
-    public LayerMask Ground;
+    public LayerMask Ground, Player;
 
     public float hp;
+
+
 
     [SerializeField]
     Transform firePoint1, firePoint2, firePoint3;
@@ -27,6 +28,11 @@ public class YellowSlimeScript : MonoBehaviour
     public GameObject shootPrefab;
     private float nextShoot;
     private float fireRate;
+
+    //States
+    public float sightRange, attackRange;
+    public bool playerInSightRange;
+    public bool playerInAttackRange = false;
 
     //Player
     private Transform player;
@@ -63,7 +69,7 @@ public class YellowSlimeScript : MonoBehaviour
         nextShoot = 0;
         fireRate = 0.5f;
         hitted = false;
-        managerEnemies.counter += 1;
+        //managerEnemies.counter += 1;
         doneCounter = false;
         number = 0;
     }
@@ -71,7 +77,13 @@ public class YellowSlimeScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Patroling();
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, Player);
+        this.transform.LookAt(player.position);
+
+        if (!playerInSightRange && !playerInAttackRange) Patroling();
+        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+
+        
 
         if (Time.time >= nextShoot)
         {
@@ -122,6 +134,20 @@ public class YellowSlimeScript : MonoBehaviour
             walkPointSet = true;
         }
     }
+
+    void ChasePlayer()
+    {
+        if (Vector3.Distance(player.transform.position, this.transform.position) <= 10)
+        {
+            agent.isStopped = true;
+        }
+        else
+        {
+            agent.SetDestination(player.position);
+            agent.isStopped = false;
+        }
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {

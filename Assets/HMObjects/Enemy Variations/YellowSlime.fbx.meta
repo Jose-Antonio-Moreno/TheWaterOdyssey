@@ -6,7 +6,27 @@ ModelImporter:
   - first:
       74: 5862543501114407046
     second: Armature|Armature|Take 001|BaseLayer
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Body
+    second: {fileID: -8274133419916619345, guid: 8845468e803122e4dba4a348f2fc2051, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyeball
+    second: {fileID: -1179775610923492014, guid: 08a697b41f8062644bfc54633fbc4ae3, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Iris
+    second: {fileID: 3237051307333310163, guid: 770f8d2c07ec0cd4abce224d49da2817, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pupil
+    second: {fileID: 2100000, guid: d0b194b61ead240459cc1ae3258baeb2, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

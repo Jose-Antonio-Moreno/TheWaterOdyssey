@@ -66,6 +66,7 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        this.transform.LookAt(player.position);
         Patroling();
 
         if (Time.time >= nextShoot)

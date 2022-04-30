@@ -73,7 +73,6 @@ public class PurpleTurtle : MonoBehaviour
         if (hp <= 0)
         {
             Instantiate(deathParticles, transform.position, Quaternion.identity);
-            Explosion();
             Invoke("Death", 0.1f);
         }
     }
@@ -129,11 +128,10 @@ public class PurpleTurtle : MonoBehaviour
             Vector3 shootForce = direction1 * 80;
             aux.GetComponent<Rigidbody>().AddForce(shootForce);
         }
-
-        Debug.Log("SHOOT");
     }
     private void Death()
     {
+        Explosion();
         Destroy(this.gameObject);
         //if (!doneCounter)
         //{
