@@ -4,20 +4,21 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
 using DG.Tweening;
-enum Weapons
+public enum Weapons
 {
-    Basic,
     Auto,
     Shotgun,
-    Triple,
     Sniper,
-    Spray
+    Spray,
+    COUNT,
+    Basic,
+    Triple
 }
 
 public class Shooter : MonoBehaviour
 {
-    [SerializeField]
-    Weapons weapon = Weapons.Sniper;
+
+    public Weapons weapon = Weapons.Sniper;
     CinemachineImpulseSource impulse;
     GameObject _inputManager;
     Vector2 aimJoystick;
@@ -202,14 +203,21 @@ public class Shooter : MonoBehaviour
                 sprayAimDirection.x = aimDirection.x + Random.Range(-spraySpread, spraySpread);
                 sprayAimDirection.z = aimDirection.z + Random.Range(-spraySpread, spraySpread);
 
-                aux = Instantiate(shootPrefab, gameObject.transform.position + sprayAimDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
+                aux = Instantiate(shootPrefab, gameObject.transform.position + sprayAimDirection * 3f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
+                aux.GetComponent<SphereCollider>().isTrigger = true;
                 aux.GetComponent<BulletScript>().damage = 1;
-                aux.transform.localScale *= 1.2f;
+                float f = Random.Range(1.0f, 2.3f);
+                aux.transform.localScale *= f;
 
                 shootForce = sprayAimDirection * 100;
                 aux.GetComponent<Rigidbody>().AddForce(shootForce*0.4f);
                 aux.GetComponent<BulletScript>().destroyTime = 5;
-                SpawnShootParticles(1, 1);
+                int spawnOrNot = Random.Range(0, 2);
+                Debug.Log(spawnOrNot);
+                if(spawnOrNot != 0)
+                {
+                    SpawnShootParticles(1.5f, 1);
+                }
                 break;
             case Weapons.Shotgun:
                 shoot.Play();
@@ -306,4 +314,12 @@ public class Shooter : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("WeaponPedestal"))
+        {
+            weapon = other.GetComponent<WeaponPedestalScript>().pedestalWeapon;
+            Destroy(other.gameObject);
+        }
+    }
 }

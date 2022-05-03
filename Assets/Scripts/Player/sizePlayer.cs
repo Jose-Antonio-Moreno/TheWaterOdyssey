@@ -28,6 +28,8 @@ public class sizePlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale =1;
+
         life = 3;
         changed = false;
         hitted = false;
@@ -80,8 +82,7 @@ public class sizePlayer : MonoBehaviour
         if (Input.GetKeyDown("k"))
         {
             Death();
-        }
-        
+        }        
     }
 
     private void OnTriggerEnter(Collider other)
