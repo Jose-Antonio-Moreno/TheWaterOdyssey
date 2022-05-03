@@ -10,7 +10,8 @@ enum Weapons
     Auto,
     Shotgun,
     Triple,
-    Sniper
+    Sniper,
+    Spray
 }
 
 public class Shooter : MonoBehaviour
@@ -34,12 +35,14 @@ public class Shooter : MonoBehaviour
 
     bool hasAbility;
 
-    float shotgunSpread = 0.4f; 
+    float shotgunSpread = 0.4f;
     int shotgunCartridges = 15;
     float shotgunDrag = 2;
 
-    public ParticleSystem shootParticle;
+    float spraySpread = 0.6f;
 
+    public ParticleSystem shootParticle;
+    ParticleSystem particles;
     //Sounds
     public AudioSource shoot;
 
@@ -89,6 +92,9 @@ public class Shooter : MonoBehaviour
             case Weapons.Sniper:
                 fireRate = 1;
                 break;
+            case Weapons.Spray:
+                fireRate = 50;
+                break;
             default:
                 fireRate = 3;
                 break;
@@ -107,6 +113,8 @@ public class Shooter : MonoBehaviour
             Debug.Log(fireRate);
             nextShoot = Time.time + 1f / fireRate;
             Shoot();
+
+            //Si las armas no son automáticas
             if (weapon == Weapons.Basic || weapon == Weapons.Sniper || weapon == Weapons.Shotgun)
             {
                 shooting = false;
@@ -154,6 +162,7 @@ public class Shooter : MonoBehaviour
 
     }
 
+    
     void Shoot()
     {
         aimDirection.y = 0;
@@ -168,8 +177,11 @@ public class Shooter : MonoBehaviour
                 aux.GetComponent<BulletScript>().damage = 10;
                 shootForce = aimDirection * 100;
                 aux.GetComponent<Rigidbody>().AddForce(shootForce);
-                ParticleSystem a = Instantiate(shootParticle, gameObject.transform.position + aimDirection, Quaternion.identity);
-                a.transform.LookAt(gameObject.transform.position + aimDirection);
+
+                particles = Instantiate(shootParticle, gameObject.transform.position + aimDirection * 0.5f, Quaternion.identity);
+                particles.transform.LookAt(gameObject.transform.position + aimDirection);
+
+                //Destroy(particles.gameObject, 0.6f);
                 break;
             case Weapons.Auto:
                 shoot.Play();
@@ -178,9 +190,26 @@ public class Shooter : MonoBehaviour
                 aux.GetComponent<BulletScript>().damage = 5;
                 shootForce = aimDirection * 100;
                 aux.GetComponent<Rigidbody>().AddForce(shootForce);
-                a = Instantiate(shootParticle, gameObject.transform.position + aimDirection*0.5f, Quaternion.identity);
-                a.transform.LookAt(gameObject.transform.position + aimDirection);
 
+                SpawnShootParticles(1, 1);
+
+                break;
+            case Weapons.Spray:
+                shoot.Play();
+                Shake();
+
+                Vector3 sprayAimDirection = aimDirection;
+                sprayAimDirection.x = aimDirection.x + Random.Range(-spraySpread, spraySpread);
+                sprayAimDirection.z = aimDirection.z + Random.Range(-spraySpread, spraySpread);
+
+                aux = Instantiate(shootPrefab, gameObject.transform.position + sprayAimDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
+                aux.GetComponent<BulletScript>().damage = 1;
+                aux.transform.localScale *= 1.2f;
+
+                shootForce = sprayAimDirection * 100;
+                aux.GetComponent<Rigidbody>().AddForce(shootForce*0.4f);
+                aux.GetComponent<BulletScript>().destroyTime = 5;
+                SpawnShootParticles(1, 1);
                 break;
             case Weapons.Shotgun:
                 shoot.Play();
@@ -198,6 +227,9 @@ public class Shooter : MonoBehaviour
                     aux.GetComponent<Rigidbody>().drag = shotgunDrag;
 
                 }
+
+                SpawnShootParticles(2f, 2);
+
                 break;
             case Weapons.Triple:
                 shoot.Play();
@@ -205,42 +237,55 @@ public class Shooter : MonoBehaviour
                 float angle = 15 * Mathf.Deg2Rad;
                 //Right
                 Vector3 tripleDirection = aimDirection;
-                tripleDirection.x = aimDirection.x * Mathf.Cos(angle) - aimDirection.y * Mathf.Sin(angle);
-                tripleDirection.z = aimDirection.z * Mathf.Sin(angle) + aimDirection.y * Mathf.Cos(angle);
-                aux = Instantiate(shootPrefab, gameObject.transform.position + tripleDirection * 1.5f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
+                tripleDirection.x = tripleDirection.x * Mathf.Cos(angle) - tripleDirection.y * Mathf.Sin(angle);
+                tripleDirection.z = tripleDirection.z * Mathf.Sin(angle) + tripleDirection.y * Mathf.Cos(angle);
+                aux = Instantiate(shootPrefab, gameObject.transform.position + tripleDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
                 aux.GetComponent<BulletScript>().damage = 10;
                 shootForce = tripleDirection * 100;
                 aux.GetComponent<Rigidbody>().AddForce(shootForce);
 
                 //Center
                 tripleDirection = aimDirection;
-                aux = Instantiate(shootPrefab, gameObject.transform.position + tripleDirection * 1.5f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
+                aux = Instantiate(shootPrefab, gameObject.transform.position + tripleDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
                 aux.GetComponent<BulletScript>().damage = 10;
                 shootForce = tripleDirection * 100;
                 aux.GetComponent<Rigidbody>().AddForce(shootForce);
 
                 //Left
-                tripleDirection = aimDirection;
-                tripleDirection.x = aimDirection.x * Mathf.Cos(-angle) - aimDirection.y * Mathf.Sin(-angle);
-                tripleDirection.z = aimDirection.z * Mathf.Sin(-angle) + aimDirection.y * Mathf.Cos(-angle);
-                aux = Instantiate(shootPrefab, gameObject.transform.position + tripleDirection * 1.5f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
-                aux.GetComponent<BulletScript>().damage = 10;
-                shootForce = tripleDirection * 100;
-                aux.GetComponent<Rigidbody>().AddForce(shootForce);
+                //angle = 345 * Mathf.Deg2Rad;
+                //tripleDirection = aimDirection;
+                //tripleDirection.x = tripleDirection.x * Mathf.Cos(angle) - tripleDirection.y * Mathf.Sin(angle);
+                //tripleDirection.z = tripleDirection.z * Mathf.Sin(angle) + tripleDirection.y * Mathf.Cos(angle);
+                //aux = Instantiate(shootPrefab, gameObject.transform.position + tripleDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
+                //aux.GetComponent<BulletScript>().damage = 10;
+                //shootForce = tripleDirection * 100;
+                //aux.GetComponent<Rigidbody>().AddForce(shootForce);
                 break;
             case Weapons.Sniper:
                 shoot.Play();
                 Shake();
                 aux = Instantiate(shootPrefab, gameObject.transform.position + aimDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
+                aux.transform.localScale *= 1.5f;
                 aux.GetComponent<BulletScript>().damage = 50;
                 shootForce = aimDirection * 100;
                 aux.GetComponent<Rigidbody>().AddForce(shootForce * 3);
-                break;
+                SpawnShootParticles(1.5f, 3);
+                break;                    
             default:
                 break;
         }
     }
 
+    void SpawnShootParticles(float particlesScale, int particlesNumber)
+    {
+        for (int i = 0; i < particlesNumber; i++)
+        {
+            particles = Instantiate(shootParticle, gameObject.transform.position + aimDirection * 0.5f, Quaternion.identity);
+            particles.gameObject.transform.localScale *= particlesScale;
+            particles.transform.LookAt(gameObject.transform.position + aimDirection);
+            Destroy(particles.gameObject, 0.6f);
+        }
+    }
 
     void ShootBigDrop() {
 

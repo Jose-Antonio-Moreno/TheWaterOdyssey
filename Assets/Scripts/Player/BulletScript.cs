@@ -7,7 +7,7 @@ public class BulletScript : MonoBehaviour
 {
     CinemachineImpulseSource impulse;
     
-    float destroyTime;
+    public float destroyTime;
     bool hasAbility;
     public PhysicMaterial bouncines;
     public Material poisonColor;
@@ -43,7 +43,7 @@ public class BulletScript : MonoBehaviour
         //gameObject.SetActive(false);
         if (other.CompareTag("Enemy"))
         {
-            Instantiate(hitParticle, transform.position, Quaternion.identity);
+            //Instantiate(hitParticle, transform.position, Quaternion.identity);
             impulse.GenerateImpulse(1f);
             GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.POISON, out hasAbility);
             if (hasAbility) 
@@ -67,7 +67,7 @@ public class BulletScript : MonoBehaviour
 
         if (other.CompareTag("Dummy"))
         {
-            Instantiate(hitParticle, transform.position, Quaternion.identity);
+            //Instantiate(hitParticle, transform.position, Quaternion.identity);
             impulse.GenerateImpulse(1f);
             GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.POISON, out hasAbility);
             if (hasAbility)
@@ -78,12 +78,17 @@ public class BulletScript : MonoBehaviour
             }
             Invoke("des", 0.1f);
         }
+        if (!other.CompareTag("Bullet"))
+        {
+            Invoke("des", destroyTime);
 
-        Invoke("des", destroyTime);
+        }
     }
 
     private void des()
     {
+        Instantiate(hitParticle, transform.position, Quaternion.identity);
+
         Destroy(this.gameObject);
     }
 }
