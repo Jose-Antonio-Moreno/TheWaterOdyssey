@@ -3,40 +3,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
-public class EnemyAIShell : MonoBehaviour
+public class EnemyAI : MonoBehaviour
 {
     public triggerEnemies managerEnemies;
     private bool doneCounter;
 
     public NavMeshAgent agent;
-   
-    private Transform player;
-    private sizePlayer lifePlayer;
 
-    public LayerMask Ground, Player;
+    public LayerMask Ground;
 
+    public float hp;
     //Patroling
     public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
 
-    //Attacking
-    public float timeBetweenAttacks;
-    bool alreadyAttacked;
+    //Bullet
+    public GameObject shootPrefab;
+    private float nextShoot;
+    private float fireRate;
 
-    //States
-    public float sightRange, attackRange;
-    public bool playerInSightRange;
-    public bool playerInAttackRange = false;
-
-    public float hp;
+    //Player
+    private Transform player;
+    private sizePlayer lifePlayer;
+    private bool hitted;
 
     //Checker
     public bool isHit;
+    bool droped;
 
-    //particle System
-    public ParticleSystem poisonParticles;
+    //Particles
+    public ParticleSystem posionParticles;
     public ParticleSystem deathParticles;
 
     //Drops
@@ -45,50 +42,55 @@ public class EnemyAIShell : MonoBehaviour
 
     //Sounds
     public AudioSource splash;
+    public AudioSource shoot;
+
+    private float number;
 
     // Start is called before the first frame update
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         lifePlayer = player.GetComponent<sizePlayer>();
-        agent = GetComponent<NavMeshAgent>();
-
-        hp = 90;
+        //Slime Health (damage Basic Shoot = 10)
+        hp = 50;
         isHit = false;
-        managerEnemies.counter+=1;
+        nextShoot = 0;
+        fireRate = 0.5f;
+        hitted = false;
+        managerEnemies.counter += 1;
         doneCounter = false;
+        number = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Check for sight and attack range
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, Player);
-        //playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, Player);
+        this.transform.LookAt(player.position);
+        Patroling();
 
-        if(!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        //if (playerInSightRange && playerInAttackRange) AttackPlayer();
+        if (Time.time >= nextShoot)
+        {
+            number = Random.Range(0.5f, 1.5f);
+            nextShoot = Time.time + number / fireRate;
+            Shoot();
+        }
 
         if (hp <= 0)
         {
+            droped = true;
             Instantiate(deathParticles, transform.position, Quaternion.identity);
-            Invoke("Death", 0.1f);
-            /*
-            int number = Random.Range(0, 2);
-            switch (number)
+
+            if (droped) 
             {
-                case 0:
-                    Instantiate(healBubble, transform.position, Quaternion.identity);
-                    break;
-                case 1:
-                    Instantiate(coin, transform.position, Quaternion.identity);
-                    break;
-                case 2:
-                    break;
+                Invoke("Drop", 0.1f);
+                droped = false;
             }
-            */
+            
+            Invoke("Death", 0.1f);
+            //Death();
         }
+
     }
 
     void Patroling()
@@ -115,12 +117,6 @@ public class EnemyAIShell : MonoBehaviour
         {
             walkPointSet = true;
         }
-        
-    }
-
-    void ChasePlayer()
-    {
-        agent.SetDestination(player.position);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -130,11 +126,16 @@ public class EnemyAIShell : MonoBehaviour
             splash.Play();
             float colorTime = 0.1f;
             var sequence = DOTween.Sequence();
-            sequence.Insert(0,gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.red, colorTime));
+            sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.red, colorTime));
             sequence.Insert(colorTime, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.white, colorTime));
             hp -= other.GetComponent<BulletScript>().damage;
-
             isHit = true;
+        }
+        if (other.CompareTag("Player") && !hitted)
+        {
+            lifePlayer.life--;
+            lifePlayer.changed = false;
+            hitted = true;
         }
 
         if (other.CompareTag("BigDrop"))
@@ -146,15 +147,53 @@ public class EnemyAIShell : MonoBehaviour
             hp -= other.GetComponent<BulletScript>().damage;
             isHit = true;
         }
+
+
     }
-    
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            hitted = false;
+        }
+    }
     private void Death()
     {
-        if (!doneCounter)
-        {
-            managerEnemies.counter -= 1;
-            doneCounter = true;
-        }
+        //if (!doneCounter)
+        //{
+        //    managerEnemies.counter -= 1;
+        //    doneCounter = true;
+        //}
+        
         Destroy(this.gameObject);
+    }
+
+    private void Drop() 
+    {
+        /*
+        //Falta rotar la moneda
+        int number = Random.RandomRange(0, 2);
+        switch (number)
+        {
+            case 0:
+                Instantiate(healBubble, transform.position, Quaternion.identity);
+                break;
+            case 1:
+                Instantiate(coin, transform.position, Quaternion.identity);
+                break;
+            case 2:
+                break;
+        }
+        */
+    }
+
+    void Shoot()
+    {
+        shoot.Play();
+        Vector3 direction = (player.position - this.transform.position).normalized;
+        Vector3 bulletPosition = new Vector3(gameObject.transform.position.x, player.transform.position.y, gameObject.transform.position.z);
+        GameObject aux = Instantiate(shootPrefab, bulletPosition + direction * 1f, Quaternion.identity);
+        Vector3 shootForce = direction * 50;
+        aux.GetComponent<Rigidbody>().AddForce(shootForce);
     }
 }
