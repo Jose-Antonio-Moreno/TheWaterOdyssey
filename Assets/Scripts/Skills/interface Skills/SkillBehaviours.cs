@@ -36,6 +36,15 @@ public class SkillBehaviours : MonoBehaviour, Skill_Interface
     {
 
     }
+    public void ActivateShieldBubble() 
+    {
+
+    }
+
+    public void ActivateBigBubble() 
+    {
+
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -54,23 +63,40 @@ public class SkillBehaviours : MonoBehaviour, Skill_Interface
         while (poisonCounter < 10) 
         {
             yield return new WaitForSeconds(1);
-            if (gameObject.GetComponent<EnemyAIShell>()) 
+            if (gameObject.GetComponent<EnemyAIShell>())
             {
-                gameObject.GetComponent<EnemyAIShell>().hp -= 0.2f;
+                gameObject.GetComponent<EnemyAIShell>().hp -= 2.5f;
                 float colorTime = 0.1f;
                 var sequence = DOTween.Sequence();
                 sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.green, colorTime));
                 sequence.Insert(colorTime, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.white, colorTime));
-                Instantiate(gameObject.GetComponent<EnemyAIShell>().poisonParticles, gameObject.GetComponent<EnemyAIShell>().transform.position, transform.rotation);
+                Instantiate(gameObject.GetComponent<EnemyAIShell>().poisonParticles, gameObject.GetComponent<EnemyAIShell>().transform.position, Quaternion.identity);
             }
             else if (gameObject.GetComponent<EnemyAI>())
             {
-                gameObject.GetComponent<EnemyAI>().hp -= 0.2f;
+                gameObject.GetComponent<EnemyAI>().hp -= 2.5f;
                 float colorTime = 0.1f;
                 var sequence = DOTween.Sequence();
                 sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.green, colorTime));
                 sequence.Insert(colorTime, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.white, colorTime));
-                Instantiate(gameObject.GetComponent<EnemyAI>().posionParticles, gameObject.GetComponent<EnemyAI>().transform.position, transform.rotation);
+                Instantiate(gameObject.GetComponent<EnemyAI>().posionParticles, gameObject.GetComponent<EnemyAI>().transform.position, Quaternion.identity);
+            }
+            else if (gameObject.GetComponent<EnemyAIQuadShoot>()) 
+            {
+                gameObject.GetComponent<EnemyAIQuadShoot>().hp -= 2.5f;
+                float colorTime = 0.1f;
+                var sequence = DOTween.Sequence();
+                sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.green, colorTime));
+                sequence.Insert(colorTime, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.white, colorTime));
+                Instantiate(gameObject.GetComponent<EnemyAIQuadShoot>().posionParticles, gameObject.GetComponent<EnemyAIQuadShoot>().transform.position, Quaternion.identity);
+            }
+            else if (gameObject.GetComponent<Dummy>())
+            {
+                float colorTime = 0.1f;
+                var sequence = DOTween.Sequence();
+                sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.green, colorTime));
+                sequence.Insert(colorTime, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.white, colorTime));
+                Instantiate(gameObject.GetComponent<Dummy>().posionParticles, gameObject.GetComponent<Dummy>().transform.position, Quaternion.identity);
             }
         }
         poisonCounter = 0;

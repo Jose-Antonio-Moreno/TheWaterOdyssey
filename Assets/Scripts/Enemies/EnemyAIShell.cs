@@ -6,9 +6,13 @@ using UnityEngine.AI;
 
 public class EnemyAIShell : MonoBehaviour
 {
-    public NavMeshAgent agent;
+    public triggerEnemies managerEnemies;
+    private bool doneCounter;
 
+    public NavMeshAgent agent;
+   
     private Transform player;
+    private sizePlayer lifePlayer;
 
     public LayerMask Ground, Player;
 
@@ -33,16 +37,26 @@ public class EnemyAIShell : MonoBehaviour
 
     //particle System
     public ParticleSystem poisonParticles;
+    public ParticleSystem deathParticles;
+
+    //Drops
+    public GameObject healBubble;
+    public GameObject coin;
+
+    //Sounds
+    public AudioSource splash;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        lifePlayer = player.GetComponent<sizePlayer>();
         agent = GetComponent<NavMeshAgent>();
 
-        hp = 3;
+        hp = 90;
         isHit = false;
-
+        managerEnemies.counter+=1;
+        doneCounter = false;
     }
 
     // Update is called once per frame
@@ -58,7 +72,22 @@ public class EnemyAIShell : MonoBehaviour
 
         if (hp <= 0)
         {
-            Death();
+            Instantiate(deathParticles, transform.position, Quaternion.identity);
+            Invoke("Death", 0.1f);
+            /*
+            int number = Random.Range(0, 2);
+            switch (number)
+            {
+                case 0:
+                    Instantiate(healBubble, transform.position, Quaternion.identity);
+                    break;
+                case 1:
+                    Instantiate(coin, transform.position, Quaternion.identity);
+                    break;
+                case 2:
+                    break;
+            }
+            */
         }
     }
 
@@ -86,6 +115,7 @@ public class EnemyAIShell : MonoBehaviour
         {
             walkPointSet = true;
         }
+        
     }
 
     void ChasePlayer()
@@ -97,22 +127,34 @@ public class EnemyAIShell : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
+            splash.Play();
             float colorTime = 0.1f;
             var sequence = DOTween.Sequence();
             sequence.Insert(0,gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.red, colorTime));
             sequence.Insert(colorTime, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.white, colorTime));
+            hp -= other.GetComponent<BulletScript>().damage;
 
-            //Vector3 v = other.GetComponent<Transform>().position - gameObject.transform.position;
-            //gameObject.GetComponent<Rigidbody>().AddForce(v * 1000);
+            isHit = true;
+        }
 
-            hp--;
+        if (other.CompareTag("BigDrop"))
+        {
+            float colorTime = 0.1f;
+            var sequence = DOTween.Sequence();
+            sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.red, colorTime));
+            sequence.Insert(colorTime, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.white, colorTime));
+            hp -= other.GetComponent<BulletScript>().damage;
             isHit = true;
         }
     }
-
+    
     private void Death()
     {
-
+        if (!doneCounter)
+        {
+            managerEnemies.counter -= 1;
+            doneCounter = true;
+        }
         Destroy(this.gameObject);
     }
 }
