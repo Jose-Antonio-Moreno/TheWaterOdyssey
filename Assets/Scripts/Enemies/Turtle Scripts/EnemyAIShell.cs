@@ -3,37 +3,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-public class EnemyAI : MonoBehaviour
+
+public class EnemyAIShell : MonoBehaviour
 {
     public triggerEnemies managerEnemies;
     private bool doneCounter;
 
     public NavMeshAgent agent;
+   
+    private Transform player;
+    private sizePlayer lifePlayer;
 
-    public LayerMask Ground;
+    public LayerMask Ground, Player;
 
-    public float hp;
     //Patroling
     public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
 
-    //Bullet
-    public GameObject shootPrefab;
-    private float nextShoot;
-    private float fireRate;
+    //Attacking
+    public float timeBetweenAttacks;
+    bool alreadyAttacked;
 
-    //Player
-    private Transform player;
-    private sizePlayer lifePlayer;
-    private bool hitted;
+    //States
+    public float sightRange, attackRange;
+    public bool playerInSightRange;
+    public bool playerInAttackRange = false;
+
+    public float hp;
 
     //Checker
     public bool isHit;
-    bool droped;
 
-    //Particles
-    public ParticleSystem posionParticles;
+    //particle System
+    public ParticleSystem poisonParticles;
     public ParticleSystem deathParticles;
 
     //Drops
@@ -42,54 +45,52 @@ public class EnemyAI : MonoBehaviour
 
     //Sounds
     public AudioSource splash;
-    public AudioSource shoot;
-
-    private float number;
 
     // Start is called before the first frame update
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         lifePlayer = player.GetComponent<sizePlayer>();
-        //Slime Health (damage Basic Shoot = 10)
-        hp = 50;
+        agent = GetComponent<NavMeshAgent>();
+
+        hp = 90;
         isHit = false;
-        nextShoot = 0;
-        fireRate = 0.5f;
-        hitted = false;
-        managerEnemies.counter += 1;
+        managerEnemies.counter+=1;
         doneCounter = false;
-        number = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Patroling();
+        //Check for sight and attack range
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, Player);
+        //playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, Player);
 
-        if (Time.time >= nextShoot)
-        {
-            number = Random.Range(0.5f, 1.5f);
-            nextShoot = Time.time + number / fireRate;
-            Shoot();
-        }
+        if(!playerInSightRange && !playerInAttackRange) Patroling();
+        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+        //if (playerInSightRange && playerInAttackRange) AttackPlayer();
+
+        this.transform.LookAt(player.position);
 
         if (hp <= 0)
         {
-            droped = true;
             Instantiate(deathParticles, transform.position, Quaternion.identity);
-
-            if (droped) 
-            {
-                Invoke("Drop", 0.1f);
-                droped = false;
-            }
-            
             Invoke("Death", 0.1f);
-            //Death();
+            /*
+            int number = Random.Range(0, 2);
+            switch (number)
+            {
+                case 0:
+                    Instantiate(healBubble, transform.position, Quaternion.identity);
+                    break;
+                case 1:
+                    Instantiate(coin, transform.position, Quaternion.identity);
+                    break;
+                case 2:
+                    break;
+            }
+            */
         }
-
     }
 
     void Patroling()
@@ -116,6 +117,12 @@ public class EnemyAI : MonoBehaviour
         {
             walkPointSet = true;
         }
+        
+    }
+
+    void ChasePlayer()
+    {
+        agent.SetDestination(player.position);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -125,16 +132,11 @@ public class EnemyAI : MonoBehaviour
             splash.Play();
             float colorTime = 0.1f;
             var sequence = DOTween.Sequence();
-            sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.red, colorTime));
+            sequence.Insert(0,gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.red, colorTime));
             sequence.Insert(colorTime, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.white, colorTime));
             hp -= other.GetComponent<BulletScript>().damage;
+
             isHit = true;
-        }
-        if (other.CompareTag("Player") && !hitted)
-        {
-            lifePlayer.life--;
-            lifePlayer.changed = false;
-            hitted = true;
         }
 
         if (other.CompareTag("BigDrop"))
@@ -146,16 +148,8 @@ public class EnemyAI : MonoBehaviour
             hp -= other.GetComponent<BulletScript>().damage;
             isHit = true;
         }
-
-
     }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            hitted = false;
-        }
-    }
+    
     private void Death()
     {
         if (!doneCounter)
@@ -163,36 +157,6 @@ public class EnemyAI : MonoBehaviour
             managerEnemies.counter -= 1;
             doneCounter = true;
         }
-        
         Destroy(this.gameObject);
-    }
-
-    private void Drop() 
-    {
-        /*
-        //Falta rotar la moneda
-        int number = Random.RandomRange(0, 2);
-        switch (number)
-        {
-            case 0:
-                Instantiate(healBubble, transform.position, Quaternion.identity);
-                break;
-            case 1:
-                Instantiate(coin, transform.position, Quaternion.identity);
-                break;
-            case 2:
-                break;
-        }
-        */
-    }
-
-    void Shoot()
-    {
-        shoot.Play();
-        Vector3 direction = (player.position - this.transform.position).normalized;
-        Vector3 bulletPosition = new Vector3(gameObject.transform.position.x, player.transform.position.y, gameObject.transform.position.z);
-        GameObject aux = Instantiate(shootPrefab, bulletPosition + direction * 1f, Quaternion.identity);
-        Vector3 shootForce = direction * 50;
-        aux.GetComponent<Rigidbody>().AddForce(shootForce);
     }
 }
