@@ -15,6 +15,7 @@ public class BulletScript : MonoBehaviour
     public ParticleSystem hitParticle;
     public float damage;
 
+    bool isBouncy = false;
 
     private void Start()
     {
@@ -28,6 +29,7 @@ public class BulletScript : MonoBehaviour
         {
             transform.GetChild(0).GetComponent<SphereCollider>().material = bouncines;
             destroyTime = 2;
+            isBouncy = true;
         }
         else { destroyTime = 0.75f; }
         GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.BIGBUBBLE, out hasAbility);
@@ -43,16 +45,23 @@ public class BulletScript : MonoBehaviour
         //gameObject.SetActive(false);
         if (other.CompareTag("Enemy"))
         {
-            //Instantiate(hitParticle, transform.position, Quaternion.identity);
-            impulse.GenerateImpulse(1f);
-            GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.POISON, out hasAbility);
-            if (hasAbility) 
+            if (isBouncy) 
             {
-                //gameObject.GetComponent<Renderer>().material.color = Color.green;
-                Skill_Interface skill = other.gameObject.GetComponent<SkillBehaviours>();
-                skill.ActivatePoison();
+                Instantiate(hitParticle, transform.position, Quaternion.identity);
             }
-            Invoke("des", 0.1f);
+            else 
+            {
+                Instantiate(hitParticle, transform.position, Quaternion.identity);
+                impulse.GenerateImpulse(1f);
+                GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.POISON, out hasAbility);
+                if (hasAbility)
+                {
+                    //gameObject.GetComponent<Renderer>().material.color = Color.green;
+                    Skill_Interface skill = other.gameObject.GetComponent<SkillBehaviours>();
+                    skill.ActivatePoison();
+                }
+                Invoke("des", 0.1f);
+            }
         }
 
         GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.SHIELDBUBBLE, out hasAbility);
@@ -64,6 +73,8 @@ public class BulletScript : MonoBehaviour
                 Instantiate(hitParticle, transform.position, Quaternion.identity);
             }
         }
+
+        
 
         if (other.CompareTag("Dummy"))
         {
