@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LifeSystem : MonoBehaviour
 {
@@ -20,7 +21,9 @@ public class LifeSystem : MonoBehaviour
     {
         if (life <= 0)
         {
-            //IsDeath
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
         }
         else 
         {

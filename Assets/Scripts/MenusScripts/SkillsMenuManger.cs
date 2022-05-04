@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class SkillsMenuManger : MonoBehaviour
@@ -11,8 +12,29 @@ public class SkillsMenuManger : MonoBehaviour
     GameObject player;
     private GameObject botones;
 
+    public Canvas hud;
+
+    public Dropdown resolutionDropdown;
+    Resolution[] resolutions;
     private void Start()
     {
+       resolutions =  Screen.resolutions;
+        resolutionDropdown.ClearOptions();
+
+        List<string> options = new List<string>();
+        int currentResolution=0;
+        for (int i = 0; i < resolutions.Length; i++) {
+
+            string option = resolutions[i].width + " x " + resolutions[i].height;
+            options.Add(option);
+
+            if (resolutions[i].width == Screen.currentResolution.width && 
+                resolutions[i].height == Screen.currentResolution.height) currentResolution = i;
+        }
+        resolutionDropdown.AddOptions(options);
+        resolutionDropdown.value = currentResolution;
+        resolutionDropdown.RefreshShownValue();
+
         PlayerControlls controller;
         controller = _inputManager.GetComponent<InputsController>().globalControls;
         controller.Gameplay.Pause.started += ctx => setSkillMenuPanel();
@@ -28,16 +50,43 @@ public class SkillsMenuManger : MonoBehaviour
     {
         if (botones.active == true)
         {
+            hud.enabled = true;
             botones.SetActive(false);
             Time.timeScale = 1f;
 
         }
         else if (botones.active == false)
         {
+            hud.enabled = false;
             botones.SetActive(true);
             Time.timeScale = 0f;
         }
     }
+
+    public void setQuality(int qualityIndex) {
+
+        QualitySettings.SetQualityLevel(qualityIndex);
+    
+    }
+
+    public void SetFullScreen(bool isFullScreen)
+    {
+
+        Screen.fullScreen = isFullScreen;
+
+    }
+
+    public void SetResolution(int resolutionIndex) {
+
+        Resolution resolution = resolutions[resolutionIndex];
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    
+    }
+    public void SetVolume() { 
+    
+    
+    }
+
     public void goMenu()
     {
         Time.timeScale = 1f;

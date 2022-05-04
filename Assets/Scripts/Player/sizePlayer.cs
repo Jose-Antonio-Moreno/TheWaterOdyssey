@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class sizePlayer : MonoBehaviour
 {
     public GameObject player;
 
-    public int life;
+    public int life, maxLife;
+    public Image[] vidas;
+    public Sprite burbujaLlena, burbujaVacia;
 
     public bool changed;
 
@@ -18,6 +21,8 @@ public class sizePlayer : MonoBehaviour
     float invulnerabilityTime;
     bool isInvulnerable;
 
+    public GameObject deathMenu;
+
     public ParticleSystem hitParticles;
 
     //Sounds
@@ -26,6 +31,8 @@ public class sizePlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale =1;
+        maxLife = 5;
         life = 3;
         changed = false;
         hitted = false;
@@ -33,10 +40,24 @@ public class sizePlayer : MonoBehaviour
         invulnerabilityTime = 0;
         isInvulnerable = false;
     }
+    float timePassed = 0;
+    float maxTime = 0.5f;
 
     // Update is called once per frame
     void Update()
     {
+        if (life > maxLife)life = maxLife;
+        
+        for (int i = 0; i < vidas.Length; i++)
+        {
+            if (i < life)vidas[i].sprite = burbujaLlena;
+            else vidas[i].sprite = burbujaVacia;
+
+            if (i < maxLife)vidas[i].enabled = true;
+            else vidas[i].enabled = false;
+
+        }
+
         if (life == 5 && !changed)
         {
             player.transform.localScale = new Vector3(140f, 140f, 140f);
@@ -64,10 +85,19 @@ public class sizePlayer : MonoBehaviour
         }
         if (life <= 0)
         {
+            if(timePassed < maxTime)
+            {
+                timePassed += Time.deltaTime;
+            }
+            Time.timeScale = Mathf.Lerp(1, 0.05f, timePassed / maxTime);
+
             Death();
         }
         //Debug.Log(life);
-        
+        if (Input.GetKeyDown("k"))
+        {
+            Death();
+        }        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -117,8 +147,14 @@ public class sizePlayer : MonoBehaviour
 
     private void Death()
     {
-        SceneManager.LoadScene("MainMenu");
-        //Destroy(this.gameObject);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        deathMenu.SetActive(true);
+        //Destroy(player.transform.GetChild(0).gameObject);
+        player.transform.parent.GetChild(1).gameObject.SetActive(false);
+        player.GetComponent<Shooter>().enabled = false;
+        player.GetComponent<Movement_2>().enabled = false;
+       
+
     }
 
     void Invulnerability() 

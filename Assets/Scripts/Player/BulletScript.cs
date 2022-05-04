@@ -7,7 +7,7 @@ public class BulletScript : MonoBehaviour
 {
     CinemachineImpulseSource impulse;
     
-    float destroyTime;
+    public float destroyTime;
     bool hasAbility;
     public PhysicMaterial bouncines;
     public Material poisonColor;
@@ -96,12 +96,17 @@ public class BulletScript : MonoBehaviour
                 Invoke("des", 0.1f);
             }
         }
+        if (!other.CompareTag("Bullet"))
+        {
+            Invoke("des", destroyTime);
 
-        Invoke("des", destroyTime);
+        }
     }
 
     private void des()
     {
+        Instantiate(hitParticle, transform.position, Quaternion.identity);
+
         Destroy(this.gameObject);
     }
 }
