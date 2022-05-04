@@ -53,13 +53,14 @@ public class EnemyAIQuadShoot : MonoBehaviour
         isHit = false;
         nextShoot = 0;
         fireRate = 0.8f;
-        managerEnemies.counter += 1;
+        //managerEnemies.counter += 1;
     }
 
     // Update is called once per frame
     void Update()
     {
         Patroling();
+        this.transform.LookAt(player.position);
 
         if (Time.time >= nextShoot)
         {

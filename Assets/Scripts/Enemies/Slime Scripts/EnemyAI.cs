@@ -10,7 +10,7 @@ public class EnemyAI : MonoBehaviour
 
     public NavMeshAgent agent;
 
-    public LayerMask Ground;
+    public LayerMask Ground, Player;
 
     public float hp;
     //Patroling
@@ -31,6 +31,10 @@ public class EnemyAI : MonoBehaviour
     //Checker
     public bool isHit;
     bool droped;
+
+    public float sightRange, attackRange;
+    public bool playerInSightRange;
+    public bool playerInAttackRange = false;
 
     //Particles
     public ParticleSystem posionParticles;
@@ -58,7 +62,7 @@ public class EnemyAI : MonoBehaviour
         nextShoot = 0;
         fireRate = 0.5f;
         hitted = false;
-        managerEnemies.counter += 1;
+        //managerEnemies.counter += 1;
         doneCounter = false;
         number = 0;
     }
@@ -66,12 +70,17 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, Player);
         this.transform.LookAt(player.position);
-        Patroling();
+
+        if (!playerInSightRange && !playerInAttackRange) Patroling();
+        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+
+
 
         if (Time.time >= nextShoot)
         {
-            number = Random.Range(0.5f, 1.5f);
+            number = Random.Range(0.4f, 0.8f);
             nextShoot = Time.time + number / fireRate;
             Shoot();
         }
@@ -81,12 +90,12 @@ public class EnemyAI : MonoBehaviour
             droped = true;
             Instantiate(deathParticles, transform.position, Quaternion.identity);
 
-            if (droped) 
+            if (droped)
             {
                 Invoke("Drop", 0.1f);
                 droped = false;
             }
-            
+
             Invoke("Death", 0.1f);
             //Death();
         }
@@ -116,6 +125,19 @@ public class EnemyAI : MonoBehaviour
         if (Physics.Raycast(walkPoint, -transform.up, 2f, Ground))
         {
             walkPointSet = true;
+        }
+    }
+
+    void ChasePlayer()
+    {
+        if (Vector3.Distance(player.transform.position, this.transform.position) <= 10)
+        {
+            agent.isStopped = true;
+        }
+        else
+        {
+            agent.SetDestination(player.position);
+            agent.isStopped = false;
         }
     }
 
