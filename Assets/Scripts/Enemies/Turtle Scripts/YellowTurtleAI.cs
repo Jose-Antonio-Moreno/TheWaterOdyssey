@@ -51,7 +51,7 @@ public class YellowTurtleAI : MonoBehaviour
 
         hp = 90;
         isHit = false;
-        managerEnemies.counter += 1;
+        //managerEnemies.counter += 1;
         doneCounter = false;
     }
 
@@ -62,7 +62,7 @@ public class YellowTurtleAI : MonoBehaviour
 
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
 
-        KeepDistance();
+        //KeepDistance();
 
         if (hp <= 0)
         {
@@ -75,15 +75,15 @@ public class YellowTurtleAI : MonoBehaviour
         agent.SetDestination(player.position);
     }
 
-    void KeepDistance() 
-    {
-        // Modul del vector
-        float aux  = Vector3.Distance(nearEnemy.transform.position, this.transform.position);
-        if (aux <= maxDistance) 
-        {
-            transform.position = (transform.position - nearEnemy.transform.position).normalized * aux + nearEnemy.transform.position;
-        }
-    }
+    //void KeepDistance() 
+    //{
+    //    // Modul del vector
+    //    float aux  = Vector3.Distance(nearEnemy.transform.position, this.transform.position);
+    //    if (aux <= maxDistance) 
+    //    {
+    //        transform.position = (transform.position - nearEnemy.transform.position).normalized * aux + nearEnemy.transform.position;
+    //    }
+    //}
 
 
     private void OnTriggerEnter(Collider other)
@@ -113,11 +113,11 @@ public class YellowTurtleAI : MonoBehaviour
 
     private void Death()
     {
-        if (!doneCounter)
-        {
-            managerEnemies.counter -= 1;
-            doneCounter = true;
-        }
+        //if (!doneCounter)
+        //{
+        //    managerEnemies.counter -= 1;
+        //    doneCounter = true;
+        //}
         Destroy(this.gameObject);
     }
 }

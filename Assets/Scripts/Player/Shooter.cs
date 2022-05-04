@@ -19,7 +19,7 @@ public enum Weapons
 public class Shooter : MonoBehaviour
 {
     [SerializeField]
-    Image[] weapons;
+    Image[] weaponsImage;
    
 
     public Weapons weapon = Weapons.Sniper;
@@ -69,7 +69,7 @@ public class Shooter : MonoBehaviour
         if (weapon == Weapons.Basic)
             weapon = Weapons.Auto;
         else
-            weapon = Weapons.Basic;
+            weapon = Weapons.Auto;
     }
 
     float nextShoot = 0;
@@ -81,12 +81,10 @@ public class Shooter : MonoBehaviour
        
 
 
-        for (int i = 0; i < weapons.Length; i++)
+        for (int i = 0; i < weaponsImage.Length; i++)
         {
-            if (weapons[(int)weapon] == weapons[i]) weapons[i].enabled = true;
-            else weapons[i].enabled = false;
-
-
+            if (weaponsImage[(int)weapon] == weaponsImage[i]) weaponsImage[i].enabled = true;
+            else weaponsImage[i].enabled = false;
         }
 
             //SetFireRate

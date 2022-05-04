@@ -116,7 +116,7 @@ public class Movement_2 : MonoBehaviour
         {
             if (isAlreadyActive)
             {
-                moveForce = moveForce * 2;
+                moveForce = moveForce * 1.5f;
                 isAlreadyActive = false;
             }
         }
