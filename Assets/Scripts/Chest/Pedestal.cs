@@ -41,7 +41,7 @@ public class Pedestal : MonoBehaviour
             if (getItem)Instantiate(particles, transform.position, Quaternion.identity);
             getItem = false;
 
-            Debug.Log(weaponSpawn.tag);
+           
             if(weaponSpawn.CompareTag("BigBubble")) other.GetComponent<SkillManager>().DSkills[SkillManager.EAbilities.BIGBUBBLE] = true;
             if(weaponSpawn.CompareTag("Bouncy")) other.GetComponent<SkillManager>().DSkills[SkillManager.EAbilities.BOUNCY] = true;
             if(weaponSpawn.CompareTag("FireRate")) other.GetComponent<SkillManager>().DSkills[SkillManager.EAbilities.FIRERATE] = true;

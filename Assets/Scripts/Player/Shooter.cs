@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
 using DG.Tweening;
+using UnityEngine.UI;
 public enum Weapons
 {
-    Auto,
-    Shotgun,
-    Sniper,
-    Spray,
+    Auto = 0,
+    Shotgun = 1,
+    Sniper = 2,
+    Spray = 3,
     COUNT,
     Basic,
     Triple
@@ -17,6 +18,9 @@ public enum Weapons
 
 public class Shooter : MonoBehaviour
 {
+    [SerializeField]
+    Image[] weapons;
+   
 
     public Weapons weapon = Weapons.Sniper;
     CinemachineImpulseSource impulse;
@@ -75,8 +79,18 @@ public class Shooter : MonoBehaviour
     private void Update()
     {
        
-        //SetFireRate
-        switch (weapon)
+
+
+        for (int i = 0; i < weapons.Length; i++)
+        {
+            if (weapons[(int)weapon] == weapons[i]) weapons[i].enabled = true;
+            else weapons[i].enabled = false;
+
+
+        }
+
+            //SetFireRate
+            switch (weapon)
         {
             case Weapons.Basic:
                 fireRate = 4;

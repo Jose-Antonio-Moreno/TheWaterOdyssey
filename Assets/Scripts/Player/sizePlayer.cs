@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class sizePlayer : MonoBehaviour
 {
     public GameObject player;
 
-    public int life;
+    public int life, maxLife;
+    public Image[] vidas;
+    public Sprite burbujaLlena, burbujaVacia;
 
     public bool changed;
 
@@ -29,7 +32,7 @@ public class sizePlayer : MonoBehaviour
     void Start()
     {
         Time.timeScale =1;
-
+        maxLife = 5;
         life = 3;
         changed = false;
         hitted = false;
@@ -43,6 +46,18 @@ public class sizePlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (life > maxLife)life = maxLife;
+        
+        for (int i = 0; i < vidas.Length; i++)
+        {
+            if (i < life)vidas[i].sprite = burbujaLlena;
+            else vidas[i].sprite = burbujaVacia;
+
+            if (i < maxLife)vidas[i].enabled = true;
+            else vidas[i].enabled = false;
+
+        }
+
         if (life == 5 && !changed)
         {
             player.transform.localScale = new Vector3(140f, 140f, 140f);
