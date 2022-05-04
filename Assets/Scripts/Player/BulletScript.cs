@@ -28,7 +28,7 @@ public class BulletScript : MonoBehaviour
         if (hasAbility)
         {
             transform.GetChild(0).GetComponent<SphereCollider>().material = bouncines;
-            destroyTime = 2;
+            destroyTime = 5;
             isBouncy = true;
         }
         else { destroyTime = 0.75f; }
@@ -78,16 +78,23 @@ public class BulletScript : MonoBehaviour
 
         if (other.CompareTag("Dummy"))
         {
-            Instantiate(hitParticle, transform.position, Quaternion.identity);
-            impulse.GenerateImpulse(1f);
-            GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.POISON, out hasAbility);
-            if (hasAbility)
+            if (isBouncy)
             {
-                //gameObject.GetComponent<Renderer>().material.color = Color.green;
-                Skill_Interface skill = other.gameObject.GetComponent<SkillBehaviours>();
-                skill.ActivatePoison();
+                Instantiate(hitParticle, transform.position, Quaternion.identity);
             }
-            Invoke("des", 0.1f);
+            else 
+            {
+                Instantiate(hitParticle, transform.position, Quaternion.identity);
+                impulse.GenerateImpulse(1f);
+                GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.POISON, out hasAbility);
+                if (hasAbility)
+                {
+                    //gameObject.GetComponent<Renderer>().material.color = Color.green;
+                    Skill_Interface skill = other.gameObject.GetComponent<SkillBehaviours>();
+                    skill.ActivatePoison();
+                }
+                Invoke("des", 0.1f);
+            }
         }
 
         Invoke("des", destroyTime);
