@@ -21,6 +21,7 @@ TagManager:
   - LightStep
   - Poison
   - ShieldTears
+  - WeaponPedestal
   layers:
   - Default
   - TransparentFX

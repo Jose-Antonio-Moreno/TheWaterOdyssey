@@ -67,7 +67,7 @@ public class YellowSlimeScript : MonoBehaviour
         hp = 50;
         isHit = false;
         nextShoot = 0;
-        fireRate = 0.5f;
+        fireRate = 0.3f;
         hitted = false;
         //managerEnemies.counter += 1;
         doneCounter = false;
@@ -137,7 +137,7 @@ public class YellowSlimeScript : MonoBehaviour
 
     void ChasePlayer()
     {
-        if (Vector3.Distance(player.transform.position, this.transform.position) <= 10)
+        if (Vector3.Distance(player.transform.position, this.transform.position) <= 20)
         {
             agent.isStopped = true;
         }

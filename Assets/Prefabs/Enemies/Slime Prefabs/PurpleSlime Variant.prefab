@@ -65,11 +65,18 @@ MonoBehaviour:
   Ground:
     serializedVersion: 2
     m_Bits: 0
+  Player:
+    serializedVersion: 2
+    m_Bits: 0
   hp: 0
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 0
   shootPrefab: {fileID: 0}
   isHit: 0
+  sightRange: 0
+  attackRange: 0
+  playerInSightRange: 0
+  playerInAttackRange: 0
   posionParticles: {fileID: 0}
   deathParticles: {fileID: 0}
   healBubble: {fileID: 0}
@@ -100,16 +107,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8dc02c980dc25674fa361bc5708a45ce, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.8337
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8dc02c980dc25674fa361bc5708a45ce, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.8337
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8dc02c980dc25674fa361bc5708a45ce, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.8337
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8dc02c980dc25674fa361bc5708a45ce, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8dc02c980dc25674fa361bc5708a45ce, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.12435
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8dc02c980dc25674fa361bc5708a45ce, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.027719
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8dc02c980dc25674fa361bc5708a45ce, type: 3}
       propertyPath: m_LocalRotation.w

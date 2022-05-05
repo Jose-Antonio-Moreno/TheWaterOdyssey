@@ -7,7 +7,7 @@ public class BulletScript : MonoBehaviour
 {
     CinemachineImpulseSource impulse;
     
-    float destroyTime;
+    public float destroyTime;
     bool hasAbility;
     public PhysicMaterial bouncines;
     public Material poisonColor;
@@ -19,8 +19,10 @@ public class BulletScript : MonoBehaviour
 
     private void Start()
     {
-        destroyTime = 0.75f;
+        destroyTime = 1f;
         impulse = transform.GetComponent<CinemachineImpulseSource>();
+        
+        Invoke("des", destroyTime+Random.Range(-0.1F,0.2F));
     }
     private void Awake()
     {
@@ -28,7 +30,7 @@ public class BulletScript : MonoBehaviour
         if (hasAbility)
         {
             transform.GetChild(0).GetComponent<SphereCollider>().material = bouncines;
-            destroyTime = 2;
+            destroyTime = 5;
             isBouncy = true;
         }
         else { destroyTime = 0.75f; }
@@ -38,8 +40,13 @@ public class BulletScript : MonoBehaviour
             transform.localScale *= 1.5f;
         }
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(!isBouncy && !collision.gameObject.CompareTag("Bullet"))
+            des();
 
-    
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         //gameObject.SetActive(false);
@@ -49,35 +56,6 @@ public class BulletScript : MonoBehaviour
             {
                 Instantiate(hitParticle, transform.position, Quaternion.identity);
             }
-            else 
-            {
-                Instantiate(hitParticle, transform.position, Quaternion.identity);
-                impulse.GenerateImpulse(1f);
-                GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.POISON, out hasAbility);
-                if (hasAbility)
-                {
-                    //gameObject.GetComponent<Renderer>().material.color = Color.green;
-                    Skill_Interface skill = other.gameObject.GetComponent<SkillBehaviours>();
-                    skill.ActivatePoison();
-                }
-                Invoke("des", 0.1f);
-            }
-        }
-
-        GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.SHIELDBUBBLE, out hasAbility);
-        if (hasAbility) 
-        {
-            if (other.CompareTag("BulletEnemy"))
-            {
-                Invoke("des", 0.1f);
-                Instantiate(hitParticle, transform.position, Quaternion.identity);
-            }
-        }
-
-        
-
-        if (other.CompareTag("Dummy"))
-        {
             Instantiate(hitParticle, transform.position, Quaternion.identity);
             impulse.GenerateImpulse(1f);
             GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.POISON, out hasAbility);
@@ -87,14 +65,48 @@ public class BulletScript : MonoBehaviour
                 Skill_Interface skill = other.gameObject.GetComponent<SkillBehaviours>();
                 skill.ActivatePoison();
             }
-            Invoke("des", 0.1f);
+            Invoke("des", destroyTime);
         }
 
-        Invoke("des", destroyTime);
+        GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.SHIELDBUBBLE, out hasAbility);
+        if (hasAbility) 
+        {
+            if (other.CompareTag("BulletEnemy"))
+            {
+                Invoke("des", destroyTime);
+                Instantiate(hitParticle, transform.position, Quaternion.identity);
+            }
+        }
+
+        
+        if (other.CompareTag("Dummy"))
+        {
+            if (isBouncy)
+            {
+                Instantiate(hitParticle, transform.position, Quaternion.identity);
+            }
+            Instantiate(hitParticle, transform.position, Quaternion.identity);
+            impulse.GenerateImpulse(1f);
+            GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.POISON, out hasAbility);
+            if (hasAbility)
+            {
+                //gameObject.GetComponent<Renderer>().material.color = Color.green;
+                Skill_Interface skill = other.gameObject.GetComponent<SkillBehaviours>();
+                skill.ActivatePoison();
+            }
+            Invoke("des", destroyTime);
+            
+        }
+        if (!other.CompareTag("Bullet"))
+        {
+            Invoke("des", destroyTime);
+        }
     }
 
     private void des()
     {
+        Instantiate(hitParticle, transform.position, Quaternion.identity);
+
         Destroy(this.gameObject);
     }
 }
