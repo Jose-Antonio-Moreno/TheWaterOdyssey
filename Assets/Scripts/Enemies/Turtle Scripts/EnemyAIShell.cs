@@ -55,7 +55,7 @@ public class EnemyAIShell : MonoBehaviour
 
         hp = 90;
         isHit = false;
-        managerEnemies.counter+=1;
+        //managerEnemies.counter+=1;
         doneCounter = false;
     }
 
@@ -117,7 +117,6 @@ public class EnemyAIShell : MonoBehaviour
         {
             walkPointSet = true;
         }
-        
     }
 
     void ChasePlayer()
@@ -154,7 +153,7 @@ public class EnemyAIShell : MonoBehaviour
     {
         if (!doneCounter)
         {
-            managerEnemies.counter -= 1;
+            //managerEnemies.counter -= 1;
             doneCounter = true;
         }
         Destroy(this.gameObject);

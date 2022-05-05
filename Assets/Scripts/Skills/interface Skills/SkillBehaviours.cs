@@ -122,6 +122,14 @@ public class SkillBehaviours : MonoBehaviour, Skill_Interface
                 sequence.Insert(colorTime, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.white, colorTime));
                 Instantiate(gameObject.GetComponent<YellowTurtleAI>().poisonParticles, gameObject.GetComponent<YellowTurtleAI>().transform.position, Quaternion.identity);
             }
+            else if (gameObject.GetComponent<Variant2QuadShoot>())
+            {
+                float colorTime = 0.1f;
+                var sequence = DOTween.Sequence();
+                sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.green, colorTime));
+                sequence.Insert(colorTime, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.white, colorTime));
+                Instantiate(gameObject.GetComponent<Variant2QuadShoot>().posionParticles, gameObject.GetComponent<Variant2QuadShoot>().transform.position, Quaternion.identity);
+            }
         }
         poisonCounter = 0;
     }
