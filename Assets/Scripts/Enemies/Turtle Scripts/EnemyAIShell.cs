@@ -42,6 +42,7 @@ public class EnemyAIShell : MonoBehaviour
     //Drops
     public GameObject healBubble;
     public GameObject coin;
+    private bool droppedHealing = false;
 
     //Sounds
     public AudioSource splash;
@@ -55,7 +56,7 @@ public class EnemyAIShell : MonoBehaviour
 
         hp = 90;
         isHit = false;
-        managerEnemies.counter+=1;
+        //managerEnemies.counter+=1;
         doneCounter = false;
     }
 
@@ -76,20 +77,20 @@ public class EnemyAIShell : MonoBehaviour
         {
             Instantiate(deathParticles, transform.position, Quaternion.identity);
             Invoke("Death", 0.1f);
-            /*
-            int number = Random.Range(0, 2);
-            switch (number)
+            if (!droppedHealing)
             {
-                case 0:
-                    Instantiate(healBubble, transform.position, Quaternion.identity);
-                    break;
-                case 1:
-                    Instantiate(coin, transform.position, Quaternion.identity);
-                    break;
-                case 2:
-                    break;
+                int number = Random.Range(0, 5);
+                //Debug.Log(number);
+                switch (number)
+                {
+                    case 0:
+                        Instantiate(healBubble, transform.position, Quaternion.identity);
+                        break;
+                    default:
+                        break;
+                }
+                droppedHealing = true;
             }
-            */
         }
     }
 

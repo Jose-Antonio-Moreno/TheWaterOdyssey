@@ -50,6 +50,7 @@ public class YellowSlimeScript : MonoBehaviour
     //Drops
     public GameObject healBubble;
     public GameObject coin;
+    private bool droppedHealing = false;
 
     //Sounds
     public AudioSource splash;
@@ -96,7 +97,20 @@ public class YellowSlimeScript : MonoBehaviour
         {
             droped = true;
             Instantiate(deathParticles, transform.position, Quaternion.identity);
-
+            if (!droppedHealing)
+            {
+                int number = Random.Range(0, 5);
+                //Debug.Log(number);
+                switch (number)
+                {
+                    case 0:
+                        Instantiate(healBubble, transform.position, Quaternion.identity);
+                        break;
+                    default:
+                        break;
+                }
+                droppedHealing = true;
+            }
             if (droped)
             {
                 Invoke("Drop", 0.1f);
