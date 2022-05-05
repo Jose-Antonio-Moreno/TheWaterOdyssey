@@ -2825,7 +2825,7 @@ MonoBehaviour:
   weaponsImage: []
   weapon: 4
   shootPrefab: {fileID: 2421088425041002439, guid: 456a81b8d4dabd54c9dea5915a6bfc97, type: 3}
-  bigDropPrefab: {fileID: 0}
+  bigDropPrefab: {fileID: 6007630341101929216, guid: 32fe27d22305fcf438f5ac663584b143, type: 3}
   life: {fileID: 0}
   pointer: {fileID: 7192975911528432336}
   shootParticle: {fileID: 5998164761921030191, guid: 941d9599f3f3c44d9b6ea7ccba55f118, type: 3}
@@ -3077,7 +3077,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   variables: {fileID: 2895855888988304138}
-  bigDropPrefab: {fileID: 6537219665204747675, guid: c19ed5e2315d9c04c8381d23f6f67b6c, type: 3}
+  bigDropPrefab: {fileID: 6007630341101929216, guid: 32fe27d22305fcf438f5ac663584b143, type: 3}
   life: {fileID: 1258101314343989815}
 --- !u!1 &6006621480990478613
 GameObject:

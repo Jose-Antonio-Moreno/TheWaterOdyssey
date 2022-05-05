@@ -78,9 +78,6 @@ public class Shooter : MonoBehaviour
 
     private void Update()
     {
-       
-
-
         for (int i = 0; i < weaponsImage.Length; i++)
         {
             if (weaponsImage[(int)weapon] == weaponsImage[i]) weaponsImage[i].enabled = true;

@@ -25,13 +25,16 @@ public class UltimateInputs : MonoBehaviour
         _inputManager = gameObject.GetComponent<Movement_2>().inputManager;
         controller = _inputManager.GetComponent<InputsController>().globalControls;
         controller.Gameplay.Ultimate.started += ctx => UltimateToUse();
+
+        impulse = transform.GetComponent<CinemachineImpulseSource>();
     }
-    
-    public void ShakeUltimate(float intensity)
+
+    public void ShakeUltimate()
     {
-        impulse.GenerateImpulse(intensity);
+
+        impulse.GenerateImpulse(0.55f);
     }
-   
+
     void UltimateToUse() 
     {
         GameObject.Find("Armature").GetComponent<UltimateManager>().DUltimates.TryGetValue(UltimateManager.EUltimates.BIGDROP, out hasUltimate);
@@ -44,7 +47,6 @@ public class UltimateInputs : MonoBehaviour
         {
             Dropinomicon();
         }
-
     }
     void ShootBigDrop()
     {
@@ -53,7 +55,7 @@ public class UltimateInputs : MonoBehaviour
 
         if (life.life > 1)
         {
-            ShakeUltimate(0.55f);
+            ShakeUltimate();
             life.life -= 1;
             life.changed = false;
             aux = Instantiate(bigDropPrefab, gameObject.transform.position + variables.aimDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
@@ -65,7 +67,7 @@ public class UltimateInputs : MonoBehaviour
     void Dropinomicon() 
     {
         Debug.Log("BOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOM");
-        ShakeUltimate(0.55f);
+        ShakeUltimate();
         life.life -= 1;
         life.changed = false;
         UltimateInterface ultimate = gameObject.GetComponent<UltimateBehaviour>();
