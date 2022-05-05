@@ -12,6 +12,16 @@ TagManager:
   - BulletEnemy
   - Heal
   - Dummy
+  - BigDrop
+  - SpawnPoint
+  - Rooms
+  - BigBubble
+  - Bouncy
+  - FireRate
+  - LightStep
+  - Poison
+  - ShieldTears
+  - WeaponPedestal
   layers:
   - Default
   - TransparentFX

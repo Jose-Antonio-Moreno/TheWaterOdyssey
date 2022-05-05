@@ -450,7 +450,7 @@ GameObject:
   - component: {fileID: 8984025960455292826}
   m_Layer: 0
   m_Name: Colliders
-  m_TagString: Untagged
+  m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -657,6 +657,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   counter: 0
   entradas: {fileID: 1320124058296985503}
+  healBubble: {fileID: 1960532133341974894, guid: d4b562fe8dc91d44ba3d7ca942772434, type: 3}
+  coin: {fileID: 9064536156332027177, guid: 36e89c85bb0c50b45bb92a51e49b304b, type: 3}
 --- !u!1 &5181514699870433043
 GameObject:
   m_ObjectHideFlags: 0
@@ -2301,7 +2303,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1089009208522167906, guid: 9611fcbcb54461142b6a8cd578d4216d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.9
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1089009208522167906, guid: 9611fcbcb54461142b6a8cd578d4216d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2309,7 +2311,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1089009208522167906, guid: 9611fcbcb54461142b6a8cd578d4216d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.4777026
+      value: 10.1
       objectReference: {fileID: 0}
     - target: {fileID: 1089009208522167906, guid: 9611fcbcb54461142b6a8cd578d4216d, type: 3}
       propertyPath: m_LocalRotation.w

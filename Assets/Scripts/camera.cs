@@ -21,6 +21,7 @@ public class camera : MonoBehaviour
         controls.Gameplay.ZoomIn.started += ctx => ZoomIn();
         controls.Gameplay.ZoomOut.started += ctx => ZoomOut();
 
+
     }
 
     void FixedUpdate()

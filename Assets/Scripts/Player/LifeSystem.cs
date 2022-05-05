@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LifeSystem : MonoBehaviour
 {
     int defaultLife;
-    int life;
+    public int life;
     int maxLife;
     public bool isDamaging;
     void Start()
@@ -20,7 +21,9 @@ public class LifeSystem : MonoBehaviour
     {
         if (life <= 0)
         {
-            //IsDeath
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
         }
         else 
         {
