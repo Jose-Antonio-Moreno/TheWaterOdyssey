@@ -56,19 +56,16 @@ public class BulletScript : MonoBehaviour
             {
                 Instantiate(hitParticle, transform.position, Quaternion.identity);
             }
-            else 
+            Instantiate(hitParticle, transform.position, Quaternion.identity);
+            impulse.GenerateImpulse(1f);
+            GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.POISON, out hasAbility);
+            if (hasAbility)
             {
-                Instantiate(hitParticle, transform.position, Quaternion.identity);
-                impulse.GenerateImpulse(1f);
-                GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.POISON, out hasAbility);
-                if (hasAbility)
-                {
-                    //gameObject.GetComponent<Renderer>().material.color = Color.green;
-                    Skill_Interface skill = other.gameObject.GetComponent<SkillBehaviours>();
-                    skill.ActivatePoison();
-                }
-                Invoke("des", 0.1f);
+                //gameObject.GetComponent<Renderer>().material.color = Color.green;
+                Skill_Interface skill = other.gameObject.GetComponent<SkillBehaviours>();
+                skill.ActivatePoison();
             }
+            Invoke("des", destroyTime);
         }
 
         GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.SHIELDBUBBLE, out hasAbility);
@@ -76,37 +73,33 @@ public class BulletScript : MonoBehaviour
         {
             if (other.CompareTag("BulletEnemy"))
             {
-                Invoke("des", 0.1f);
+                Invoke("des", destroyTime);
                 Instantiate(hitParticle, transform.position, Quaternion.identity);
             }
         }
 
         
-
         if (other.CompareTag("Dummy"))
         {
             if (isBouncy)
             {
                 Instantiate(hitParticle, transform.position, Quaternion.identity);
             }
-            else 
+            Instantiate(hitParticle, transform.position, Quaternion.identity);
+            impulse.GenerateImpulse(1f);
+            GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.POISON, out hasAbility);
+            if (hasAbility)
             {
-                Instantiate(hitParticle, transform.position, Quaternion.identity);
-                impulse.GenerateImpulse(1f);
-                GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.POISON, out hasAbility);
-                if (hasAbility)
-                {
-                    //gameObject.GetComponent<Renderer>().material.color = Color.green;
-                    Skill_Interface skill = other.gameObject.GetComponent<SkillBehaviours>();
-                    skill.ActivatePoison();
-                }
-                Invoke("des", 0.1f);
+                //gameObject.GetComponent<Renderer>().material.color = Color.green;
+                Skill_Interface skill = other.gameObject.GetComponent<SkillBehaviours>();
+                skill.ActivatePoison();
             }
+            Invoke("des", destroyTime);
+            
         }
         if (!other.CompareTag("Bullet"))
         {
             Invoke("des", destroyTime);
-
         }
     }
 

@@ -41,22 +41,22 @@ public class TurtleSpawn : MonoBehaviour
         else
         {
             Vector3 pos = center + new Vector3(Random.Range(-size.x / 2, size.x / 2), this.transform.position.y, Random.Range(-size.z / 2, size.z / 2));
-            Instantiate(Turtles[0], pos, Quaternion.identity);
-            innerCount++;
+            //Instantiate(Turtles[0], pos, Quaternion.identity);
+            //innerCount++;
 
-            //number = Random.Range(0, 2);
-            //Debug.Log(number);
-            //switch (number)
-            //{
-            //    case 0:
-            //        Instantiate(Turtles[0], pos, Quaternion.identity);
-            //        innerCount++;
-            //        break;
-            //    case 1:
-            //        Instantiate(Turtles[1], pos, Quaternion.identity);
-            //        innerCount++;
-            //        break;
-            //}
+            number = Random.Range(0, 2);
+            Debug.Log(number);
+            switch (number)
+            {
+                case 0:
+                    Instantiate(Turtles[0], pos, Quaternion.identity);
+                    innerCount++;
+                    break;
+                case 1:
+                    Instantiate(Turtles[1], pos, Quaternion.identity);
+                    innerCount++;
+                    break;
+            }
         }
     }
     void OnTriggerEnter(Collider other)
