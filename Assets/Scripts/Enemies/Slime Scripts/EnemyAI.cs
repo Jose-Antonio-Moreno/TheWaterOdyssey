@@ -31,6 +31,7 @@ public class EnemyAI : MonoBehaviour
     //Checker
     public bool isHit;
     bool droped;
+    bool moreRange;
 
     public float sightRange, attackRange;
     public bool playerInSightRange;
@@ -58,7 +59,7 @@ public class EnemyAI : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         lifePlayer = player.GetComponent<sizePlayer>();
         //Slime Health (damage Basic Shoot = 10)
-        hp = 50;
+        hp = 90;
         isHit = false;
         nextShoot = 1;
         fireRate = 0.35f;
@@ -78,12 +79,19 @@ public class EnemyAI : MonoBehaviour
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
 
 
-
-        if (Time.time >= nextShoot)
+        if (Vector3.Distance(player.transform.position, this.transform.position) <= attackRange)
         {
-            number = Random.Range(0.4f, 0.8f);
-            nextShoot = Time.time + number / fireRate;
-            Shoot();
+            if (!moreRange)
+            {
+                attackRange += 10;
+                moreRange = true;
+            }
+            if (Time.time >= nextShoot)
+            {
+                number = Random.Range(0.4f, 0.8f);
+                nextShoot = Time.time + number / fireRate;
+                Shoot();
+            }
         }
 
         if (hp <= 0)
@@ -144,7 +152,7 @@ public class EnemyAI : MonoBehaviour
 
     void ChasePlayer()
     {
-        if (Vector3.Distance(player.transform.position, this.transform.position) <= 17)
+        if (Vector3.Distance(player.transform.position, this.transform.position) <= attackRange)
         {
             agent.isStopped = true;
         }

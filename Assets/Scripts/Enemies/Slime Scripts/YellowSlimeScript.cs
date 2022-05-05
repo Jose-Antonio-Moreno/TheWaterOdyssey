@@ -42,6 +42,7 @@ public class YellowSlimeScript : MonoBehaviour
     //Checker
     public bool isHit;
     bool droped;
+    bool moreRange = false;
 
     //Particles
     public ParticleSystem posionParticles;
@@ -84,13 +85,21 @@ public class YellowSlimeScript : MonoBehaviour
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
 
-        
 
-        if (Time.time >= nextShoot)
+        if (Vector3.Distance(player.transform.position, this.transform.position) <= attackRange)
         {
-            number = Random.Range(0.4f, 0.8f);
-            nextShoot = Time.time + number / fireRate;
-            Shoot();
+            if (!moreRange)
+            {
+                attackRange += 10;
+                moreRange = true;
+            }
+            if (Time.time >= nextShoot)
+            {
+                number = Random.Range(0.4f, 0.8f);
+                nextShoot = Time.time + number / fireRate;
+                Shoot();
+            }
+
         }
 
         if (hp <= 0)
@@ -151,7 +160,7 @@ public class YellowSlimeScript : MonoBehaviour
 
     void ChasePlayer()
     {
-        if (Vector3.Distance(player.transform.position, this.transform.position) <= 20)
+        if (Vector3.Distance(player.transform.position, this.transform.position) <= attackRange)
         {
             agent.isStopped = true;
         }

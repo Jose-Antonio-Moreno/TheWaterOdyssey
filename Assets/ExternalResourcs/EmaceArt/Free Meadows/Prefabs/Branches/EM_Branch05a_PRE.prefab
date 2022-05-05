@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1961154740314663569}
   - component: {fileID: 6732165047302872544}
   - component: {fileID: 5103629657288370146}
+  - component: {fileID: 3552487034019093055}
   m_Layer: 0
   m_Name: EM_Branch05a_PRE
   m_TagString: Untagged
@@ -49,11 +50,11 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.24784125
+  - screenRelativeHeight: 0.038814604
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1880342695801997401}
-  - screenRelativeHeight: 0.125
+  - screenRelativeHeight: 0.019031113
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1007679726062209335}
@@ -76,6 +77,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7492087199940417431, guid: 498e469126a04f54ba8feef98bacb64a, type: 3}
+--- !u!65 &3552487034019093055
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188030512446779435}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.5381365, y: 2.5164182, z: 2.1951313}
+  m_Center: {x: -0.17205572, y: 0.7582089, z: 0.015159547}
 --- !u!1 &3540464533695041690
 GameObject:
   m_ObjectHideFlags: 0

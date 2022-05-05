@@ -50,7 +50,7 @@ public class Variant2QuadShoot : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        hp = 70;
+        hp = 100;
         isHit = false;
         nextShoot = 0;
         fireRate = 0.8f;

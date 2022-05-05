@@ -54,7 +54,7 @@ public class EnemyAIShell : MonoBehaviour
         lifePlayer = player.GetComponent<sizePlayer>();
         agent = GetComponent<NavMeshAgent>();
 
-        hp = 90;
+        hp = 150;
         isHit = false;
         //managerEnemies.counter+=1;
         doneCounter = false;
