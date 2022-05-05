@@ -508,6 +508,7 @@ GameObject:
   - component: {fileID: 9055551274781463047}
   - component: {fileID: 4055757907404468092}
   - component: {fileID: 166705428460525089}
+  - component: {fileID: 687027449039084425}
   m_Layer: 0
   m_Name: BeholderPolyart
   m_TagString: Enemy
@@ -854,6 +855,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &687027449039084425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9011648103021171507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fa8b852a725b2f47b8ab4f96b542824, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9011648103021171509
 GameObject:
   m_ObjectHideFlags: 0

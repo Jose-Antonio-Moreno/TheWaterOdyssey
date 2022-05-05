@@ -370,6 +370,18 @@ MonoBehaviour:
   healBubble: {fileID: 1960532133341974894, guid: d4b562fe8dc91d44ba3d7ca942772434, type: 3}
   coin: {fileID: 9064536156332027177, guid: 36e89c85bb0c50b45bb92a51e49b304b, type: 3}
   splash: {fileID: 0}
+--- !u!114 &2951790245003229599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3666531414952298328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fa8b852a725b2f47b8ab4f96b542824, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6949645666051662460
 GameObject:
   m_ObjectHideFlags: 0
