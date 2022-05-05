@@ -66,11 +66,21 @@ public class UltimateInputs : MonoBehaviour
     }
     void Dropinomicon() 
     {
-        Debug.Log("BOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOM");
         ShakeUltimate();
         life.life -= 1;
         life.changed = false;
-        UltimateInterface ultimate = gameObject.GetComponent<UltimateBehaviour>();
-        ultimate.ActivateDropinomicon();
+
+
+        GameObject[] gb = GameObject.FindGameObjectsWithTag("Enemy");
+        for (int i = 0; i < gb.Length; i++)
+        {
+            //
+            // Collider[] enemies = Physics.OverlapSphere(gameObject.transform.position, 100, Layer);
+            //enemies[i].gameObject.GetComponent<UltimateBehaviour>();
+            UltimateInterface ultimate = gb[i].GetComponent<UltimateBehaviour>();
+            if(ultimate != null)
+                ultimate.ActivateDropinomicon();
+
+        }
     }
 }
