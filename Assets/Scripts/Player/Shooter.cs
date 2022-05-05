@@ -59,7 +59,7 @@ public class Shooter : MonoBehaviour
         controller = _inputManager.GetComponent<InputsController>().globalControls;
 
         controller.Gameplay.Shoot.started += ctx => ShootAutoTrue();
-        controller.Gameplay.Ultimate.started += ctx => ShootBigDrop();
+        //controller.Gameplay.Ultimate.started += ctx => ShootBigDrop();
         controller.Gameplay.Shoot.canceled += ctx => ShootAutoFalse();
         controller.Gameplay.SwitchWeapon.started += ctx => SwitchWeapon();
         impulse = transform.GetComponent<CinemachineImpulseSource>();
@@ -78,9 +78,6 @@ public class Shooter : MonoBehaviour
 
     private void Update()
     {
-       
-
-
         for (int i = 0; i < weaponsImage.Length; i++)
         {
             if (weaponsImage[(int)weapon] == weaponsImage[i]) weaponsImage[i].enabled = true;
@@ -88,7 +85,7 @@ public class Shooter : MonoBehaviour
         }
 
             //SetFireRate
-            switch (weapon)
+        switch (weapon)
         {
             case Weapons.Basic:
                 fireRate = 4;
@@ -136,7 +133,7 @@ public class Shooter : MonoBehaviour
         aimJoystick = _inputManager.GetComponent<InputsController>().rightStickDirection;
 
     }
-    Vector3 aimDirection = new Vector3(1, 1, 1);
+    public Vector3 aimDirection = new Vector3(1, 1, 1);
 
     void FixedUpdate()
     {
@@ -307,24 +304,22 @@ public class Shooter : MonoBehaviour
         }
     }
 
-    void ShootBigDrop() {
+    //void ShootBigDrop() {
 
-        GameObject aux;
-        Vector3 shootForce;
+    //    GameObject aux;
+    //    Vector3 shootForce;
 
-        if (life.life > 1)
-        {
-            ShakeUltimate();
-            life.life -= 1;
-            life.changed = false;
-            aux = Instantiate(bigDropPrefab, gameObject.transform.position + aimDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
-            aux.GetComponent<BulletScript>().damage = 100;
-            shootForce = aimDirection * 100;
-            aux.GetComponent<Rigidbody>().AddForce(shootForce);
-        
-        }
-
-    }
+    //    if (life.life > 1)
+    //    {
+    //        ShakeUltimate();
+    //        life.life -= 1;
+    //        life.changed = false;
+    //        aux = Instantiate(bigDropPrefab, gameObject.transform.position + aimDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
+    //        aux.GetComponent<BulletScript>().damage = 100;
+    //        shootForce = aimDirection * 100;
+    //        aux.GetComponent<Rigidbody>().AddForce(shootForce);
+    //    }
+    //}
 
     private void OnTriggerEnter(Collider other)
     {

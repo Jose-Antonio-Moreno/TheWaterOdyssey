@@ -151,7 +151,7 @@ public class EnemyAIQuadShoot : MonoBehaviour
 
     private void Death()
     {
-        managerEnemies.counter -= 1;
+        //managerEnemies.counter -= 1;
         Destroy(this.gameObject);
     }
 

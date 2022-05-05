@@ -1615,7 +1615,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: YOU ARE DEATH
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2667,6 +2667,8 @@ GameObject:
   - component: {fileID: 987727352130889689}
   - component: {fileID: 7879575115560534699}
   - component: {fileID: 1258101314343989815}
+  - component: {fileID: 5582839567225146168}
+  - component: {fileID: 1687420363730804666}
   m_Layer: 6
   m_Name: Armature
   m_TagString: Player
@@ -2748,6 +2750,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputManager: {fileID: 6160925760489658292}
+  maxVelocity: 1
   moveForce: 5000
   moveDirection: {x: 0, y: 0, z: 0}
   dashSpeed: 1000
@@ -2822,12 +2825,13 @@ MonoBehaviour:
   weaponsImage: []
   weapon: 4
   shootPrefab: {fileID: 2421088425041002439, guid: 456a81b8d4dabd54c9dea5915a6bfc97, type: 3}
-  bigDropPrefab: {fileID: 0}
+  bigDropPrefab: {fileID: 6007630341101929216, guid: 32fe27d22305fcf438f5ac663584b143, type: 3}
   life: {fileID: 0}
   pointer: {fileID: 7192975911528432336}
   shootParticle: {fileID: 5998164761921030191, guid: 941d9599f3f3c44d9b6ea7ccba55f118, type: 3}
   shoot: {fileID: 987727352130889689}
   fireRate: 0
+  aimDirection: {x: 1, y: 1, z: 1}
 --- !u!82 &987727352130889689
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3048,6 +3052,33 @@ MonoBehaviour:
   deathMenu: {fileID: 1186395751415704107}
   hitParticles: {fileID: 6465089969189171295, guid: e74ffe42e0803a64684da95c449bb37c, type: 3}
   evaporation: {fileID: 7879575115560534699}
+--- !u!114 &5582839567225146168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5944128494586752037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d64d70e61f163e4c90a0f6c875fcc62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1687420363730804666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5944128494586752037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bac7badd1977ef14cba6ced6d1e5f55b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  variables: {fileID: 2895855888988304138}
+  bigDropPrefab: {fileID: 6007630341101929216, guid: 32fe27d22305fcf438f5ac663584b143, type: 3}
+  life: {fileID: 1258101314343989815}
 --- !u!1 &6006621480990478613
 GameObject:
   m_ObjectHideFlags: 0
@@ -3202,7 +3233,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Restart
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4147,7 +4178,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Menu
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
