@@ -19,8 +19,10 @@ public class BulletScript : MonoBehaviour
 
     private void Start()
     {
-        destroyTime = 0.75f;
+        destroyTime = 1f;
         impulse = transform.GetComponent<CinemachineImpulseSource>();
+        
+        Invoke("des", destroyTime+Random.Range(-0.1F,0.2F));
     }
     private void Awake()
     {
@@ -38,8 +40,13 @@ public class BulletScript : MonoBehaviour
             transform.localScale *= 1.5f;
         }
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(!isBouncy && !collision.gameObject.CompareTag("Bullet"))
+            des();
 
-    
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         //gameObject.SetActive(false);

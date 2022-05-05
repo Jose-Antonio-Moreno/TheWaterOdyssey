@@ -59,8 +59,8 @@ public class EnemyAI : MonoBehaviour
         //Slime Health (damage Basic Shoot = 10)
         hp = 50;
         isHit = false;
-        nextShoot = 0;
-        fireRate = 0.5f;
+        nextShoot = 1;
+        fireRate = 0.35f;
         hitted = false;
         //managerEnemies.counter += 1;
         doneCounter = false;
@@ -130,7 +130,7 @@ public class EnemyAI : MonoBehaviour
 
     void ChasePlayer()
     {
-        if (Vector3.Distance(player.transform.position, this.transform.position) <= 10)
+        if (Vector3.Distance(player.transform.position, this.transform.position) <= 17)
         {
             agent.isStopped = true;
         }

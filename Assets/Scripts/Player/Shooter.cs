@@ -44,7 +44,7 @@ public class Shooter : MonoBehaviour
     int shotgunCartridges = 15;
     float shotgunDrag = 2;
 
-    float spraySpread = 0.6f;
+    float spraySpread = 0.5f;
 
     public ParticleSystem shootParticle;
     ParticleSystem particles;
@@ -94,7 +94,7 @@ public class Shooter : MonoBehaviour
                 fireRate = 4;
                 break;
             case Weapons.Auto:
-                fireRate = 7;
+                fireRate = 9;
                 break;
             case Weapons.Shotgun:
                 fireRate = 1.5f;
@@ -200,7 +200,7 @@ public class Shooter : MonoBehaviour
                 shoot.Play();
                 Shake();
                 aux = Instantiate(shootPrefab, gameObject.transform.position + aimDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
-                aux.GetComponent<BulletScript>().damage = 5;
+                aux.GetComponent<BulletScript>().damage = 8; /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 shootForce = aimDirection * 100;
                 aux.GetComponent<Rigidbody>().AddForce(shootForce);
 
@@ -217,12 +217,12 @@ public class Shooter : MonoBehaviour
 
                 aux = Instantiate(shootPrefab, gameObject.transform.position + sprayAimDirection * 3f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
                 aux.GetComponent<SphereCollider>().isTrigger = true;
-                aux.GetComponent<BulletScript>().damage = 1;
+                aux.GetComponent<BulletScript>().damage = 3;
                 float f = Random.Range(1.0f, 2.3f);
                 aux.transform.localScale *= f;
 
                 shootForce = sprayAimDirection * 100;
-                aux.GetComponent<Rigidbody>().AddForce(shootForce*0.4f);
+                aux.GetComponent<Rigidbody>().AddForce(shootForce*0.5f);
                 aux.GetComponent<BulletScript>().destroyTime = 5;
                 int spawnOrNot = Random.Range(0, 2);
                 Debug.Log(spawnOrNot);
@@ -233,7 +233,7 @@ public class Shooter : MonoBehaviour
                 break;
             case Weapons.Shotgun:
                 shoot.Play();
-                Shake(1);
+                Shake(2);
                 for (int i = 0; i < shotgunCartridges; i++)
                 {
                     Vector3 shotgunAimDirection = aimDirection;
@@ -241,7 +241,7 @@ public class Shooter : MonoBehaviour
                     shotgunAimDirection.z = aimDirection.z + Random.Range(-shotgunSpread, shotgunSpread);
 
                     aux = Instantiate(shootPrefab, gameObject.transform.position + shotgunAimDirection * 1.5f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
-                    aux.GetComponent<BulletScript>().damage = 10;
+                    aux.GetComponent<BulletScript>().damage = 15;
                     shootForce = shotgunAimDirection * 100;
                     aux.GetComponent<Rigidbody>().AddForce(shootForce*1.5f);
                     aux.GetComponent<Rigidbody>().drag = shotgunDrag;
@@ -330,7 +330,13 @@ public class Shooter : MonoBehaviour
     {
         if (other.CompareTag("WeaponPedestal"))
         {
-            weapon = other.GetComponent<WeaponPedestalScript>().pedestalWeapon;
+            Weapons newWeapon = other.GetComponent<WeaponPedestalScript>().pedestalWeapon;
+            do
+            {
+                int randomNumber = Random.Range(0, (int)Weapons.COUNT);
+                newWeapon = (Weapons)randomNumber;
+            } while (weapon == newWeapon);
+            weapon = newWeapon;
             Destroy(other.gameObject);
         }
     }

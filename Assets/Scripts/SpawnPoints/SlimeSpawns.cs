@@ -20,6 +20,7 @@ public class SlimeSpawns : MonoBehaviour
     private void Start()
     {
         center = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+        //Spawn();
     }
     void Update()
     {
@@ -38,20 +39,24 @@ public class SlimeSpawns : MonoBehaviour
         }
         else 
         {
-            Vector3 pos = center + new Vector3(Random.Range(-size.x / 2, size.x / 2), this.transform.position.y, Random.Range(-size.z / 2, size.z / 2));
-            number = Random.Range(0, 1);
-            Debug.Log(number);
-            switch (number)
+
+            for (int i = 0; i < maxCount; i++)
             {
-                case 0:
-                    Instantiate(Slimes[0], pos, Quaternion.identity);
-                    innerCount++;
-                    break;
-                case 1:
-                    Instantiate(Slimes[1], pos, Quaternion.identity);
-                    innerCount++;
-                    break;
+                number = Random.Range(0, 4);
+                Vector3 pos = center + new Vector3(Random.Range(-size.x / 2, size.x / 2), this.transform.position.y, Random.Range(-size.z / 2, size.z / 2));
+                switch (number)
+                {
+                    case 0:
+                        Instantiate(Slimes[0], pos, Quaternion.identity);
+                        innerCount++;
+                        break;
+                    default:
+                        Instantiate(Slimes[1], pos, Quaternion.identity);
+                        innerCount++;
+                        break;
+                }
             }
+
         }
     }
     void OnTriggerEnter(Collider other)

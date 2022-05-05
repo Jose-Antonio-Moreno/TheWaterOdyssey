@@ -14,10 +14,10 @@ public class Movement_2 : MonoBehaviour
 
     float gravity = 14.0f;
     float verticalVelocity;
-    float maxVelocity = 1;
+   public  float maxVelocity = 1;
     bool canJump = true;
     bool airControll = false;
-    public float moveForce = 30;
+    public float moveForce = 5000;
     public Vector3 moveDirection;
 
     Vector2 moveJoystick;
@@ -120,8 +120,27 @@ public class Movement_2 : MonoBehaviour
                 isAlreadyActive = false;
             }
         }
-            
-        
+        if (gameObject.GetComponent<Rigidbody>().velocity.x >= maxVelocity)
+        {
+            gameObject.GetComponent<Rigidbody>().velocity = new Vector3(maxVelocity, gameObject.GetComponent<Rigidbody>().velocity.y, gameObject.GetComponent<Rigidbody>().velocity.z);
+        }
+
+        if (gameObject.GetComponent<Rigidbody>().velocity.x <= -maxVelocity)
+        {
+            gameObject.GetComponent<Rigidbody>().velocity = new Vector3(-maxVelocity, gameObject.GetComponent<Rigidbody>().velocity.y, gameObject.GetComponent<Rigidbody>().velocity.z);
+        }
+
+        if (gameObject.GetComponent<Rigidbody>().velocity.z <= -maxVelocity)
+        {
+            gameObject.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.GetComponent<Rigidbody>().velocity.x, gameObject.GetComponent<Rigidbody>().velocity.y, -maxVelocity);
+
+        }
+        if (gameObject.GetComponent<Rigidbody>().velocity.z >= maxVelocity)
+        {
+            gameObject.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.GetComponent<Rigidbody>().velocity.x, gameObject.GetComponent<Rigidbody>().velocity.y, maxVelocity);
+
+        }
+
     }
 
     void StopAirControll()
@@ -143,26 +162,26 @@ public class Movement_2 : MonoBehaviour
         }
 
 
-        if (gameObject.GetComponent<Rigidbody>().velocity.x >= maxVelocity)
-        {
-            gameObject.GetComponent<Rigidbody>().velocity = new Vector3(maxVelocity, gameObject.GetComponent<Rigidbody>().velocity.y, gameObject.GetComponent<Rigidbody>().velocity.z);
-        }
+        //if (gameObject.GetComponent<Rigidbody>().velocity.x >= maxVelocity)
+        //{
+        //    gameObject.GetComponent<Rigidbody>().velocity = new Vector3(maxVelocity, gameObject.GetComponent<Rigidbody>().velocity.y, gameObject.GetComponent<Rigidbody>().velocity.z);
+        //}
 
-        if (gameObject.GetComponent<Rigidbody>().velocity.x <= -maxVelocity)
-        {
-            gameObject.GetComponent<Rigidbody>().velocity = new Vector3(-maxVelocity, gameObject.GetComponent<Rigidbody>().velocity.y, gameObject.GetComponent<Rigidbody>().velocity.z);
-        }
+        //if (gameObject.GetComponent<Rigidbody>().velocity.x <= -maxVelocity)
+        //{
+        //    gameObject.GetComponent<Rigidbody>().velocity = new Vector3(-maxVelocity, gameObject.GetComponent<Rigidbody>().velocity.y, gameObject.GetComponent<Rigidbody>().velocity.z);
+        //}
 
-        if (gameObject.GetComponent<Rigidbody>().velocity.z <= -maxVelocity)
-        {
-            gameObject.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.GetComponent<Rigidbody>().velocity.x, gameObject.GetComponent<Rigidbody>().velocity.y, -maxVelocity);
+        //if (gameObject.GetComponent<Rigidbody>().velocity.z <= -maxVelocity)
+        //{
+        //    gameObject.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.GetComponent<Rigidbody>().velocity.x, gameObject.GetComponent<Rigidbody>().velocity.y, -maxVelocity);
 
-        }
-        if (gameObject.GetComponent<Rigidbody>().velocity.z >= maxVelocity)
-        {
-            gameObject.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.GetComponent<Rigidbody>().velocity.x, gameObject.GetComponent<Rigidbody>().velocity.y, maxVelocity);
+        //}
+        //if (gameObject.GetComponent<Rigidbody>().velocity.z >= maxVelocity)
+        //{
+        //    gameObject.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.GetComponent<Rigidbody>().velocity.x, gameObject.GetComponent<Rigidbody>().velocity.y, maxVelocity);
 
-        }
+        //}
 
     }
 

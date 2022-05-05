@@ -14,12 +14,13 @@ public class BulletSlime : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         lifePlayer = player.GetComponent<sizePlayer>();
-        destroyTime = 2f;
+        destroyTime = 3f;
+        Invoke("des", destroyTime);
+
     }
 
     void Update()
     {
-        Invoke("des", destroyTime);
     }
 
     void OnTriggerEnter(Collider other)
@@ -47,6 +48,8 @@ public class BulletSlime : MonoBehaviour
 
     public void des()
     {
+        Instantiate(hitBulletSlime, transform.position, Quaternion.identity);
+
         lifePlayer.hitted = false;
         Destroy(this.gameObject);
     }

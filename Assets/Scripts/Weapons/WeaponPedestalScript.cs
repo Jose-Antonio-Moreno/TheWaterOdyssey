@@ -10,6 +10,5 @@ public class WeaponPedestalScript : MonoBehaviour
     {
         int randomNumber = Random.Range(0,(int)Weapons.COUNT);
         pedestalWeapon = (Weapons)randomNumber;
-        Debug.Log(pedestalWeapon);
     }
 }
