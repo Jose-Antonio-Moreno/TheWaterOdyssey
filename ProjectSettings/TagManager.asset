@@ -22,6 +22,7 @@ TagManager:
   - Poison
   - ShieldTears
   - WeaponPedestal
+  - Dropinomicon
   layers:
   - Default
   - TransparentFX
