@@ -36,6 +36,8 @@ public class Shooter : MonoBehaviour
 
     public Transform pointer;
 
+    float originalYPos;
+
     bool shooting = false;
 
     bool hasAbility;
@@ -63,6 +65,7 @@ public class Shooter : MonoBehaviour
         controller.Gameplay.Shoot.canceled += ctx => ShootAutoFalse();
         controller.Gameplay.SwitchWeapon.started += ctx => SwitchWeapon();
         impulse = transform.GetComponent<CinemachineImpulseSource>();
+        originalYPos = transform.position.y;
     }
     void SwitchWeapon()
     {
@@ -144,7 +147,7 @@ public class Shooter : MonoBehaviour
 
         }
         Vector3 v = gameObject.transform.position + aimDirection * 5;
-        v.y = 0;
+        v.y = 1.2f;
         pointer.transform.position = v;
     }
 
@@ -178,7 +181,7 @@ public class Shooter : MonoBehaviour
         aimDirection.y = 0;
         GameObject aux;
         Vector3 shootForce;
-        Vector3 pos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 0.5f, gameObject.transform.position.z);
+        Vector3 pos = new Vector3(gameObject.transform.position.x, originalYPos, gameObject.transform.position.z);
         switch (weapon)
         {
             case Weapons.Basic:
