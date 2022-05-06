@@ -103,7 +103,7 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.36, z: 0}
---- !u!82 &346856800945218607
+--- !u!82 &2663078955792047841
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -113,9 +113,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_audioClip: {fileID: 8300000, guid: ee3b75163eb88c74b8886628430fbdc0, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -209,9 +209,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_audioClip: {fileID: 8300000, guid: 8688e190ad9020c4187f3dc70cd68dbb, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -381,7 +381,8 @@ MonoBehaviour:
   shootPrefab: {fileID: 901182402720252531, guid: 8370c3e46d65264449e0899a2b4fc6e0, type: 3}
   healBubble: {fileID: 1960532133341974894, guid: d4b562fe8dc91d44ba3d7ca942772434, type: 3}
   coin: {fileID: 9064536156332027177, guid: 36e89c85bb0c50b45bb92a51e49b304b, type: 3}
-  splash: {fileID: 0}
+  splash: {fileID: 6868033674311497759}
+  shoot: {fileID: 2663078955792047841}
 --- !u!1 &6949645666051662460
 GameObject:
   m_ObjectHideFlags: 0
