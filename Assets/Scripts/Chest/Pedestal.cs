@@ -48,13 +48,7 @@ public class Pedestal : MonoBehaviour
             if(weaponSpawn.CompareTag("LightStep")) other.GetComponent<SkillManager>().DSkills[SkillManager.EAbilities.LIGHTSTEP] = true;
             if(weaponSpawn.CompareTag("Poison")) other.GetComponent<SkillManager>().DSkills[SkillManager.EAbilities.POISON] = true;
             if(weaponSpawn.CompareTag("ShieldTears")) other.GetComponent<SkillManager>().DSkills[SkillManager.EAbilities.SHIELDBUBBLE] = true;
-
-
             Destroy(weaponSpawn);
-
-
-
-
         }
     }
 }

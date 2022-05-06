@@ -178,12 +178,13 @@ public class Shooter : MonoBehaviour
         aimDirection.y = 0;
         GameObject aux;
         Vector3 shootForce;
+        Vector3 pos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 0.5f, gameObject.transform.position.z);
         switch (weapon)
         {
             case Weapons.Basic:
                 shoot.Play();
                 Shake();
-                aux = Instantiate(shootPrefab, gameObject.transform.position + aimDirection * 2f * (gameObject.transform.localScale.x/100), Quaternion.identity);
+                aux = Instantiate(shootPrefab, pos + aimDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
                 aux.GetComponent<BulletScript>().damage = 10;
                 shootForce = aimDirection * 100;
                 aux.GetComponent<Rigidbody>().AddForce(shootForce);
@@ -196,7 +197,7 @@ public class Shooter : MonoBehaviour
             case Weapons.Auto:
                 shoot.Play();
                 Shake();
-                aux = Instantiate(shootPrefab, gameObject.transform.position + aimDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
+                aux = Instantiate(shootPrefab, pos + aimDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
                 aux.GetComponent<BulletScript>().damage = 8; /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 shootForce = aimDirection * 100;
                 aux.GetComponent<Rigidbody>().AddForce(shootForce);
