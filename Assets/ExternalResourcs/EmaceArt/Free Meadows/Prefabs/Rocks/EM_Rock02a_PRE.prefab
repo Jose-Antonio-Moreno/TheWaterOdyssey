@@ -91,7 +91,7 @@ MeshCollider:
   m_GameObject: {fileID: 4716182267994641049}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -186,6 +186,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6981374108352111177}
+  - component: {fileID: 2312302965482116351}
   m_Layer: 0
   m_Name: EM_Rock02a_PRE
   m_TagString: Untagged
@@ -210,6 +211,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!205 &2312302965482116351
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7757734511686695155}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.053914648
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.017739132
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.0013740183
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
 --- !u!1 &8560921972699191041
 GameObject:
   m_ObjectHideFlags: 0

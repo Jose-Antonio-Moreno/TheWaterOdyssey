@@ -176,7 +176,7 @@ public class YellowSlimeScript : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
-            //splash.Play();
+            splash.Play();
             float colorTime = 0.1f;
             var sequence = DOTween.Sequence();
             sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.red, colorTime));
@@ -224,7 +224,7 @@ public class YellowSlimeScript : MonoBehaviour
 
     void Shoot()
     {
-        //shoot.Play();
+        shoot.Play();
         Vector3 direction1 = (firePoint1.position - this.transform.position).normalized;
         Vector3 direction2 = (firePoint2.position - this.transform.position).normalized;
         Vector3 direction3 = (firePoint3.position - this.transform.position).normalized;
@@ -241,6 +241,6 @@ public class YellowSlimeScript : MonoBehaviour
         aux2.GetComponent<Rigidbody>().AddForce(shootForce2);
         aux3.GetComponent<Rigidbody>().AddForce(shootForce3);
 
-        Debug.Log("SHOOT");
+        //Debug.Log("SHOOT");
     }
 }

@@ -49,6 +49,7 @@ public class PurpleTurtle : MonoBehaviour
 
     //Sounds
     public AudioSource splash;
+    public AudioSource shoot;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -111,7 +112,7 @@ public class PurpleTurtle : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
-            //splash.Play();
+            splash.Play();
             float colorTime = 0.1f;
             var sequence = DOTween.Sequence();
             sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.red, colorTime));
@@ -134,8 +135,7 @@ public class PurpleTurtle : MonoBehaviour
 
     private void Explosion()
     {
-        //shoot.Play();
-        
+        shoot.Play();
         for (int i = 0; i < firepoints.Length; i++) 
         {
             Vector3 direction1 = (firepoints[i].position - this.transform.position).normalized;
@@ -143,10 +143,12 @@ public class PurpleTurtle : MonoBehaviour
             Vector3 shootForce = direction1 * 80;
             aux.GetComponent<Rigidbody>().AddForce(shootForce);
         }
+        
     }
     private void Death()
     {
         Explosion();
+        
         Destroy(this.gameObject);
         //if (!doneCounter)
         //{
