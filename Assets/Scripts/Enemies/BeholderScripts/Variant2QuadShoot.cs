@@ -33,6 +33,7 @@ public class Variant2QuadShoot : MonoBehaviour
     //Particles
     public ParticleSystem posionParticles;
     public ParticleSystem deathParticles;
+    public ParticleSystem dropiParticles;
 
     //Drops
     public GameObject healBubble;

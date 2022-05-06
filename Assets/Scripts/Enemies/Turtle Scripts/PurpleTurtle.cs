@@ -38,6 +38,7 @@ public class PurpleTurtle : MonoBehaviour
     //particle System
     public ParticleSystem poisonParticles;
     public ParticleSystem deathParticles;
+    public ParticleSystem dropiParticles;
 
     //Shoot
     public GameObject shootPrefab;

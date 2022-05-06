@@ -38,6 +38,7 @@ public class EnemyAIShell : MonoBehaviour
     //particle System
     public ParticleSystem poisonParticles;
     public ParticleSystem deathParticles;
+    public ParticleSystem dropiParticles;
 
     //Drops
     public GameObject healBubble;
