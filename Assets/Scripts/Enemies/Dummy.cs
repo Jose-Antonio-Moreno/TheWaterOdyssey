@@ -5,5 +5,6 @@ using UnityEngine;
 public class Dummy : MonoBehaviour
 {
     public ParticleSystem posionParticles;
+    public ParticleSystem dropiParticles;
 
 }

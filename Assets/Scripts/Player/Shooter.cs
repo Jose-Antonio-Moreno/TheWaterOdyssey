@@ -36,6 +36,8 @@ public class Shooter : MonoBehaviour
 
     public Transform pointer;
 
+    float originalYPos;
+
     bool shooting = false;
 
     bool hasAbility;
@@ -63,6 +65,7 @@ public class Shooter : MonoBehaviour
         controller.Gameplay.Shoot.canceled += ctx => ShootAutoFalse();
         controller.Gameplay.SwitchWeapon.started += ctx => SwitchWeapon();
         impulse = transform.GetComponent<CinemachineImpulseSource>();
+        originalYPos = transform.position.y;
     }
     void SwitchWeapon()
     {
@@ -144,7 +147,7 @@ public class Shooter : MonoBehaviour
 
         }
         Vector3 v = gameObject.transform.position + aimDirection * 5;
-        v.y = 0;
+        v.y = 1.2f;
         pointer.transform.position = v;
     }
 
@@ -178,12 +181,13 @@ public class Shooter : MonoBehaviour
         aimDirection.y = 0;
         GameObject aux;
         Vector3 shootForce;
+        Vector3 pos = new Vector3(gameObject.transform.position.x, originalYPos, gameObject.transform.position.z);
         switch (weapon)
         {
             case Weapons.Basic:
                 shoot.Play();
                 Shake();
-                aux = Instantiate(shootPrefab, gameObject.transform.position + aimDirection * 2f * (gameObject.transform.localScale.x/100), Quaternion.identity);
+                aux = Instantiate(shootPrefab, pos + aimDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
                 aux.GetComponent<BulletScript>().damage = 10;
                 shootForce = aimDirection * 100;
                 aux.GetComponent<Rigidbody>().AddForce(shootForce);
@@ -196,7 +200,7 @@ public class Shooter : MonoBehaviour
             case Weapons.Auto:
                 shoot.Play();
                 Shake();
-                aux = Instantiate(shootPrefab, gameObject.transform.position + aimDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
+                aux = Instantiate(shootPrefab, pos + aimDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
                 aux.GetComponent<BulletScript>().damage = 8; /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 shootForce = aimDirection * 100;
                 aux.GetComponent<Rigidbody>().AddForce(shootForce);
@@ -212,7 +216,7 @@ public class Shooter : MonoBehaviour
                 sprayAimDirection.x = aimDirection.x + Random.Range(-spraySpread, spraySpread);
                 sprayAimDirection.z = aimDirection.z + Random.Range(-spraySpread, spraySpread);
 
-                aux = Instantiate(shootPrefab, gameObject.transform.position + sprayAimDirection * 3f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
+                aux = Instantiate(shootPrefab, pos + sprayAimDirection * 3f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
                 aux.GetComponent<SphereCollider>().isTrigger = true;
                 aux.GetComponent<BulletScript>().damage = 3;
                 float f = Random.Range(1.0f, 2.3f);
@@ -237,7 +241,7 @@ public class Shooter : MonoBehaviour
                     shotgunAimDirection.x = aimDirection.x + Random.Range(-shotgunSpread, shotgunSpread);
                     shotgunAimDirection.z = aimDirection.z + Random.Range(-shotgunSpread, shotgunSpread);
 
-                    aux = Instantiate(shootPrefab, gameObject.transform.position + shotgunAimDirection * 1.5f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
+                    aux = Instantiate(shootPrefab, pos + shotgunAimDirection * 1.5f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
                     aux.GetComponent<BulletScript>().damage = 15;
                     shootForce = shotgunAimDirection * 100;
                     aux.GetComponent<Rigidbody>().AddForce(shootForce*1.5f);
@@ -256,14 +260,14 @@ public class Shooter : MonoBehaviour
                 Vector3 tripleDirection = aimDirection;
                 tripleDirection.x = tripleDirection.x * Mathf.Cos(angle) - tripleDirection.y * Mathf.Sin(angle);
                 tripleDirection.z = tripleDirection.z * Mathf.Sin(angle) + tripleDirection.y * Mathf.Cos(angle);
-                aux = Instantiate(shootPrefab, gameObject.transform.position + tripleDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
+                aux = Instantiate(shootPrefab, pos + tripleDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
                 aux.GetComponent<BulletScript>().damage = 10;
                 shootForce = tripleDirection * 100;
                 aux.GetComponent<Rigidbody>().AddForce(shootForce);
 
                 //Center
                 tripleDirection = aimDirection;
-                aux = Instantiate(shootPrefab, gameObject.transform.position + tripleDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
+                aux = Instantiate(shootPrefab, pos + tripleDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
                 aux.GetComponent<BulletScript>().damage = 10;
                 shootForce = tripleDirection * 100;
                 aux.GetComponent<Rigidbody>().AddForce(shootForce);
@@ -281,7 +285,7 @@ public class Shooter : MonoBehaviour
             case Weapons.Sniper:
                 shoot.Play();
                 Shake();
-                aux = Instantiate(shootPrefab, gameObject.transform.position + aimDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
+                aux = Instantiate(shootPrefab, pos + aimDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
                 aux.transform.localScale *= 1.5f;
                 aux.GetComponent<BulletScript>().damage = 50;
                 shootForce = aimDirection * 100;

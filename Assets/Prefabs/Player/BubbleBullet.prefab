@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 2421088425041002439}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 65.67496, y: 0.71445173, z: 197.91637}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_Children:
   - {fileID: 3571643225850815535}
   m_Father: {fileID: 0}
@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caf4d7428b7da284d8aadae2ef2cb962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyTime: 0
   bouncines: {fileID: 13400000, guid: 867f2af0df632fc43a434098afe3e60c, type: 2}
   poisonColor: {fileID: 2100000, guid: 8033e9e186b0ab9469009ae6379921e2, type: 2}
   hitParticle: {fileID: 5747453162757666172, guid: c7b1dc6243611814fb0d51c4d1e8fc2b, type: 3}

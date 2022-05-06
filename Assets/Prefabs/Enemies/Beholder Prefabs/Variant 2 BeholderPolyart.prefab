@@ -1,53 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &1518847046383906164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3105895527409950428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fa8b852a725b2f47b8ab4f96b542824, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6241637083441828386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3105895527409950428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6457e85d743e9d24198888c5125481a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firePoint1: {fileID: 1085261909005977881}
-  firePoint2: {fileID: 2183709544954041935}
-  firePoint3: {fileID: 9167152691203267036}
-  firePoint4: {fileID: 10187640958278878}
-  firePoint5: {fileID: 4567089688686077854}
-  firePoint6: {fileID: 2595799683822204486}
-  firePoint7: {fileID: 7341769041849997303}
-  firePoint8: {fileID: 5108866159378756592}
-  agent: {fileID: 4739696859639240694}
-  Ground:
-    serializedVersion: 2
-    m_Bits: 128
-  hp: 0
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 10
-  shootPrefab: {fileID: 901182402720252531, guid: 8370c3e46d65264449e0899a2b4fc6e0, type: 3}
-  isHit: 0
-  posionParticles: {fileID: 9050658520201416140, guid: 807a515548344524897e85287286fb30, type: 3}
-  deathParticles: {fileID: 2947199187110361257, guid: 06b34edfb46d09c45aecab44e5073dd4, type: 3}
-  healBubble: {fileID: 1960532133341974894, guid: d4b562fe8dc91d44ba3d7ca942772434, type: 3}
-  coin: {fileID: 9064536156332027177, guid: 36e89c85bb0c50b45bb92a51e49b304b, type: 3}
-  shoot: {fileID: 3152047314289795048}
-  impact: {fileID: 3152047314289795048}
-  managerEnemies: {fileID: 0}
 --- !u!1 &3197971367775608919
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,6 +90,55 @@ Transform:
   m_Father: {fileID: 3105895527409582844}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1518847046383906164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3105895527409950428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fa8b852a725b2f47b8ab4f96b542824, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6241637083441828386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3105895527409950428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6457e85d743e9d24198888c5125481a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint1: {fileID: 1085261909005977881}
+  firePoint2: {fileID: 2183709544954041935}
+  firePoint3: {fileID: 9167152691203267036}
+  firePoint4: {fileID: 10187640958278878}
+  firePoint5: {fileID: 4567089688686077854}
+  firePoint6: {fileID: 2595799683822204486}
+  firePoint7: {fileID: 7341769041849997303}
+  firePoint8: {fileID: 5108866159378756592}
+  agent: {fileID: 4739696859639240694}
+  Ground:
+    serializedVersion: 2
+    m_Bits: 128
+  hp: 0
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointRange: 10
+  shootPrefab: {fileID: 901182402720252531, guid: 8370c3e46d65264449e0899a2b4fc6e0, type: 3}
+  isHit: 0
+  posionParticles: {fileID: 9050658520201416140, guid: 807a515548344524897e85287286fb30, type: 3}
+  deathParticles: {fileID: 2947199187110361257, guid: 06b34edfb46d09c45aecab44e5073dd4, type: 3}
+  dropiParticles: {fileID: 3190082510086834451, guid: 78b910599fc39874a9a3bec98633076c, type: 3}
+  healBubble: {fileID: 1960532133341974894, guid: d4b562fe8dc91d44ba3d7ca942772434, type: 3}
+  coin: {fileID: 9064536156332027177, guid: 36e89c85bb0c50b45bb92a51e49b304b, type: 3}
+  shoot: {fileID: 3152047314289795048}
+  impact: {fileID: 3152047314289795048}
+  managerEnemies: {fileID: 0}
 --- !u!1 &8101252322252445778
 GameObject:
   m_ObjectHideFlags: 0
