@@ -52,31 +52,31 @@ public class sizePlayer : MonoBehaviour
 
         if (life == 5 && !changed)
         {
-            marcoHud.color = new Color(255, 255, 255);
+            marcoHud.color = new Color(0, 255, 255,255);
             player.transform.localScale = new Vector3(140f, 140f, 140f);
             changed = true;
         }
         if (life == 4 && !changed)
         {
-            marcoHud.color = new Color(255, 170, 255);
+            marcoHud.color = new Color(0, 200, 255,255);
             player.transform.localScale = new Vector3(120f, 120f, 120f);
             changed = true;
         }
         if (life == 3 && !changed)
         {
-            marcoHud.color = new Color(255,100,255);
+            marcoHud.color = new Color(0,150,255, 255);
             player.transform.localScale = new Vector3(100f, 100f, 100f);
             changed = true;
         }
         if (life == 2 && !changed)
         {
-            marcoHud.color = new Color(255, 30, 180);
+            marcoHud.color = new Color(0, 80, 180,255);
             player.transform.localScale = new Vector3(80f, 80f, 80f);
             changed = true;
         }
         if (life == 1 && !changed)
         {
-            marcoHud.color = new Color(255, 50, 100);
+            marcoHud.color = new Color(0, 13, 130,255);
             player.transform.localScale = new Vector3(60f, 60f, 60f);
             changed = true;
         }

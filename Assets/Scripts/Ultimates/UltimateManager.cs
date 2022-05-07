@@ -23,7 +23,23 @@ public class UltimateManager : MonoBehaviour
         DUltimates[EUltimates.DROPINOMICON] = false;
     }
 
- 
+    private void Update()
+    {
+        if (DUltimates[UltimateManager.EUltimates.BIGDROP]) {
+
+            ultimatesImage[0].SetActive(true);
+            ultimatesImage[1].SetActive(false);
+        
+        }
+        if (DUltimates[UltimateManager.EUltimates.DROPINOMICON])
+        {
+
+            ultimatesImage[0].SetActive(false);
+            ultimatesImage[1].SetActive(true);
+
+        }
+    }
+
 }
 
 

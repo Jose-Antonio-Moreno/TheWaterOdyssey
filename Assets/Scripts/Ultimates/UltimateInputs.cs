@@ -48,7 +48,7 @@ public class UltimateInputs : MonoBehaviour
         GameObject.Find("Armature").GetComponent<UltimateManager>().DUltimates.TryGetValue(UltimateManager.EUltimates.DROPINOMICON, out hasUltimate);
         if (hasUltimate)
         {
-           
+            
             Dropinomicon();
         }
     }
