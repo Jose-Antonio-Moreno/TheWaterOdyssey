@@ -19,7 +19,7 @@ public enum Weapons
 public class Shooter : MonoBehaviour
 {
     [SerializeField]
-    Image[] weaponsImage;
+    GameObject[] weaponsImage;
    
 
     public Weapons weapon = Weapons.Sniper;
@@ -28,8 +28,7 @@ public class Shooter : MonoBehaviour
     Vector2 aimJoystick;
     public GameObject shootPrefab;
     
-    [SerializeField]
-    GameObject bigDropPrefab;
+   
 
     [SerializeField]
     sizePlayer life;
@@ -81,32 +80,59 @@ public class Shooter : MonoBehaviour
 
     private void Update()
     {
-        for (int i = 0; i < weaponsImage.Length; i++)
-        {
-            if (weaponsImage[(int)weapon] == weaponsImage[i]) weaponsImage[i].enabled = true;
-            else weaponsImage[i].enabled = false;
-        }
+        
 
             //SetFireRate
         switch (weapon)
         {
             case Weapons.Basic:
                 fireRate = 4;
+                weaponsImage[0].SetActive(false);
+                weaponsImage[1].SetActive(false);
+                weaponsImage[2].SetActive(false);
+                weaponsImage[3].SetActive(false);
+                weaponsImage[4].SetActive(true);
+
                 break;
             case Weapons.Auto:
                 fireRate = 9;
+                weaponsImage[0].SetActive(true);
+                weaponsImage[1].SetActive(false);
+                weaponsImage[2].SetActive(false);
+                weaponsImage[3].SetActive(false);
+                weaponsImage[4].SetActive(false);
                 break;
             case Weapons.Shotgun:
                 fireRate = 1.5f;
+                weaponsImage[0].SetActive(false);
+                weaponsImage[1].SetActive(true);
+                weaponsImage[2].SetActive(false);
+                weaponsImage[3].SetActive(false);
+                weaponsImage[4].SetActive(false);
                 break;
             case Weapons.Triple:
                 fireRate = 5;
+                weaponsImage[0].SetActive(false);
+                weaponsImage[1].SetActive(false);
+                weaponsImage[2].SetActive(false);
+                weaponsImage[3].SetActive(true);
+                weaponsImage[4].SetActive(false);
                 break;
             case Weapons.Sniper:
                 fireRate = 1;
+                weaponsImage[0].SetActive(false);
+                weaponsImage[1].SetActive(false);
+                weaponsImage[2].SetActive(true);
+                weaponsImage[3].SetActive(false);
+                weaponsImage[4].SetActive(false);
                 break;
             case Weapons.Spray:
                 fireRate = 50;
+                weaponsImage[0].SetActive(false);
+                weaponsImage[1].SetActive(false);
+                weaponsImage[2].SetActive(false);
+                weaponsImage[3].SetActive(true);
+                weaponsImage[4].SetActive(false);
                 break;
             default:
                 fireRate = 3;

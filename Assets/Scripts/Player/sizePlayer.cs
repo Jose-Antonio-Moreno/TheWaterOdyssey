@@ -8,9 +8,7 @@ public class sizePlayer : MonoBehaviour
 {
     public GameObject player;
 
-    public int life, maxLife;
-    public Image[] vidas;
-    public Sprite burbujaLlena, burbujaVacia;
+    public int life;
 
     public bool changed;
 
@@ -25,6 +23,8 @@ public class sizePlayer : MonoBehaviour
 
     public ParticleSystem hitParticles;
 
+    [SerializeField]
+    Image marcoHud;
     //Sounds
     public AudioSource evaporation;
 
@@ -32,7 +32,7 @@ public class sizePlayer : MonoBehaviour
     void Start()
     {
         Time.timeScale =1;
-        maxLife = 5;
+       
         life = 3;
         changed = false;
         hitted = false;
@@ -46,40 +46,37 @@ public class sizePlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (life > maxLife)life = maxLife;
         
-        for (int i = 0; i < vidas.Length; i++)
-        {
-            if (i < life)vidas[i].sprite = burbujaLlena;
-            else vidas[i].sprite = burbujaVacia;
-
-            if (i < maxLife)vidas[i].enabled = true;
-            else vidas[i].enabled = false;
-
-        }
+        
+       
 
         if (life == 5 && !changed)
         {
+            marcoHud.color = new Color(255, 255, 255);
             player.transform.localScale = new Vector3(140f, 140f, 140f);
             changed = true;
         }
         if (life == 4 && !changed)
         {
+            marcoHud.color = new Color(255, 170, 255);
             player.transform.localScale = new Vector3(120f, 120f, 120f);
             changed = true;
         }
         if (life == 3 && !changed)
         {
+            marcoHud.color = new Color(255,100,255);
             player.transform.localScale = new Vector3(100f, 100f, 100f);
             changed = true;
         }
         if (life == 2 && !changed)
         {
+            marcoHud.color = new Color(255, 30, 180);
             player.transform.localScale = new Vector3(80f, 80f, 80f);
             changed = true;
         }
         if (life == 1 && !changed)
         {
+            marcoHud.color = new Color(255, 50, 100);
             player.transform.localScale = new Vector3(60f, 60f, 60f);
             changed = true;
         }

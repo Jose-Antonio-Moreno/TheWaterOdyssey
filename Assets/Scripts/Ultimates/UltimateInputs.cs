@@ -19,6 +19,8 @@ public class UltimateInputs : MonoBehaviour
 
     bool hasUltimate;
 
+    
+
     void Start() 
     {
         PlayerControlls controller;
@@ -40,11 +42,13 @@ public class UltimateInputs : MonoBehaviour
         GameObject.Find("Armature").GetComponent<UltimateManager>().DUltimates.TryGetValue(UltimateManager.EUltimates.BIGDROP, out hasUltimate);
         if (hasUltimate) 
         {
+           
             ShootBigDrop();
         }
         GameObject.Find("Armature").GetComponent<UltimateManager>().DUltimates.TryGetValue(UltimateManager.EUltimates.DROPINOMICON, out hasUltimate);
         if (hasUltimate)
         {
+           
             Dropinomicon();
         }
     }

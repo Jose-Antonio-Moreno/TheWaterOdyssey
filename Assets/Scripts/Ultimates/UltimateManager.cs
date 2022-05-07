@@ -7,6 +7,9 @@ public class UltimateManager : MonoBehaviour
     public enum EUltimates {BIGDROP, DROPINOMICON, DUMMY };
     public Dictionary<EUltimates, bool> DUltimates;
 
+    [SerializeField]
+    GameObject[] ultimatesImage;
+
     void Awake()
     {
         DUltimates = new Dictionary<EUltimates, bool>();
@@ -19,6 +22,8 @@ public class UltimateManager : MonoBehaviour
         DUltimates[EUltimates.BIGDROP] = false;
         DUltimates[EUltimates.DROPINOMICON] = false;
     }
+
+ 
 }
 
 

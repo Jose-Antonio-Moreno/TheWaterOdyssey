@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 
 public class SkillsMenuManger : MonoBehaviour
@@ -13,6 +14,9 @@ public class SkillsMenuManger : MonoBehaviour
     private GameObject botones;
 
     public Canvas hud;
+
+    public AudioMixer audioMixer;
+
 
     public Dropdown resolutionDropdown;
     Resolution[] resolutions;
@@ -82,8 +86,9 @@ public class SkillsMenuManger : MonoBehaviour
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     
     }
-    public void SetVolume() { 
-    
+    public void SetVolume(float volume) {
+
+        audioMixer.SetFloat("MasterVolume", volume);
     
     }
 
