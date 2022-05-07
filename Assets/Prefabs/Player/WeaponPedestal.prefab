@@ -112,10 +112,10 @@ MonoBehaviour:
   pedestalWeapon: 0
   spawnPoint: {fileID: 2572687563855015916}
   weaponsSprite:
-  - {fileID: 7038897413662204492, guid: 3281834176755d941b9274db560d224d, type: 3}
-  - {fileID: 6471463583206898134, guid: 8ad6f8cea4508c34a88b80c00d2d259b, type: 3}
-  - {fileID: 3866144089312555827, guid: f52f5d85402034f41ad310c9ebb8dac2, type: 3}
-  - {fileID: 6501096373830278440, guid: 4e816b486ddcf0f418a14a339e456b78, type: 3}
+  - {fileID: 8319376099946223891, guid: a46f6fdebebaa8a42a0db73f02518043, type: 3}
+  - {fileID: 6965483614096039716, guid: 146dd4cceec367842ae221765626785d, type: 3}
+  - {fileID: 2291813863217499741, guid: f8ea1d932c043ba4781ced9b7e89bd69, type: 3}
+  - {fileID: 8933149776863821029, guid: 97d1e44d628baa248b3ebcc189ebbf75, type: 3}
 --- !u!1 &8335785413937790683
 GameObject:
   m_ObjectHideFlags: 0

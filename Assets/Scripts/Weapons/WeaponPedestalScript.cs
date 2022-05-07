@@ -20,9 +20,9 @@ public class WeaponPedestalScript : MonoBehaviour
         pedestalWeapon = (Weapons)randomNumber;
 
         weaponsSprite[randomNumber].transform.position = new Vector3(spawnPoint.position.x, spawnPoint.position.y, spawnPoint.position.z);
-        weaponsSprite[randomNumber].transform.localScale *= 1.25f;
+        weaponsSprite[randomNumber].transform.localScale *= 0.5f;
         weaponsSprite[randomNumber].transform.Rotate(90f, 0f, 0f);
-         Instantiate(weaponsSprite[randomNumber]);
+        Instantiate(weaponsSprite[randomNumber]);
        // weapon.transform.localScale = new Vector3(10f, 10f, 10f);
     }
 }
