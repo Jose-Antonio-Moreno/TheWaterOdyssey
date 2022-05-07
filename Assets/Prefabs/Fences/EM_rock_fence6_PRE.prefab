@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 4107842182881593930}
   - component: {fileID: 2365398724645356577}
   - component: {fileID: 7989073779915682900}
+  - component: {fileID: 5463242130746994644}
   m_Layer: 0
   m_Name: EM_rock_fence6_LOD0
   m_TagString: Walls
@@ -90,7 +91,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97822256caa3254fb7b880303af5694, type: 2}
+  - {fileID: 2100000, guid: 9b25a0591a0baa04fafc96a72046017f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -112,3 +113,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5463242130746994644
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628403117357021994}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02775766, y: 0.0055784266, z: 0.008548452}
+  m_Center: {x: 0.00022652271, y: 0.00076536526, z: 0.004274226}
