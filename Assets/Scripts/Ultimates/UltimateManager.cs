@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public enum EUltimates {BIGDROP, DROPINOMICON, DUMMY };
 
 public class UltimateManager : MonoBehaviour
 {
-    public enum EUltimates {BIGDROP, DROPINOMICON, DUMMY };
     public Dictionary<EUltimates, bool> DUltimates;
 
     [SerializeField]
@@ -21,17 +23,18 @@ public class UltimateManager : MonoBehaviour
         }
         DUltimates[EUltimates.BIGDROP] = false;
         DUltimates[EUltimates.DROPINOMICON] = false;
+        LoadData();
     }
 
     private void Update()
     {
-        if (DUltimates[UltimateManager.EUltimates.BIGDROP]) {
+        if (DUltimates[EUltimates.BIGDROP]) {
 
             ultimatesImage[0].SetActive(true);
             ultimatesImage[1].SetActive(false);
         
         }
-        if (DUltimates[UltimateManager.EUltimates.DROPINOMICON])
+        if (DUltimates[EUltimates.DROPINOMICON])
         {
 
             ultimatesImage[0].SetActive(false);
@@ -39,7 +42,24 @@ public class UltimateManager : MonoBehaviour
 
         }
     }
-
+    void SaveData()
+    {
+        if (SceneManager.GetActiveScene().buildIndex >= 2)
+        {
+            SingletonDataSaver.instance.savedUltimates = DUltimates;
+        }
+    }
+    void LoadData()
+    {
+        if (SceneManager.GetActiveScene().buildIndex >= 2 && SingletonDataSaver.instance.savedUltimates != null)
+        {
+            DUltimates = SingletonDataSaver.instance.savedUltimates;
+        }
+    }
+    private void OnDestroy()
+    {
+        SaveData();
+    }
 }
 
 

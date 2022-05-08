@@ -44,15 +44,15 @@ public class PedestalUltimates : MonoBehaviour
 
             if (ultimateSpawn.CompareTag("BigDrop"))
             {
-                other.GetComponent<UltimateManager>().DUltimates[UltimateManager.EUltimates.BIGDROP] = true;
-                other.GetComponent<UltimateManager>().DUltimates[UltimateManager.EUltimates.DROPINOMICON] = false;
+                other.GetComponent<UltimateManager>().DUltimates[EUltimates.BIGDROP] = true;
+                other.GetComponent<UltimateManager>().DUltimates[EUltimates.DROPINOMICON] = false;
 
             }
             
             if (ultimateSpawn.CompareTag("Dropinomicon"))
             {
-                other.GetComponent<UltimateManager>().DUltimates[UltimateManager.EUltimates.BIGDROP] = false; 
-                other.GetComponent<UltimateManager>().DUltimates[UltimateManager.EUltimates.DROPINOMICON] = true;
+                other.GetComponent<UltimateManager>().DUltimates[EUltimates.BIGDROP] = false; 
+                other.GetComponent<UltimateManager>().DUltimates[EUltimates.DROPINOMICON] = true;
             }
             
             Destroy(ultimateSpawn);

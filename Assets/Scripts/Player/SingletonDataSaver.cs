@@ -9,6 +9,7 @@ public class SingletonDataSaver : MonoBehaviour
 
     public Weapons weaponsSaved;
     public Dictionary<EAbilities, bool> savedSkills;
+    public Dictionary<EUltimates, bool> savedUltimates;
 
     void Awake()
     {
@@ -25,10 +26,4 @@ public class SingletonDataSaver : MonoBehaviour
         }
     }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

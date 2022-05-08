@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using Cinemachine;
 using DG.Tweening;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public enum Weapons
 {
     Auto = 0,
@@ -74,10 +75,10 @@ public class Shooter : MonoBehaviour
     }
     void SwitchWeapon()
     {
-        if (weapon == Weapons.Basic)
-            weapon = Weapons.Auto;
-        else
-            weapon = Weapons.Auto;
+        //if (weapon == Weapons.Basic)
+        //    weapon = Weapons.Auto;
+        //else
+        //    weapon = Weapons.Auto;
     }
 
     float nextShoot = 0;
@@ -390,11 +391,18 @@ public class Shooter : MonoBehaviour
 
     void SaveData()
     {
-        SingletonDataSaver.instance.weaponsSaved = weapon;
+        if (SceneManager.GetActiveScene().buildIndex >= 2)
+        {
+            SingletonDataSaver.instance.weaponsSaved = weapon;
+
+        }
     }
     void LoadData()
     {
-        weapon = SingletonDataSaver.instance.weaponsSaved;
+        if (SceneManager.GetActiveScene().buildIndex >= 2)
+        {
+            weapon = SingletonDataSaver.instance.weaponsSaved;
+        }
     }
     private void OnDestroy()
     {

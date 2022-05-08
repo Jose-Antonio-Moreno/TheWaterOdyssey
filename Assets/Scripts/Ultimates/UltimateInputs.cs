@@ -44,12 +44,12 @@ public class UltimateInputs : MonoBehaviour
 
     void UltimateToUse() 
     {
-        GameObject.Find("Armature").GetComponent<UltimateManager>().DUltimates.TryGetValue(UltimateManager.EUltimates.BIGDROP, out hasUltimate);
+        GameObject.Find("Armature").GetComponent<UltimateManager>().DUltimates.TryGetValue(EUltimates.BIGDROP, out hasUltimate);
         if (hasUltimate) 
         {
             ShootBigDrop();
         }
-        GameObject.Find("Armature").GetComponent<UltimateManager>().DUltimates.TryGetValue(UltimateManager.EUltimates.DROPINOMICON, out hasUltimate);
+        GameObject.Find("Armature").GetComponent<UltimateManager>().DUltimates.TryGetValue(EUltimates.DROPINOMICON, out hasUltimate);
         if (hasUltimate)
         {
             Dropinomicon();

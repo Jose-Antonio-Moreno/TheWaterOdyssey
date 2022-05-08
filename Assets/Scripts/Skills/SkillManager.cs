@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-   public enum EAbilities {POISON, DOUBLEEDGE, ICE, LIGHTSTEP, DISCOUNT, DAMAGET, SLOWT, FIRERATE, BOUNCY, SHIELDBUBBLE, BIGBUBBLE, DUMMY};
+using UnityEngine.SceneManagement;
+
+public enum EAbilities {POISON, DOUBLEEDGE, ICE, LIGHTSTEP, DISCOUNT, DAMAGET, SLOWT, FIRERATE, BOUNCY, SHIELDBUBBLE, BIGBUBBLE, DUMMY};
 
 public class SkillManager : MonoBehaviour
 {
@@ -10,12 +12,11 @@ public class SkillManager : MonoBehaviour
     
     void Awake()
     {
-        LoadData();
         DSkills = new Dictionary<EAbilities, bool>();
 
         EAbilities ability;
 
-        for (int i = 0; i < (int)EAbilities.DUMMY; i++) 
+        for (int i = 0; i < (int)EAbilities.DUMMY; i++)
         {
             ability = (EAbilities)i;
             DSkills.Add(ability, false);
@@ -26,6 +27,7 @@ public class SkillManager : MonoBehaviour
         DSkills[EAbilities.FIRERATE] = false;
         DSkills[EAbilities.SHIELDBUBBLE] = false;
         DSkills[EAbilities.BIGBUBBLE] = false;
+        LoadData();
     }
     private void Update()
     {
@@ -34,11 +36,17 @@ public class SkillManager : MonoBehaviour
     }
     void SaveData()
     {
-        SingletonDataSaver.instance.savedSkills = DSkills;
+        if (SceneManager.GetActiveScene().buildIndex >= 2)
+        {
+            SingletonDataSaver.instance.savedSkills = DSkills;
+        }
     }
     void LoadData()
     {
-        DSkills = SingletonDataSaver.instance.savedSkills;
+        if (SceneManager.GetActiveScene().buildIndex >= 2 && SingletonDataSaver.instance.savedSkills != null)
+        {
+            DSkills = SingletonDataSaver.instance.savedSkills;
+        }
     }
     private void OnDestroy()
     {

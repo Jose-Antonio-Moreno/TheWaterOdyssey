@@ -8,10 +8,10 @@ public class GetUltimate : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (this.CompareTag("BigDrop")) other.GetComponent<UltimateManager>().DUltimates[UltimateManager.EUltimates.BIGDROP] = true;
-            else { other.GetComponent<UltimateManager>().DUltimates[UltimateManager.EUltimates.BIGDROP] = false; }
-            if (this.CompareTag("Dropinomicon")) other.GetComponent<UltimateManager>().DUltimates[UltimateManager.EUltimates.DROPINOMICON] = true;
-            else { other.GetComponent<UltimateManager>().DUltimates[UltimateManager.EUltimates.DROPINOMICON] = false; }
+            if (this.CompareTag("BigDrop")) other.GetComponent<UltimateManager>().DUltimates[EUltimates.BIGDROP] = true;
+            else { other.GetComponent<UltimateManager>().DUltimates[EUltimates.BIGDROP] = false; }
+            if (this.CompareTag("Dropinomicon")) other.GetComponent<UltimateManager>().DUltimates[EUltimates.DROPINOMICON] = true;
+            else { other.GetComponent<UltimateManager>().DUltimates[EUltimates.DROPINOMICON] = false; }
         }
     }
 }
