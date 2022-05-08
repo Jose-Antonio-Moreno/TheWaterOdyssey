@@ -18,10 +18,13 @@ public class UltimateInputs : MonoBehaviour
     sizePlayer life;
 
     bool hasUltimate;
+    bool hasAbility;
 
     //Sounds
     public AudioSource dropinomicon;
     public AudioSource bigDrop;
+
+
 
     void Start() 
     {
@@ -58,14 +61,23 @@ public class UltimateInputs : MonoBehaviour
     {
         GameObject aux;
         Vector3 shootForce;
-
+        Vector3 pos;
+        GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.BIGBUBBLE, out hasAbility);
+        if (hasAbility)
+        {
+            pos = new Vector3(gameObject.transform.position.x, variables.originalYPos + 1.5f, gameObject.transform.position.z);
+        }
+        else 
+        {
+            pos = new Vector3(gameObject.transform.position.x, variables.originalYPos + 1, gameObject.transform.position.z);
+        }
         if (life.life > 1)
         {
             bigDrop.Play();
             ShakeUltimate();
             life.life -= 1;
             life.changed = false;
-            aux = Instantiate(bigDropPrefab, gameObject.transform.position + variables.aimDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
+            aux = Instantiate(bigDropPrefab, pos + variables.aimDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
             aux.GetComponent<BulletScript>().damage = 100;
             shootForce = variables.aimDirection * 100;
             aux.GetComponent<Rigidbody>().AddForce(shootForce);
@@ -81,14 +93,21 @@ public class UltimateInputs : MonoBehaviour
 
         GameObject[] gb = GameObject.FindGameObjectsWithTag("Enemy");
         for (int i = 0; i < gb.Length; i++)
+        if (life.life > 1) 
         {
-            //
-            // Collider[] enemies = Physics.OverlapSphere(gameObject.transform.position, 100, Layer);
-            //enemies[i].gameObject.GetComponent<UltimateBehaviour>();
-            UltimateInterface ultimate = gb[i].GetComponent<UltimateBehaviour>();
-            if(ultimate != null)
-                ultimate.ActivateDropinomicon();
-
+            ShakeUltimate();
+            life.life -= 1;
+            life.changed = false;
+            GameObject[] gb = GameObject.FindGameObjectsWithTag("Enemy");
+            for (int i = 0; i < gb.Length; i++)
+            {
+                // Collider[] enemies = Physics.OverlapSphere(gameObject.transform.position, 100, Layer);
+                //enemies[i].gameObject.GetComponent<UltimateBehaviour>();
+                UltimateInterface ultimate = gb[i].GetComponent<UltimateBehaviour>();
+                if (ultimate != null)
+                    ultimate.ActivateDropinomicon();
+            }
         }
+        
     }
 }

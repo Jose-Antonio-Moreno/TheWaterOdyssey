@@ -2661,7 +2661,7 @@ MonoBehaviour:
   hitted: 0
   deathMenu: {fileID: 1186395751415704107}
   hitParticles: {fileID: 6465089969189171295, guid: e74ffe42e0803a64684da95c449bb37c, type: 3}
-  marcoHud: {fileID: 0}
+  marcoHud: {fileID: 2727191963948327981}
   evaporation: {fileID: 7879575115560534699}
 --- !u!114 &1687420363730804666
 MonoBehaviour:
@@ -2690,6 +2690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d64d70e61f163e4c90a0f6c875fcc62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ultimatesImage: []
 --- !u!1 &6006621480990478613
 GameObject:
   m_ObjectHideFlags: 0

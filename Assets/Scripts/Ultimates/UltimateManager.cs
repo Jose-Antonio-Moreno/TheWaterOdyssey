@@ -19,7 +19,7 @@ public class UltimateManager : MonoBehaviour
             ultimate = (EUltimates)i;
             DUltimates.Add(ultimate, false);
         }
-        DUltimates[EUltimates.BIGDROP] = false;
+        DUltimates[EUltimates.BIGDROP] = true;
         DUltimates[EUltimates.DROPINOMICON] = false;
     }
 

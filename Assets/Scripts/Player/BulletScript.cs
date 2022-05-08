@@ -57,7 +57,6 @@ public class BulletScript : MonoBehaviour
                 Instantiate(hitParticle, transform.position, Quaternion.identity);
             }
             Instantiate(hitParticle, transform.position, Quaternion.identity);
-            impulse.GenerateImpulse(1f);
             GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.POISON, out hasAbility);
             if (hasAbility)
             {

@@ -13,7 +13,7 @@ public class SkillsMenuManger : MonoBehaviour
     GameObject player;
     private GameObject botones;
 
-    public Canvas hud;
+    public Image hud;
 
     public AudioMixer audioMixer;
 
@@ -99,6 +99,8 @@ public class SkillsMenuManger : MonoBehaviour
     }
     public void goContinue()
     {
+        hud.enabled = true;
+        botones.SetActive(false);
         Time.timeScale = 1f;
     }
     public void SelectPoison()

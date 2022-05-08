@@ -35,7 +35,7 @@ public class Shooter : MonoBehaviour
 
     public Transform pointer;
 
-    float originalYPos;
+    public float originalYPos;
 
     bool shooting = false;
 
