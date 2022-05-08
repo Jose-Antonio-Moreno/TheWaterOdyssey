@@ -1691,6 +1691,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1258101314343989815, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 262861009}
     - target: {fileID: 1913881186677270208, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -3994,10 +3998,10 @@ AudioSource:
   m_GameObject: {fileID: 262861007}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: de757b4010ddbb441bf2c9d8518fb10b, type: 3}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 30c981dff1f7b5d409821879db2a2964, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 7b457e1dac16c9f4e912ef4aacc887d6, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -8339,7 +8343,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 683651209}
-  m_LocalRotation: {x: 0.5543147, y: -0.000000006507534, z: 0.000000004334002, w: 0.8323072}
+  m_LocalRotation: {x: 0.5543147, y: 0.000000016011361, z: -0.0000000106635305, w: 0.8323072}
   m_LocalPosition: {x: 142.35567, y: 36.08917, z: -86.34293}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -17978,7 +17982,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1546082964}
-  - component: {fileID: 1546082963}
   m_Layer: 0
   m_Name: MusicManager
   m_TagString: Untagged
@@ -17986,18 +17989,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1546082963
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1546082962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aafa0a16003287b43b5d54b32db99416, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1546082964
 Transform:
   m_ObjectHideFlags: 0
@@ -18421,7 +18412,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1581558956}
-  m_LocalRotation: {x: 0.5543147, y: -0.000000006507534, z: 0.000000004334002, w: 0.8323072}
+  m_LocalRotation: {x: 0.5543147, y: 0.000000016011361, z: -0.0000000106635305, w: 0.8323072}
   m_LocalPosition: {x: 142.35567, y: 36.08917, z: -86.34293}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -24712,6 +24703,14 @@ PrefabInstance:
     - target: {fileID: 6529476796623225729, guid: a94290a052783da41baee6aba45fb165, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7276490467181737818, guid: a94290a052783da41baee6aba45fb165, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1137602796}
+    - target: {fileID: 7276490467181737818, guid: a94290a052783da41baee6aba45fb165, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a94290a052783da41baee6aba45fb165, type: 3}
