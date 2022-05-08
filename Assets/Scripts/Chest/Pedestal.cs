@@ -42,12 +42,12 @@ public class Pedestal : MonoBehaviour
             getItem = false;
 
            
-            if(weaponSpawn.CompareTag("BigBubble")) other.GetComponent<SkillManager>().DSkills[SkillManager.EAbilities.BIGBUBBLE] = true;
-            if(weaponSpawn.CompareTag("Bouncy")) other.GetComponent<SkillManager>().DSkills[SkillManager.EAbilities.BOUNCY] = true;
-            if(weaponSpawn.CompareTag("FireRate")) other.GetComponent<SkillManager>().DSkills[SkillManager.EAbilities.FIRERATE] = true;
-            if(weaponSpawn.CompareTag("LightStep")) other.GetComponent<SkillManager>().DSkills[SkillManager.EAbilities.LIGHTSTEP] = true;
-            if(weaponSpawn.CompareTag("Poison")) other.GetComponent<SkillManager>().DSkills[SkillManager.EAbilities.POISON] = true;
-            if(weaponSpawn.CompareTag("ShieldTears")) other.GetComponent<SkillManager>().DSkills[SkillManager.EAbilities.SHIELDBUBBLE] = true;
+            if(weaponSpawn.CompareTag("BigBubble")) other.GetComponent<SkillManager>().DSkills[EAbilities.BIGBUBBLE] = true;
+            if(weaponSpawn.CompareTag("Bouncy")) other.GetComponent<SkillManager>().DSkills[EAbilities.BOUNCY] = true;
+            if(weaponSpawn.CompareTag("FireRate")) other.GetComponent<SkillManager>().DSkills[EAbilities.FIRERATE] = true;
+            if(weaponSpawn.CompareTag("LightStep")) other.GetComponent<SkillManager>().DSkills[EAbilities.LIGHTSTEP] = true;
+            if(weaponSpawn.CompareTag("Poison")) other.GetComponent<SkillManager>().DSkills[EAbilities.POISON] = true;
+            if(weaponSpawn.CompareTag("ShieldTears")) other.GetComponent<SkillManager>().DSkills[EAbilities.SHIELDBUBBLE] = true;
             Destroy(weaponSpawn);
         }
     }

@@ -59,6 +59,8 @@ public class Shooter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        LoadData();
+
         PlayerControlls controller;
         _inputManager = gameObject.GetComponent<Movement_2>().inputManager;
         controller = _inputManager.GetComponent<InputsController>().globalControls;
@@ -146,7 +148,7 @@ public class Shooter : MonoBehaviour
 
         if (shooting && Time.time >= nextShoot)
         {
-            GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.FIRERATE, out hasAbility);
+            GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(EAbilities.FIRERATE, out hasAbility);
             
             if (hasAbility)
             {
@@ -384,5 +386,18 @@ public class Shooter : MonoBehaviour
 
             weapon = (Weapons)other.GetComponent<WeaponPedestalScript>().newWeaponNumber;
         }
+    }
+
+    void SaveData()
+    {
+        SingletonDataSaver.instance.weaponsSaved = weapon;
+    }
+    void LoadData()
+    {
+        weapon = SingletonDataSaver.instance.weaponsSaved;
+    }
+    private void OnDestroy()
+    {
+        SaveData();
     }
 }

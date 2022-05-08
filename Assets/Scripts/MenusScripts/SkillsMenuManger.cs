@@ -114,51 +114,51 @@ public class SkillsMenuManger : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
-        player.GetComponent<SkillManager>().DSkills[SkillManager.EAbilities.POISON] = true;
+        player.GetComponent<SkillManager>().DSkills[EAbilities.POISON] = true;
         
     }
     public void SelectDoubleEdge()
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
-        player.GetComponent<SkillManager>().DSkills[SkillManager.EAbilities.DOUBLEEDGE] = true;
+        player.GetComponent<SkillManager>().DSkills[EAbilities.DOUBLEEDGE] = true;
     }
     public void SelectIce()
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
-        player.GetComponent<SkillManager>().DSkills[SkillManager.EAbilities.ICE] = true;
+        player.GetComponent<SkillManager>().DSkills[EAbilities.ICE] = true;
     }
     public void SelectLightstep()
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
-        player.GetComponent<SkillManager>().DSkills[SkillManager.EAbilities.LIGHTSTEP] = true;
+        player.GetComponent<SkillManager>().DSkills[EAbilities.LIGHTSTEP] = true;
     }
     public void SelectBouncy()
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
-        player.GetComponent<SkillManager>().DSkills[SkillManager.EAbilities.BOUNCY] = true;
+        player.GetComponent<SkillManager>().DSkills[EAbilities.BOUNCY] = true;
     }
     public void SelectFireRate()
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
-        player.GetComponent<SkillManager>().DSkills[SkillManager.EAbilities.FIRERATE] = true;
+        player.GetComponent<SkillManager>().DSkills[EAbilities.FIRERATE] = true;
     }
     public void SelectShieldBubble()
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
-        player.GetComponent<SkillManager>().DSkills[SkillManager.EAbilities.SHIELDBUBBLE] = true;
+        player.GetComponent<SkillManager>().DSkills[EAbilities.SHIELDBUBBLE] = true;
 
     }
     public void SelectBigBubble()
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
-        player.GetComponent<SkillManager>().DSkills[SkillManager.EAbilities.BIGBUBBLE] = true;
+        player.GetComponent<SkillManager>().DSkills[EAbilities.BIGBUBBLE] = true;
     }
 
 }

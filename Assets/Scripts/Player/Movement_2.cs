@@ -109,7 +109,7 @@ public class Movement_2 : MonoBehaviour
 
         //LIGHT STEP PowerUP
         //Debug.Log(moveForce);
-        GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.LIGHTSTEP, out hasAbility);
+        GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(EAbilities.LIGHTSTEP, out hasAbility);
         //Debug.Log(hasAbility + "ISISISISIS"); 
         
         if (hasAbility)

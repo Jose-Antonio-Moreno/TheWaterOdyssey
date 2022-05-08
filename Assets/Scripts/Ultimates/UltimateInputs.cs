@@ -60,7 +60,7 @@ public class UltimateInputs : MonoBehaviour
         GameObject aux;
         Vector3 shootForce;
         Vector3 pos;
-        GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.BIGBUBBLE, out hasAbility);
+        GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(EAbilities.BIGBUBBLE, out hasAbility);
         if (hasAbility)
         {
             pos = new Vector3(gameObject.transform.position.x, variables.originalYPos + 1.5f, gameObject.transform.position.z);

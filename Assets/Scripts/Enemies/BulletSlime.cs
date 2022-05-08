@@ -35,7 +35,7 @@ public class BulletSlime : MonoBehaviour
         {
             Invoke("des", 0.1f);
         }
-        GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.SHIELDBUBBLE, out hasAbility);
+        GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(EAbilities.SHIELDBUBBLE, out hasAbility);
         if (hasAbility)
         {
             if (other.CompareTag("Bullet"))

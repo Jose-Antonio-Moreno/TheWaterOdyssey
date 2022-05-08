@@ -26,7 +26,7 @@ public class BulletScript : MonoBehaviour
     }
     private void Awake()
     {
-        GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.BOUNCY, out hasAbility);
+        GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(EAbilities.BOUNCY, out hasAbility);
         if (hasAbility)
         {
             transform.GetChild(0).GetComponent<SphereCollider>().material = bouncines;
@@ -34,7 +34,7 @@ public class BulletScript : MonoBehaviour
             isBouncy = true;
         }
         else { destroyTime = 0.75f; }
-        GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.BIGBUBBLE, out hasAbility);
+        GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(EAbilities.BIGBUBBLE, out hasAbility);
         if (hasAbility) 
         {
             transform.localScale *= 1.5f;
@@ -57,7 +57,7 @@ public class BulletScript : MonoBehaviour
             }
             Instantiate(hitParticle, transform.position, Quaternion.identity);
             impulse.GenerateImpulse(1f);
-            GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.POISON, out hasAbility);
+            GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(EAbilities.POISON, out hasAbility);
             if (hasAbility)
             {
                 //gameObject.GetComponent<Renderer>().material.color = Color.green;
@@ -67,7 +67,7 @@ public class BulletScript : MonoBehaviour
             Invoke("des", destroyTime);
         }
 
-        GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.SHIELDBUBBLE, out hasAbility);
+        GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(EAbilities.SHIELDBUBBLE, out hasAbility);
         if (hasAbility) 
         {
             if (other.CompareTag("BulletEnemy"))
@@ -85,7 +85,7 @@ public class BulletScript : MonoBehaviour
             }
             Instantiate(hitParticle, transform.position, Quaternion.identity);
             impulse.GenerateImpulse(1f);
-            GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(SkillManager.EAbilities.POISON, out hasAbility);
+            GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(EAbilities.POISON, out hasAbility);
             if (hasAbility)
             {
                 //gameObject.GetComponent<Renderer>().material.color = Color.green;
