@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class HealBubble_Script : MonoBehaviour
 {
-    
+    public AudioSource healSound;
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            //Hacer que le sume uno de vida al jugador
-            Invoke("Des", 0.1f);
+            healSound.Play();
+            gameObject.transform.position = new Vector3(300,300,300);
+            Invoke("Des", 2f);
         }
     }
 
