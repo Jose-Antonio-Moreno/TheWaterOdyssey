@@ -12,10 +12,10 @@ EditorBuildSettings:
     path: Assets/Scenes/SceneTutorial.unity
     guid: 487dbb4c07241bc4eae07ec202ded8bd
   - enabled: 1
-    path: Assets/Scenes/LEVEL_Jose.unity
+    path: Assets/Scenes/LEVEL_1.unity
     guid: 31f3592be4fe3614babb31e0325b0d66
   - enabled: 1
-    path: Assets/Scenes/MapaRespaldo.unity
+    path: Assets/Scenes/LEVEL_2.unity
     guid: 162e72b7f4c6ff94aa3602cb8d528718
   - enabled: 0
     path: Assets/Scenes/Level2.unity

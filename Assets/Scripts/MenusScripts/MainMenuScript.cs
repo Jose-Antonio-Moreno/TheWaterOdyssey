@@ -8,10 +8,7 @@ public class MainMenuScript : MonoBehaviour
 {
     public void Play()
     {
-
-
-        SceneManager.LoadScene("MapaRespaldo");
-
+        SceneManager.LoadScene("LEVEL_1");
     }
 
     public void Exit()

@@ -11,7 +11,7 @@ public class SkillsMenuManger : MonoBehaviour
     public GameObject _inputManager;
 
     GameObject player;
-    private GameObject botones;
+    private GameObject pause;
 
     public GameObject hud;
     public GameObject weapons;
@@ -49,28 +49,28 @@ public class SkillsMenuManger : MonoBehaviour
         controller = _inputManager.GetComponent<InputsController>().globalControls;
         controller.Gameplay.Pause.started += ctx => setSkillMenuPanel();
 
-        botones = gameObject.transform.GetChild(0).gameObject;
+        pause = gameObject.transform.GetChild(0).gameObject;
 
 
     }
 
     void setSkillMenuPanel()
     {
-        if (botones.active == true)
+        if (pause.active == true)
         {
             hud.SetActive(true);
             weapons.SetActive(true);
             ultimates.SetActive(true);
-            botones.SetActive(false);
+            pause.SetActive(false);
             Time.timeScale = 1f;
 
         }
-        else if (botones.active == false)
+        else if (pause.active == false)
         {
             hud.SetActive(false);
             weapons.SetActive(false);
             ultimates.SetActive(false);
-            botones.SetActive(true);
+            pause.SetActive(true);
             Time.timeScale = 0f;
         }
     }
