@@ -51,6 +51,10 @@ public class Shooter : MonoBehaviour
     ParticleSystem particles;
     //Sounds
     public AudioSource shoot;
+    public AudioSource spray;
+    float playSound = 0;
+    public float fPitchMax = 1.2f;
+    public float fPitchMin = 0.9f;
 
     // Start is called before the first frame update
     void Start()
@@ -211,6 +215,7 @@ public class Shooter : MonoBehaviour
         switch (weapon)
         {
             case Weapons.Basic:
+                shoot.pitch = Random.Range(fPitchMin, fPitchMax);
                 shoot.Play();
                 Shake();
                 aux = Instantiate(shootPrefab, pos + aimDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
@@ -224,6 +229,7 @@ public class Shooter : MonoBehaviour
                 //Destroy(particles.gameObject, 0.6f);
                 break;
             case Weapons.Auto:
+                shoot.pitch = Random.Range(fPitchMin, fPitchMax);
                 shoot.Play();
                 Shake();
 
@@ -240,7 +246,19 @@ public class Shooter : MonoBehaviour
 
                 break;
             case Weapons.Spray:
-                shoot.Play();
+                
+                spray.pitch = Random.Range(0.3f, 0.5f);
+                if (playSound <= 0)
+                {
+                    spray.Play();
+                    playSound = 0.2f;
+                }
+                else 
+                {
+                    playSound -= Time.deltaTime;
+                }
+                
+                
                 Shake();
 
                 Vector3 sprayAimDirection = aimDirection;
@@ -264,6 +282,7 @@ public class Shooter : MonoBehaviour
                 }
                 break;
             case Weapons.Shotgun:
+                shoot.pitch = 0.5f;
                 shoot.Play();
                 Shake(2);
                 for (int i = 0; i < shotgunCartridges; i++)
@@ -284,6 +303,7 @@ public class Shooter : MonoBehaviour
 
                 break;
             case Weapons.Triple:
+                shoot.pitch = Random.Range(fPitchMin, fPitchMax);
                 shoot.Play();
                 Shake(1);
                 float angle = 15 * Mathf.Deg2Rad;
@@ -314,6 +334,7 @@ public class Shooter : MonoBehaviour
                 //aux.GetComponent<Rigidbody>().AddForce(shootForce);
                 break;
             case Weapons.Sniper:
+                shoot.pitch = 2f;
                 shoot.Play();
                 Shake();
                 aux = Instantiate(shootPrefab, pos + aimDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
