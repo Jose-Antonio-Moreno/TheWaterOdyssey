@@ -1700,6 +1700,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2033339338843661166, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
+      propertyPath: m_text
+      value: YOU ARE DEAD
+      objectReference: {fileID: 0}
+    - target: {fileID: 2033339338843661166, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
       propertyPath: m_fontSize
       value: 47.9
       objectReference: {fileID: 0}
@@ -2057,7 +2061,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7985222126104170118, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8786611184685314551, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
       propertyPath: m_LocalPosition.y
