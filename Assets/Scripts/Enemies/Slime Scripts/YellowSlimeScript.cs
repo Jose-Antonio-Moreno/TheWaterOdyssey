@@ -67,7 +67,7 @@ public class YellowSlimeScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         lifePlayer = player.GetComponent<sizePlayer>();
         //Slime Health (damage Basic Shoot = 10)
-        hp = 50;
+        hp = 40;
         isHit = false;
         nextShoot = 0;
         fireRate = 0.3f;

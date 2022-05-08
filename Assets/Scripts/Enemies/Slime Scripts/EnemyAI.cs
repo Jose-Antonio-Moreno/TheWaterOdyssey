@@ -60,7 +60,7 @@ public class EnemyAI : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         lifePlayer = player.GetComponent<sizePlayer>();
         //Slime Health (damage Basic Shoot = 10)
-        hp = 90;
+        hp = 40;
         isHit = false;
         nextShoot = 1;
         fireRate = 0.35f;
