@@ -2016,8 +2016,16 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5251763473635452527, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 265.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 5251763473635452527, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.45
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5251763473635452527, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -193.35
       objectReference: {fileID: 0}
     - target: {fileID: 5944128494586752037, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
       propertyPath: m_IsActive
@@ -5857,8 +5865,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5279833196119749161, guid: 6b4ddfcd02933934c907cd6345a80f7b, type: 3}
+      propertyPath: ultimate.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5279833196119749161, guid: 6b4ddfcd02933934c907cd6345a80f7b, type: 3}
+      propertyPath: ultimate.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5279833196119749161, guid: 6b4ddfcd02933934c907cd6345a80f7b, type: 3}
       propertyPath: ultimatesImages.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5279833196119749161, guid: 6b4ddfcd02933934c907cd6345a80f7b, type: 3}
       propertyPath: ultimatesImages.Array.data[0]
@@ -5867,7 +5883,11 @@ PrefabInstance:
     - target: {fileID: 5279833196119749161, guid: 6b4ddfcd02933934c907cd6345a80f7b, type: 3}
       propertyPath: ultimatesImages.Array.data[1]
       value: 
-      objectReference: {fileID: 1069780942220475898, guid: 57d69672799c6de479a31751dd426a9a, type: 3}
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245296565057715145, guid: 6b4ddfcd02933934c907cd6345a80f7b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0298
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b4ddfcd02933934c907cd6345a80f7b, type: 3}
 --- !u!1001 &467666627
@@ -8315,8 +8335,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 683651209}
-  m_LocalRotation: {x: 0.5543147, y: -0.000000009255734, z: 0.0000000061642935, w: 0.8323072}
-  m_LocalPosition: {x: -73.16434, y: 36.08917, z: 69.73706}
+  m_LocalRotation: {x: 0.5543146, y: 0.000000027732481, z: -0.00000001846977, w: 0.8323072}
+  m_LocalPosition: {x: 139.17966, y: 36.04917, z: -84.94294}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1177377893}
@@ -12676,8 +12696,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeaponPedestal (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2884875879621785476, guid: 6f29eef67073c5b4ebf3a8372b4c98c4, type: 3}
+      propertyPath: grabItem
+      value: 
+      objectReference: {fileID: 1099916621}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f29eef67073c5b4ebf3a8372b4c98c4, type: 3}
+--- !u!82 &1099916621 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5789379276873272786, guid: 6f29eef67073c5b4ebf3a8372b4c98c4, type: 3}
+  m_PrefabInstance: {fileID: 1099916620}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1103012878
 GameObject:
   m_ObjectHideFlags: 0
@@ -18384,8 +18413,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1581558956}
-  m_LocalRotation: {x: 0.5543147, y: -0.000000009255734, z: 0.0000000061642935, w: 0.8323072}
-  m_LocalPosition: {x: -73.16434, y: 36.08917, z: 69.73706}
+  m_LocalRotation: {x: 0.5543146, y: 0.000000027732481, z: -0.00000001846977, w: 0.8323072}
+  m_LocalPosition: {x: 139.17966, y: 36.04917, z: -84.94294}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1651015290}
@@ -21942,7 +21971,7 @@ AudioSource:
   m_GameObject: {fileID: 1916191848}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 30c981dff1f7b5d409821879db2a2964, type: 2}
   m_audioClip: {fileID: 8300000, guid: 3c139bcd0a94f6641ad0eb16f622d896, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.8

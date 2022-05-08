@@ -16,6 +16,8 @@ public class WeaponPedestalScript : MonoBehaviour
     //Sounds
     public AudioSource grabItem;
 
+    private bool getItem = true;
+
     private void Start()
     {
         Transform player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -36,10 +38,14 @@ public class WeaponPedestalScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            //grabItem.Play();
+            if (getItem)
+            {
+                grabItem.Play();
+                getItem = false;
+            }
             other.GetComponent<Shooter>().weapon = (Weapons)newWeaponNumber;
             Destroy(sprite);
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
         

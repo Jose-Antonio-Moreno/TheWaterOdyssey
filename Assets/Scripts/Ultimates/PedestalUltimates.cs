@@ -30,20 +30,24 @@ public class PedestalUltimates : MonoBehaviour
         ultimate[random].transform.position = new Vector3(spawnPoint.position.x, spawnPoint.position.y, spawnPoint.position.z);
 
         ultimateSpawn = Instantiate(ultimate[random]);
-        ultimateSpawn.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);//this.transform.localScale * 1.25f;
+        ultimateSpawn.transform.localScale = new Vector3(0.35f, 0.35f, 0.35f);//this.transform.localScale * 1.25f;
 
     }
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            //grabItem.Play();
-            if (getItem) Instantiate(particles, transform.position, Quaternion.identity);
+           
+            if (getItem)
+            {
+                Instantiate(particles, transform.position, Quaternion.identity);
+            }
             getItem = false;
 
 
             if (ultimateSpawn.CompareTag("BigDrop"))
             {
+                grabItem.Play();
                 other.GetComponent<UltimateManager>().DUltimates[EUltimates.BIGDROP] = true;
                 other.GetComponent<UltimateManager>().DUltimates[EUltimates.DROPINOMICON] = false;
 
@@ -51,6 +55,7 @@ public class PedestalUltimates : MonoBehaviour
             
             if (ultimateSpawn.CompareTag("Dropinomicon"))
             {
+                grabItem.Play();
                 other.GetComponent<UltimateManager>().DUltimates[EUltimates.BIGDROP] = false; 
                 other.GetComponent<UltimateManager>().DUltimates[EUltimates.DROPINOMICON] = true;
             }

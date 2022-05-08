@@ -20,7 +20,7 @@ public class Pedestal : MonoBehaviour
 
     void Start()
     {
-        getItem = false;
+        getItem = true;
         random = Random.Range(0, weapon.Length);
         weapon[random].transform.position = new Vector3(transform.position.x, transform.position.y + 0.1f, transform.position.z);
 
@@ -37,9 +37,13 @@ public class Pedestal : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            grabItem.Play();
-            if (getItem)Instantiate(particles, transform.position, Quaternion.identity);
-            getItem = false;
+            
+            if (getItem)
+            {
+                grabItem.Play();
+                //Instantiate(particles, transform.position, Quaternion.identity);
+                getItem = false;
+            }
 
            
             if(weaponSpawn.CompareTag("BigBubble")) other.GetComponent<SkillManager>().DSkills[EAbilities.BIGBUBBLE] = true;
