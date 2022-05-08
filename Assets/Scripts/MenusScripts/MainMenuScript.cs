@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using UnityEngine.Audio;
 
 
 public class MainMenuScript : MonoBehaviour
 {
 
-   
+    public GameObject optionsFirstButton, startFirstButton;
     public AudioMixer audioMixer;
 
 
@@ -45,6 +46,18 @@ public class MainMenuScript : MonoBehaviour
     public void Play()
     {
         SceneManager.LoadScene("LEVEL_1");
+    }
+
+    public void Options()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(optionsFirstButton);
+    }
+
+    public void Back()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(startFirstButton);
     }
 
     public void Exit()
