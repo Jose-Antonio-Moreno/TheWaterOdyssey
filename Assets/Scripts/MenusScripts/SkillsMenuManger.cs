@@ -99,8 +99,6 @@ public class SkillsMenuManger : MonoBehaviour
     }
     public void goContinue()
     {
-        hud.enabled = true;
-        botones.SetActive(false);
         Time.timeScale = 1f;
     }
     public void SelectPoison()

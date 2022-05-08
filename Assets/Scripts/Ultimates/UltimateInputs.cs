@@ -39,7 +39,7 @@ public class UltimateInputs : MonoBehaviour
     public void ShakeUltimate()
     {
 
-        impulse.GenerateImpulse(0.55f);
+        impulse.GenerateImpulse(2);
     }
 
     void UltimateToUse() 
@@ -47,13 +47,11 @@ public class UltimateInputs : MonoBehaviour
         GameObject.Find("Armature").GetComponent<UltimateManager>().DUltimates.TryGetValue(UltimateManager.EUltimates.BIGDROP, out hasUltimate);
         if (hasUltimate) 
         {
-           
             ShootBigDrop();
         }
         GameObject.Find("Armature").GetComponent<UltimateManager>().DUltimates.TryGetValue(UltimateManager.EUltimates.DROPINOMICON, out hasUltimate);
         if (hasUltimate)
         {
-            
             Dropinomicon();
         }
     }
@@ -92,11 +90,18 @@ public class UltimateInputs : MonoBehaviour
             life.life -= 1;
             life.changed = false;
             GameObject[] gb = GameObject.FindGameObjectsWithTag("Enemy");
+            GameObject[] dummy = GameObject.FindGameObjectsWithTag("Dummy");
             for (int i = 0; i < gb.Length; i++)
             {
                 // Collider[] enemies = Physics.OverlapSphere(gameObject.transform.position, 100, Layer);
                 //enemies[i].gameObject.GetComponent<UltimateBehaviour>();
                 UltimateInterface ultimate = gb[i].GetComponent<UltimateBehaviour>();
+                if (ultimate != null)
+                    ultimate.ActivateDropinomicon();
+            }
+            for (int i = 0; i < dummy.Length; i++) 
+            {
+                UltimateInterface ultimate = dummy[i].GetComponent<UltimateBehaviour>();
                 if (ultimate != null)
                     ultimate.ActivateDropinomicon();
             }
