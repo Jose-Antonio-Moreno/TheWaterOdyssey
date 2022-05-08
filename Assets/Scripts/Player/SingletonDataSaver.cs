@@ -51,7 +51,6 @@ public class SingletonDataSaver : MonoBehaviour
             savedSkills[EAbilities.FIRERATE] = false;
             savedSkills[EAbilities.SHIELDBUBBLE] = false;
             savedSkills[EAbilities.BIGBUBBLE] = false;
-            savedLive = 0;
         }
     }
     public void RestartData()
