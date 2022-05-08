@@ -8335,7 +8335,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 683651209}
-  m_LocalRotation: {x: 0.5543146, y: 0.000000027732481, z: -0.00000001846977, w: 0.8323072}
+  m_LocalRotation: {x: 0.5543146, y: -0.000000027335755, z: 0.000000018205549, w: 0.8323072}
   m_LocalPosition: {x: 139.17966, y: 36.04917, z: -84.94294}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -18413,7 +18413,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1581558956}
-  m_LocalRotation: {x: 0.5543146, y: 0.000000027732481, z: -0.00000001846977, w: 0.8323072}
+  m_LocalRotation: {x: 0.5543146, y: -0.000000027335755, z: 0.000000018205549, w: 0.8323072}
   m_LocalPosition: {x: 139.17966, y: 36.04917, z: -84.94294}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -24639,11 +24639,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4074352880039458647, guid: a94290a052783da41baee6aba45fb165, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1
+      value: -92.5
       objectReference: {fileID: 0}
     - target: {fileID: 4074352880039458647, guid: a94290a052783da41baee6aba45fb165, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 53.5
       objectReference: {fileID: 0}
     - target: {fileID: 4213857841973011277, guid: a94290a052783da41baee6aba45fb165, type: 3}
       propertyPath: m_IsActive
@@ -24663,11 +24663,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4468052101227316839, guid: a94290a052783da41baee6aba45fb165, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1
+      value: -117.3
       objectReference: {fileID: 0}
     - target: {fileID: 4468052101227316839, guid: a94290a052783da41baee6aba45fb165, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -12
+      value: 52.099995
       objectReference: {fileID: 0}
     - target: {fileID: 6529476796623225729, guid: a94290a052783da41baee6aba45fb165, type: 3}
       propertyPath: m_Pivot.x
