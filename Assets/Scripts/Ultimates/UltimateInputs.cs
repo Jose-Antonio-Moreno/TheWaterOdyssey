@@ -85,16 +85,9 @@ public class UltimateInputs : MonoBehaviour
     }
     void Dropinomicon() 
     {
-        dropinomicon.Play();
-        ShakeUltimate();
-        life.life -= 1;
-        life.changed = false;
-
-
-        GameObject[] gb = GameObject.FindGameObjectsWithTag("Enemy");
-        for (int i = 0; i < gb.Length; i++)
         if (life.life > 1) 
         {
+            dropinomicon.Play();
             ShakeUltimate();
             life.life -= 1;
             life.changed = false;
