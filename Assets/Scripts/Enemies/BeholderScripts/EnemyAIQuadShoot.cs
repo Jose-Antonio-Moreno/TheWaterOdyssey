@@ -51,7 +51,7 @@ public class EnemyAIQuadShoot : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        hp = 100;
+        hp = 60;
         isHit = false;
         nextShoot = 0;
         fireRate = 0.8f;

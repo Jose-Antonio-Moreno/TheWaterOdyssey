@@ -13,12 +13,16 @@ public class SkillsMenuManger : MonoBehaviour
     GameObject player;
     private GameObject botones;
 
-    public Image hud;
+    public GameObject hud;
+    public GameObject weapons;
+    public GameObject ultimates;
 
     public AudioMixer audioMixer;
 
 
     public Dropdown resolutionDropdown;
+
+    private bool activate = false;
     Resolution[] resolutions;
     private void Start()
     {
@@ -27,12 +31,14 @@ public class SkillsMenuManger : MonoBehaviour
 
         List<string> options = new List<string>();
         int currentResolution=0;
-        for (int i = 0; i < resolutions.Length; i++) {
+
+        for (int i = 0; i  < resolutions.Length; i++)
+        {
 
             string option = resolutions[i].width + " x " + resolutions[i].height;
             options.Add(option);
 
-            if (resolutions[i].width == Screen.currentResolution.width && 
+            if (resolutions[i].width == Screen.currentResolution.width &&
                 resolutions[i].height == Screen.currentResolution.height) currentResolution = i;
         }
         resolutionDropdown.AddOptions(options);
@@ -48,20 +54,22 @@ public class SkillsMenuManger : MonoBehaviour
 
     }
 
-
-        
     void setSkillMenuPanel()
     {
         if (botones.active == true)
         {
-            hud.enabled = true;
+            hud.SetActive(true);
+            weapons.SetActive(true);
+            ultimates.SetActive(true);
             botones.SetActive(false);
             Time.timeScale = 1f;
 
         }
         else if (botones.active == false)
         {
-            hud.enabled = false;
+            hud.SetActive(false);
+            weapons.SetActive(false);
+            ultimates.SetActive(false);
             botones.SetActive(true);
             Time.timeScale = 0f;
         }
@@ -100,6 +108,7 @@ public class SkillsMenuManger : MonoBehaviour
     public void goContinue()
     {
         Time.timeScale = 1f;
+       
     }
     public void SelectPoison()
     {
