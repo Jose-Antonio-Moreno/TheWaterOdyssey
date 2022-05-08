@@ -215,7 +215,7 @@ public class Shooter : MonoBehaviour
         aimDirection.y = 0;
         GameObject aux;
         Vector3 shootForce;
-        Vector3 pos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+        Vector3 pos = new Vector3(gameObject.transform.position.x, originalYPos, gameObject.transform.position.z);
         switch (weapon)
         {
             case Weapons.Basic:
