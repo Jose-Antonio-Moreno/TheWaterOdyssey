@@ -60,7 +60,6 @@ public class Shooter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LoadData();
 
         PlayerControlls controller;
         _inputManager = gameObject.GetComponent<Movement_2>().inputManager;
@@ -72,6 +71,8 @@ public class Shooter : MonoBehaviour
         controller.Gameplay.SwitchWeapon.started += ctx => SwitchWeapon();
         impulse = transform.GetComponent<CinemachineImpulseSource>();
         originalYPos = transform.position.y;
+        LoadData();
+        SaveData();
     }
     void SwitchWeapon()
     {
@@ -401,11 +402,17 @@ public class Shooter : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex >= 2)
         {
+            Debug.Log(SingletonDataSaver.instance.weaponsSaved);
             weapon = SingletonDataSaver.instance.weaponsSaved;
         }
     }
     private void OnDestroy()
     {
-        SaveData();
+        if(gameObject.GetComponent<sizePlayer>().life <= 0)
+        {
+
+        }
+        else
+            SaveData();
     }
 }

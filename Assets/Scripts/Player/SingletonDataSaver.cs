@@ -51,6 +51,7 @@ public class SingletonDataSaver : MonoBehaviour
             savedSkills[EAbilities.FIRERATE] = false;
             savedSkills[EAbilities.SHIELDBUBBLE] = false;
             savedSkills[EAbilities.BIGBUBBLE] = false;
+            savedLive = 0;
         }
     }
     public void RestartData()
@@ -61,7 +62,6 @@ public class SingletonDataSaver : MonoBehaviour
         }
 
         weaponsSaved = Weapons.Basic;
- 
         savedSkills[EAbilities.POISON] = false;
         savedSkills[EAbilities.BOUNCY] = false;
         savedSkills[EAbilities.LIGHTSTEP] = false;

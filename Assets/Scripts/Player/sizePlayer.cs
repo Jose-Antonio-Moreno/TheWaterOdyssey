@@ -47,10 +47,6 @@ public class sizePlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        
-       
-
         if (life == 5 && !changed)
         {
             marcoHud.color = new Color(0, 255, 255,255);
