@@ -28,6 +28,7 @@ public class SkillManager : MonoBehaviour
         DSkills[EAbilities.SHIELDBUBBLE] = false;
         DSkills[EAbilities.BIGBUBBLE] = false;
         LoadData();
+        SaveData();
     }
     private void Update()
     {
@@ -47,6 +48,7 @@ public class SkillManager : MonoBehaviour
         {
             DSkills = SingletonDataSaver.instance.savedSkills;
         }
+
     }
     private void OnDestroy()
     {

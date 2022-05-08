@@ -8,7 +8,8 @@ public class DeathMenuScript : MonoBehaviour
     public void Restart()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SingletonDataSaver.instance.RestartData();
+        SceneManager.LoadScene(2);
 
 
     }

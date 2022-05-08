@@ -24,6 +24,7 @@ public class UltimateManager : MonoBehaviour
         DUltimates[EUltimates.BIGDROP] = false;
         DUltimates[EUltimates.DROPINOMICON] = false;
         LoadData();
+        SaveData();
     }
 
     private void Update()
@@ -55,6 +56,7 @@ public class UltimateManager : MonoBehaviour
         {
             DUltimates = SingletonDataSaver.instance.savedUltimates;
         }
+
     }
     private void OnDestroy()
     {
