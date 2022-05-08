@@ -110,13 +110,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afdf645566582e946aeaa2c8e7bb876d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pedestalWeapon: 0
   spawnPoint: {fileID: 2572687563855015916}
   weaponsSprite:
-  - {fileID: 8319376099946223891, guid: a46f6fdebebaa8a42a0db73f02518043, type: 3}
-  - {fileID: 6965483614096039716, guid: 146dd4cceec367842ae221765626785d, type: 3}
-  - {fileID: 2291813863217499741, guid: f8ea1d932c043ba4781ced9b7e89bd69, type: 3}
   - {fileID: 8933149776863821029, guid: 97d1e44d628baa248b3ebcc189ebbf75, type: 3}
+  - {fileID: 2291813863217499741, guid: f8ea1d932c043ba4781ced9b7e89bd69, type: 3}
+  - {fileID: 6965483614096039716, guid: 146dd4cceec367842ae221765626785d, type: 3}
+  - {fileID: 8319376099946223891, guid: a46f6fdebebaa8a42a0db73f02518043, type: 3}
+  newWeaponNumber: 0
   grabItem: {fileID: 0}
 --- !u!82 &5789379276873272786
 AudioSource:

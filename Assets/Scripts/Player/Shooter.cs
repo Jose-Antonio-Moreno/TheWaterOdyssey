@@ -226,9 +226,14 @@ public class Shooter : MonoBehaviour
             case Weapons.Auto:
                 shoot.Play();
                 Shake();
-                aux = Instantiate(shootPrefab, pos + aimDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
+
+                Vector3 AutoAimDirection = aimDirection;
+                AutoAimDirection.x = aimDirection.x + Random.Range(-0.05f, 0.05f);
+                AutoAimDirection.z = aimDirection.z + Random.Range(-0.05f, 0.05f);
+
+                aux = Instantiate(shootPrefab, pos + AutoAimDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
                 aux.GetComponent<BulletScript>().damage = 8; /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                shootForce = aimDirection * 100;
+                shootForce = AutoAimDirection * 100;
                 aux.GetComponent<Rigidbody>().AddForce(shootForce);
 
                 SpawnShootParticles(1, 1);
@@ -355,14 +360,8 @@ public class Shooter : MonoBehaviour
     {
         if (other.CompareTag("WeaponPedestal"))
         {
-            Weapons newWeapon = other.GetComponent<WeaponPedestalScript>().pedestalWeapon;
-            do
-            {
-                int randomNumber = Random.Range(0, (int)Weapons.COUNT);
-                newWeapon = (Weapons)randomNumber;
-            } while (weapon == newWeapon);
-            weapon = newWeapon;
-            Destroy(other.gameObject);
+
+            weapon = (Weapons)other.GetComponent<WeaponPedestalScript>().newWeaponNumber;
         }
     }
 }
