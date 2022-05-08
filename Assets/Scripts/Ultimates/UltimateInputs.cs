@@ -19,7 +19,9 @@ public class UltimateInputs : MonoBehaviour
 
     bool hasUltimate;
 
-    
+    //Sounds
+    public AudioSource dropinomicon;
+    public AudioSource bigDrop;
 
     void Start() 
     {
@@ -59,6 +61,7 @@ public class UltimateInputs : MonoBehaviour
 
         if (life.life > 1)
         {
+            bigDrop.Play();
             ShakeUltimate();
             life.life -= 1;
             life.changed = false;
@@ -70,6 +73,7 @@ public class UltimateInputs : MonoBehaviour
     }
     void Dropinomicon() 
     {
+        dropinomicon.Play();
         ShakeUltimate();
         life.life -= 1;
         life.changed = false;

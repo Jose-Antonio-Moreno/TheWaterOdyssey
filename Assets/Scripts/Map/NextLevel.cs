@@ -8,6 +8,6 @@ public class NextLevel : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) SceneManager.LoadScene("Level2");
+        if (other.CompareTag("Player")) SceneManager.LoadScene("LEVEL_Jose");
     }
 }

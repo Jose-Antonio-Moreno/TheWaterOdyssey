@@ -12,7 +12,9 @@ public class WeaponPedestalScript : MonoBehaviour
     [SerializeField]
     GameObject[] weaponsSprite;
     GameObject weapon;
-    
+
+    //Sounds
+    public AudioSource grabItem;
 
     private void Start()
     {
@@ -25,4 +27,12 @@ public class WeaponPedestalScript : MonoBehaviour
         Instantiate(weaponsSprite[randomNumber]);
        // weapon.transform.localScale = new Vector3(10f, 10f, 10f);
     }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            grabItem.Play();
+        }
+    }
+        
 }

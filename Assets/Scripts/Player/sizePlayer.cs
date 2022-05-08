@@ -27,6 +27,7 @@ public class sizePlayer : MonoBehaviour
     Image marcoHud;
     //Sounds
     public AudioSource evaporation;
+    public AudioSource music;
 
     // Start is called before the first frame update
     void Start()
@@ -145,6 +146,7 @@ public class sizePlayer : MonoBehaviour
     private void Death()
     {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        music.Play();
         deathMenu.SetActive(true);
         //Destroy(player.transform.GetChild(0).gameObject);
         player.transform.parent.GetChild(1).gameObject.SetActive(false);
