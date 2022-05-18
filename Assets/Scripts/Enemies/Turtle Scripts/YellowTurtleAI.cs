@@ -36,6 +36,7 @@ public class YellowTurtleAI : MonoBehaviour
     public ParticleSystem poisonParticles;
     public ParticleSystem deathParticles;
     public ParticleSystem dropiParticles;
+    public ParticleSystem iceParticles;
 
     //Drops
     public GameObject healBubble;

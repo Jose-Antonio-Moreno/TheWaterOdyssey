@@ -27,6 +27,7 @@ public class SkillManager : MonoBehaviour
         DSkills[EAbilities.FIRERATE] = false;
         DSkills[EAbilities.SHIELDBUBBLE] = false; 
         DSkills[EAbilities.BIGBUBBLE] = false;
+        DSkills[EAbilities.ICE] = true;
         LoadData();
         SaveData();
     }
