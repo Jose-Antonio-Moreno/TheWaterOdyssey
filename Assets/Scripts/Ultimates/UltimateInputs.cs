@@ -48,6 +48,7 @@ public class UltimateInputs : MonoBehaviour
             {
                 isUsing = false;
                 canUse = true;
+                coolDownTime = 2f;
             }
             else 
             {
