@@ -178,6 +178,8 @@ public class EnemyAIQuadShoot : MonoBehaviour
     void Shoot()
     {
         shoot.Play();
+        Vector3 pos = new Vector3(gameObject.transform.position.x, player.GetComponent<Shooter>().originalYPos, gameObject.transform.position.z);
+
         Vector3 direction1 = (firePoint1.position - this.transform.position).normalized;
         Vector3 direction2 = (firePoint2.position - this.transform.position).normalized;
         Vector3 direction3 = (firePoint3.position - this.transform.position).normalized;
