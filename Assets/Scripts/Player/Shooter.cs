@@ -6,6 +6,7 @@ using Cinemachine;
 using DG.Tweening;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 public enum Weapons
 {
     Auto = 0,
@@ -19,6 +20,8 @@ public enum Weapons
 
 public class Shooter : MonoBehaviour
 {
+    public GameObject cameraZoomCambiar;
+
     [SerializeField]
     GameObject[] weaponsImage;
    
@@ -56,10 +59,14 @@ public class Shooter : MonoBehaviour
     float playSound = 0;
     public float fPitchMax = 1.2f;
     public float fPitchMin = 0.9f;
-
+    Vector3 initialCameraZoomPos;
+    Vector3 zoomedCameraZoomPos;
     // Start is called before the first frame update
     void Start()
     {
+        DOTween.Init();
+        initialCameraZoomPos = cameraZoomCambiar.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset;
+        zoomedCameraZoomPos = initialCameraZoomPos * 0.9f;
 
         PlayerControlls controller;
         _inputManager = gameObject.GetComponent<Movement_2>().inputManager;
@@ -71,6 +78,9 @@ public class Shooter : MonoBehaviour
         controller.Gameplay.SwitchWeapon.started += ctx => SwitchWeapon();
         impulse = transform.GetComponent<CinemachineImpulseSource>();
         originalYPos = transform.position.y;
+        DOTween.To(()=> initialCameraZoomPos, x=> cameraZoomCambiar.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = x, zoomedCameraZoomPos, 1);
+
+        //cameraZoomCambiar.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset *= 0.5f;
         LoadData();
         SaveData();
     }
@@ -212,6 +222,9 @@ public class Shooter : MonoBehaviour
     
     void Shoot()
     {
+        Sequence hitZoomFeedback = DOTween.Sequence();
+        hitZoomFeedback.Append(DOTween.To(() => initialCameraZoomPos, x => cameraZoomCambiar.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = x, zoomedCameraZoomPos, 0.2F));
+        hitZoomFeedback.Append(DOTween.To(() => zoomedCameraZoomPos, x => cameraZoomCambiar.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = x, initialCameraZoomPos, 0.2F));
         aimDirection.y = 0;
         GameObject aux;
         Vector3 shootForce;
