@@ -136,4 +136,8 @@ public class UltimateInputs : MonoBehaviour
             isUsing = true;
         }
     }
+    void BubbleSpray() 
+    {
+
+    }
 }

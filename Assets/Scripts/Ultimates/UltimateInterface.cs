@@ -6,4 +6,5 @@ public interface UltimateInterface
 {
     void ActivateBigDrop();
     void ActivateDropinomicon();
+    void ActivateBubbleSpray();
 }
