@@ -21,7 +21,7 @@ public class Variant2QuadShoot : MonoBehaviour
     //Bullet
     public GameObject shootPrefab;
     private float nextShoot;
-    private float fireRate;
+    public float fireRate;
 
     //Player
     private Transform player;
@@ -34,6 +34,7 @@ public class Variant2QuadShoot : MonoBehaviour
     public ParticleSystem posionParticles;
     public ParticleSystem deathParticles;
     public ParticleSystem dropiParticles;
+    public ParticleSystem iceParticles;
 
     //Drops
     public GameObject healBubble;

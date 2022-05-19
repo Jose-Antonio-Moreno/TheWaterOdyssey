@@ -45,7 +45,7 @@ public class TurtleSpawn : MonoBehaviour
             //innerCount++;
 
             number = Random.Range(0, 2);
-            Debug.Log(number);
+            //Debug.Log(number);
             switch (number)
             {
                 case 0:

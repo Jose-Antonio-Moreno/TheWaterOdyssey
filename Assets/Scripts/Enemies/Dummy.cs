@@ -6,5 +6,6 @@ public class Dummy : MonoBehaviour
 {
     public ParticleSystem posionParticles;
     public ParticleSystem dropiParticles;
+    public ParticleSystem iceParticles;
 
 }
