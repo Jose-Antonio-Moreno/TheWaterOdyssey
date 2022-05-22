@@ -49,15 +49,15 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.59936845
+  - screenRelativeHeight: 0.047583934
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 23945060274056012}
-  - screenRelativeHeight: 0.22798866
+  - screenRelativeHeight: 0.021049837
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 23886217801361604}
-  - screenRelativeHeight: 0.036346156
+  - screenRelativeHeight: 0.0063696853
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 23782226275068552}
@@ -130,6 +130,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -154,6 +155,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1604293367756944
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,6 +211,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -233,6 +236,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1736919718935400
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,6 +292,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -312,3 +317,4 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
