@@ -7,6 +7,7 @@ public class PedestalUltimates : MonoBehaviour
     [SerializeField]
     GameObject[] ultimate;
     GameObject ultimateSpawn;
+    GameObject player;
 
     [SerializeField]
     ParticleSystem particles;
@@ -31,7 +32,13 @@ public class PedestalUltimates : MonoBehaviour
 
         ultimateSpawn = Instantiate(ultimate[random]);
         ultimateSpawn.transform.localScale = new Vector3(0.35f, 0.35f, 0.35f);//this.transform.localScale * 1.25f;
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
 
+
+    private void Update()
+    {
+        particles.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
     }
     void OnTriggerEnter(Collider other)
     {
@@ -40,7 +47,7 @@ public class PedestalUltimates : MonoBehaviour
            
             if (getItem)
             {
-                Instantiate(particles, transform.position, Quaternion.identity);
+                Instantiate(particles, particles.transform.position, Quaternion.identity);
             }
             getItem = false;
 
@@ -48,6 +55,7 @@ public class PedestalUltimates : MonoBehaviour
             if (ultimateSpawn.CompareTag("BigDrop"))
             {
                 grabItem.Play();
+                Instantiate(particles, particles.transform.position, Quaternion.identity);
                 other.GetComponent<UltimateManager>().DUltimates[EUltimates.BIGDROP] = true;
                 other.GetComponent<UltimateManager>().DUltimates[EUltimates.DROPINOMICON] = false;
 
@@ -56,6 +64,7 @@ public class PedestalUltimates : MonoBehaviour
             if (ultimateSpawn.CompareTag("Dropinomicon"))
             {
                 grabItem.Play();
+                Instantiate(particles, particles.transform.position, Quaternion.identity);
                 other.GetComponent<UltimateManager>().DUltimates[EUltimates.BIGDROP] = false; 
                 other.GetComponent<UltimateManager>().DUltimates[EUltimates.DROPINOMICON] = true;
             }

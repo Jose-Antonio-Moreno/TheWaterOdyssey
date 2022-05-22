@@ -5802,7 +5802,7 @@ MonoBehaviour:
   - {fileID: 483017660722511264, guid: dda17560478c8bd43b75e389557061f1, type: 3}
   - {fileID: 4680711620260127403, guid: 23e2868c263fd8349af417fa3f3750ba, type: 3}
   - {fileID: 4239430098874549200, guid: 22c0451123b989b40880bdda1244fbcb, type: 3}
-  particles: {fileID: 7875016002007857048, guid: 301084d8fc1482949941eaca20b5dcdf, type: 3}
+  particles: {fileID: 0}
   grabItem: {fileID: 273034448}
 --- !u!82 &273034448
 AudioSource:
@@ -11745,7 +11745,7 @@ MonoBehaviour:
   - {fileID: 483017660722511264, guid: dda17560478c8bd43b75e389557061f1, type: 3}
   - {fileID: 4680711620260127403, guid: 23e2868c263fd8349af417fa3f3750ba, type: 3}
   - {fileID: 4239430098874549200, guid: 22c0451123b989b40880bdda1244fbcb, type: 3}
-  particles: {fileID: 7875016002007857048, guid: 301084d8fc1482949941eaca20b5dcdf, type: 3}
+  particles: {fileID: 5645226358979227942, guid: 1106b5bf717156c4ab4a5276d9e7e9e5, type: 3}
   grabItem: {fileID: 615629068}
 --- !u!1001 &616470222
 PrefabInstance:
@@ -37729,8 +37729,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1875510019}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 90.14, y: 1.55, z: 172.7}
-  m_LocalScale: {x: 1.5172, y: 3.1228, z: 29.587587}
+  m_LocalPosition: {x: 90.14, y: 1.55, z: 166.8}
+  m_LocalScale: {x: 1.5172, y: 3.1228, z: 32.783047}
   m_Children: []
   m_Father: {fileID: 692977791}
   m_RootOrder: 24
@@ -39795,7 +39795,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1982440857
 Transform:
   m_ObjectHideFlags: 0
