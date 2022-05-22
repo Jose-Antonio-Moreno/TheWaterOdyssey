@@ -118,7 +118,8 @@ MonoBehaviour:
   - {fileID: 6965483614096039716, guid: 146dd4cceec367842ae221765626785d, type: 3}
   - {fileID: 8319376099946223891, guid: a46f6fdebebaa8a42a0db73f02518043, type: 3}
   newWeaponNumber: 0
-  grabItem: {fileID: 0}
+  particles: {fileID: 5645226358979227942, guid: 1106b5bf717156c4ab4a5276d9e7e9e5, type: 3}
+  grabItem: {fileID: 5789379276873272786}
 --- !u!82 &5789379276873272786
 AudioSource:
   m_ObjectHideFlags: 0
