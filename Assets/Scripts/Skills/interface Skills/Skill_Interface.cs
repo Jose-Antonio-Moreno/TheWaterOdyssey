@@ -11,4 +11,5 @@ public interface Skill_Interface
     void ActivateFireRate();
     void ActivateShieldBubble();
     void ActivateBigBubble();
+    void ActivateIce();
 }

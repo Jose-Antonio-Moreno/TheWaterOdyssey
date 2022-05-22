@@ -20,6 +20,10 @@ public class UltimateInputs : MonoBehaviour
     bool hasUltimate;
     bool hasAbility;
 
+    float coolDownTime = 2f;
+    bool canUse = true;
+    bool isUsing = false;
+
     //Sounds
     public AudioSource dropinomicon;
     public AudioSource bigDrop;
@@ -36,9 +40,26 @@ public class UltimateInputs : MonoBehaviour
         impulse = transform.GetComponent<CinemachineImpulseSource>();
     }
 
+    void Update()
+    {
+        if (isUsing) 
+        {
+            if (coolDownTime <= 0)
+            {
+                isUsing = false;
+                canUse = true;
+                coolDownTime = 2f;
+            }
+            else 
+            {
+                coolDownTime -= Time.deltaTime;
+                canUse = false;
+            }
+        }
+    }
+
     public void ShakeUltimate()
     {
-
         impulse.GenerateImpulse(2);
     }
 
@@ -47,12 +68,18 @@ public class UltimateInputs : MonoBehaviour
         GameObject.Find("Armature").GetComponent<UltimateManager>().DUltimates.TryGetValue(EUltimates.BIGDROP, out hasUltimate);
         if (hasUltimate) 
         {
-            ShootBigDrop();
+            if (canUse) 
+            {
+                ShootBigDrop();
+            }
         }
         GameObject.Find("Armature").GetComponent<UltimateManager>().DUltimates.TryGetValue(EUltimates.DROPINOMICON, out hasUltimate);
         if (hasUltimate)
         {
-            Dropinomicon();
+            if (canUse) 
+            {
+                Dropinomicon();
+            }
         }
     }
     void ShootBigDrop()
@@ -79,6 +106,7 @@ public class UltimateInputs : MonoBehaviour
             aux.GetComponent<BulletScript>().damage = 100;
             shootForce = variables.aimDirection * 100;
             aux.GetComponent<Rigidbody>().AddForce(shootForce);
+            isUsing = true;
         }
     }
     void Dropinomicon() 
@@ -105,7 +133,11 @@ public class UltimateInputs : MonoBehaviour
                 if (ultimate != null)
                     ultimate.ActivateDropinomicon();
             }
+            isUsing = true;
         }
-        
+    }
+    void BubbleSpray() 
+    {
+
     }
 }

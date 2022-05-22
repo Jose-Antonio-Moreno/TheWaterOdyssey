@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum EUltimates {BIGDROP, DROPINOMICON, DUMMY };
+public enum EUltimates {BIGDROP, DROPINOMICON, BUBBLESPRAY, DUMMY };
 
 public class UltimateManager : MonoBehaviour
 {
@@ -23,6 +23,7 @@ public class UltimateManager : MonoBehaviour
         }
         DUltimates[EUltimates.BIGDROP] = false;
         DUltimates[EUltimates.DROPINOMICON] = false;
+        DUltimates[EUltimates.BUBBLESPRAY] = false;
         LoadData();
         SaveData();
     }
@@ -33,14 +34,22 @@ public class UltimateManager : MonoBehaviour
 
             ultimatesImage[0].SetActive(true);
             ultimatesImage[1].SetActive(false);
-        
+            ultimatesImage[2].SetActive(false);
+
         }
         if (DUltimates[EUltimates.DROPINOMICON])
         {
 
             ultimatesImage[0].SetActive(false);
             ultimatesImage[1].SetActive(true);
+            ultimatesImage[2].SetActive(false);
 
+        }
+        if (DUltimates[EUltimates.BUBBLESPRAY]) 
+        {
+            ultimatesImage[0].SetActive(false);
+            ultimatesImage[1].SetActive(false);
+            ultimatesImage[2].SetActive(true);
         }
     }
     void SaveData()
