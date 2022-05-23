@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using DG.Tweening;
+using Cinemachine;
 
 public class sizePlayer : MonoBehaviour
 {
@@ -25,6 +27,7 @@ public class sizePlayer : MonoBehaviour
 
     [SerializeField]
     Image marcoHud;
+    CinemachineImpulseSource impulse;
     //Sounds
     public AudioSource evaporation;
     public AudioSource music;
@@ -32,6 +35,7 @@ public class sizePlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        impulse = transform.GetComponent<CinemachineImpulseSource>();
         Time.timeScale =1;
        
         life = 3;
@@ -101,6 +105,7 @@ public class sizePlayer : MonoBehaviour
         {
             if (!isInvulnerable) 
             {
+                impulse.GenerateImpulse(1f);
                 evaporation.Play();
                 Instantiate(hitParticles, transform.position, transform.rotation);
                 life--;
@@ -113,6 +118,8 @@ public class sizePlayer : MonoBehaviour
         {
             if (!isInvulnerable)
             {
+                impulse.GenerateImpulse(2f);
+
                 evaporation.Play();
                 Instantiate(hitParticles, transform.position, transform.rotation);
                 life--;
