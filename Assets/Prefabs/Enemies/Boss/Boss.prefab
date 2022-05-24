@@ -217,8 +217,8 @@ GameObject:
   - component: {fileID: 6329505965043285945}
   - component: {fileID: 3914274878332237475}
   - component: {fileID: 9080583107908755749}
-  - component: {fileID: 5140629936154713530}
   - component: {fileID: 6196028377652068447}
+  - component: {fileID: 3556001997908193911}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -334,31 +334,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &5140629936154713530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3914274878332237473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f23c1f06c31222458589997e9410025, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  posionParticles: {fileID: 9050658520201416140, guid: 807a515548344524897e85287286fb30, type: 3}
-  deathParticles: {fileID: 2947199187110361257, guid: 06b34edfb46d09c45aecab44e5073dd4, type: 3}
-  maxHp: 1000
-  hp: 0
-  isHit: 0
-  numOfProjectiles: 5
-  projectileSpeed: 20
-  shootPrefab: {fileID: 901182402720252531, guid: 8370c3e46d65264449e0899a2b4fc6e0, type: 3}
-  fireStar: {fileID: 1662660943880482517}
-  fireStar1: {fileID: 1186522255247414441}
-  fireStar2: {fileID: 8570114045401813113}
-  fireStar3: {fileID: 3536093991063790353}
-  fireStar4: {fileID: 5986450196443448082}
 --- !u!114 &6196028377652068447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,6 +354,31 @@ MonoBehaviour:
   maxX: 0
   minZ: 0
   maxZ: 0
+--- !u!114 &3556001997908193911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3914274878332237473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4e2854d793ff5e4ba893fc9e967f0de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posionParticles: {fileID: 9050658520201416140, guid: 807a515548344524897e85287286fb30, type: 3}
+  deathParticles: {fileID: 2947199187110361257, guid: 06b34edfb46d09c45aecab44e5073dd4, type: 3}
+  maxHp: 1000
+  hp: 1000
+  isHit: 0
+  numOfProjectiles: 5
+  projectileSpeed: 20
+  shootPrefab: {fileID: 901182402720252531, guid: 8370c3e46d65264449e0899a2b4fc6e0, type: 3}
+  fireStar: {fileID: 1662660943880482517}
+  fireStar1: {fileID: 1186522255247414441}
+  fireStar2: {fileID: 8570114045401813113}
+  fireStar3: {fileID: 5986450196443448082}
+  fireStar4: {fileID: 3536093991063790353}
 --- !u!1 &4038207432325982744
 GameObject:
   m_ObjectHideFlags: 0
