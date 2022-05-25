@@ -31483,7 +31483,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1532362200}
-  m_LocalRotation: {x: 0.46911755, y: -0.000000047924736, z: 0.000000025457394, w: 0.88313574}
+  m_LocalRotation: {x: 0.46911755, y: -0.0000000069817516, z: 0.0000000037086723, w: 0.88313574}
   m_LocalPosition: {x: 163.79965, y: 36.21317, z: 171.70107}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -38924,7 +38924,7 @@ GameObject:
   - component: {fileID: 1926820938}
   m_Layer: 0
   m_Name: CM vcam1
-  m_TagString: Untagged
+  m_TagString: Camera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38936,7 +38936,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1926820935}
-  m_LocalRotation: {x: 0.46911755, y: -0.000000047924736, z: 0.000000025457394, w: 0.88313574}
+  m_LocalRotation: {x: 0.46911755, y: -0.0000000069817516, z: 0.0000000037086723, w: 0.88313574}
   m_LocalPosition: {x: 163.79965, y: 36.21317, z: 171.70107}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
