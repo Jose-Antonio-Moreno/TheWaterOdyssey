@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using Cinemachine;
 using DG.Tweening;
+using Cinemachine;
 
 public class sizePlayer : MonoBehaviour
 {
@@ -27,6 +27,7 @@ public class sizePlayer : MonoBehaviour
 
     [SerializeField]
     Image marcoHud;
+    CinemachineImpulseSource impulse;
     //Sounds
     public AudioSource evaporation;
     public AudioSource music;
@@ -39,6 +40,7 @@ public class sizePlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        impulse = transform.GetComponent<CinemachineImpulseSource>();
         DOTween.Init();
         cameraZoomCambiar = GameObject.FindGameObjectWithTag("Camera");
         initialCameraZoomPos = cameraZoomCambiar.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset;

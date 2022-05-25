@@ -17,6 +17,8 @@ public class BulletScript : MonoBehaviour
 
     bool isBouncy = false;
 
+    //public bool isBigDrop = false;
+
     private void Start()
     {
         destroyTime = 1f;
@@ -63,6 +65,13 @@ public class BulletScript : MonoBehaviour
                 //gameObject.GetComponent<Renderer>().material.color = Color.green;
                 Skill_Interface skill = other.gameObject.GetComponent<SkillBehaviours>();
                 skill.ActivatePoison();
+            }
+            GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(EAbilities.ICE, out hasAbility);
+            if (hasAbility)
+            {
+                //gameObject.GetComponent<Renderer>().material.color = Color.green;
+                Skill_Interface skill = other.gameObject.GetComponent<SkillBehaviours>();
+                skill.ActivateIce();
             }
             Invoke("des", destroyTime);
         }

@@ -7,7 +7,9 @@ public class SkillBehaviours : MonoBehaviour, Skill_Interface
 {
     int poisonCounter;
     bool havePoison;
-    
+
+    int iceCounter;
+    bool haveIce;
 
     public void ActivateDEdge()
     {
@@ -45,12 +47,23 @@ public class SkillBehaviours : MonoBehaviour, Skill_Interface
     {
 
     }
+    public void ActivateIce() 
+    {
+        if (!haveIce) 
+        {
+            haveIce = true;
+            StartCoroutine(Ice());
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         poisonCounter = 0;
         havePoison = false;
+
+        iceCounter = 0;
+        haveIce = false;
     }
 
     // Update is called once per frame
@@ -100,6 +113,7 @@ public class SkillBehaviours : MonoBehaviour, Skill_Interface
             }
             else if (gameObject.GetComponent<YellowSlimeScript>()) 
             {
+                gameObject.GetComponent<YellowSlimeScript>().hp -= 2.5f;
                 float colorTime = 0.1f;
                 var sequence = DOTween.Sequence();
                 sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.green, colorTime));
@@ -108,6 +122,7 @@ public class SkillBehaviours : MonoBehaviour, Skill_Interface
             }
             else if (gameObject.GetComponent<PurpleTurtle>())
             {
+                gameObject.GetComponent<PurpleTurtle>().hp -= 2.5f;
                 float colorTime = 0.1f;
                 var sequence = DOTween.Sequence();
                 sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.green, colorTime));
@@ -116,6 +131,7 @@ public class SkillBehaviours : MonoBehaviour, Skill_Interface
             }
             else if (gameObject.GetComponent<YellowTurtleAI>())
             {
+                gameObject.GetComponent<YellowTurtleAI>().hp -= 2.5f;
                 float colorTime = 0.1f;
                 var sequence = DOTween.Sequence();
                 sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.green, colorTime));
@@ -124,6 +140,7 @@ public class SkillBehaviours : MonoBehaviour, Skill_Interface
             }
             else if (gameObject.GetComponent<Variant2QuadShoot>())
             {
+                gameObject.GetComponent<Variant2QuadShoot>().hp -= 2.5f;
                 float colorTime = 0.1f;
                 var sequence = DOTween.Sequence();
                 sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.green, colorTime));
@@ -132,5 +149,89 @@ public class SkillBehaviours : MonoBehaviour, Skill_Interface
             }
         }
         poisonCounter = 0;
+    }
+
+    IEnumerator Ice() 
+    {
+        while (iceCounter < 2)
+        {
+            yield return new WaitForSeconds(1);
+            if (gameObject.GetComponent<EnemyAIShell>())
+            {
+                gameObject.GetComponent<EnemyAIShell>().agent.speed -= 2.5f;
+                float colorTime = 0.1f;
+                var sequence = DOTween.Sequence();
+                sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.blue, colorTime));
+                sequence.Insert(colorTime, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.white, colorTime));
+                Instantiate(gameObject.GetComponent<EnemyAIShell>().iceParticles, gameObject.GetComponent<EnemyAIShell>().transform.position, Quaternion.identity);
+            }
+            else if (gameObject.GetComponent<EnemyAI>())
+            {
+                gameObject.GetComponent<EnemyAI>().agent.speed -= 2.5f;
+                gameObject.GetComponent<EnemyAI>().fireRate -= 1;
+                float colorTime = 0.1f;
+                var sequence = DOTween.Sequence();
+                sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.blue, colorTime));
+                sequence.Insert(colorTime, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.white, colorTime));
+                Instantiate(gameObject.GetComponent<EnemyAI>().iceParticles, gameObject.GetComponent<EnemyAI>().transform.position, Quaternion.identity);
+            }
+            else if (gameObject.GetComponent<EnemyAIQuadShoot>())
+            {
+                gameObject.GetComponent<EnemyAIQuadShoot>().agent.speed -= 2.5f;
+                gameObject.GetComponent<EnemyAIQuadShoot>().fireRate -= 1;
+                float colorTime = 0.1f;
+                var sequence = DOTween.Sequence();
+                sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.blue, colorTime));
+                sequence.Insert(colorTime, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.white, colorTime));
+                Instantiate(gameObject.GetComponent<EnemyAIQuadShoot>().iceParticles, gameObject.GetComponent<EnemyAIQuadShoot>().transform.position, Quaternion.identity);
+            }
+            else if (gameObject.GetComponent<Dummy>())
+            {
+                float colorTime = 0.1f;
+                var sequence = DOTween.Sequence();
+                sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.blue, colorTime));
+                sequence.Insert(colorTime, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.white, colorTime));
+                Instantiate(gameObject.GetComponent<Dummy>().iceParticles, gameObject.GetComponent<Dummy>().transform.position, Quaternion.identity);
+            }
+            else if (gameObject.GetComponent<YellowSlimeScript>())
+            {
+                gameObject.GetComponent<YellowSlimeScript>().agent.speed -= 2.5f;
+                gameObject.GetComponent<YellowSlimeScript>().fireRate -= 1;
+                float colorTime = 0.1f;
+                var sequence = DOTween.Sequence();
+                sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.blue, colorTime));
+                sequence.Insert(colorTime, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.white, colorTime));
+                Instantiate(gameObject.GetComponent<YellowSlimeScript>().iceParticles, gameObject.GetComponent<YellowSlimeScript>().transform.position, Quaternion.identity);
+            }
+            else if (gameObject.GetComponent<PurpleTurtle>())
+            {
+                gameObject.GetComponent<PurpleTurtle>().agent.speed -= 2.5f;
+                float colorTime = 0.1f;
+                var sequence = DOTween.Sequence();
+                sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.blue, colorTime));
+                sequence.Insert(colorTime, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.white, colorTime));
+                Instantiate(gameObject.GetComponent<PurpleTurtle>().iceParticles, gameObject.GetComponent<PurpleTurtle>().transform.position, Quaternion.identity);
+            }
+            else if (gameObject.GetComponent<YellowTurtleAI>())
+            {
+                gameObject.GetComponent<YellowTurtleAI>().agent.speed -= 2.5f;
+                float colorTime = 0.1f;
+                var sequence = DOTween.Sequence();
+                sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.blue, colorTime));
+                sequence.Insert(colorTime, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.white, colorTime));
+                Instantiate(gameObject.GetComponent<YellowTurtleAI>().iceParticles, gameObject.GetComponent<YellowTurtleAI>().transform.position, Quaternion.identity);
+            }
+            else if (gameObject.GetComponent<Variant2QuadShoot>())
+            {
+                gameObject.GetComponent<Variant2QuadShoot>().agent.speed -= 2.5f;
+                gameObject.GetComponent<Variant2QuadShoot>().fireRate -= 1;
+                float colorTime = 0.1f;
+                var sequence = DOTween.Sequence();
+                sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.blue, colorTime));
+                sequence.Insert(colorTime, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.white, colorTime));
+                Instantiate(gameObject.GetComponent<Variant2QuadShoot>().iceParticles, gameObject.GetComponent<Variant2QuadShoot>().transform.position, Quaternion.identity);
+            }
+        }
+        iceCounter = 0;
     }
 }

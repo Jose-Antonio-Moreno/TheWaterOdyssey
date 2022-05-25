@@ -56,4 +56,8 @@ public class UltimateBehaviour : MonoBehaviour, UltimateInterface
         }
 
     }
+    public void ActivateBubbleSpray() 
+    {
+
+    }
 }

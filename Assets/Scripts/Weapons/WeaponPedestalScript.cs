@@ -7,12 +7,16 @@ public class WeaponPedestalScript : MonoBehaviour
 
     [SerializeField]
     Transform spawnPoint;
+    Transform player;
 
     [SerializeField]
     GameObject[] weaponsSprite;
     GameObject weapon;
     GameObject sprite;
     public int newWeaponNumber;
+
+    [SerializeField]
+    ParticleSystem particles;
     //Sounds
     public AudioSource grabItem;
 
@@ -20,7 +24,8 @@ public class WeaponPedestalScript : MonoBehaviour
 
     private void Start()
     {
-        Transform player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        player = GameObject.FindGameObjectWithTag("Player").transform;
 
         Weapons playerWeapon = player.GetComponent<Shooter>().weapon;
         
@@ -34,6 +39,10 @@ public class WeaponPedestalScript : MonoBehaviour
         sprite  = Instantiate(weaponsSprite[newWeaponNumber]);
        // weapon.transform.localScale = new Vector3(10f, 10f, 10f);
     }
+    private void Update()
+    {
+        particles.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
+    }
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -41,6 +50,7 @@ public class WeaponPedestalScript : MonoBehaviour
             if (getItem)
             {
                 grabItem.Play();
+                Instantiate(particles, particles.transform.position, Quaternion.identity);
                 getItem = false;
             }
             other.GetComponent<Shooter>().weapon = (Weapons)newWeaponNumber;
