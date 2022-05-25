@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Cinemachine;
+using DG.Tweening;
 
 public class sizePlayer : MonoBehaviour
 {
@@ -29,9 +31,20 @@ public class sizePlayer : MonoBehaviour
     public AudioSource evaporation;
     public AudioSource music;
 
+
+    //Hited Feedback
+    Vector3 initialCameraZoomPos;
+    Vector3 zoomedCameraZoomPos;
+    GameObject cameraZoomCambiar;
     // Start is called before the first frame update
     void Start()
     {
+        DOTween.Init();
+        cameraZoomCambiar = GameObject.FindGameObjectWithTag("Camera");
+        initialCameraZoomPos = cameraZoomCambiar.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset;
+        Debug.Log(initialCameraZoomPos);
+        zoomedCameraZoomPos = initialCameraZoomPos * 0.85f;
+
         Time.timeScale =1;
        
         life = 3;
@@ -94,13 +107,19 @@ public class sizePlayer : MonoBehaviour
             Death();
         }        
     }
-
+    void HittedFeedbackZoom(float time)
+    {
+        Sequence hitZoomFeedback = DOTween.Sequence();
+        hitZoomFeedback.Append(DOTween.To(() => initialCameraZoomPos, x => cameraZoomCambiar.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = x, zoomedCameraZoomPos, time));
+        hitZoomFeedback.Append(DOTween.To(() => zoomedCameraZoomPos, x => cameraZoomCambiar.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = x, initialCameraZoomPos, time));
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
         {
             if (!isInvulnerable) 
             {
+                HittedFeedbackZoom(0.09f);
                 evaporation.Play();
                 Instantiate(hitParticles, transform.position, transform.rotation);
                 life--;
@@ -113,6 +132,8 @@ public class sizePlayer : MonoBehaviour
         {
             if (!isInvulnerable)
             {
+                HittedFeedbackZoom(0.09f);
+
                 evaporation.Play();
                 Instantiate(hitParticles, transform.position, transform.rotation);
                 life--;
