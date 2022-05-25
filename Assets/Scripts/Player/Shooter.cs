@@ -19,6 +19,7 @@ public enum Weapons
 
 public class Shooter : MonoBehaviour
 {
+
     [SerializeField]
     GameObject[] weaponsImage;
    
@@ -56,11 +57,10 @@ public class Shooter : MonoBehaviour
     float playSound = 0;
     public float fPitchMax = 1.2f;
     public float fPitchMin = 0.9f;
-
+    
     // Start is called before the first frame update
     void Start()
     {
-
         PlayerControlls controller;
         _inputManager = gameObject.GetComponent<Movement_2>().inputManager;
         controller = _inputManager.GetComponent<InputsController>().globalControls;
@@ -71,6 +71,8 @@ public class Shooter : MonoBehaviour
         controller.Gameplay.SwitchWeapon.started += ctx => SwitchWeapon();
         impulse = transform.GetComponent<CinemachineImpulseSource>();
         originalYPos = transform.position.y;
+
+        //cameraZoomCambiar.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset *= 0.5f;
         LoadData();
         SaveData();
     }

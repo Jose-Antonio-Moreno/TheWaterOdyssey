@@ -23,6 +23,7 @@ TagManager:
   - ShieldTears
   - WeaponPedestal
   - Dropinomicon
+  - Camera
   layers:
   - Default
   - TransparentFX
