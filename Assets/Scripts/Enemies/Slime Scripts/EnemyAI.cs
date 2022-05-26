@@ -33,7 +33,8 @@ public class EnemyAI : MonoBehaviour
     bool droped;
     bool moreRange;
 
-    public float sightRange, attackRange;
+    public float sightRange;
+    float attackRange = 17;
     public bool playerInSightRange;
     public bool playerInAttackRange = false;
 
@@ -83,11 +84,11 @@ public class EnemyAI : MonoBehaviour
 
         if (Vector3.Distance(player.transform.position, this.transform.position) <= attackRange)
         {
-            if (!moreRange)
-            {
-                attackRange += 10;
-                moreRange = true;
-            }
+            //if (!moreRange)
+            //{
+            //    attackRange += 10;
+            //    moreRange = true;
+            //}
             if (Time.time >= nextShoot)
             {
                 number = Random.Range(0.4f, 0.8f);

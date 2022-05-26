@@ -47,6 +47,9 @@ public class EnemyAIQuadShoot : MonoBehaviour
 
     public triggerEnemies managerEnemies;
 
+
+    float attackRange = 23;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,11 +68,14 @@ public class EnemyAIQuadShoot : MonoBehaviour
         Patroling();
         this.transform.LookAt(player.position);
 
-        if (Time.time >= nextShoot)
+        if (Vector3.Distance(player.transform.position, this.transform.position) <= attackRange)
         {
-            nextShoot = Time.time + 1f / fireRate;
-            Shoot();
+            if (Time.time >= nextShoot)
+            {
+                nextShoot = Time.time + 1f / fireRate;
+                Shoot();
 
+            }
         }
 
         if (hp <= 0)

@@ -30,7 +30,8 @@ public class YellowSlimeScript : MonoBehaviour
     public float fireRate;
 
     //States
-    public float sightRange, attackRange;
+    public float sightRange;
+    float attackRange = 17;
     public bool playerInSightRange;
     public bool playerInAttackRange = false;
 

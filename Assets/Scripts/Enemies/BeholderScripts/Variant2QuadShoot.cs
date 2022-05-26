@@ -46,6 +46,7 @@ public class Variant2QuadShoot : MonoBehaviour
     public AudioSource impact;
 
     public triggerEnemies managerEnemies;
+    float attackRange = 20;
 
     // Start is called before the first frame update
     void Start()
@@ -64,12 +65,14 @@ public class Variant2QuadShoot : MonoBehaviour
     {
         Patroling();
         this.transform.LookAt(player.position);
-
-        if (Time.time >= nextShoot)
+        if (Vector3.Distance(player.transform.position, this.transform.position) <= attackRange)
         {
-            nextShoot = Time.time + 1f / fireRate;
-            Shoot();
+            if (Time.time >= nextShoot)
+            {
+                nextShoot = Time.time + 1f / fireRate;
+                Shoot();
 
+            }
         }
 
         if (hp <= 0)
