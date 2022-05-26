@@ -9,6 +9,7 @@ public class Pedestal : MonoBehaviour
     [SerializeField]
     GameObject[] weapon;
     GameObject weaponSpawn;
+    
 
     [SerializeField]
     Image[] images;
@@ -21,6 +22,7 @@ public class Pedestal : MonoBehaviour
 
     //Sounds
     public AudioSource grabItem;
+    public GameObject Audio3D;
 
     void Start()
     {
@@ -45,6 +47,7 @@ public class Pedestal : MonoBehaviour
             if (getItem)
             {
                 grabItem.Play();
+                Audio3D.SetActive(false);
                 //Instantiate(particles, transform.position, Quaternion.identity);
                 getItem = false;
             }

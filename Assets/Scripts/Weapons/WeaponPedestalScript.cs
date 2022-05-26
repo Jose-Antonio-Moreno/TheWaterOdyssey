@@ -13,12 +13,14 @@ public class WeaponPedestalScript : MonoBehaviour
     GameObject[] weaponsSprite;
     GameObject weapon;
     GameObject sprite;
+   
     public int newWeaponNumber;
 
     [SerializeField]
     ParticleSystem particles;
     //Sounds
     public AudioSource grabItem;
+    public GameObject Audio3D;
 
     private bool getItem = true;
 
@@ -50,6 +52,7 @@ public class WeaponPedestalScript : MonoBehaviour
             if (getItem)
             {
                 grabItem.Play();
+                Audio3D.SetActive(false);
                 Instantiate(particles, particles.transform.position, Quaternion.identity);
                 getItem = false;
             }

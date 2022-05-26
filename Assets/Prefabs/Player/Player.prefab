@@ -2288,6 +2288,7 @@ GameObject:
   - component: {fileID: 1172528586078450670}
   - component: {fileID: 734044846894613221}
   - component: {fileID: 504974142447478229}
+  - component: {fileID: 621883081921996046}
   m_Layer: 6
   m_Name: Armature
   m_TagString: Player
@@ -3097,6 +3098,14 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!81 &621883081921996046
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5944128494586752037}
+  m_Enabled: 1
 --- !u!1 &6006621480990478613
 GameObject:
   m_ObjectHideFlags: 0

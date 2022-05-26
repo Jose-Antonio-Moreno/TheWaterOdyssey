@@ -8,6 +8,7 @@ public class PedestalUltimates : MonoBehaviour
     GameObject[] ultimate;
     GameObject ultimateSpawn;
     GameObject player;
+    
 
     [SerializeField]
     ParticleSystem particles;
@@ -23,6 +24,7 @@ public class PedestalUltimates : MonoBehaviour
 
     //Sounds
     public AudioSource grabItem;
+    public GameObject Audio3D;
 
     void Start()
     {
@@ -55,6 +57,7 @@ public class PedestalUltimates : MonoBehaviour
             if (ultimateSpawn.CompareTag("BigDrop"))
             {
                 grabItem.Play();
+                Audio3D.SetActive(false);
                 Instantiate(particles, particles.transform.position, Quaternion.identity);
                 other.GetComponent<UltimateManager>().DUltimates[EUltimates.BIGDROP] = true;
                 other.GetComponent<UltimateManager>().DUltimates[EUltimates.DROPINOMICON] = false;
@@ -64,6 +67,7 @@ public class PedestalUltimates : MonoBehaviour
             if (ultimateSpawn.CompareTag("Dropinomicon"))
             {
                 grabItem.Play();
+                Audio3D.SetActive(false);
                 Instantiate(particles, particles.transform.position, Quaternion.identity);
                 other.GetComponent<UltimateManager>().DUltimates[EUltimates.BIGDROP] = false; 
                 other.GetComponent<UltimateManager>().DUltimates[EUltimates.DROPINOMICON] = true;
