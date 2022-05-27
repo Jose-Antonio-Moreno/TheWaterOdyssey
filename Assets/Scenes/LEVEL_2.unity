@@ -2495,6 +2495,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TurtleSpawn (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2671414283095468262, guid: 7d788acdceb27084ba4925430658227f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2671414283095468280, guid: 7d788acdceb27084ba4925430658227f, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -3931,6 +3935,10 @@ PrefabInstance:
     - target: {fileID: 741209593542941173, guid: 168de51b1e3f2ae448bdaa3db728c04c, type: 3}
       propertyPath: m_Name
       value: BeholderSpawn (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 741209593542941173, guid: 168de51b1e3f2ae448bdaa3db728c04c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1870159182909887970, guid: 168de51b1e3f2ae448bdaa3db728c04c, type: 3}
       propertyPath: m_RootOrder
@@ -21865,6 +21873,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SlimeSpawn (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 8860146184374574296, guid: e5595a80c6332ed46818b0550a90b361, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9020971563288169782, guid: e5595a80c6332ed46818b0550a90b361, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -31675,7 +31687,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1532362200}
-  m_LocalRotation: {x: 0.5604362, y: 0.00057327485, z: -0.0003879317, w: 0.82819736}
+  m_LocalRotation: {x: 0.5604362, y: 0.0005732953, z: -0.0003879455, w: 0.82819736}
   m_LocalPosition: {x: 153.05939, y: 36.980633, z: 182.95113}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -39135,7 +39147,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1926820935}
-  m_LocalRotation: {x: 0.5604362, y: 0.00057327485, z: -0.0003879317, w: 0.82819736}
+  m_LocalRotation: {x: 0.5604362, y: 0.0005732953, z: -0.0003879455, w: 0.82819736}
   m_LocalPosition: {x: 153.05939, y: 36.980633, z: 182.95113}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
