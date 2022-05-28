@@ -229,7 +229,7 @@ MonoBehaviour:
   ultimate:
   - {fileID: 5965082732524849015, guid: 55c42637c4959c44289018f413d3ee80, type: 3}
   - {fileID: 1069780942220475898, guid: 57d69672799c6de479a31751dd426a9a, type: 3}
-  particles: {fileID: 5645226358979227942, guid: 1106b5bf717156c4ab4a5276d9e7e9e5, type: 3}
+  particles: {fileID: 7875016002007857048, guid: 301084d8fc1482949941eaca20b5dcdf, type: 3}
   spawnPoint: {fileID: 8245296565057715145}
   ultimatesImages:
   - {fileID: 5965082732524849015, guid: 55c42637c4959c44289018f413d3ee80, type: 3}

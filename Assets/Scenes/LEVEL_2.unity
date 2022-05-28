@@ -11592,7 +11592,7 @@ PrefabInstance:
     - target: {fileID: 2731088610735822909, guid: a1f5d64392d6a0a498d75e9bdd31fd49, type: 3}
       propertyPath: particles
       value: 
-      objectReference: {fileID: 5645226358979227942, guid: 1106b5bf717156c4ab4a5276d9e7e9e5, type: 3}
+      objectReference: {fileID: 7875016002007857048, guid: 301084d8fc1482949941eaca20b5dcdf, type: 3}
     - target: {fileID: 2731088610735822909, guid: a1f5d64392d6a0a498d75e9bdd31fd49, type: 3}
       propertyPath: images.Array.size
       value: 6
@@ -41296,7 +41296,7 @@ PrefabInstance:
     - target: {fileID: 2731088610735822909, guid: a1f5d64392d6a0a498d75e9bdd31fd49, type: 3}
       propertyPath: particles
       value: 
-      objectReference: {fileID: 5645226358979227942, guid: 1106b5bf717156c4ab4a5276d9e7e9e5, type: 3}
+      objectReference: {fileID: 7875016002007857048, guid: 301084d8fc1482949941eaca20b5dcdf, type: 3}
     - target: {fileID: 2731088610735822909, guid: a1f5d64392d6a0a498d75e9bdd31fd49, type: 3}
       propertyPath: images.Array.size
       value: 6
@@ -41943,6 +41943,10 @@ PrefabInstance:
       propertyPath: MinDistance
       value: 6.21
       objectReference: {fileID: 0}
+    - target: {fileID: 5279833196119749161, guid: 6b4ddfcd02933934c907cd6345a80f7b, type: 3}
+      propertyPath: particles
+      value: 
+      objectReference: {fileID: 7875016002007857048, guid: 301084d8fc1482949941eaca20b5dcdf, type: 3}
     - target: {fileID: 5279833196119749161, guid: 6b4ddfcd02933934c907cd6345a80f7b, type: 3}
       propertyPath: ultimate.Array.size
       value: 1

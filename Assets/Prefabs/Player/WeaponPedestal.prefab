@@ -119,7 +119,7 @@ MonoBehaviour:
   - {fileID: 6965483614096039716, guid: 146dd4cceec367842ae221765626785d, type: 3}
   - {fileID: 8319376099946223891, guid: a46f6fdebebaa8a42a0db73f02518043, type: 3}
   newWeaponNumber: 0
-  particles: {fileID: 5645226358979227942, guid: 1106b5bf717156c4ab4a5276d9e7e9e5, type: 3}
+  particles: {fileID: 7875016002007857048, guid: 301084d8fc1482949941eaca20b5dcdf, type: 3}
   grabItem: {fileID: 5789379276873272786}
   Audio3D: {fileID: 6655598885131681438}
 --- !u!82 &5789379276873272786
