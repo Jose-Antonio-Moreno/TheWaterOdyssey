@@ -14,6 +14,9 @@ public class Pedestal : MonoBehaviour
     [SerializeField]
     Image[] images;
 
+
+    GameObject player;
+
     [SerializeField]
     ParticleSystem particles;
 
@@ -32,11 +35,11 @@ public class Pedestal : MonoBehaviour
 
         weaponSpawn = Instantiate(weapon[random]);
         weaponSpawn.transform.localScale = this.transform.localScale * 1.25f;
-
+        player = GameObject.FindGameObjectWithTag("Player");
     }
     void Update()
     {
-
+        particles.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
 
     }
     void OnTriggerEnter(Collider other)
@@ -48,7 +51,7 @@ public class Pedestal : MonoBehaviour
             {
                 grabItem.Play();
                 Audio3D.SetActive(false);
-                //Instantiate(particles, transform.position, Quaternion.identity);
+                Instantiate(particles, particles.transform.position, Quaternion.identity);
                 getItem = false;
             }
 

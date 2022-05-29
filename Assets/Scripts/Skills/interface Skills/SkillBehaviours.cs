@@ -168,7 +168,6 @@ public class SkillBehaviours : MonoBehaviour, Skill_Interface
             else if (gameObject.GetComponent<EnemyAI>())
             {
                 gameObject.GetComponent<EnemyAI>().agent.speed -= 2.5f;
-                gameObject.GetComponent<EnemyAI>().fireRate -= 1;
                 float colorTime = 0.1f;
                 var sequence = DOTween.Sequence();
                 sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.blue, colorTime));
@@ -178,7 +177,6 @@ public class SkillBehaviours : MonoBehaviour, Skill_Interface
             else if (gameObject.GetComponent<EnemyAIQuadShoot>())
             {
                 gameObject.GetComponent<EnemyAIQuadShoot>().agent.speed -= 2.5f;
-                gameObject.GetComponent<EnemyAIQuadShoot>().fireRate -= 1;
                 float colorTime = 0.1f;
                 var sequence = DOTween.Sequence();
                 sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.blue, colorTime));
@@ -196,7 +194,6 @@ public class SkillBehaviours : MonoBehaviour, Skill_Interface
             else if (gameObject.GetComponent<YellowSlimeScript>())
             {
                 gameObject.GetComponent<YellowSlimeScript>().agent.speed -= 2.5f;
-                gameObject.GetComponent<YellowSlimeScript>().fireRate -= 1;
                 float colorTime = 0.1f;
                 var sequence = DOTween.Sequence();
                 sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.blue, colorTime));
@@ -224,7 +221,6 @@ public class SkillBehaviours : MonoBehaviour, Skill_Interface
             else if (gameObject.GetComponent<Variant2QuadShoot>())
             {
                 gameObject.GetComponent<Variant2QuadShoot>().agent.speed -= 2.5f;
-                gameObject.GetComponent<Variant2QuadShoot>().fireRate -= 1;
                 float colorTime = 0.1f;
                 var sequence = DOTween.Sequence();
                 sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.blue, colorTime));

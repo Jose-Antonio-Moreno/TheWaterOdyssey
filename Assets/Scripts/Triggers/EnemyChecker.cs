@@ -8,6 +8,7 @@ public class EnemyChecker : MonoBehaviour
     public GameObject trophy;
     void Update()
     {
+        Debug.Log(enemies.Length);
         if (enemies.Length <= 0) 
         {
             Instantiate(trophy, transform.position, Quaternion.identity);
