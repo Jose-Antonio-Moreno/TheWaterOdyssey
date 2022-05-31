@@ -34,6 +34,8 @@ public class Boss : MonoBehaviour
     //Sounds
     public AudioSource splash;
 
+    //Fences
+    public GameObject Fences;
     
 
     [SerializeField]
@@ -398,7 +400,7 @@ public class Boss : MonoBehaviour
         //    managerEnemies.counter -= 1;
         //    doneCounter = true;
         //}
-
+        Fences.SetActive(false);
         Destroy(this.gameObject);
     }
 }
