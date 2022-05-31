@@ -24,6 +24,7 @@ TagManager:
   - WeaponPedestal
   - Dropinomicon
   - Camera
+  - Ice
   layers:
   - Default
   - TransparentFX
