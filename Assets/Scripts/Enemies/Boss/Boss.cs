@@ -31,6 +31,9 @@ public class Boss : MonoBehaviour
     bool startInvoke, startInvoke2;
     int rafagasCount, spiralCount;
 
+    //Sounds
+    public AudioSource splash;
+
     
 
     [SerializeField]
@@ -353,7 +356,7 @@ public class Boss : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
-            //splash.Play();
+            splash.Play();
             float colorTime = 0.1f;
             var sequence = DOTween.Sequence();
             sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.red, colorTime));
@@ -370,6 +373,7 @@ public class Boss : MonoBehaviour
 
         if (other.CompareTag("BigDrop"))
         {
+            splash.Play();
             float colorTime = 0.1f;
             var sequence = DOTween.Sequence();
             sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.red, colorTime));

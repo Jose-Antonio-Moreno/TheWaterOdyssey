@@ -196,6 +196,7 @@ public class YellowSlimeScript : MonoBehaviour
 
         if (other.CompareTag("BigDrop"))
         {
+            splash.Play();
             float colorTime = 0.1f;
             var sequence = DOTween.Sequence();
             sequence.Insert(0, gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.DOColor(Color.red, colorTime));
