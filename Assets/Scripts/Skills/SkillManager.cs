@@ -27,14 +27,13 @@ public class SkillManager : MonoBehaviour
         DSkills[EAbilities.FIRERATE] = false;
         DSkills[EAbilities.SHIELDBUBBLE] = false; 
         DSkills[EAbilities.BIGBUBBLE] = false;
-        DSkills[EAbilities.ICE] = true;
+        DSkills[EAbilities.ICE] = false;
         LoadData();
         SaveData();
     }
     private void Update()
     {
         //Debug.Log(DSkills[EAbilities.LIGHTSTEP]);
-
     }
     void SaveData()
     {
@@ -55,5 +54,4 @@ public class SkillManager : MonoBehaviour
     {
         SaveData();
     }
-
 }

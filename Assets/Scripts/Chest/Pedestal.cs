@@ -86,6 +86,11 @@ public class Pedestal : MonoBehaviour
                 other.GetComponent<SkillManager>().DSkills[EAbilities.SHIELDBUBBLE] = true;
                 images[0].color = new Color(images[0].color.r, images[0].color.g, images[0].color.b, 0f);
             }
+            if (weaponSpawn.CompareTag("Ice"))
+            {
+                other.GetComponent<SkillManager>().DSkills[EAbilities.ICE] = true;
+                images[0].color = new Color(images[0].color.r, images[0].color.g, images[0].color.b, 0f);
+            }
             Destroy(weaponSpawn);
         }
     }

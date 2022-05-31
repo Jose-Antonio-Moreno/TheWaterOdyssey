@@ -15,6 +15,7 @@ public class GetItem : MonoBehaviour
             if (this.CompareTag("LightStep")) other.GetComponent<SkillManager>().DSkills[EAbilities.LIGHTSTEP] = true;
             if (this.CompareTag("Poison")) other.GetComponent<SkillManager>().DSkills[EAbilities.POISON] = true;
             if (this.CompareTag("ShieldTears")) other.GetComponent<SkillManager>().DSkills[EAbilities.SHIELDBUBBLE] = true;
+            if (this.CompareTag("Ice")) other.GetComponent<SkillManager>().DSkills[EAbilities.ICE] = true;
 
         }
     }
