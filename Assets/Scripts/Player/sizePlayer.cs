@@ -38,8 +38,11 @@ public class sizePlayer : MonoBehaviour
     Vector3 zoomedCameraZoomPos;
     GameObject cameraZoomCambiar;
     // Start is called before the first frame update
+
+    public int skillAux;
     void Start()
     {
+        skillAux = 0;
         impulse = transform.GetComponent<CinemachineImpulseSource>();
         DOTween.Init();
         cameraZoomCambiar = GameObject.FindGameObjectWithTag("Camera");

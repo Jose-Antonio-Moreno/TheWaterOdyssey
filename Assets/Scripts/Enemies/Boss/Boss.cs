@@ -7,7 +7,8 @@ public class Boss : MonoBehaviour
 {
 
    private Transform player;
-   
+    public Animator anim;
+
     //Particles
     public ParticleSystem posionParticles;
     public ParticleSystem deathParticles;
@@ -258,27 +259,18 @@ public class Boss : MonoBehaviour
         Vector3 starDir3 = (fireStar3.position - this.transform.position).normalized;
         Vector3 starDir4 = (fireStar4.position - this.transform.position).normalized;
         
-        
-
-
         GameObject starAux = Instantiate(shootPrefab, gameObject.transform.position + starDir * 1f, Quaternion.identity);
         GameObject starAux1 = Instantiate(shootPrefab, gameObject.transform.position + starDir1 * 1f, Quaternion.identity);
         GameObject starAux2 = Instantiate(shootPrefab, gameObject.transform.position + starDir2 * 1f, Quaternion.identity);
         GameObject starAux3 = Instantiate(shootPrefab, gameObject.transform.position + starDir3 * 1f, Quaternion.identity);
         GameObject starAux4 = Instantiate(shootPrefab, gameObject.transform.position + starDir4 * 1f, Quaternion.identity);
         
-        
-
-
-         Vector3 starForce = starDir * 80;
+        Vector3 starForce = starDir * 80;
         Vector3 starForce1 = starDir1 * 80;
         Vector3 starForce2 = starDir2 * 80;
         Vector3 starForce3 = starDir3 * 80;
         Vector3 starForce4 = starDir4 * 80;
         
-        
-
-
         starAux.GetComponent<Rigidbody>().AddForce(starForce);
         starAux1.GetComponent<Rigidbody>().AddForce(starForce1);
         starAux2.GetComponent<Rigidbody>().AddForce(starForce2);
@@ -400,6 +392,7 @@ public class Boss : MonoBehaviour
         //    managerEnemies.counter -= 1;
         //    doneCounter = true;
         //}
+        anim.SetBool("death", true);
         Fences.SetActive(false);
         Destroy(this.gameObject);
     }

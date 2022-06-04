@@ -134,6 +134,8 @@ GameObject:
   - component: {fileID: 9080583107908755749}
   - component: {fileID: 3556001997908193911}
   - component: {fileID: 681348933907374849}
+  - component: {fileID: 6045647925302863730}
+  - component: {fileID: 57754045537865544}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -149,7 +151,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3914274878332237473}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.11, z: 0}
+  m_LocalPosition: {x: 0, y: 0.575, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1878434939175573344}
@@ -211,6 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4e2854d793ff5e4ba893fc9e967f0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 57754045537865544}
   posionParticles: {fileID: 9050658520201416140, guid: 807a515548344524897e85287286fb30, type: 3}
   deathParticles: {fileID: 2947199187110361257, guid: 06b34edfb46d09c45aecab44e5073dd4, type: 3}
   maxHp: 1000
@@ -219,6 +222,8 @@ MonoBehaviour:
   numOfProjectiles: 5
   projectileSpeed: 20
   shootPrefab: {fileID: 901182402720252531, guid: 8370c3e46d65264449e0899a2b4fc6e0, type: 3}
+  splash: {fileID: 0}
+  Fences: {fileID: 0}
   fireStar: {fileID: 1662660943880482517}
   fireStar1: {fileID: 1186522255247414441}
   fireStar2: {fileID: 8570114045401813113}
@@ -244,6 +249,49 @@ MonoBehaviour:
   maxX: 0
   minZ: 0
   maxZ: 0
+  agent: {fileID: 6045647925302863730}
+  anim: {fileID: 57754045537865544}
+--- !u!195 &6045647925302863730
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3914274878332237473}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.6
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!95 &57754045537865544
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3914274878332237473}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: eaa6c567d9ea03744a0d4ea30cfe9f99, type: 3}
+  m_Controller: {fileID: 9100000, guid: c5959b55b9795d741bb9279d753ec773, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4703395189278111785
 GameObject:
   m_ObjectHideFlags: 0

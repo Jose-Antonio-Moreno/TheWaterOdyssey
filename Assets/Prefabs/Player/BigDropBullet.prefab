@@ -12,7 +12,7 @@ GameObject:
   m_Layer: 0
   m_Name: Firepoint (5)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -72,7 +72,7 @@ GameObject:
   m_Layer: 0
   m_Name: Firepoint (6)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -177,7 +177,6 @@ GameObject:
   - component: {fileID: 8313548766760332897}
   - component: {fileID: 2265110402250811659}
   - component: {fileID: 7612902766033849352}
-  - component: {fileID: 8236071102750516155}
   - component: {fileID: 5171231941051074001}
   - component: {fileID: 2616908253565109048}
   m_Layer: 0
@@ -288,24 +287,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &8236071102750516155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6007630341101929216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: caf4d7428b7da284d8aadae2ef2cb962, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyTime: 0
-  bouncines: {fileID: 13400000, guid: 867f2af0df632fc43a434098afe3e60c, type: 2}
-  poisonColor: {fileID: 2100000, guid: 8033e9e186b0ab9469009ae6379921e2, type: 2}
-  BDVariables: {fileID: 2616908253565109048}
-  hitParticle: {fileID: 5747453162757666172, guid: c7b1dc6243611814fb0d51c4d1e8fc2b, type: 3}
-  damage: 0
 --- !u!114 &5171231941051074001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,7 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e70b762e7155b74289efa4d82a7c8bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firepoints:
+  fireStar:
   - {fileID: 1715832116646796679}
   - {fileID: 1088793544017272342}
   - {fileID: 4518373909964909323}
@@ -369,8 +350,13 @@ MonoBehaviour:
   - {fileID: 4882272219876080086}
   - {fileID: 3664018993082439473}
   - {fileID: 690923820434078337}
-  bubblePrefab: {fileID: 7929679917164781425, guid: f5f8bdb9343020148a5a9b9a637ffa17, type: 3}
+  bubblePrefab: {fileID: 2421088425041002439, guid: 456a81b8d4dabd54c9dea5915a6bfc97, type: 3}
   hasExploded: 0
+  destroyTime: 0
+  bouncines: {fileID: 13400000, guid: 867f2af0df632fc43a434098afe3e60c, type: 2}
+  poisonColor: {fileID: 2100000, guid: 8033e9e186b0ab9469009ae6379921e2, type: 2}
+  hitParticle: {fileID: 5747453162757666172, guid: c7b1dc6243611814fb0d51c4d1e8fc2b, type: 3}
+  damage: 0
 --- !u!1 &6208840881140002782
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,7 +459,7 @@ GameObject:
   m_Layer: 0
   m_Name: Firepoint (7)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

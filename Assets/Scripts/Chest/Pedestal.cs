@@ -9,11 +9,15 @@ public class Pedestal : MonoBehaviour
     [SerializeField]
     GameObject[] weapon;
     GameObject weaponSpawn;
-    
 
     [SerializeField]
-    Image[] images;
+    GameObject[] hudSkills;
 
+    [SerializeField]
+    Transform[] skillPositions;
+
+    
+    public sizePlayer aux;
 
     GameObject player;
 
@@ -46,6 +50,7 @@ public class Pedestal : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log(aux.skillAux);
             
             if (getItem)
             {
@@ -59,38 +64,59 @@ public class Pedestal : MonoBehaviour
             if (weaponSpawn.CompareTag("BigBubble"))
             {
                 other.GetComponent<SkillManager>().DSkills[EAbilities.BIGBUBBLE] = true;
-                images[1].color = new Color(images[1].color.r, images[1].color.g, images[1].color.b, 0f);
+                
+                hudSkills[1].SetActive(true);
+                hudSkills[1].transform.position = skillPositions[aux.skillAux].transform.position;
+                aux.skillAux++;
+
+
             }
             if (weaponSpawn.CompareTag("Bouncy"))
             {
                 other.GetComponent<SkillManager>().DSkills[EAbilities.BOUNCY] = true;
-                images[2].color = new Color(images[2].color.r, images[2].color.g, images[2].color.b, 0f);
+                
+                hudSkills[2].SetActive(true);
+                hudSkills[2].transform.position = skillPositions[aux.skillAux].transform.position;
+                aux.skillAux++;
             }
             if (weaponSpawn.CompareTag("FireRate"))
             {
                 other.GetComponent<SkillManager>().DSkills[EAbilities.FIRERATE] = true;
-                images[3].color = new Color(images[3].color.r, images[3].color.g, images[3].color.b, 0f);
+                
+                hudSkills[3].SetActive(true);
+                hudSkills[3].transform.position = skillPositions[aux.skillAux].transform.position;
+                aux.skillAux++;
             }
             if (weaponSpawn.CompareTag("LightStep"))
             {
                 other.GetComponent<SkillManager>().DSkills[EAbilities.LIGHTSTEP] = true;
-                images[5].color = new Color(images[5].color.r, images[5].color.g, images[5].color.b, 0f);
+                
+                hudSkills[4].SetActive(true);
+                hudSkills[4].transform.position = skillPositions[aux.skillAux].transform.position;
+                aux.skillAux++;
             }
             if (weaponSpawn.CompareTag("Poison"))
             {
                 other.GetComponent<SkillManager>().DSkills[EAbilities.POISON] = true;
-                images[4].color = new Color(images[4].color.r, images[4].color.g, images[4].color.b, 0f);
+                
+                hudSkills[5].SetActive(true);
+                hudSkills[5].transform.position = skillPositions[aux.skillAux].transform.position;
+                aux.skillAux++;
             }
             if (weaponSpawn.CompareTag("ShieldTears"))
             {
                 other.GetComponent<SkillManager>().DSkills[EAbilities.SHIELDBUBBLE] = true;
-                images[0].color = new Color(images[0].color.r, images[0].color.g, images[0].color.b, 0f);
+                
+                hudSkills[0].SetActive(true);
+                hudSkills[0].transform.position = skillPositions[aux.skillAux].transform.position;
+                aux.skillAux++;
             }
             if (weaponSpawn.CompareTag("Ice"))
             {
                 other.GetComponent<SkillManager>().DSkills[EAbilities.ICE] = true;
-                images[0].color = new Color(images[0].color.r, images[0].color.g, images[0].color.b, 0f);
+                
             }
+
             Destroy(weaponSpawn);
         }
     }
