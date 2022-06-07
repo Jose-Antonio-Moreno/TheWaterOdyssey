@@ -163,7 +163,7 @@ public class Shooter : MonoBehaviour
             nextShoot = Time.time + 1f / fireRate;
             Shoot();
 
-            //Si las armas no son automáticas
+            //Si las armas no son automï¿½ticas
             if (weapon == Weapons.Basic || weapon == Weapons.Sniper || weapon == Weapons.Shotgun)
             {
                 shooting = false;
@@ -355,7 +355,7 @@ public class Shooter : MonoBehaviour
         }
     }
 
-    void SpawnShootParticles(float particlesScale, int particlesNumber)
+    public void SpawnShootParticles(float particlesScale, int particlesNumber)
     {
         for (int i = 0; i < particlesNumber; i++)
         {

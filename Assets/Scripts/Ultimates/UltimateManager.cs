@@ -23,7 +23,7 @@ public class UltimateManager : MonoBehaviour
         }
         DUltimates[EUltimates.BIGDROP] = false;
         DUltimates[EUltimates.DROPINOMICON] = false;
-        DUltimates[EUltimates.BUBBLESPRAY] = false;
+        DUltimates[EUltimates.BUBBLESPRAY] = true;
         LoadData();
         SaveData();
     }

@@ -24,9 +24,16 @@ public class UltimateInputs : MonoBehaviour
     bool canUse = true;
     bool isUsing = false;
 
+    float spraySpread = 0.5f;
+
+
     //Sounds
     public AudioSource dropinomicon;
     public AudioSource bigDrop;
+
+    float playSound = 0;
+    public AudioSource spray;
+
 
 
 
@@ -56,13 +63,18 @@ public class UltimateInputs : MonoBehaviour
                 canUse = false;
             }
         }
+        if (shootingSpray)
+        {
+            BubbleSpray();
+
+        }
     }
 
     public void ShakeUltimate()
     {
         impulse.GenerateImpulse(2);
     }
-
+    bool shootingSpray = false;
     void UltimateToUse() 
     {
         GameObject.Find("Armature").GetComponent<UltimateManager>().DUltimates.TryGetValue(EUltimates.BIGDROP, out hasUltimate);
@@ -71,6 +83,7 @@ public class UltimateInputs : MonoBehaviour
             if (canUse) 
             {
                 ShootBigDrop();
+                return;
             }
         }
         GameObject.Find("Armature").GetComponent<UltimateManager>().DUltimates.TryGetValue(EUltimates.DROPINOMICON, out hasUltimate);
@@ -79,8 +92,29 @@ public class UltimateInputs : MonoBehaviour
             if (canUse) 
             {
                 Dropinomicon();
+                return;
             }
         }
+        GameObject.Find("Armature").GetComponent<UltimateManager>().DUltimates.TryGetValue(EUltimates.BUBBLESPRAY, out hasUltimate);
+        if (hasUltimate)
+        {
+            if (canUse)
+            {
+                if (life.life > 1)
+                {
+                    life.life -= 1;
+                    life.changed = false;
+                    shootingSpray = true;
+                    Invoke("StopSpray", 2);
+                    return;
+                }
+            }
+        }
+
+    }
+    void StopSpray()
+    {
+        shootingSpray = false;
     }
     void ShootBigDrop()
     {
@@ -136,8 +170,53 @@ public class UltimateInputs : MonoBehaviour
             isUsing = true;
         }
     }
+
     void BubbleSpray() 
     {
 
+
+            spray.pitch = Random.Range(0.3f, 0.5f);
+            if (playSound <= 0)
+            {
+                spray.Play();
+                playSound = 0.2f;
+            }
+            else
+            {
+                playSound -= Time.deltaTime;
+            }
+
+
+            Shake();
+            Vector3 aimDirection = variables.aimDirection;
+            aimDirection.y = 0;
+            Vector3 shootForce;
+
+            Vector3 sprayAimDirection = aimDirection;
+            sprayAimDirection.x = aimDirection.x + Random.Range(-spraySpread, spraySpread);
+            sprayAimDirection.z = aimDirection.z + Random.Range(-spraySpread, spraySpread);
+            GameObject aux;
+            Vector3 pos = new Vector3(gameObject.transform.position.x, variables.originalYPos, gameObject.transform.position.z);
+
+            aux = Instantiate(variables.shootPrefab, pos + sprayAimDirection * 3f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
+            aux.GetComponent<SphereCollider>().isTrigger = true;
+            aux.GetComponent<BulletScript>().damage = 10; ///DAMAGE
+            float f = Random.Range(1.0f, 2.3f);
+            aux.transform.localScale *= f;
+
+            shootForce = sprayAimDirection * 100;
+            aux.GetComponent<Rigidbody>().AddForce(shootForce * 0.5f);
+            aux.GetComponent<BulletScript>().destroyTime = 5;
+            int spawnOrNot = Random.Range(0, 2);
+            Debug.Log(spawnOrNot);
+            if (spawnOrNot != 0)
+            {
+                variables.SpawnShootParticles(1.5f, 1);
+            }
+       
+    }
+    public void Shake()
+    {
+        impulse.GenerateImpulse(0.25f);
     }
 }
