@@ -11,9 +11,8 @@ public enum Weapons
     Auto = 0,
     Shotgun = 1,
     Sniper = 2,
-    Spray = 3,
+    Basic= 3,
     COUNT,
-    Basic,
     Triple
 }
 
@@ -136,14 +135,6 @@ public class Shooter : MonoBehaviour
                 weaponsImage[3].SetActive(false);
                 weaponsImage[4].SetActive(false);
                 break;
-            case Weapons.Spray:
-                fireRate = 50;
-                weaponsImage[0].SetActive(false);
-                weaponsImage[1].SetActive(false);
-                weaponsImage[2].SetActive(false);
-                weaponsImage[3].SetActive(true);
-                weaponsImage[4].SetActive(false);
-                break;
             default:
                 fireRate = 3;
                 break;
@@ -250,42 +241,6 @@ public class Shooter : MonoBehaviour
 
                 SpawnShootParticles(1, 1);
 
-                break;
-            case Weapons.Spray:
-                
-                spray.pitch = Random.Range(0.3f, 0.5f);
-                if (playSound <= 0)
-                {
-                    spray.Play();
-                    playSound = 0.2f;
-                }
-                else 
-                {
-                    playSound -= Time.deltaTime;
-                }
-                
-                
-                Shake();
-
-                Vector3 sprayAimDirection = aimDirection;
-                sprayAimDirection.x = aimDirection.x + Random.Range(-spraySpread, spraySpread);
-                sprayAimDirection.z = aimDirection.z + Random.Range(-spraySpread, spraySpread);
-
-                aux = Instantiate(shootPrefab, pos + sprayAimDirection * 3f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
-                aux.GetComponent<SphereCollider>().isTrigger = true;
-                aux.GetComponent<BulletScript>().damage = 3;
-                float f = Random.Range(1.0f, 2.3f);
-                aux.transform.localScale *= f;
-
-                shootForce = sprayAimDirection * 100;
-                aux.GetComponent<Rigidbody>().AddForce(shootForce*0.5f);
-                aux.GetComponent<BulletScript>().destroyTime = 5;
-                int spawnOrNot = Random.Range(0, 2);
-                Debug.Log(spawnOrNot);
-                if(spawnOrNot != 0)
-                {
-                    SpawnShootParticles(1.5f, 1);
-                }
                 break;
             case Weapons.Shotgun:
                 shoot.pitch = 0.5f;
