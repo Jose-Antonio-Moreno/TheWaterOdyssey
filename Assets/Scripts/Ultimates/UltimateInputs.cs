@@ -66,7 +66,6 @@ public class UltimateInputs : MonoBehaviour
         if (shootingSpray)
         {
             BubbleSpray();
-
         }
     }
 
@@ -83,6 +82,7 @@ public class UltimateInputs : MonoBehaviour
             if (canUse) 
             {
                 ShootBigDrop();
+                Instantiate(life.hitParticles, transform.position, transform.rotation);
                 return;
             }
         }
@@ -92,6 +92,7 @@ public class UltimateInputs : MonoBehaviour
             if (canUse) 
             {
                 Dropinomicon();
+                Instantiate(life.hitParticles, transform.position, transform.rotation);
                 return;
             }
         }
@@ -106,6 +107,7 @@ public class UltimateInputs : MonoBehaviour
                     life.changed = false;
                     shootingSpray = true;
                     Invoke("StopSpray", 2);
+                    Instantiate(life.hitParticles, transform.position, transform.rotation);
                     return;
                 }
             }

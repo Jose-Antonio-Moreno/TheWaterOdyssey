@@ -1641,7 +1641,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3824983592056312300}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.045366284, y: 0.5393269, z: -0.20742173}
+  m_LocalPosition: {x: -0.08073315, y: 0.31263754, z: -0.36918274}
   m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_Children: []
   m_Father: {fileID: 3522567775570228022}
@@ -2460,7 +2460,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  weapon: 5
+  weapon: 3
   shootPrefab: {fileID: 2421088425041002439, guid: 456a81b8d4dabd54c9dea5915a6bfc97, type: 3}
   life: {fileID: 1258101314343989815}
   pointer: {fileID: 7192975911528432336}
@@ -2685,6 +2685,7 @@ MonoBehaviour:
   marcoHud: {fileID: 2727191963948327981}
   evaporation: {fileID: 7879575115560534699}
   music: {fileID: 0}
+  skillAux: 0
 --- !u!114 &1687420363730804666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2702,6 +2703,7 @@ MonoBehaviour:
   life: {fileID: 1258101314343989815}
   dropinomicon: {fileID: 5505797483114700801}
   bigDrop: {fileID: 7766370095281621073}
+  spray: {fileID: 734044846894613221}
 --- !u!114 &6378861123101174025
 MonoBehaviour:
   m_ObjectHideFlags: 0
