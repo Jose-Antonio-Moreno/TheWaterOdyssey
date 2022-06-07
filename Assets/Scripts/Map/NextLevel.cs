@@ -11,7 +11,7 @@ public class NextLevel : MonoBehaviour
         
         if (other.CompareTag("Player"))
         {
-            if (SceneManager.GetActiveScene().buildIndex + 1 == 4)
+            if (SceneManager.GetActiveScene().buildIndex + 1 == 5)
             {
                 SceneManager.LoadScene(0);
             }

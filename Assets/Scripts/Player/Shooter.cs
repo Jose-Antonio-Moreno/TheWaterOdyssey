@@ -12,6 +12,7 @@ public enum Weapons
     Shotgun = 1,
     Sniper = 2,
     Basic= 3,
+    Spray,
     COUNT,
     Triple
 }
