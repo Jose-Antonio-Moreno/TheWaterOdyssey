@@ -163,6 +163,8 @@ public class BigDropController : MonoBehaviour
         for (int i = 0; i < fireStar.Length; i++) {
             Vector3 starDir = (fireStar[i].position - this.transform.position).normalized;
             GameObject starAux = Instantiate(bubblePrefab, gameObject.transform.position + starDir * 1f, Quaternion.identity);
+            starAux.GetComponent<BulletScript>().damage = 400;
+            starAux.GetComponent<BulletScript>().destroyTime*=2;
             Vector3 starForce = starDir * 80;
             starAux.GetComponent<Rigidbody>().AddForce(starForce);
         }

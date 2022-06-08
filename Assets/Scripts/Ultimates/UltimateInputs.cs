@@ -145,7 +145,7 @@ public class UltimateInputs : MonoBehaviour
             life.life -= 1;
             life.changed = false;
             aux = Instantiate(bigDropPrefab, pos + variables.aimDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
-            aux.GetComponent<BigDropController>().damage = 100;
+            aux.GetComponent<BigDropController>().damage = 200;
             shootForce = variables.aimDirection * 100;
             aux.GetComponent<Rigidbody>().AddForce(shootForce);
             isUsing = true;
