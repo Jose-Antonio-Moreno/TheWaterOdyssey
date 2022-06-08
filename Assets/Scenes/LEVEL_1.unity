@@ -1862,6 +1862,62 @@ PrefabInstance:
       propertyPath: music
       value: 
       objectReference: {fileID: 262861009}
+    - target: {fileID: 1258101314343989815, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
+      propertyPath: hudSkills.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258101314343989815, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
+      propertyPath: hudSkills.Array.data[0]
+      value: 
+      objectReference: {fileID: 2416394196738683367}
+    - target: {fileID: 1258101314343989815, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
+      propertyPath: hudSkills.Array.data[1]
+      value: 
+      objectReference: {fileID: 2416394196738683364}
+    - target: {fileID: 1258101314343989815, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
+      propertyPath: hudSkills.Array.data[2]
+      value: 
+      objectReference: {fileID: 2416394196738683366}
+    - target: {fileID: 1258101314343989815, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
+      propertyPath: hudSkills.Array.data[3]
+      value: 
+      objectReference: {fileID: 2416394196738683365}
+    - target: {fileID: 1258101314343989815, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
+      propertyPath: hudSkills.Array.data[4]
+      value: 
+      objectReference: {fileID: 2416394196738683369}
+    - target: {fileID: 1258101314343989815, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
+      propertyPath: hudSkills.Array.data[5]
+      value: 
+      objectReference: {fileID: 2416394196738683368}
+    - target: {fileID: 1258101314343989815, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
+      propertyPath: skillPositions.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258101314343989815, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
+      propertyPath: skillPositions.Array.data[0]
+      value: 
+      objectReference: {fileID: 2416394196738683375}
+    - target: {fileID: 1258101314343989815, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
+      propertyPath: skillPositions.Array.data[1]
+      value: 
+      objectReference: {fileID: 2416394196738683374}
+    - target: {fileID: 1258101314343989815, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
+      propertyPath: skillPositions.Array.data[2]
+      value: 
+      objectReference: {fileID: 2416394196738683373}
+    - target: {fileID: 1258101314343989815, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
+      propertyPath: skillPositions.Array.data[3]
+      value: 
+      objectReference: {fileID: 2416394196738683372}
+    - target: {fileID: 1258101314343989815, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
+      propertyPath: skillPositions.Array.data[4]
+      value: 
+      objectReference: {fileID: 2416394196738683371}
+    - target: {fileID: 1258101314343989815, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
+      propertyPath: skillPositions.Array.data[5]
+      value: 
+      objectReference: {fileID: 2416394196738683370}
     - target: {fileID: 1687420363730804666, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
       propertyPath: spray
       value: 
@@ -8723,7 +8779,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 683651209}
-  m_LocalRotation: {x: 0.5543146, y: -0.00000001899397, z: 0.00000001264994, w: 0.8323072}
+  m_LocalRotation: {x: 0.5543146, y: 0.00000004528696, z: -0.000000030161008, w: 0.8323072}
   m_LocalPosition: {x: 139.17966, y: 35.304173, z: -84.94294}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -20453,7 +20509,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1581558956}
-  m_LocalRotation: {x: 0.5543146, y: -0.00000001899397, z: 0.00000001264994, w: 0.8323072}
+  m_LocalRotation: {x: 0.5543146, y: 0.00000004528696, z: -0.000000030161008, w: 0.8323072}
   m_LocalPosition: {x: 139.17966, y: 35.304173, z: -84.94294}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

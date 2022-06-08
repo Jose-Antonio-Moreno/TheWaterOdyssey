@@ -39,6 +39,12 @@ public class sizePlayer : MonoBehaviour
     GameObject cameraZoomCambiar;
     // Start is called before the first frame update
 
+    [SerializeField]
+    GameObject[] hudSkills;
+
+    [SerializeField]
+    Transform[] skillPositions;
+    bool hasBoun, hasPois, hasBig, hasShi, hasFire, hasLight;
     public int skillAux;
     float starterWidth;
     void Start()
@@ -53,14 +59,61 @@ public class sizePlayer : MonoBehaviour
         Debug.Log(initialCameraZoomPos);
         zoomedCameraZoomPos = initialCameraZoomPos * 0.85f;
 
-        Time.timeScale =1;
-       
+        Time.timeScale = 1;
+
         life = 3;
         changed = false;
         hitted = false;
         meleHitted = false;
         invulnerabilityTime = 0;
         isInvulnerable = false;
+
+
+
+        GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(EAbilities.BOUNCY, out hasBoun);
+        if (hasBoun)
+        {
+            hudSkills[0].SetActive(true);
+            hudSkills[0].transform.position = skillPositions[skillAux].transform.position;
+            skillAux++;
+        }
+        GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(EAbilities.POISON, out hasPois);
+        if (hasPois)
+        {
+            hudSkills[1].SetActive(true);
+            hudSkills[1].transform.position = skillPositions[skillAux].transform.position;
+            skillAux++;
+        }
+        GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(EAbilities.FIRERATE, out hasFire);
+        if (hasFire)
+        {
+            hudSkills[2].SetActive(true);
+            hudSkills[2].transform.position = skillPositions[skillAux].transform.position;
+            skillAux++;
+        }
+        GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(EAbilities.LIGHTSTEP, out hasLight);
+        if (hasLight)
+        {
+            hudSkills[3].SetActive(true);
+            hudSkills[3].transform.position = skillPositions[skillAux].transform.position;
+            skillAux++;
+        }
+        GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(EAbilities.SHIELDBUBBLE, out hasShi);
+        if (hasShi)
+        {
+            hudSkills[4].SetActive(true);
+            hudSkills[4].transform.position = skillPositions[skillAux].transform.position;
+            skillAux++;
+        }
+        GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(EAbilities.BIGBUBBLE, out hasBig);
+        if (hasBig)
+        {
+            hudSkills[5].SetActive(true);
+            hudSkills[5].transform.position = skillPositions[skillAux].transform.position;
+            skillAux++;
+        }
+
+
     }
     float timePassed = 0;
     float maxTime = 0.5f;
@@ -71,7 +124,7 @@ public class sizePlayer : MonoBehaviour
         Debug.Log("TRAIL WIDTH =  " + GetComponent<TrailRenderer>().startWidth);
         if (life == 5 && !changed)
         {
-            marcoHud.color = new Color(0, 255, 255,255);
+            marcoHud.color = new Color(0, 255, 255, 255);
             player.transform.localScale = new Vector3(140f, 140f, 140f);
             GetComponent<TrailRenderer>().startWidth = starterWidth * 1.4f;
 
@@ -79,28 +132,28 @@ public class sizePlayer : MonoBehaviour
         }
         if (life == 4 && !changed)
         {
-            marcoHud.color = new Color(0, 200, 255,255);
+            marcoHud.color = new Color(0, 200, 255, 255);
             player.transform.localScale = new Vector3(120f, 120f, 120f);
             GetComponent<TrailRenderer>().startWidth = starterWidth * 1.2f;
             changed = true;
         }
         if (life == 3 && !changed)
         {
-            marcoHud.color = new Color(0,150,255, 255);
+            marcoHud.color = new Color(0, 150, 255, 255);
             player.transform.localScale = new Vector3(100f, 100f, 100f);
-            GetComponent<TrailRenderer>().startWidth = starterWidth; 
+            GetComponent<TrailRenderer>().startWidth = starterWidth;
             changed = true;
         }
         if (life == 2 && !changed)
         {
-            marcoHud.color = new Color(0, 80, 180,255);
+            marcoHud.color = new Color(0, 80, 180, 255);
             player.transform.localScale = new Vector3(80f, 80f, 80f);
             GetComponent<TrailRenderer>().startWidth = starterWidth * 0.8f;
             changed = true;
         }
         if (life == 1 && !changed)
         {
-            marcoHud.color = new Color(0, 13, 130,255);
+            marcoHud.color = new Color(0, 13, 130, 255);
             player.transform.localScale = new Vector3(50f, 50f, 50f);
             GetComponent<TrailRenderer>().startWidth = starterWidth * 0.5f;
 
@@ -108,7 +161,7 @@ public class sizePlayer : MonoBehaviour
         }
         if (life <= 0)
         {
-            if(timePassed < maxTime)
+            if (timePassed < maxTime)
             {
                 timePassed += Time.deltaTime;
             }
@@ -120,7 +173,7 @@ public class sizePlayer : MonoBehaviour
         if (Input.GetKeyDown("k"))
         {
             Death();
-        }        
+        }
     }
     void HittedFeedbackZoom(float time)
     {
@@ -132,7 +185,7 @@ public class sizePlayer : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            if (!isInvulnerable) 
+            if (!isInvulnerable)
             {
                 HittedFeedbackZoom(0.09f);
                 evaporation.Play();
@@ -157,14 +210,14 @@ public class sizePlayer : MonoBehaviour
                 Invoke("Invulnerability", 1);
             }
         }
-        if (other.CompareTag("Heal")) 
+        if (other.CompareTag("Heal"))
         {
-            if (life <= 4) 
+            if (life <= 4)
             {
                 life++;
                 changed = false;
             }
-            
+
         }
     }
 
@@ -185,13 +238,13 @@ public class sizePlayer : MonoBehaviour
         player.transform.parent.GetChild(1).gameObject.SetActive(false);
         player.GetComponent<Shooter>().enabled = false;
         player.GetComponent<Movement_2>().enabled = false;
-       
+
 
     }
 
-    void Invulnerability() 
+    void Invulnerability()
     {
         isInvulnerable = false;
     }
-    
+
 }
