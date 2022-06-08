@@ -82,6 +82,7 @@ public class sizePlayer : MonoBehaviour
         {
             marcoHud.color = new Color(0,150,255, 255);
             player.transform.localScale = new Vector3(100f, 100f, 100f);
+            GetComponent<TrailRenderer>().startWidth *= 1;
             changed = true;
         }
         if (life == 2 && !changed)
