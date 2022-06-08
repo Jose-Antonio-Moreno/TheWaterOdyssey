@@ -11,10 +11,8 @@ public enum Weapons
     Auto = 0,
     Shotgun = 1,
     Sniper = 2,
-    Basic= 3,
-    Spray,
+    Basic = 3,
     COUNT,
-    Triple
 }
 
 public class Shooter : MonoBehaviour
@@ -24,7 +22,7 @@ public class Shooter : MonoBehaviour
     GameObject[] weaponsImage;
    
 
-    public Weapons weapon = Weapons.Sniper;
+    public Weapons weapon = Weapons.Basic;
     CinemachineImpulseSource impulse;
     GameObject _inputManager;
     Vector2 aimJoystick;
@@ -61,6 +59,7 @@ public class Shooter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        weapon = Weapons.Auto;
         PlayerControlls controller;
         _inputManager = gameObject.GetComponent<Movement_2>().inputManager;
         controller = _inputManager.GetComponent<InputsController>().globalControls;
@@ -90,7 +89,7 @@ public class Shooter : MonoBehaviour
 
     private void Update()
     {
-        
+        Debug.Log("Weapon = " + weapon);
 
             //SetFireRate
         switch (weapon)
@@ -100,8 +99,7 @@ public class Shooter : MonoBehaviour
                 weaponsImage[0].SetActive(false);
                 weaponsImage[1].SetActive(false);
                 weaponsImage[2].SetActive(false);
-                weaponsImage[3].SetActive(false);
-                weaponsImage[4].SetActive(true);
+                weaponsImage[3].SetActive(true);
 
                 break;
             case Weapons.Auto:
@@ -110,7 +108,6 @@ public class Shooter : MonoBehaviour
                 weaponsImage[1].SetActive(false);
                 weaponsImage[2].SetActive(false);
                 weaponsImage[3].SetActive(false);
-                weaponsImage[4].SetActive(false);
                 break;
             case Weapons.Shotgun:
                 fireRate = 1.5f;
@@ -118,15 +115,6 @@ public class Shooter : MonoBehaviour
                 weaponsImage[1].SetActive(true);
                 weaponsImage[2].SetActive(false);
                 weaponsImage[3].SetActive(false);
-                weaponsImage[4].SetActive(false);
-                break;
-            case Weapons.Triple:
-                fireRate = 5;
-                weaponsImage[0].SetActive(false);
-                weaponsImage[1].SetActive(false);
-                weaponsImage[2].SetActive(false);
-                weaponsImage[3].SetActive(true);
-                weaponsImage[4].SetActive(false);
                 break;
             case Weapons.Sniper:
                 fireRate = 1;
@@ -134,7 +122,6 @@ public class Shooter : MonoBehaviour
                 weaponsImage[1].SetActive(false);
                 weaponsImage[2].SetActive(true);
                 weaponsImage[3].SetActive(false);
-                weaponsImage[4].SetActive(false);
                 break;
             default:
                 fireRate = 3;
@@ -151,7 +138,6 @@ public class Shooter : MonoBehaviour
                 fireRate *= 1.5f;
             }
             
-            Debug.Log(fireRate);
             nextShoot = Time.time + 1f / fireRate;
             Shoot();
 
@@ -264,37 +250,6 @@ public class Shooter : MonoBehaviour
                 SpawnShootParticles(2f, 2);
 
                 break;
-            case Weapons.Triple:
-                shoot.pitch = Random.Range(fPitchMin, fPitchMax);
-                shoot.Play();
-                Shake(1);
-                float angle = 15 * Mathf.Deg2Rad;
-                //Right
-                Vector3 tripleDirection = aimDirection;
-                tripleDirection.x = tripleDirection.x * Mathf.Cos(angle) - tripleDirection.y * Mathf.Sin(angle);
-                tripleDirection.z = tripleDirection.z * Mathf.Sin(angle) + tripleDirection.y * Mathf.Cos(angle);
-                aux = Instantiate(shootPrefab, pos + tripleDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
-                aux.GetComponent<BulletScript>().damage = 10;
-                shootForce = tripleDirection * 100;
-                aux.GetComponent<Rigidbody>().AddForce(shootForce);
-
-                //Center
-                tripleDirection = aimDirection;
-                aux = Instantiate(shootPrefab, pos + tripleDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
-                aux.GetComponent<BulletScript>().damage = 10;
-                shootForce = tripleDirection * 100;
-                aux.GetComponent<Rigidbody>().AddForce(shootForce);
-
-                //Left
-                //angle = 345 * Mathf.Deg2Rad;
-                //tripleDirection = aimDirection;
-                //tripleDirection.x = tripleDirection.x * Mathf.Cos(angle) - tripleDirection.y * Mathf.Sin(angle);
-                //tripleDirection.z = tripleDirection.z * Mathf.Sin(angle) + tripleDirection.y * Mathf.Cos(angle);
-                //aux = Instantiate(shootPrefab, gameObject.transform.position + tripleDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
-                //aux.GetComponent<BulletScript>().damage = 10;
-                //shootForce = tripleDirection * 100;
-                //aux.GetComponent<Rigidbody>().AddForce(shootForce);
-                break;
             case Weapons.Sniper:
                 shoot.pitch = 2f;
                 shoot.Play();
@@ -307,6 +262,7 @@ public class Shooter : MonoBehaviour
                 SpawnShootParticles(1.5f, 3);
                 break;                    
             default:
+                weapon = Weapons.Basic;
                 break;
         }
     }

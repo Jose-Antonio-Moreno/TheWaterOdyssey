@@ -23,10 +23,6 @@ public class GetWeapon : MonoBehaviour
             {
                 variable.weapon = Weapons.Shotgun;
             }
-            else if (pedestalWeapon == Weapons.Spray) 
-            {
-                variable.weapon = Weapons.Spray;
-            }
             else if (pedestalWeapon == Weapons.Sniper) 
             {
                 variable.weapon = Weapons.Sniper;

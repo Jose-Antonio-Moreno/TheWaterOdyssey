@@ -210,7 +210,6 @@ public class UltimateInputs : MonoBehaviour
             aux.GetComponent<Rigidbody>().AddForce(shootForce * 0.5f);
             aux.GetComponent<BulletScript>().destroyTime = 5;
             int spawnOrNot = Random.Range(0, 2);
-            Debug.Log(spawnOrNot);
             if (spawnOrNot != 0)
             {
                 variables.SpawnShootParticles(1.5f, 1);

@@ -31,8 +31,6 @@ public class SingletonDataSaver : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex <= 1)
         {
-            Debug.Log("sdsds");
-
             weaponsSaved = Weapons.Basic;
             //for (int i = 0; i < (int)EUltimates.DUMMY; i++)
             //{

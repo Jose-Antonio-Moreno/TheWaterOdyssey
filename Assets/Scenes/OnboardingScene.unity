@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1410,7 +1410,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5109475567426135614, guid: 2bc8a84c54746794681819a64d608e69, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000009536743
+      value: 0.0000076293945
       objectReference: {fileID: 0}
     - target: {fileID: 5109475568112109185, guid: 2bc8a84c54746794681819a64d608e69, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1580,11 +1580,6 @@ GameObject:
 --- !u!1 &185647151 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1759051563661321144, guid: 2bc8a84c54746794681819a64d608e69, type: 3}
-  m_PrefabInstance: {fileID: 185647143}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &185647152 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 767056440263941618, guid: 2bc8a84c54746794681819a64d608e69, type: 3}
   m_PrefabInstance: {fileID: 185647143}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &185647153 stripped
@@ -3546,8 +3541,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 516882441}
-  m_LocalRotation: {x: 0.55921423, y: 0.0011298946, z: -0.0007621669, w: 0.8290221}
-  m_LocalPosition: {x: 81.73826, y: 36.559967, z: -4.9322824}
+  m_LocalRotation: {x: 0.5625093, y: 5.9716017e-12, z: -4.0624865e-12, w: 0.826791}
+  m_LocalPosition: {x: -24.864897, y: 36.46129, z: 72.57258}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 240616363}
@@ -11093,7 +11088,7 @@ PrefabInstance:
     - target: {fileID: 2895855888988304138, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
       propertyPath: weaponsImage.Array.data[3]
       value: 
-      objectReference: {fileID: 185647152}
+      objectReference: {fileID: 185647155}
     - target: {fileID: 2895855888988304138, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
       propertyPath: weaponsImage.Array.data[4]
       value: 
@@ -11364,15 +11359,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5824325006516684062, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.051757805
+      value: -133.30568
       objectReference: {fileID: 0}
     - target: {fileID: 5824325006516684062, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.33099738
+      value: 0.20764466
       objectReference: {fileID: 0}
     - target: {fileID: 5824325006516684062, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.23667905
+      value: 96.64439
       objectReference: {fileID: 0}
     - target: {fileID: 5944128494586752037, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
       propertyPath: m_IsActive
@@ -11454,11 +11449,6 @@ MonoBehaviour:
 --- !u!82 &1686407883 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 987727352130889689, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
-  m_PrefabInstance: {fileID: 1686407881}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1686407884 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5251763473635452527, guid: 4184826b83db4db4eaf8c076ba5e09a0, type: 3}
   m_PrefabInstance: {fileID: 1686407881}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1686407885 stripped
@@ -11716,8 +11706,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1761203464}
-  m_LocalRotation: {x: 0.55921423, y: 0.0011298946, z: -0.0007621669, w: 0.8290221}
-  m_LocalPosition: {x: 81.73826, y: 36.559967, z: -4.9322824}
+  m_LocalRotation: {x: 0.5625093, y: 5.9716017e-12, z: -4.0624865e-12, w: 0.826791}
+  m_LocalPosition: {x: -24.864897, y: 36.46129, z: 72.57258}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1094482484}
@@ -11756,8 +11746,8 @@ MonoBehaviour:
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
   m_Priority: 10
-  m_StandbyUpdate: 2
-  m_LookAt: {fileID: 1686407884}
+  m_StandbyUpdate: 1
+  m_LookAt: {fileID: 1300052816}
   m_Follow: {fileID: 1300052816}
   m_Lens:
     FieldOfView: 40
