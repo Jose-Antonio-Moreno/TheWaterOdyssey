@@ -11,8 +11,8 @@ public enum Weapons
     Auto = 0,
     Shotgun = 1,
     Sniper = 2,
-    Basic = 3,
     COUNT,
+    Basic
 }
 
 public class Shooter : MonoBehaviour
