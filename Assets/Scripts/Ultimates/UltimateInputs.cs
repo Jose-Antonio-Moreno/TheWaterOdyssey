@@ -81,9 +81,12 @@ public class UltimateInputs : MonoBehaviour
         {
             if (canUse) 
             {
-                ShootBigDrop();
-                Instantiate(life.hitParticles, transform.position, transform.rotation);
-                return;
+                if (life.life > 1)
+                {
+                    ShootBigDrop();
+                    Instantiate(life.hitParticles, transform.position, transform.rotation);
+                    return;
+                }
             }
         }
         GameObject.Find("Armature").GetComponent<UltimateManager>().DUltimates.TryGetValue(EUltimates.DROPINOMICON, out hasUltimate);
@@ -91,9 +94,12 @@ public class UltimateInputs : MonoBehaviour
         {
             if (canUse) 
             {
-                Dropinomicon();
-                Instantiate(life.hitParticles, transform.position, transform.rotation);
-                return;
+                if (life.life > 1) 
+                {
+                    Dropinomicon();
+                    Instantiate(life.hitParticles, transform.position, transform.rotation);
+                    return;
+                }  
             }
         }
         GameObject.Find("Armature").GetComponent<UltimateManager>().DUltimates.TryGetValue(EUltimates.BUBBLESPRAY, out hasUltimate);

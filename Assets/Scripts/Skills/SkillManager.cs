@@ -23,7 +23,7 @@ public class SkillManager : MonoBehaviour
         }
         DSkills[EAbilities.POISON] = false;
         DSkills[EAbilities.BOUNCY] = false;
-        DSkills[EAbilities.LIGHTSTEP] = false;
+        DSkills[EAbilities.LIGHTSTEP] = true;
         DSkills[EAbilities.FIRERATE] = false;
         DSkills[EAbilities.SHIELDBUBBLE] = true; 
         DSkills[EAbilities.BIGBUBBLE] = false;
