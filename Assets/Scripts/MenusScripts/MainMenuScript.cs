@@ -45,7 +45,7 @@ public class MainMenuScript : MonoBehaviour
     }
     public void Play()
     {
-        SceneManager.LoadScene("LEVEL_1");
+        SceneManager.LoadScene("OnboardingScene");
     }
 
     public void Options()
