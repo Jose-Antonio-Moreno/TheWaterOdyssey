@@ -114,7 +114,10 @@ public class Pedestal : MonoBehaviour
             if (weaponSpawn.CompareTag("Ice"))
             {
                 other.GetComponent<SkillManager>().DSkills[EAbilities.ICE] = true;
-                
+                /*hudSkills[6].SetActive(true);
+                hudSkills[6].transform.position = skillPositions[aux.skillAux].transform.position;
+                aux.skillAux++;*/
+
             }
 
             Destroy(weaponSpawn);
