@@ -45,7 +45,7 @@ public class Boss : MonoBehaviour
     Transform fireStar, fireStar1, fireStar2, fireStar3, fireStar4 ;
 
     public GameObject copa;
-    bool nextFase, primera, segunda, tercera, quarta;
+    bool primera, segunda, tercera;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -120,7 +120,6 @@ public class Boss : MonoBehaviour
         else if (hp >= maxHp * 0.50f && hp < maxHp * 0.75f)
         {
             if (!primera) {
-                Debug.Log("particulassssssssssssss");
                 Instantiate(faseParticles, transform.position, Quaternion.identity);
                 primera = true;
             }
@@ -164,9 +163,7 @@ public class Boss : MonoBehaviour
         else if (hp >= maxHp * 0.25f && hp < maxHp * 0.50f)
         {
             if (!segunda)
-            {
-                Debug.Log("particulassssssssssssss");
-
+            { 
                 Instantiate(faseParticles, transform.position, Quaternion.identity);
                 segunda = true;
             }
@@ -210,7 +207,6 @@ public class Boss : MonoBehaviour
         {
             if (!tercera)
             {
-                Debug.Log("particulassssssssssssss");
                 Instantiate(faseParticles, transform.position, Quaternion.identity);
                 tercera = true;
             }
