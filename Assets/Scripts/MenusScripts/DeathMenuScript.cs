@@ -9,7 +9,7 @@ public class DeathMenuScript : MonoBehaviour
     {
         Time.timeScale = 1;
         SingletonDataSaver.instance.RestartData();
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("OnboardingScene");
 
 
     }
