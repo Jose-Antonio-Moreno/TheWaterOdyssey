@@ -1453,7 +1453,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: YOU ARE DEATH
+  m_text: YOU ARE DEAD
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -2715,7 +2715,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d64d70e61f163e4c90a0f6c875fcc62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ultimatesImage: []
+  ultimatesImage:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!82 &5505797483114700801
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3600,7 +3603,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7827901422529839514}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.0003426974}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2404128853247780825}
@@ -3608,7 +3611,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00036621094, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.49999997}
 --- !u!222 &7198998977591574746
@@ -3632,14 +3635,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.45992422, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 151c71a78c82395419d11f63102602f8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e916e4b0ee2edc84b854ead07c83a19c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
