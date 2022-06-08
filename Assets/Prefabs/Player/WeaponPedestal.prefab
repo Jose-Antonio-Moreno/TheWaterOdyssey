@@ -117,7 +117,6 @@ MonoBehaviour:
   - {fileID: 8933149776863821029, guid: 97d1e44d628baa248b3ebcc189ebbf75, type: 3}
   - {fileID: 2291813863217499741, guid: f8ea1d932c043ba4781ced9b7e89bd69, type: 3}
   - {fileID: 6965483614096039716, guid: 146dd4cceec367842ae221765626785d, type: 3}
-  - {fileID: 8319376099946223891, guid: a46f6fdebebaa8a42a0db73f02518043, type: 3}
   newWeaponNumber: 0
   particles: {fileID: 7875016002007857048, guid: 301084d8fc1482949941eaca20b5dcdf, type: 3}
   grabItem: {fileID: 5789379276873272786}
