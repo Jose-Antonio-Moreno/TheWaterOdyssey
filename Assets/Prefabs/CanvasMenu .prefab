@@ -184,8 +184,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 441634580588191159}
   - {fileID: 7276490468470307354}
+  - {fileID: 441634580588191159}
   - {fileID: 4468052101227316839}
   - {fileID: 4074352880039458647}
   - {fileID: 4258422306327351028}
@@ -274,6 +274,7 @@ MonoBehaviour:
   hud: {fileID: 0}
   weapons: {fileID: 2522691070330910803}
   ultimates: {fileID: 662305287445331829}
+  abilities: {fileID: 2136459398536756124}
   audioMixer: {fileID: 24100000, guid: 30c981dff1f7b5d409821879db2a2964, type: 2}
   resolutionDropdown: {fileID: 7276490467466644065}
 --- !u!1 &2136459398536756124
@@ -1747,7 +1748,7 @@ Transform:
   m_LocalScale: {x: 41.441998, y: 41.219788, z: 10}
   m_Children: []
   m_Father: {fileID: 6529476796623225729}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &666798473959802882
 SpriteRenderer:
@@ -4902,7 +4903,7 @@ RectTransform:
   - {fileID: 7276490467466644064}
   - {fileID: 2416394197697325663}
   m_Father: {fileID: 6529476796623225729}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

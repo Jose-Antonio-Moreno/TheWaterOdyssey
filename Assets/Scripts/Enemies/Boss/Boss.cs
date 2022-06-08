@@ -12,6 +12,7 @@ public class Boss : MonoBehaviour
     //Particles
     public ParticleSystem posionParticles;
     public ParticleSystem deathParticles;
+    public ParticleSystem faseParticles;
 
     public float maxHp, hp;
     public bool isHit;
@@ -34,15 +35,17 @@ public class Boss : MonoBehaviour
 
     //Sounds
     public AudioSource splash;
-
-    //Fences
-    public GameObject Fences;
-    
+    public AudioSource shoot;
 
     [SerializeField]
+    float knockBackForce;
+
+
+     [SerializeField]
     Transform fireStar, fireStar1, fireStar2, fireStar3, fireStar4 ;
 
-    // Start is called before the first frame update
+    public GameObject copa;
+    bool nextFase, primera, segunda, tercera, quarta;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -59,6 +62,10 @@ public class Boss : MonoBehaviour
         spiralTimer = 5f;
         isHit = false;
         hitted = false;
+        primera = false;
+        segunda = false;
+        tercera = false;
+        
 }
 
     // Update is called once per frame
@@ -85,10 +92,10 @@ public class Boss : MonoBehaviour
 
         if (hp >= maxHp * 0.75f)
         {
-
+            
             if (Time.time >= starShootTimer)
             {
-                float number = Random.Range(3f, 5f);
+                float number = Random.Range(2f, 4f);
                 starShootTimer = Time.time + number;
                 starShoot();
             }
@@ -103,7 +110,7 @@ public class Boss : MonoBehaviour
             }
             if (Time.time >= invokeTimer)
             {
-                invokeTimer = Time.time + 12f;
+                invokeTimer = Time.time + 5f;
                 rafagasCount = 0;
                 if (startInvoke) startInvoke = false;
                 else startInvoke = true;
@@ -112,7 +119,11 @@ public class Boss : MonoBehaviour
         }
         else if (hp >= maxHp * 0.50f && hp < maxHp * 0.75f)
         {
-
+            if (!primera) {
+                Debug.Log("particulassssssssssssss");
+                Instantiate(faseParticles, transform.position, Quaternion.identity);
+                primera = true;
+            }
             spiralTimer -= Time.deltaTime;
 
             if (spiralTimer <= 0 && startInvoke2)
@@ -124,7 +135,7 @@ public class Boss : MonoBehaviour
 
                 if (spiralCount >= 30)
                 {
-                    invokeTimer2 = 4f;
+                    invokeTimer2 = 2f;
                     startInvoke2 = false;
                     rafagasCount = 0;
                 }
@@ -141,8 +152,8 @@ public class Boss : MonoBehaviour
 
                 if (rafagasCount >= 5)
                 {
-                    spiralCount = 30;
-                    spiralTimer = 5f;
+                    spiralCount = 0;
+                    spiralTimer = 2.5f;
                     startInvoke2 = true;
                 }
 
@@ -152,6 +163,13 @@ public class Boss : MonoBehaviour
         }
         else if (hp >= maxHp * 0.25f && hp < maxHp * 0.50f)
         {
+            if (!segunda)
+            {
+                Debug.Log("particulassssssssssssss");
+
+                Instantiate(faseParticles, transform.position, Quaternion.identity);
+                segunda = true;
+            }
             spiralTimer -= Time.deltaTime;
 
             if (spiralTimer <= 0 && startInvoke2)
@@ -163,7 +181,7 @@ public class Boss : MonoBehaviour
 
                 if (spiralCount >= 35)
                 {
-                    invokeTimer2 = 4f;
+                    invokeTimer2 = 2f;
                     startInvoke2 = false;
                     rafagasCount = 0;
                 }
@@ -180,8 +198,8 @@ public class Boss : MonoBehaviour
 
                 if (rafagasCount >= 7)
                 {
-                    spiralCount = 35;
-                    spiralTimer = 5f;
+                    spiralCount = 0;
+                    spiralTimer = 2.5f;
                     startInvoke2 = true;
                 }
 
@@ -190,6 +208,12 @@ public class Boss : MonoBehaviour
         }
         else if (hp >= 0f && hp < maxHp * 0.25f)
         {
+            if (!tercera)
+            {
+                Debug.Log("particulassssssssssssss");
+                Instantiate(faseParticles, transform.position, Quaternion.identity);
+                tercera = true;
+            }
             spiralTimer -= Time.deltaTime;
 
             if (spiralTimer <= 0 && startInvoke2)
@@ -201,7 +225,7 @@ public class Boss : MonoBehaviour
 
                 if (spiralCount >= 40)
                 {
-                    invokeTimer2 = 4f;
+                    invokeTimer2 = 2f;
                     startInvoke2 = false;
                     rafagasCount = 0;
                 }
@@ -218,17 +242,21 @@ public class Boss : MonoBehaviour
 
                 if (rafagasCount >= 10)
                 {
-                    spiralCount = 40;
-                    spiralTimer = 5f;
+                    spiralCount = 0;
+                    spiralTimer = 2.5f;
                     startInvoke2 = true;
                 }
 
             }
         }
+
+
+
+
     }
 
     void ShootingOnCicle(int _numOfProjectiles) {
-
+        shoot.Play();
         float angleStep = 360f / _numOfProjectiles;
         float angle = 0f;
 
@@ -240,6 +268,7 @@ public class Boss : MonoBehaviour
             Vector3 projectileVector = new Vector3(bulletDirX, 0, bulletDirZ);
             Vector3 projectileMoveDirection = (projectileVector - startPoint).normalized * projectileSpeed;
 
+            startPoint.y = player.GetComponent<Shooter>().originalYPos;
             GameObject aux = Instantiate(shootPrefab, startPoint, Quaternion.identity);
             aux.GetComponent<Rigidbody>().velocity = new Vector3(projectileMoveDirection.x, 0, projectileMoveDirection.z);
 
@@ -252,24 +281,24 @@ public class Boss : MonoBehaviour
 
     void starShoot()
     {
-        
+        shoot.Play();
         Vector3 starDir = (fireStar.position - this.transform.position).normalized;
         Vector3 starDir1 = (fireStar1.position - this.transform.position).normalized;
         Vector3 starDir2 = (fireStar2.position - this.transform.position).normalized;
         Vector3 starDir3 = (fireStar3.position - this.transform.position).normalized;
         Vector3 starDir4 = (fireStar4.position - this.transform.position).normalized;
         
-        GameObject starAux = Instantiate(shootPrefab, gameObject.transform.position + starDir * 1f, Quaternion.identity);
-        GameObject starAux1 = Instantiate(shootPrefab, gameObject.transform.position + starDir1 * 1f, Quaternion.identity);
-        GameObject starAux2 = Instantiate(shootPrefab, gameObject.transform.position + starDir2 * 1f, Quaternion.identity);
-        GameObject starAux3 = Instantiate(shootPrefab, gameObject.transform.position + starDir3 * 1f, Quaternion.identity);
-        GameObject starAux4 = Instantiate(shootPrefab, gameObject.transform.position + starDir4 * 1f, Quaternion.identity);
+        GameObject starAux = Instantiate(shootPrefab, new Vector3(gameObject.transform.position.x, player.GetComponent<Shooter>().originalYPos, gameObject.transform.position.z) + starDir * 1f, Quaternion.identity);
+        GameObject starAux1 = Instantiate(shootPrefab, new Vector3(gameObject.transform.position.x, player.GetComponent<Shooter>().originalYPos, gameObject.transform.position.z) + starDir1 * 1f, Quaternion.identity);
+        GameObject starAux2 = Instantiate(shootPrefab, new Vector3(gameObject.transform.position.x, player.GetComponent<Shooter>().originalYPos, gameObject.transform.position.z) + starDir2 * 1f, Quaternion.identity);
+        GameObject starAux3 = Instantiate(shootPrefab, new Vector3(gameObject.transform.position.x, player.GetComponent<Shooter>().originalYPos, gameObject.transform.position.z) + starDir3 * 1f, Quaternion.identity);
+        GameObject starAux4 = Instantiate(shootPrefab, new Vector3(gameObject.transform.position.x, player.GetComponent<Shooter>().originalYPos, gameObject.transform.position.z) + starDir4 * 1f, Quaternion.identity);
         
-        Vector3 starForce = starDir * 80;
-        Vector3 starForce1 = starDir1 * 80;
-        Vector3 starForce2 = starDir2 * 80;
-        Vector3 starForce3 = starDir3 * 80;
-        Vector3 starForce4 = starDir4 * 80;
+        Vector3 starForce = starDir * 50;
+        Vector3 starForce1 = starDir1 * 50;
+        Vector3 starForce2 = starDir2 * 50;
+        Vector3 starForce3 = starDir3 * 50;
+        Vector3 starForce4 = starDir4 * 50;
         
         starAux.GetComponent<Rigidbody>().AddForce(starForce);
         starAux1.GetComponent<Rigidbody>().AddForce(starForce1);
@@ -283,13 +312,13 @@ public class Boss : MonoBehaviour
 
     void spiralShoot() {
 
-
+        shoot.Play();
         float bulletDirX = startPoint.x + Mathf.Sin((spiralAngle * Mathf.PI) / 180) * radius;
         float bulletDirZ = startPoint.z + Mathf.Cos((spiralAngle * Mathf.PI) / 180) * radius;
 
         Vector3 projectileVector = new Vector3(bulletDirX, 0, bulletDirZ);
         Vector3 projectileMoveDirection = (projectileVector - startPoint).normalized * projectileSpeed;
-
+        startPoint.y = player.GetComponent<Shooter>().originalYPos;
         GameObject aux = Instantiate(shootPrefab, startPoint, Quaternion.identity);
         aux.GetComponent<Rigidbody>().velocity = new Vector3(projectileMoveDirection.x, 0, projectileMoveDirection.z);
 
@@ -302,7 +331,7 @@ public class Boss : MonoBehaviour
 
     void doubleSpiral() {
 
-       
+        shoot.Play();
 
         for (int i = 0; i <= 1; i++)
         {
@@ -312,7 +341,7 @@ public class Boss : MonoBehaviour
 
             Vector3 projectileVector = new Vector3(bulletDirX, 0, bulletDirZ);
             Vector3 projectileMoveDirection = (projectileVector - startPoint).normalized * projectileSpeed;
-
+            startPoint.y = player.GetComponent<Shooter>().originalYPos;
             GameObject aux = Instantiate(shootPrefab, startPoint, Quaternion.identity);
             aux.GetComponent<Rigidbody>().velocity = new Vector3(projectileMoveDirection.x, 0, projectileMoveDirection.z);
 
@@ -326,6 +355,7 @@ public class Boss : MonoBehaviour
 
     void quadSpiral()
     {
+        shoot.Play();
         for (int i = 0; i <= 3; i++)
         {
 
@@ -335,6 +365,7 @@ public class Boss : MonoBehaviour
             Vector3 projectileVector = new Vector3(bulletDirX, 0, bulletDirZ);
             Vector3 projectileMoveDirection = (projectileVector - startPoint).normalized * projectileSpeed;
 
+            startPoint.y = player.GetComponent<Shooter>().originalYPos;
             GameObject aux = Instantiate(shootPrefab, startPoint, Quaternion.identity);
             aux.GetComponent<Rigidbody>().velocity = new Vector3(projectileMoveDirection.x, 0, projectileMoveDirection.z);
 
@@ -376,6 +407,8 @@ public class Boss : MonoBehaviour
             isHit = true;
         }
 
+       
+
 
     }
     private void OnTriggerExit(Collider other)
@@ -385,15 +418,29 @@ public class Boss : MonoBehaviour
             hitted = false;
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+
+
+        Rigidbody rb = collision.collider.GetComponent<Rigidbody>();
+
+        if (rb != null) {
+
+            Vector3 direction = collision.transform.position - transform.position;
+            direction.y = 0;
+
+            rb.AddForce(direction.normalized * knockBackForce, ForceMode.Impulse);
+        }
+
+
+
+    }
     private void Death()
     {
-        //if (!doneCounter)
-        //{
-        //    managerEnemies.counter -= 1;
-        //    doneCounter = true;
-        //}
         anim.SetBool("death", true);
-        Fences.SetActive(false);
+        
+        Instantiate(copa, transform.position, Quaternion.identity);
         Destroy(this.gameObject);
     }
 }

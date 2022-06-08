@@ -146,7 +146,7 @@ RectTransform:
   - {fileID: 2438050626897033207}
   - {fileID: 139314068248577864}
   m_Father: {fileID: 8687045654004450164}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5198936}
@@ -792,7 +792,7 @@ RectTransform:
   - {fileID: 1378867567800662274}
   - {fileID: 6997536695322044109}
   m_Father: {fileID: 8687045654004450164}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -830,11 +830,11 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 2608368402277309762}
   - {fileID: 5109475567105440495}
   - {fileID: 2022816367370880658}
   - {fileID: 1916505022111954850}
   - {fileID: 1804604197586767361}
+  - {fileID: 2608368402277309762}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -920,6 +920,7 @@ MonoBehaviour:
   hud: {fileID: 0}
   weapons: {fileID: 77035478053091494}
   ultimates: {fileID: 3108383504348610432}
+  abilities: {fileID: 0}
   audioMixer: {fileID: 24100000, guid: 30c981dff1f7b5d409821879db2a2964, type: 2}
   resolutionDropdown: {fileID: 5109475568109669012}
 --- !u!1 &3995220131317703708
@@ -992,7 +993,7 @@ Transform:
   - {fileID: 6052233785401400657}
   - {fileID: 5365620367912792908}
   m_Father: {fileID: 8687045654004450164}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4822200454107440519
 GameObject:
@@ -1019,11 +1020,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4822200454107440519}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: -0.0065, z: 0}
-  m_LocalScale: {x: 41.441998, y: 41.219788, z: 10}
+  m_LocalPosition: {x: 1.0000451, y: -0.006498863, z: 0}
+  m_LocalScale: {x: 41.441994, y: 41.219784, z: 10}
   m_Children: []
   m_Father: {fileID: 8687045654004450164}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3121901500151810295
 SpriteRenderer:
@@ -1532,7 +1533,7 @@ RectTransform:
   - {fileID: 5109475568109669013}
   - {fileID: 259811067356195498}
   m_Father: {fileID: 8687045654004450164}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

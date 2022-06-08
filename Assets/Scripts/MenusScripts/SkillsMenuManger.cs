@@ -16,9 +16,11 @@ public class SkillsMenuManger : MonoBehaviour
     public GameObject hud;
     public GameObject weapons;
     public GameObject ultimates;
+    public GameObject abilities;
 
     public AudioMixer audioMixer;
 
+  
 
     public Dropdown resolutionDropdown;
 
@@ -71,6 +73,7 @@ public class SkillsMenuManger : MonoBehaviour
             weapons.SetActive(false);
             ultimates.SetActive(false);
             pause.SetActive(true);
+
             Time.timeScale = 0f;
         }
     }
