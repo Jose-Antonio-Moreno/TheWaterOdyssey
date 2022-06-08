@@ -19,12 +19,15 @@ public class BulletScript : MonoBehaviour
 
     //public bool isBigDrop = false;
 
+    public float playerPosY;
+
     private void Start()
     {
         destroyTime = 1f;
         impulse = transform.GetComponent<CinemachineImpulseSource>();
         
         Invoke("des", destroyTime+Random.Range(-0.1F,0.2F));
+       
     }
     private void Awake()
     {
@@ -41,6 +44,11 @@ public class BulletScript : MonoBehaviour
         {
             transform.localScale *= 1.5f;
         }
+    }
+
+    private void Update()
+    {
+        Debug.Log(playerPosY + " / " + gameObject.transform.position.y);
     }
     private void OnCollisionEnter(Collision collision)
     {

@@ -207,6 +207,7 @@ public class Shooter : MonoBehaviour
                 aux.GetComponent<BulletScript>().damage = 10;
                 shootForce = aimDirection * 100;
                 aux.GetComponent<Rigidbody>().AddForce(shootForce);
+                aux.GetComponent<BulletScript>().playerPosY = originalYPos;
 
                 particles = Instantiate(shootParticle, gameObject.transform.position + aimDirection * 0.5f, Quaternion.identity);
                 particles.transform.LookAt(gameObject.transform.position + aimDirection);
@@ -226,6 +227,7 @@ public class Shooter : MonoBehaviour
                 aux.GetComponent<BulletScript>().damage = 8; /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 shootForce = AutoAimDirection * 100;
                 aux.GetComponent<Rigidbody>().AddForce(shootForce);
+                aux.GetComponent<BulletScript>().playerPosY = originalYPos;
 
                 SpawnShootParticles(1, 1);
 
@@ -245,6 +247,7 @@ public class Shooter : MonoBehaviour
                     shootForce = shotgunAimDirection * 100;
                     aux.GetComponent<Rigidbody>().AddForce(shootForce*1.5f);
                     aux.GetComponent<Rigidbody>().drag = shotgunDrag;
+                    aux.GetComponent<BulletScript>().playerPosY = originalYPos;
 
                 }
 
@@ -260,12 +263,16 @@ public class Shooter : MonoBehaviour
                 aux.GetComponent<BulletScript>().damage = 50;
                 shootForce = aimDirection * 100;
                 aux.GetComponent<Rigidbody>().AddForce(shootForce * 3);
+                aux.GetComponent<BulletScript>().playerPosY = originalYPos;
+
                 SpawnShootParticles(1.5f, 3);
                 break;                    
             default:
                 weapon = Weapons.Basic;
                 break;
         }
+
+
     }
 
     public void SpawnShootParticles(float particlesScale, int particlesNumber)

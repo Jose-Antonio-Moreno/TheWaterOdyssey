@@ -240,6 +240,7 @@ public class EnemyAI : MonoBehaviour
         Vector3 direction = (player.position - this.transform.position).normalized;
         Vector3 bulletPosition = new Vector3(gameObject.transform.position.x, player.GetComponent<Shooter>().originalYPos, gameObject.transform.position.z);
         GameObject aux = Instantiate(shootPrefab, bulletPosition + direction * 1f, Quaternion.identity);
+        aux.GetComponent<BulletSlime>().playerPosY = player.GetComponent<Shooter>().originalYPos;
         Vector3 shootForce = direction * 50;
         aux.GetComponent<Rigidbody>().AddForce(shootForce);
     }
