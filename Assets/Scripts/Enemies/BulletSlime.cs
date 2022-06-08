@@ -41,11 +41,11 @@ public class BulletSlime : MonoBehaviour
         GameObject.Find("Armature").GetComponent<SkillManager>().DSkills.TryGetValue(EAbilities.SHIELDBUBBLE, out hasAbility);
         if (hasAbility)
         {
-            if (other.CompareTag("Bullet"))
-            {
-                Instantiate(hitBulletSlime, transform.position, Quaternion.identity);
-                Invoke("des", 0.1f);
-            }
+            //if (other.CompareTag("Bullet"))
+            //{
+            //    Instantiate(hitBulletSlime, transform.position, Quaternion.identity);
+            //    Invoke("des", 0.1f);
+            //}
         }
     }
 

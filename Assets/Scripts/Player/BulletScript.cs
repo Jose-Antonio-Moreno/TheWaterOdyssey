@@ -89,8 +89,9 @@ public class BulletScript : MonoBehaviour
         {
             if (other.CompareTag("BulletEnemy"))
             {
-                Invoke("des", destroyTime);
+                other.GetComponent<BulletSlime>().des();
                 Instantiate(hitParticle, transform.position, Quaternion.identity);
+                des();
             }
         }
         
@@ -118,6 +119,7 @@ public class BulletScript : MonoBehaviour
         }
     }
 
+    
     private void des()
     {
         Instantiate(hitParticle, transform.position, Quaternion.identity);
