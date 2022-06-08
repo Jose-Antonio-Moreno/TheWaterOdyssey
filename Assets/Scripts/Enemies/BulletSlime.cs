@@ -18,11 +18,10 @@ public class BulletSlime : MonoBehaviour
         Invoke("des", destroyTime);
 
     }
-    public float playerPosY;
 
     void Update()
     {
-        gameObject.transform.position = new Vector3(gameObject.transform.position.x, playerPosY, gameObject.transform.position.z);
+        gameObject.transform.position = new Vector3(gameObject.transform.position.x, player.GetComponent<Shooter>().originalYPos, gameObject.transform.position.z);
         //Debug.Log(playerPosY + " / " + gameObject.transform.position.y);
 
     }
