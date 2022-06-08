@@ -60,6 +60,7 @@ public class PedestalUltimates : MonoBehaviour
                 Audio3D.SetActive(false);
                 Instantiate(particles, particles.transform.position, Quaternion.identity);
                 other.GetComponent<UltimateManager>().DUltimates[EUltimates.BIGDROP] = true;
+                other.GetComponent<UltimateManager>().DUltimates[EUltimates.BUBBLESPRAY] = false;
                 other.GetComponent<UltimateManager>().DUltimates[EUltimates.DROPINOMICON] = false;
 
             }
@@ -69,10 +70,21 @@ public class PedestalUltimates : MonoBehaviour
                 grabItem.Play();
                 Audio3D.SetActive(false);
                 Instantiate(particles, particles.transform.position, Quaternion.identity);
-                other.GetComponent<UltimateManager>().DUltimates[EUltimates.BIGDROP] = false; 
+                other.GetComponent<UltimateManager>().DUltimates[EUltimates.BIGDROP] = false;
+                other.GetComponent<UltimateManager>().DUltimates[EUltimates.BUBBLESPRAY] = false;
                 other.GetComponent<UltimateManager>().DUltimates[EUltimates.DROPINOMICON] = true;
             }
-            
+
+            if (ultimateSpawn.CompareTag("Spray"))
+            {
+                grabItem.Play();
+                Audio3D.SetActive(false);
+                Instantiate(particles, particles.transform.position, Quaternion.identity);
+                other.GetComponent<UltimateManager>().DUltimates[EUltimates.BIGDROP] = false;
+                other.GetComponent<UltimateManager>().DUltimates[EUltimates.DROPINOMICON] = false;
+                other.GetComponent<UltimateManager>().DUltimates[EUltimates.BUBBLESPRAY] = true;
+            }
+
             Destroy(ultimateSpawn);
         }
     }

@@ -25,6 +25,7 @@ TagManager:
   - Dropinomicon
   - Camera
   - Ice
+  - Spray
   layers:
   - Default
   - TransparentFX

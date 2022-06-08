@@ -227,8 +227,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ultimate:
-  - {fileID: 5965082732524849015, guid: 55c42637c4959c44289018f413d3ee80, type: 3}
   - {fileID: 1069780942220475898, guid: 57d69672799c6de479a31751dd426a9a, type: 3}
+  - {fileID: 5965082732524849015, guid: 55c42637c4959c44289018f413d3ee80, type: 3}
+  - {fileID: 1267632878027968768, guid: 2535cf6ad56ecf14289719987f0a37e5, type: 3}
   particles: {fileID: 7875016002007857048, guid: 301084d8fc1482949941eaca20b5dcdf, type: 3}
   spawnPoint: {fileID: 8245296565057715145}
   ultimatesImages:
@@ -462,7 +463,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5214809226593301859}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 0.05}
+  m_LocalPosition: {x: -0.0295, y: -0.0027, z: 0.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 714460410973253460}
