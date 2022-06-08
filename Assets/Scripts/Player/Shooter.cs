@@ -89,6 +89,7 @@ public class Shooter : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(GetComponent<TrailRenderer>().startWidth);
         Debug.Log("Weapon = " + weapon);
 
             //SetFireRate
@@ -277,23 +278,6 @@ public class Shooter : MonoBehaviour
             Destroy(particles.gameObject, 0.6f);
         }
     }
-
-    //void ShootBigDrop() {
-
-    //    GameObject aux;
-    //    Vector3 shootForce;
-
-    //    if (life.life > 1)
-    //    {
-    //        ShakeUltimate();
-    //        life.life -= 1;
-    //        life.changed = false;
-    //        aux = Instantiate(bigDropPrefab, gameObject.transform.position + aimDirection * 2f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
-    //        aux.GetComponent<BulletScript>().damage = 100;
-    //        shootForce = aimDirection * 100;
-    //        aux.GetComponent<Rigidbody>().AddForce(shootForce);
-    //    }
-    //}
 
     private void OnTriggerEnter(Collider other)
     {

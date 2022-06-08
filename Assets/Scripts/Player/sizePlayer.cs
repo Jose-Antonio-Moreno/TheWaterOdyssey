@@ -93,7 +93,7 @@ public class sizePlayer : MonoBehaviour
         if (life == 1 && !changed)
         {
             marcoHud.color = new Color(0, 13, 130,255);
-            player.transform.localScale = new Vector3(60f, 60f, 60f);
+            player.transform.localScale = new Vector3(50f, 50f, 50f);
             changed = true;
         }
         if (life <= 0)
