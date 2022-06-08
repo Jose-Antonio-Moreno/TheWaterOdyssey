@@ -202,7 +202,7 @@ public class UltimateInputs : MonoBehaviour
 
             aux = Instantiate(variables.shootPrefab, pos + sprayAimDirection * 3f * (gameObject.transform.localScale.x / 100), Quaternion.identity);
             aux.GetComponent<SphereCollider>().isTrigger = true;
-            aux.GetComponent<BulletScript>().damage = 10; ///DAMAGE
+            aux.GetComponent<BulletScript>().damage = 20; ///DAMAGE
             float f = Random.Range(1.0f, 2.3f);
             aux.transform.localScale *= f;
 
