@@ -8,8 +8,16 @@ public class DeathMenuScript : MonoBehaviour
     public void Restart()
     {
         Time.timeScale = 1;
-        SingletonDataSaver.instance.RestartData();
-        SceneManager.LoadScene("OnboardingScene");
+        if (SceneManager.GetActiveScene().name == "OnboardingScene")
+        {
+            SceneManager.LoadScene("OnboardingScene");
+            return;
+        }
+        else
+        {
+            SingletonDataSaver.instance.RestartData();
+            SceneManager.LoadScene("LEVEL_1");
+        }
 
 
     }

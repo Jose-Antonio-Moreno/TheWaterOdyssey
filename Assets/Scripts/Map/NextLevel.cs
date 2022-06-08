@@ -13,7 +13,7 @@ public class NextLevel : MonoBehaviour
         {
             if (SceneManager.GetActiveScene().buildIndex + 1 == 5)
             {
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(0); //Habrá que cambiarlo por créditos
             }
             else
             {
